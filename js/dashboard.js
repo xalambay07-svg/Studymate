@@ -49,9 +49,8 @@ function renderDashboardStats() {
   if (progressElem) progressElem.textContent = `${progressPercent}%`;
   if (progressFill) progressFill.style.width = `${progressPercent}%`;
 
-  // 4. Kỳ thi sắp tới
-  const examsElem = document.getElementById("statExamsCount");
-  if (examsElem) examsElem.textContent = exams.length > 0 ? `${exams.length * 4} ngày` : "12 ngày";
+  // 4. Kỳ thi sắp tới (Tính toán thời gian đến ngày thi dựa trên nhập tay của người dùng)
+  renderNearestExamStat();
 }
 
 function renderTodaySchedule() {
@@ -206,4 +205,448 @@ function renderDashboardProgress() {
     `;
   }).join("");
 }
+
+// =========================================================================
+// QUẢN LÝ KỲ THI GẦN NHẤT & TÍNH TOÁN ĐẾM NGƯỢC THỜI GIAN
+// =========================================================================
+
+function calculateDaysRemaining(dateStr) {
+  if (!dateStr) return null;
+  const parts = dateStr.split('-');
+  if (parts.length !== 3) return null;
+  const year = parseInt(parts[0], 10);
+  const month = parseInt(parts[1], 10) - 1;
+  const day = parseInt(parts[2], 10);
+  
+  const targetDate = new Date(year, month, day);
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  targetDate.setHours(0, 0, 0, 0);
+  
+  const diffTime = targetDate.getTime() - today.getTime();
+  return Math.round(diffTime / (1000 * 60 * 60 * 24));
+}
+
+function formatDateDisplay(dateStr) {
+  if (!dateStr) return "";
+  const parts = dateStr.split('-');
+  if (parts.length !== 3) return dateStr;
+  return `${parts[2]}/${parts[1]}/${parts[0]}`;
+}
+
+function getNearestExam() {
+  const exams = JSON.parse(localStorage.getItem("studymate_exams")) || [];
+  if (exams.length === 0) return null;
+
+  const examsWithDiff = exams.map(e => ({
+    ...e,
+    diffDays: calculateDaysRemaining(e.date)
+  }));
+
+  // Sắp xếp các kỳ thi sắp tới (diffDays >= 0)
+  const upcoming = examsWithDiff.filter(e => e.diffDays !== null && e.diffDays >= 0);
+  if (upcoming.length > 0) {
+    upcoming.sort((a, b) => a.diffDays - b.diffDays);
+    return upcoming[0];
+  }
+
+  // Nếu tất cả kỳ thi đã qua
+  examsWithDiff.sort((a, b) => b.diffDays - a.diffDays);
+  return { ...examsWithDiff[0], isPast: true };
+}
+
+function renderNearestExamStat() {
+  const examsElem = document.getElementById("statExamsCount");
+  const examDetailElem = document.getElementById("statExamDetail");
+  const examBadgeElem = document.getElementById("statExamBadge");
+  const cardElem = document.getElementById("statExamsCard");
+
+  if (cardElem) {
+    cardElem.onclick = () => openExamModal();
+    cardElem.style.cursor = "pointer";
+  }
+
+  const nearest = getNearestExam();
+
+  if (!nearest) {
+    if (examsElem) {
+      examsElem.textContent = "Chưa đặt";
+      examsElem.style.fontSize = "1.85rem";
+      examsElem.style.color = "var(--theme-text-primary)";
+    }
+    if (examDetailElem) {
+      examDetailElem.textContent = "Nhấn để nhập ngày thi";
+      examDetailElem.style.color = "var(--theme-text-muted)";
+    }
+    if (examBadgeElem) {
+      examBadgeElem.textContent = "+ Nhập ngày";
+      examBadgeElem.className = "badge badge-primary";
+    }
+  } else if (nearest.isPast) {
+    if (examsElem) {
+      examsElem.textContent = "Đã kết thúc";
+      examsElem.style.fontSize = "1.6rem";
+      examsElem.style.color = "var(--theme-text-muted)";
+    }
+    if (examDetailElem) {
+      examDetailElem.textContent = `${nearest.subjectName} (${formatDateDisplay(nearest.date)})`;
+      examDetailElem.style.color = "var(--theme-text-muted)";
+    }
+    if (examBadgeElem) {
+      examBadgeElem.textContent = "Đặt kỳ thi mới";
+      examBadgeElem.className = "badge badge-warning";
+    }
+  } else {
+    const d = nearest.diffDays;
+    let valText = `${d} ngày`;
+    if (d === 0) valText = "Hôm nay!";
+    else if (d === 1) valText = "1 ngày";
+
+    if (examsElem) {
+      examsElem.textContent = valText;
+      examsElem.style.fontSize = "2.15rem";
+      if (d === 0) {
+        examsElem.style.color = "#ef4444";
+      } else if (d <= 3) {
+        examsElem.style.color = "#f59e0b";
+      } else {
+        examsElem.style.color = "var(--theme-text-primary)";
+      }
+    }
+
+    if (examDetailElem) {
+      const roomPart = nearest.room ? ` • ${nearest.room}` : '';
+      examDetailElem.textContent = `${nearest.subjectName}${roomPart}`;
+      examDetailElem.style.color = "var(--theme-text-secondary)";
+    }
+
+    if (examBadgeElem) {
+      if (d === 0) {
+        examBadgeElem.textContent = "Hôm nay";
+        examBadgeElem.className = "badge badge-overdue";
+      } else if (d <= 3) {
+        examBadgeElem.textContent = `Còn ${d} ngày`;
+        examBadgeElem.className = "badge badge-warning";
+      } else {
+        examBadgeElem.textContent = formatDateDisplay(nearest.date);
+        examBadgeElem.className = "badge badge-safe";
+      }
+    }
+  }
+}
+
+// =========================================================================
+// EXAM MODAL CONTROLLER (THIẾT LẬP KỲ THI & TÍNH ĐẾM NGƯỢC THỜI GIAN)
+// =========================================================================
+
+function openExamModal(examId) {
+  const modal = document.getElementById("examModal");
+  if (!modal) return;
+
+  const subjectSelect = document.getElementById("examSubjectSelect");
+  const customInput = document.getElementById("examCustomSubjectInput");
+  const dateInput = document.getElementById("examDateInput");
+  const timeInput = document.getElementById("examTimeInput");
+  const roomInput = document.getElementById("examRoomInput");
+  const noteInput = document.getElementById("examNoteInput");
+  const editIdInput = document.getElementById("examEditId");
+  const deleteBtn = document.getElementById("examDeleteBtn");
+  const modalTitle = document.getElementById("examModalTitle");
+
+  // Populate subjects
+  const subjects = JSON.parse(localStorage.getItem("studymate_subjects")) || [];
+  if (subjectSelect) {
+    let optionsHtml = `<option value="">-- Chọn môn học từ kỳ này --</option>`;
+    subjects.forEach(sub => {
+      optionsHtml += `<option value="${sub.id}">${sub.id} - ${sub.name}</option>`;
+    });
+    optionsHtml += `<option value="custom">+ Môn thi khác (Nhập tên)...</option>`;
+    subjectSelect.innerHTML = optionsHtml;
+  }
+
+  const exams = JSON.parse(localStorage.getItem("studymate_exams")) || [];
+  let targetExam = null;
+
+  if (examId) {
+    targetExam = exams.find(e => String(e.id) === String(examId));
+  } else {
+    // If no ID passed, try opening the nearest exam if one exists, otherwise empty for new
+    const nearest = getNearestExam();
+    if (nearest) targetExam = nearest;
+  }
+
+  if (targetExam) {
+    if (editIdInput) editIdInput.value = targetExam.id;
+    if (modalTitle) modalTitle.textContent = "Chỉnh sửa kỳ thi & Ngày thi";
+    if (deleteBtn) deleteBtn.style.display = "block";
+
+    // Set subject
+    const matchedSubject = subjects.find(s => s.id === targetExam.subjectId || s.name === targetExam.subjectName);
+    if (matchedSubject && subjectSelect) {
+      subjectSelect.value = matchedSubject.id;
+      if (customInput) customInput.style.display = "none";
+    } else {
+      if (subjectSelect) subjectSelect.value = "custom";
+      if (customInput) {
+        customInput.style.display = "block";
+        customInput.value = targetExam.subjectName || "";
+      }
+    }
+
+    if (dateInput) dateInput.value = targetExam.date || "";
+    if (timeInput) timeInput.value = targetExam.time || "08:00";
+    if (roomInput) roomInput.value = targetExam.room || "";
+    if (noteInput) noteInput.value = targetExam.note || "";
+  } else {
+    // New exam
+    resetExamFormForNew();
+  }
+
+  previewExamCountdown();
+  renderSavedExamsList();
+  modal.classList.add("active");
+}
+
+function resetExamFormForNew() {
+  const editIdInput = document.getElementById("examEditId");
+  const modalTitle = document.getElementById("examModalTitle");
+  const deleteBtn = document.getElementById("examDeleteBtn");
+  const subjectSelect = document.getElementById("examSubjectSelect");
+  const customInput = document.getElementById("examCustomSubjectInput");
+  const dateInput = document.getElementById("examDateInput");
+  const timeInput = document.getElementById("examTimeInput");
+  const roomInput = document.getElementById("examRoomInput");
+  const noteInput = document.getElementById("examNoteInput");
+
+  if (editIdInput) editIdInput.value = "";
+  if (modalTitle) modalTitle.textContent = "Thiết lập kỳ thi & Ngày thi";
+  if (deleteBtn) deleteBtn.style.display = "none";
+
+  if (subjectSelect) {
+    if (subjectSelect.options.length > 1) {
+      subjectSelect.selectedIndex = 1;
+    } else {
+      subjectSelect.selectedIndex = 0;
+    }
+  }
+  if (customInput) {
+    customInput.style.display = "none";
+    customInput.value = "";
+  }
+
+  // Pre-fill tomorrow's date
+  const tomorrow = new Date();
+  tomorrow.setDate(tomorrow.getDate() + 1);
+  const tomorrowStr = tomorrow.toISOString().split("T")[0];
+  if (dateInput) dateInput.value = tomorrowStr;
+  if (timeInput) timeInput.value = "08:00";
+  if (roomInput) roomInput.value = "Phòng 205-B5";
+  if (noteInput) noteInput.value = "";
+
+  previewExamCountdown();
+}
+
+function closeExamModal() {
+  const modal = document.getElementById("examModal");
+  if (modal) modal.classList.remove("active");
+}
+
+function handleExamSubjectSelectChange() {
+  const subjectSelect = document.getElementById("examSubjectSelect");
+  const customInput = document.getElementById("examCustomSubjectInput");
+  if (!subjectSelect || !customInput) return;
+
+  if (subjectSelect.value === "custom") {
+    customInput.style.display = "block";
+    customInput.focus();
+  } else {
+    customInput.style.display = "none";
+  }
+}
+
+function previewExamCountdown() {
+  const dateInput = document.getElementById("examDateInput");
+  const previewBox = document.getElementById("examCountdownLivePreview");
+  if (!dateInput || !previewBox) return;
+
+  const dateVal = dateInput.value;
+  if (!dateVal) {
+    previewBox.style.display = "none";
+    return;
+  }
+
+  const days = calculateDaysRemaining(dateVal);
+  if (days === null) {
+    previewBox.style.display = "none";
+    return;
+  }
+
+  previewBox.style.display = "block";
+  if (days > 1) {
+    previewBox.innerHTML = `Đếm ngược: Còn <strong>${days} ngày</strong> nữa là đến ngày thi (${formatDateDisplay(dateVal)})`;
+    previewBox.style.color = "#a78bfa";
+    previewBox.style.borderColor = "rgba(139, 92, 246, 0.3)";
+  } else if (days === 1) {
+    previewBox.innerHTML = `Đếm ngược: <strong>Ngày mai thi!</strong> (Còn 1 ngày - chuẩn bị đầy đủ thẻ SV & dụng cụ thi)`;
+    previewBox.style.color = "#f59e0b";
+    previewBox.style.borderColor = "rgba(245, 158, 11, 0.3)";
+  } else if (days === 0) {
+    previewBox.innerHTML = `Đếm ngược: <strong>KỲ THI DIỄN RA HÔM NAY!</strong> Chúc bạn làm bài thật tốt!`;
+    previewBox.style.color = "#ef4444";
+    previewBox.style.borderColor = "rgba(239, 68, 68, 0.4)";
+  } else {
+    previewBox.innerHTML = `Lưu ý: Ngày thi này <strong>đã trôi qua ${Math.abs(days)} ngày trước</strong>.`;
+    previewBox.style.color = "#94a3b8";
+    previewBox.style.borderColor = "rgba(148, 163, 184, 0.3)";
+  }
+}
+
+function handleExamFormSubmit(event) {
+  if (event) event.preventDefault();
+
+  const editId = document.getElementById("examEditId")?.value;
+  const subjectSelect = document.getElementById("examSubjectSelect");
+  const customInput = document.getElementById("examCustomSubjectInput");
+  const dateInput = document.getElementById("examDateInput");
+  const timeInput = document.getElementById("examTimeInput");
+  const roomInput = document.getElementById("examRoomInput");
+  const noteInput = document.getElementById("examNoteInput");
+
+  const dateVal = dateInput ? dateInput.value : "";
+  if (!dateVal) {
+    alert("Vui lòng chọn ngày thi!");
+    return;
+  }
+
+  let subjectId = "";
+  let subjectName = "";
+  const subjects = JSON.parse(localStorage.getItem("studymate_subjects")) || [];
+
+  if (subjectSelect && subjectSelect.value === "custom") {
+    subjectName = customInput ? customInput.value.trim() : "";
+    if (!subjectName) {
+      alert("Vui lòng nhập tên môn thi!");
+      if (customInput) customInput.focus();
+      return;
+    }
+    subjectId = "OTHER";
+  } else if (subjectSelect && subjectSelect.value) {
+    subjectId = subjectSelect.value;
+    const matched = subjects.find(s => s.id === subjectId);
+    subjectName = matched ? matched.name : subjectId;
+  } else {
+    alert("Vui lòng chọn hoặc nhập tên môn thi!");
+    return;
+  }
+
+  const exams = JSON.parse(localStorage.getItem("studymate_exams")) || [];
+  const examData = {
+    id: editId ? editId : "exam-" + Date.now(),
+    subjectId: subjectId,
+    subjectName: subjectName,
+    date: dateVal,
+    time: timeInput ? (timeInput.value || "08:00") : "08:00",
+    room: roomInput ? roomInput.value.trim() : "",
+    note: noteInput ? noteInput.value.trim() : ""
+  };
+
+  if (editId) {
+    const idx = exams.findIndex(e => String(e.id) === String(editId));
+    if (idx !== -1) {
+      exams[idx] = examData;
+    } else {
+      exams.push(examData);
+    }
+  } else {
+    exams.push(examData);
+  }
+
+  localStorage.setItem("studymate_exams", JSON.stringify(exams));
+
+  renderDashboardStats();
+  if (typeof renderExamsTable === "function") {
+    renderExamsTable();
+  }
+
+  const days = calculateDaysRemaining(dateVal);
+  let toastMsg = `Đã lưu lịch thi: ${subjectName}`;
+  if (days > 1) toastMsg += ` (Còn ${days} ngày)`;
+  else if (days === 1) toastMsg += ` (Ngày mai thi)`;
+  else if (days === 0) toastMsg += ` (Hôm nay thi!)`;
+
+  if (typeof showToast === "function") {
+    showToast(toastMsg, "success");
+  } else {
+    alert(toastMsg);
+  }
+
+  closeExamModal();
+}
+
+function handleDeleteCurrentExam() {
+  const editId = document.getElementById("examEditId")?.value;
+  if (!editId) return;
+
+  if (!confirm("Bạn có chắc chắn muốn xóa kỳ thi này?")) return;
+
+  let exams = JSON.parse(localStorage.getItem("studymate_exams")) || [];
+  exams = exams.filter(e => String(e.id) !== String(editId));
+  localStorage.setItem("studymate_exams", JSON.stringify(exams));
+
+  renderDashboardStats();
+  if (typeof renderExamsTable === "function") {
+    renderExamsTable();
+  }
+
+  if (typeof showToast === "function") {
+    showToast("Đã xóa kỳ thi thành công.", "info");
+  }
+
+  closeExamModal();
+}
+
+function renderSavedExamsList() {
+  const section = document.getElementById("savedExamsListSection");
+  const container = document.getElementById("savedExamsListItems");
+  if (!section || !container) return;
+
+  const exams = JSON.parse(localStorage.getItem("studymate_exams")) || [];
+  if (exams.length <= 1) {
+    section.style.display = "none";
+    return;
+  }
+
+  section.style.display = "block";
+  container.innerHTML = exams.map(e => {
+    const d = calculateDaysRemaining(e.date);
+    let badgeText = d !== null ? (d > 0 ? `Còn ${d} ngày` : (d === 0 ? "Hôm nay!" : "Đã qua")) : "";
+    let badgeColor = d > 3 ? "#10b981" : (d >= 0 ? "#f59e0b" : "#94a3b8");
+
+    return `
+      <div style="display: flex; align-items: center; justify-content: space-between; padding: 0.5rem 0.75rem; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; font-size: 0.825rem;">
+        <div style="cursor: pointer; flex: 1;" onclick="openExamModal('${e.id}')">
+          <span style="font-weight: 600; color: #ffffff;">${e.subjectName}</span>
+          <span style="color: #94a3b8; margin-left: 6px;">(${formatDateDisplay(e.date)})</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 0.5rem;">
+          <span style="font-size: 0.75rem; font-weight: 600; color: ${badgeColor};">${badgeText}</span>
+          <button type="button" onclick="openExamModal('${e.id}')" style="background: none; border: none; color: #60a5fa; cursor: pointer; font-size: 0.75rem;">Sửa</button>
+        </div>
+      </div>
+    `;
+  }).join("");
+}
+
+// Attach event listener for clicking outside modal to close
+document.addEventListener("DOMContentLoaded", () => {
+  const modal = document.getElementById("examModal");
+  if (modal) {
+    modal.addEventListener("click", function(e) {
+      if (e.target === this) {
+        closeExamModal();
+      }
+    });
+  }
+});
+
 

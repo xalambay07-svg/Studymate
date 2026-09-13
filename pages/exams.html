@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="vi" data-theme="cosmic">
 <head>
   <meta charset="UTF-8">
@@ -12,24 +12,30 @@
   <nav class="st-navbar">
     <div style="display: flex; align-items: center; gap: 1rem;">
       <a href="index.html" class="st-logo">
-        <div class="st-logo-icon">📖</div>
+        <div class="st-logo-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+        </div>
         <span>Studies<span class="accent-word">Mate</span></span>
       </a>
     </div>
 
     <div class="st-nav-links">
-      <a href="dashboard.html" class="st-pill-link">📊 Dashboard</a>
-      <a href="schedule.html" class="st-pill-link">📅 Lịch học</a>
-      <a href="tasks.html" class="st-pill-link">✅ Deadline</a>
-      <a href="subjects.html" class="st-pill-link">📖 Môn học</a>
-      <a href="exams.html" class="st-pill-link active">🎯 Kỳ thi</a>
-      <a href="import-schedule.html" class="st-pill-link">📸 OCR TKB</a>
-      <a href="progress.html" class="st-pill-link">📈 Tiến độ</a>
+      <a href="dashboard.html" class="st-pill-link">Dashboard</a>
+      <a href="schedule.html" class="st-pill-link">Lịch học</a>
+      <a href="tasks.html" class="st-pill-link">Deadline</a>
+      <a href="subjects.html" class="st-pill-link">Môn học</a>
+      <a href="exams.html" class="st-pill-link active">Kỳ thi</a>
+      <a href="import-schedule.html" class="st-pill-link">OCR TKB</a>
+      <a href="progress.html" class="st-pill-link">Tiến độ</a>
     </div>
 
     <div class="st-nav-actions">
-      <button id="ambientSoundBtn" class="st-btn-icon" title="Bật âm thanh mưa thư giãn">🌧️</button>
-      <button id="themePickerBtn" class="st-btn-icon" title="Đổi Theme">🎨</button>
+      <button id="ambientSoundBtn" class="st-btn-icon" title="Bật âm thanh mưa thư giãn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 16.58A5 5 0 0 0 18 7h-1.26A8 8 0 1 0 4 15.25"></path><line x1="8" y1="19" x2="8" y2="21"></line><line x1="8" y1="13" x2="8" y2="15"></line><line x1="16" y1="19" x2="16" y2="21"></line><line x1="16" y1="13" x2="16" y2="15"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="12" y1="15" x2="12" y2="17"></line></svg>
+      </button>
+      <button id="themePickerBtn" class="st-btn-icon" title="Đổi Theme">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a7 7 0 0 0 0 14v6a10 10 0 0 0 0-20z"></path></svg>
+      </button>
 
       <div id="themeDropdown" class="theme-dropdown">
         <div style="font-size: 0.75rem; color: var(--theme-text-muted); text-transform: uppercase; margin-bottom: 0.5rem; font-weight: 600;">Chọn bảng màu</div>
@@ -41,31 +47,34 @@
         <div class="theme-option" data-theme="pastel"><span class="theme-dot" style="background: #faf5ef; border: 1px solid #ccc;"></span> Pastel Cream</div>
       </div>
 
-      <a href="profile.html" class="st-pill-btn" style="padding: 0.4rem 0.8rem;">👤 Minh Đức</a>
+      <a href="profile.html" class="st-pill-btn st-user-display" style="padding: 0.4rem 0.8rem;">Sinh viên</a>
       <button class="st-mobile-btn">☰</button>
     </div>
   </nav>
 
   <div class="st-drawer-overlay"></div>
   <div class="st-mobile-drawer">
-    <a href="dashboard.html" class="st-pill-link">📊 Dashboard</a>
-    <a href="schedule.html" class="st-pill-link">📅 Lịch học</a>
-    <a href="tasks.html" class="st-pill-link">✅ Deadline</a>
-    <a href="subjects.html" class="st-pill-link">📖 Môn học</a>
-    <a href="exams.html" class="st-pill-link active">🎯 Kỳ thi</a>
-    <a href="import-schedule.html" class="st-pill-link">📸 OCR TKB</a>
-    <a href="progress.html" class="st-pill-link">📈 Tiến độ</a>
+    <a href="dashboard.html" class="st-pill-link">Dashboard</a>
+    <a href="schedule.html" class="st-pill-link">Lịch học</a>
+    <a href="tasks.html" class="st-pill-link">Deadline</a>
+    <a href="subjects.html" class="st-pill-link">Môn học</a>
+    <a href="exams.html" class="st-pill-link active">Kỳ thi</a>
+    <a href="import-schedule.html" class="st-pill-link">OCR TKB</a>
+    <a href="progress.html" class="st-pill-link">Tiến độ</a>
+    <a href="profile.html" class="st-pill-link">Hồ sơ cá nhân</a>
+    <a href="javascript:void(0)" onclick="logoutUser()" class="st-pill-link" style="margin-top: 1rem; border: 1px solid rgba(239,68,68,0.3); color: #f87171;">Đăng xuất</a>
+    <a href="index.html" class="st-pill-link" style="border: 1px solid var(--theme-border);">Thoát về trang chủ</a>
   </div>
 
   <main class="st-main-container">
     <div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
       <div>
-        <h1 style="font-size: 1.75rem; font-weight: 600; color: var(--theme-text-primary);">Lịch thi học kỳ & Đếm ngược 🎯</h1>
+        <h1 style="font-size: 1.75rem; font-weight: 600; color: var(--theme-text-primary);">Lịch thi học kỳ & Đếm ngược</h1>
         <p style="font-size: 0.875rem; color: var(--theme-text-secondary); margin-top: 0.25rem;">
-          Chủ động thời gian ôn thi, nắm rõ phòng thi và số ngày còn lại đến kỳ thi.
+          Nhập ngày thi chính xác để biết thời gian đến ngày thi còn bao nhiêu ngày, chủ động ôn tập và chuẩn bị dụng cụ.
         </p>
       </div>
-      <button class="st-pill-btn st-pill-btn-primary" onclick="showToast('Thêm kỳ thi mới', 'info')">+ Thêm kỳ thi</button>
+      <button class="st-pill-btn st-pill-btn-primary" onclick="openExamModal()">+ Thêm kỳ thi mới</button>
     </div>
 
     <div class="st-card">
@@ -77,43 +86,191 @@
               <th>Ngày thi</th>
               <th>Giờ thi</th>
               <th>Phòng thi</th>
-              <th>Đếm ngược</th>
-              <th>Tài liệu</th>
+              <th>Đếm ngược thời gian</th>
+              <th>Ghi chú / Đề cương</th>
+              <th style="text-align: right;">Thao tác</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td><strong>Giải tích 1 (MATH101)</strong></td>
-              <td>25/09/2026</td>
-              <td>08:00 - 09:30</td>
-              <td><span class="badge badge-primary">C301</span></td>
-              <td><span class="badge badge-warning">⏳ Còn 12 ngày</span></td>
-              <td><a href="documents.html" class="st-pill-btn" style="padding: 0.3rem 0.7rem; font-size: 0.75rem;">Đề cương</a></td>
-            </tr>
-            <tr>
-              <td><strong>Cấu trúc dữ liệu & Giải thuật (CSE281)</strong></td>
-              <td>02/10/2026</td>
-              <td>13:30 - 15:00</td>
-              <td><span class="badge badge-primary">B102</span></td>
-              <td><span class="badge badge-safe">🟢 Còn 19 ngày</span></td>
-              <td><a href="documents.html" class="st-pill-btn" style="padding: 0.3rem 0.7rem; font-size: 0.75rem;">Đề cương</a></td>
-            </tr>
-            <tr>
-              <td><strong>Phát triển ứng dụng web cơ bản (CSE122)</strong></td>
-              <td>10/10/2026</td>
-              <td>07:30 - 11:30</td>
-              <td><span class="badge badge-primary">A203 (PM)</span></td>
-              <td><span class="badge badge-safe">🟢 Còn 27 ngày</span></td>
-              <td><a href="documents.html" class="st-pill-btn" style="padding: 0.3rem 0.7rem; font-size: 0.75rem;">Đề cương</a></td>
-            </tr>
+          <tbody id="examsTableBody">
+            <!-- Dynamic rows rendered by renderExamsTable() -->
           </tbody>
         </table>
       </div>
     </div>
   </main>
 
+  <!-- ========================================================================= -->
+  <!-- EXAM SETUP & COUNTDOWN MODAL (NHẬP TAY KỲ THI & ĐẾM NGƯỢC THỜI GIAN)       -->
+  <!-- ========================================================================= -->
+  <div id="examModal" class="spa-modal-overlay">
+    <div class="spa-modal-card" style="max-width: 500px;">
+      <button class="spa-modal-close" onclick="closeExamModal()" title="Đóng">&times;</button>
+      
+      <div style="display: flex; align-items: center; gap: 0.85rem; margin-bottom: 1.25rem;">
+        <div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(139, 92, 246, 0.2); border: 1px solid rgba(167, 139, 250, 0.35); display: flex; align-items: center; justify-content: center; color: #a78bfa; flex-shrink: 0;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+        </div>
+        <div>
+          <h3 id="examModalTitle" style="font-size: 1.25rem; font-weight: 800; color: #ffffff; margin: 0;">Thiết lập kỳ thi & Ngày thi</h3>
+          <p style="font-size: 0.8rem; color: #94a3b8; margin: 0;">Nhập ngày thi để tự động tính thời gian đếm ngược chính xác</p>
+        </div>
+      </div>
+
+      <form id="examForm" onsubmit="handleExamFormSubmit(event)">
+        <input type="hidden" id="examEditId" value="">
+
+        <!-- Chọn Môn học hoặc Nhập môn mới -->
+        <div style="margin-bottom: 0.85rem;">
+          <label style="display: block; font-size: 0.8rem; font-weight: 600; color: #cbd5e1; margin-bottom: 0.35rem;">Môn thi / Tên kỳ thi *</label>
+          <select id="examSubjectSelect" onchange="handleExamSubjectSelectChange()" style="width: 100%; padding: 0.65rem 0.85rem; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.15); background: #1e293b; color: #ffffff; font-size: 0.875rem;">
+            <!-- Populated dynamically with user's subjects -->
+          </select>
+          <input type="text" id="examCustomSubjectInput" placeholder="Hoặc nhập tên môn thi khác..." style="display: none; width: 100%; padding: 0.65rem 0.85rem; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.15); background: rgba(255, 255, 255, 0.06); color: #ffffff; font-size: 0.875rem; margin-top: 0.4rem;">
+        </div>
+
+        <!-- Ngày thi (Bắt buộc) & Live Countdown Preview -->
+        <div style="margin-bottom: 0.85rem;">
+          <label style="display: block; font-size: 0.8rem; font-weight: 600; color: #cbd5e1; margin-bottom: 0.35rem;">Ngày thi (Dùng để tính thời gian còn lại) *</label>
+          <input type="date" id="examDateInput" required oninput="previewExamCountdown()" style="width: 100%; padding: 0.65rem 0.85rem; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.15); background: #1e293b; color: #ffffff; font-size: 0.875rem;">
+          <!-- Live countdown calculation preview -->
+          <div id="examCountdownLivePreview" style="margin-top: 0.45rem; font-size: 0.85rem; font-weight: 600; color: #a78bfa; padding: 0.45rem 0.75rem; border-radius: 6px; background: rgba(139, 92, 246, 0.1); border: 1px solid rgba(139, 92, 246, 0.2); display: none;">
+            <!-- dynamic preview text -->
+          </div>
+        </div>
+
+        <!-- Giờ thi & Phòng thi (2 cột) -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 0.85rem;">
+          <div>
+            <label style="display: block; font-size: 0.8rem; font-weight: 600; color: #cbd5e1; margin-bottom: 0.35rem;">Giờ thi</label>
+            <input type="time" id="examTimeInput" value="08:00" style="width: 100%; padding: 0.65rem 0.85rem; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.15); background: #1e293b; color: #ffffff; font-size: 0.875rem;">
+          </div>
+          <div>
+            <label style="display: block; font-size: 0.8rem; font-weight: 600; color: #cbd5e1; margin-bottom: 0.35rem;">Phòng thi</label>
+            <input type="text" id="examRoomInput" placeholder="VD: Phòng 205-B5" style="width: 100%; padding: 0.65rem 0.85rem; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.15); background: rgba(255, 255, 255, 0.06); color: #ffffff; font-size: 0.875rem;">
+          </div>
+        </div>
+
+        <!-- Ghi chú -->
+        <div style="margin-bottom: 1.25rem;">
+          <label style="display: block; font-size: 0.8rem; font-weight: 600; color: #cbd5e1; margin-bottom: 0.35rem;">Ghi chú / Đề cương</label>
+          <input type="text" id="examNoteInput" placeholder="VD: Thi trắc nghiệm máy tính, được mang Atlat/Casio" style="width: 100%; padding: 0.65rem 0.85rem; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.15); background: rgba(255, 255, 255, 0.06); color: #ffffff; font-size: 0.875rem;">
+        </div>
+
+        <!-- Actions -->
+        <div style="display: flex; gap: 0.65rem; align-items: center;">
+          <button type="submit" style="flex: 1; padding: 0.75rem; border-radius: 10px; background: linear-gradient(135deg, #7c3aed 0%, #2563eb 100%); color: #ffffff; font-weight: 700; font-size: 0.95rem; border: none; cursor: pointer; transition: all 0.2s; box-shadow: 0 4px 15px rgba(124, 58, 237, 0.4);">
+            Lưu ngày thi
+          </button>
+          <button type="button" id="examDeleteBtn" onclick="handleDeleteCurrentExam()" style="display: none; padding: 0.75rem 1rem; border-radius: 10px; background: rgba(239, 68, 68, 0.15); border: 1px solid rgba(239, 68, 68, 0.3); color: #f87171; font-weight: 600; font-size: 0.9rem; cursor: pointer; transition: all 0.2s;">
+            Xóa
+          </button>
+          <button type="button" onclick="closeExamModal()" style="padding: 0.75rem 1rem; border-radius: 10px; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); color: #cbd5e1; font-weight: 600; font-size: 0.9rem; cursor: pointer; transition: all 0.2s;">
+            Đóng
+          </button>
+        </div>
+      </form>
+
+      <!-- Danh sách các kỳ thi đã lưu (nếu có) -->
+      <div id="savedExamsListSection" style="margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid rgba(255, 255, 255, 0.1); display: none;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+          <span style="font-size: 0.8rem; font-weight: 700; color: #cbd5e1; text-transform: uppercase; letter-spacing: 0.05em;">Tất cả kỳ thi đã lưu</span>
+          <button type="button" onclick="resetExamFormForNew()" style="background: none; border: none; font-size: 0.775rem; color: #a78bfa; cursor: pointer; font-weight: 600;">+ Thêm kỳ thi mới</button>
+        </div>
+        <div id="savedExamsListItems" style="max-height: 160px; overflow-y: auto; display: flex; flex-direction: column; gap: 0.4rem;">
+          <!-- Dynamic items -->
+        </div>
+      </div>
+
+    </div>
+  </div>
+
   <script src="../js/main.js"></script>
   <script src="../js/theme.js"></script>
+  <script src="../js/dashboard.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      renderExamsTable();
+    });
+
+    function renderExamsTable() {
+      const tbody = document.getElementById("examsTableBody");
+      if (!tbody) return;
+
+      const exams = JSON.parse(localStorage.getItem("studymate_exams")) || [];
+
+      if (exams.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="7" style="text-align: center; padding: 3rem 1.5rem; color: var(--theme-text-muted);">
+              <div style="font-size: 1.15rem; font-weight: 600; color: var(--theme-text-primary); margin-bottom: 0.5rem;">Chưa có lịch thi nào được lưu</div>
+              <div style="font-size: 0.875rem; max-width: 500px; margin: 0 auto 1.25rem auto; line-height: 1.6;">
+                Bạn chưa nhập lịch thi nào. Hãy tự tay nhập ngày thi để biết chính xác thời gian còn lại đến ngày thi!
+              </div>
+              <button class="st-pill-btn st-pill-btn-primary" onclick="openExamModal()">+ Nhập kỳ thi đầu tiên</button>
+            </td>
+          </tr>
+        `;
+        return;
+      }
+
+      // Sort exams by date ascending
+      const sortedExams = [...exams].sort((a, b) => new Date(a.date) - new Date(b.date));
+
+      tbody.innerHTML = sortedExams.map(exam => {
+        const d = calculateDaysRemaining(exam.date);
+        let countdownBadge = "";
+        if (d === null) {
+          countdownBadge = `<span class="badge" style="background: rgba(255,255,255,0.06); color: var(--theme-text-muted);">Chưa rõ</span>`;
+        } else if (d > 3) {
+          countdownBadge = `<span class="badge badge-safe">Còn ${d} ngày</span>`;
+        } else if (d > 1) {
+          countdownBadge = `<span class="badge badge-warning">Sắp thi (Còn ${d} ngày)</span>`;
+        } else if (d === 1) {
+          countdownBadge = `<span class="badge badge-warning">Ngày mai thi (1 ngày)</span>`;
+        } else if (d === 0) {
+          countdownBadge = `<span class="badge badge-overdue">Hôm nay thi!</span>`;
+        } else {
+          countdownBadge = `<span class="badge" style="background: rgba(255,255,255,0.06); color: var(--theme-text-muted);">Đã thi (${Math.abs(d)} ngày trước)</span>`;
+        }
+
+        const roomBadge = exam.room 
+          ? `<span class="badge badge-primary">${exam.room}</span>` 
+          : `<span style="color: var(--theme-text-muted); font-size: 0.85rem;">Chưa xếp</span>`;
+
+        const noteText = exam.note 
+          ? `<span style="font-size: 0.85rem; color: var(--theme-text-secondary);">${exam.note}</span>` 
+          : `<a href="documents.html" class="st-pill-btn" style="padding: 0.25rem 0.65rem; font-size: 0.75rem;">Đề cương</a>`;
+
+        return `
+          <tr>
+            <td>
+              <strong>${exam.subjectName}</strong>
+              ${exam.subjectId && exam.subjectId !== 'OTHER' ? `<div style="font-size: 0.75rem; color: var(--theme-text-muted); margin-top: 2px;">Mã HP: ${exam.subjectId}</div>` : ''}
+            </td>
+            <td>${formatDateDisplay(exam.date)}</td>
+            <td>${exam.time || "08:00"}</td>
+            <td>${roomBadge}</td>
+            <td>${countdownBadge}</td>
+            <td>${noteText}</td>
+            <td style="text-align: right; white-space: nowrap;">
+              <button onclick="openExamModal('${exam.id}')" class="st-pill-btn" style="padding: 0.3rem 0.7rem; font-size: 0.75rem; margin-right: 0.35rem;">Sửa</button>
+              <button onclick="confirmDeleteExam('${exam.id}')" class="st-pill-btn" style="padding: 0.3rem 0.7rem; font-size: 0.75rem; background: rgba(239,68,68,0.12); color: #f87171; border: 1px solid rgba(239,68,68,0.25);">Xóa</button>
+            </td>
+          </tr>
+        `;
+      }).join("");
+    }
+
+    function confirmDeleteExam(examId) {
+      if (!confirm("Bạn có chắc muốn xóa kỳ thi này?")) return;
+      let exams = JSON.parse(localStorage.getItem("studymate_exams")) || [];
+      exams = exams.filter(e => String(e.id) !== String(examId));
+      localStorage.setItem("studymate_exams", JSON.stringify(exams));
+      renderExamsTable();
+      if (typeof renderDashboardStats === "function") renderDashboardStats();
+      showToast("Đã xóa kỳ thi thành công.", "info");
+    }
+  </script>
 </body>
 </html>
 

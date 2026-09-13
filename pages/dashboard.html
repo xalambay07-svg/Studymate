@@ -73,9 +73,15 @@
         <div class="st-stat-label">Tiến độ hoàn thành</div>
       </div>
 
-      <div class="st-stat-box">
-        <div class="st-stat-value" id="statExamsCount">12 ngày</div>
+      <div class="st-stat-box st-stat-box-interactive" id="statExamsCard" onclick="openExamModal()" style="cursor: pointer;" title="Bấm để nhập hoặc sửa ngày thi">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+          <div class="st-stat-value" id="statExamsCount">Chưa đặt</div>
+          <span class="badge" id="statExamBadge" style="font-size: 0.725rem; padding: 0.2rem 0.55rem; background: rgba(139, 92, 246, 0.15); color: #c4b5fd; border: 1px solid rgba(139, 92, 246, 0.3);">+ Nhập ngày</span>
+        </div>
         <div class="st-stat-label">Kỳ thi gần nhất</div>
+        <div id="statExamDetail" style="font-size: 0.78rem; color: var(--theme-text-muted); margin-top: 0.2rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+          Nhấn để nhập ngày thi
+        </div>
       </div>
     </div>
 
@@ -166,6 +172,91 @@
     </div>
 
   </main>
+ 
+  <!-- ========================================================================= -->
+  <!-- EXAM SETUP & COUNTDOWN MODAL (NHẬP TAY KỲ THI & ĐẾM NGƯỢC THỜI GIAN)       -->
+  <!-- ========================================================================= -->
+  <div id="examModal" class="spa-modal-overlay">
+    <div class="spa-modal-card" style="max-width: 500px;">
+      <button class="spa-modal-close" onclick="closeExamModal()" title="Đóng">&times;</button>
+      
+      <div style="display: flex; align-items: center; gap: 0.85rem; margin-bottom: 1.25rem;">
+        <div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(139, 92, 246, 0.2); border: 1px solid rgba(167, 139, 250, 0.35); display: flex; align-items: center; justify-content: center; color: #a78bfa; flex-shrink: 0;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+        </div>
+        <div>
+          <h3 id="examModalTitle" style="font-size: 1.25rem; font-weight: 800; color: #ffffff; margin: 0;">Thiết lập kỳ thi & Ngày thi</h3>
+          <p style="font-size: 0.8rem; color: #94a3b8; margin: 0;">Nhập ngày thi để tự động tính thời gian đếm ngược chính xác</p>
+        </div>
+      </div>
+
+      <form id="examForm" onsubmit="handleExamFormSubmit(event)">
+        <input type="hidden" id="examEditId" value="">
+
+        <!-- Chọn Môn học hoặc Nhập môn mới -->
+        <div style="margin-bottom: 0.85rem;">
+          <label style="display: block; font-size: 0.8rem; font-weight: 600; color: #cbd5e1; margin-bottom: 0.35rem;">Môn thi / Tên kỳ thi *</label>
+          <select id="examSubjectSelect" onchange="handleExamSubjectSelectChange()" style="width: 100%; padding: 0.65rem 0.85rem; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.15); background: #1e293b; color: #ffffff; font-size: 0.875rem;">
+            <!-- Populated dynamically with user's subjects -->
+          </select>
+          <input type="text" id="examCustomSubjectInput" placeholder="Hoặc nhập tên môn thi khác..." style="display: none; width: 100%; padding: 0.65rem 0.85rem; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.15); background: rgba(255, 255, 255, 0.06); color: #ffffff; font-size: 0.875rem; margin-top: 0.4rem;">
+        </div>
+
+        <!-- Ngày thi (Bắt buộc) & Live Countdown Preview -->
+        <div style="margin-bottom: 0.85rem;">
+          <label style="display: block; font-size: 0.8rem; font-weight: 600; color: #cbd5e1; margin-bottom: 0.35rem;">Ngày thi (Dùng để tính thời gian còn lại) *</label>
+          <input type="date" id="examDateInput" required oninput="previewExamCountdown()" style="width: 100%; padding: 0.65rem 0.85rem; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.15); background: #1e293b; color: #ffffff; font-size: 0.875rem;">
+          <!-- Live countdown calculation preview -->
+          <div id="examCountdownLivePreview" style="margin-top: 0.45rem; font-size: 0.85rem; font-weight: 600; color: #a78bfa; padding: 0.45rem 0.75rem; border-radius: 6px; background: rgba(139, 92, 246, 0.1); border: 1px solid rgba(139, 92, 246, 0.2); display: none;">
+            <!-- dynamic preview text -->
+          </div>
+        </div>
+
+        <!-- Giờ thi & Phòng thi (2 cột) -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 0.85rem;">
+          <div>
+            <label style="display: block; font-size: 0.8rem; font-weight: 600; color: #cbd5e1; margin-bottom: 0.35rem;">Giờ thi</label>
+            <input type="time" id="examTimeInput" value="08:00" style="width: 100%; padding: 0.65rem 0.85rem; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.15); background: #1e293b; color: #ffffff; font-size: 0.875rem;">
+          </div>
+          <div>
+            <label style="display: block; font-size: 0.8rem; font-weight: 600; color: #cbd5e1; margin-bottom: 0.35rem;">Phòng thi</label>
+            <input type="text" id="examRoomInput" placeholder="VD: Phòng 205-B5" style="width: 100%; padding: 0.65rem 0.85rem; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.15); background: rgba(255, 255, 255, 0.06); color: #ffffff; font-size: 0.875rem;">
+          </div>
+        </div>
+
+        <!-- Ghi chú -->
+        <div style="margin-bottom: 1.25rem;">
+          <label style="display: block; font-size: 0.8rem; font-weight: 600; color: #cbd5e1; margin-bottom: 0.35rem;">Ghi chú / Đề cương</label>
+          <input type="text" id="examNoteInput" placeholder="VD: Thi trắc nghiệm máy tính, được mang Atlat/Casio" style="width: 100%; padding: 0.65rem 0.85rem; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.15); background: rgba(255, 255, 255, 0.06); color: #ffffff; font-size: 0.875rem;">
+        </div>
+
+        <!-- Actions -->
+        <div style="display: flex; gap: 0.65rem; align-items: center;">
+          <button type="submit" style="flex: 1; padding: 0.75rem; border-radius: 10px; background: linear-gradient(135deg, #7c3aed 0%, #2563eb 100%); color: #ffffff; font-weight: 700; font-size: 0.95rem; border: none; cursor: pointer; transition: all 0.2s; box-shadow: 0 4px 15px rgba(124, 58, 237, 0.4);">
+            Lưu ngày thi
+          </button>
+          <button type="button" id="examDeleteBtn" onclick="handleDeleteCurrentExam()" style="display: none; padding: 0.75rem 1rem; border-radius: 10px; background: rgba(239, 68, 68, 0.15); border: 1px solid rgba(239, 68, 68, 0.3); color: #f87171; font-weight: 600; font-size: 0.9rem; cursor: pointer; transition: all 0.2s;">
+            Xóa
+          </button>
+          <button type="button" onclick="closeExamModal()" style="padding: 0.75rem 1rem; border-radius: 10px; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); color: #cbd5e1; font-weight: 600; font-size: 0.9rem; cursor: pointer; transition: all 0.2s;">
+            Đóng
+          </button>
+        </div>
+      </form>
+
+      <!-- Danh sách các kỳ thi đã lưu (nếu có) -->
+      <div id="savedExamsListSection" style="margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid rgba(255, 255, 255, 0.1); display: none;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+          <span style="font-size: 0.8rem; font-weight: 700; color: #cbd5e1; text-transform: uppercase; letter-spacing: 0.05em;">Tất cả kỳ thi đã lưu</span>
+          <button type="button" onclick="resetExamFormForNew()" style="background: none; border: none; font-size: 0.775rem; color: #a78bfa; cursor: pointer; font-weight: 600;">+ Thêm kỳ thi mới</button>
+        </div>
+        <div id="savedExamsListItems" style="max-height: 160px; overflow-y: auto; display: flex; flex-direction: column; gap: 0.4rem;">
+          <!-- Dynamic items -->
+        </div>
+      </div>
+
+    </div>
+  </div>
 
   <script src="../js/main.js"></script>
   <script src="../js/theme.js"></script>

@@ -116,13 +116,12 @@ function initSampleData() {
     localStorage.setItem("studymate_tasks", JSON.stringify([]));
   }
 
-  if (!localStorage.getItem("studymate_exams")) {
-    const defaultExams = [
-      { id: 1, subjectId: "MATH101", subjectName: "Giải tích 1", date: "2026-09-25", time: "08:00", room: "C301" },
-      { id: 2, subjectId: "CSE281", subjectName: "Cấu trúc dữ liệu và giải thuật", date: "2026-10-02", time: "13:30", room: "B102" },
-      { id: 3, subjectId: "CSE122", subjectName: "Bảo vệ BTL Web cơ bản", date: "2026-10-10", time: "07:30", room: "A203" }
-    ];
-    localStorage.setItem("studymate_exams", JSON.stringify(defaultExams));
+  // Do not seed dummy exams - user enters their exams manually
+  const existingExams = JSON.parse(localStorage.getItem("studymate_exams")) || [];
+  if (existingExams.some(e => e.subjectId === "MATH101" || e.subjectName === "Giải tích 1")) {
+    localStorage.setItem("studymate_exams", JSON.stringify([]));
+  } else if (!localStorage.getItem("studymate_exams")) {
+    localStorage.setItem("studymate_exams", JSON.stringify([]));
   }
 }
 
