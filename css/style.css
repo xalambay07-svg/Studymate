@@ -44,8 +44,11 @@
    THEME PALETTES (StudyMate THEMES - OPTIMIZED CONTRAST & LEGIBILITY)
    ========================================================================== */
 
-/* 1. Sepia / Warm Coffee */
-html[data-theme="sepia"] {
+/* 1. Warm Sepia / Sunset (warm) */
+html[data-theme="sepia"],
+html[data-theme="warm"],
+body[data-theme="sepia"],
+body[data-theme="warm"] {
   --theme-primary: #f59e0b;
   --theme-secondary: #d97706;
   --theme-accent: #fbbf24;
@@ -62,7 +65,8 @@ html[data-theme="sepia"] {
 }
 
 /* 2. Soft Gray / Modern Minimal */
-html[data-theme="soft-gray"] {
+html[data-theme="soft-gray"],
+body[data-theme="soft-gray"] {
   --theme-primary: #c084fc;
   --theme-secondary: #f472b6;
   --theme-accent: #a855f7;
@@ -78,8 +82,9 @@ html[data-theme="soft-gray"] {
   --theme-card-solid: #202024;
 }
 
-/* 3. Ocean Night */
-html[data-theme="ocean"] {
+/* 3. Ocean Night (ocean) */
+html[data-theme="ocean"],
+body[data-theme="ocean"] {
   --theme-primary: #22d3ee;
   --theme-secondary: #06b6d4;
   --theme-accent: #38bdf8;
@@ -95,8 +100,9 @@ html[data-theme="ocean"] {
   --theme-card-solid: #062b46;
 }
 
-/* 4. Forest Green */
-html[data-theme="forest"] {
+/* 4. Forest Green (forest) */
+html[data-theme="forest"],
+body[data-theme="forest"] {
   --theme-primary: #4ade80;
   --theme-secondary: #22c55e;
   --theme-accent: #34d399;
@@ -112,16 +118,19 @@ html[data-theme="forest"] {
   --theme-card-solid: #103324;
 }
 
-/* 5. Pastel Cream (High-Contrast Light Aesthetic) */
-html[data-theme="pastel"] {
+/* 5. Pastel Cream (cream - High-Contrast Light Aesthetic WCAG AAA) */
+html[data-theme="pastel"],
+html[data-theme="cream"],
+body[data-theme="pastel"],
+body[data-theme="cream"] {
   color-scheme: light;
   --theme-primary: #6d28d9;
   --theme-secondary: #334155;
   --theme-accent: #2563eb;
-  --theme-background: #f8fafc;
+  --theme-background: #f8f6f0;
   --theme-card: #ffffff;
   --theme-card-hover: #f1f5f9;
-  --theme-border: #cbd5e1;
+  --theme-border: #e2d9cc;
   --theme-text-primary: #0f172a;
   --theme-text-secondary: #334155;
   --theme-text-muted: #475569;
@@ -137,6 +146,60 @@ html[data-theme="pastel"] {
   --status-danger-bg: #fee2e2;
   --status-overdue: #475569;
   --status-overdue-bg: #f1f5f9;
+}
+
+/* 6. Midnight OLED Neon (midnight / midnight-blue) */
+html[data-theme="midnight"],
+html[data-theme="midnight-blue"],
+body[data-theme="midnight"],
+body[data-theme="midnight-blue"] {
+  --theme-primary: #38bdf8;
+  --theme-secondary: #0ea5e9;
+  --theme-accent: #0284c7;
+  --theme-background: #050811;
+  --theme-card: rgba(14, 165, 233, 0.06);
+  --theme-card-hover: rgba(14, 165, 233, 0.14);
+  --theme-border: rgba(56, 189, 248, 0.35);
+  --theme-text-primary: #f8fafc;
+  --theme-text-secondary: #bae6fd;
+  --theme-text-muted: #7dd3fc;
+  --theme-navbar-bg: rgba(5, 8, 17, 0.96);
+  --theme-card-active: rgba(14, 165, 233, 0.22);
+  --theme-card-solid: #090d1a;
+}
+
+/* 7. Default TLU Indigo Cosmic */
+html[data-theme="default"],
+html[data-theme="cosmic"],
+body[data-theme="default"],
+body[data-theme="cosmic"] {
+  --theme-primary: #8b5cf6;
+  --theme-secondary: #6366f1;
+  --theme-accent: #3b82f6;
+  --theme-background: #0f0f23;
+  --theme-card: rgba(139, 92, 246, 0.07);
+  --theme-card-hover: rgba(139, 92, 246, 0.15);
+  --theme-border: rgba(139, 92, 246, 0.28);
+  --theme-text-primary: #ffffff;
+  --theme-text-secondary: #e2e8f0;
+  --theme-text-muted: #94a3b8;
+  --theme-navbar-bg: rgba(15, 15, 35, 0.88);
+  --theme-card-active: rgba(139, 92, 246, 0.22);
+  --theme-card-solid: #171533;
+}
+
+/* Triệt để sửa lỗi Windows / Chrome Select Dropdown: Luôn tương phản cao */
+select option, select optgroup {
+  background-color: #1e293b !important;
+  color: #ffffff !important;
+}
+
+html[data-theme="pastel"] select option,
+html[data-theme="pastel"] select optgroup,
+html[data-theme="cream"] select option,
+html[data-theme="cream"] select optgroup {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
 }
 
 /* Pastel Cream Comprehensive Contrast Overrides */
@@ -2536,5 +2599,298 @@ html[data-theme="pastel"] select option:hover {
   transition: width 0.7s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+/* ==========================================================================
+   AMBIENT MUSIC & RELAX TOOLBAR (Thanh công cụ âm nhạc thư giãn StudyMate)
+   Hỗ trợ Piano thư giãn 30s Loop (YouTube) & Tiếng mưa tĩnh lặng
+   ========================================================================== */
 
+.ambient-music-panel {
+  position: absolute;
+  top: 65px;
+  right: 4.2rem;
+  width: 350px;
+  max-width: calc(100vw - 2rem);
+  background: var(--theme-card-solid);
+  border: 1px solid var(--theme-border);
+  border-radius: var(--radius);
+  padding: 1.1rem;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.75), 0 0 25px rgba(139, 92, 246, 0.2);
+  z-index: 200;
+  display: none;
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  animation: ambientFadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
 
+.ambient-music-panel.show {
+  display: block;
+}
+
+@keyframes ambientFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.ambient-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.85rem;
+  padding-bottom: 0.65rem;
+  border-bottom: 1px solid var(--theme-border);
+}
+
+.ambient-panel-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--theme-text-primary);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  letter-spacing: 0.02em;
+}
+
+.ambient-status-badge {
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--theme-text-muted);
+}
+
+.ambient-status-badge.active {
+  background: rgba(16, 185, 129, 0.2);
+  color: #34d399;
+  border: 1px solid rgba(16, 185, 129, 0.4);
+}
+
+/* Track List Cards */
+.ambient-tracks-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  margin-bottom: 1rem;
+}
+
+.ambient-track-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.7rem 0.85rem;
+  border-radius: var(--radius-sm);
+  background: var(--theme-card);
+  border: 1px solid var(--theme-border);
+  cursor: pointer;
+  transition: var(--transition);
+  text-align: left;
+  width: 100%;
+}
+
+.ambient-track-card:hover {
+  background: var(--theme-card-hover);
+  border-color: var(--theme-primary);
+  transform: translateY(-1px);
+}
+
+.ambient-track-card.active {
+  background: var(--theme-card-active);
+  border-color: var(--theme-primary);
+  box-shadow: 0 0 12px rgba(139, 92, 246, 0.25);
+}
+
+.ambient-track-left {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.ambient-track-icon {
+  font-size: 1.4rem;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  flex-shrink: 0;
+}
+
+.ambient-track-meta {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.ambient-track-name {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--theme-text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ambient-track-sub {
+  font-size: 0.72rem;
+  color: var(--theme-text-muted);
+}
+
+.ambient-track-pill {
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 1px 6px;
+  border-radius: 4px;
+  background: rgba(139, 92, 246, 0.2);
+  color: #c4b5fd;
+  margin-left: 4px;
+}
+
+.ambient-track-action {
+  font-size: 0.8rem;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  background: var(--theme-card);
+  border: 1px solid var(--theme-border);
+  color: var(--theme-text-primary);
+  font-weight: 600;
+  flex-shrink: 0;
+  transition: var(--transition);
+}
+
+.ambient-track-card.active .ambient-track-action {
+  background: var(--theme-primary);
+  color: #ffffff;
+  border-color: var(--theme-primary);
+}
+
+/* Audio Wave Visualizer */
+.ambient-wave {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 14px;
+}
+
+.ambient-wave span {
+  width: 2.5px;
+  background: #34d399;
+  border-radius: 2px;
+  animation: ambientWave 1s ease-in-out infinite alternate;
+}
+
+.ambient-wave span:nth-child(1) { height: 5px; animation-delay: 0.1s; }
+.ambient-wave span:nth-child(2) { height: 12px; animation-delay: 0.3s; }
+.ambient-wave span:nth-child(3) { height: 8px; animation-delay: 0.2s; }
+.ambient-wave span:nth-child(4) { height: 11px; animation-delay: 0.4s; }
+
+@keyframes ambientWave {
+  0% { transform: scaleY(0.3); }
+  100% { transform: scaleY(1); }
+}
+
+/* Controls row: Volume, Loop, Stop */
+.ambient-controls-box {
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: var(--radius-sm);
+  padding: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.ambient-vol-row {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-bottom: 0.65rem;
+}
+
+.ambient-vol-label {
+  font-size: 0.75rem;
+  color: var(--theme-text-muted);
+  width: 32px;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.ambient-slider {
+  flex: 1;
+  height: 5px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 9999px;
+  outline: none;
+  cursor: pointer;
+}
+
+.ambient-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--theme-primary);
+  cursor: pointer;
+  box-shadow: 0 0 8px var(--theme-primary);
+}
+
+.ambient-btn-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.ambient-loop-badge {
+  font-size: 0.72rem;
+  color: #38bdf8;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.ambient-stop-btn {
+  font-size: 0.75rem;
+  padding: 4px 10px;
+  border-radius: 6px;
+  background: rgba(239, 68, 68, 0.15);
+  color: #f87171;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.ambient-stop-btn:hover {
+  background: rgba(239, 68, 68, 0.25);
+  color: #ffffff;
+}
+
+#ambientSoundBtn.playing {
+  color: #38bdf8;
+  border-color: rgba(56, 189, 248, 0.4);
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
+  animation: ambientPulse 2s infinite alternate;
+}
+
+@keyframes ambientPulse {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.06); }
+}
+
+@media (max-width: 768px) {
+  .ambient-music-panel {
+    right: 1rem;
+    top: 60px;
+    width: calc(100vw - 2rem);
+  }
+}

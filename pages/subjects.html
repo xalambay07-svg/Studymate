@@ -28,7 +28,7 @@
     </div>
 
     <div class="st-nav-actions">
-      <button id="ambientSoundBtn" class="st-btn-icon" title="Bật âm thanh mưa thư giãn">🌧️</button>
+      <button id="ambientSoundBtn" class="st-btn-icon" title="Thanh công cụ âm nhạc thư giãn">🎵</button>
       <button id="themePickerBtn" class="st-btn-icon" title="Đổi Theme">🎨</button>
 
       <div id="themeDropdown" class="theme-dropdown">
@@ -65,100 +65,89 @@
       <div>
         <h1 style="font-size: 1.75rem; font-weight: 600; color: var(--theme-text-primary);">Môn học học kỳ này</h1>
         <p style="font-size: 0.875rem; color: var(--theme-text-secondary); margin-top: 0.25rem;">
-          Theo dõi giảng viên phụ trách, phòng học và tiến độ hoàn thành các bài tập.
+          Theo dõi giảng viên phụ trách, phòng học và tiến độ hoàn thành các bài tập chuẩn Đại học Thủy Lợi (TLU).
         </p>
       </div>
-      <button class="st-pill-btn st-pill-btn-primary" onclick="showToast('Mở form thêm môn học', 'info')">+ Thêm môn học</button>
+      <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+        <button class="st-pill-btn" onclick="openGradeCalculatorModal()" style="background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.35); font-weight: 600;">
+          🎯 Tính GPA & Giả lập TLU
+        </button>
+        <a href="index.html#onboarding" class="st-pill-btn st-pill-btn-primary" style="text-decoration: none;">
+          + Cài đặt & Thêm môn
+        </a>
+      </div>
     </div>
 
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem;">
-      
-      <div class="st-card">
-        <div class="st-card-header">
-          <span class="badge badge-primary">CSE122</span>
-          <span style="font-size: 0.8125rem; color: var(--theme-text-muted);">3 Tín chỉ</span>
-        </div>
-        <h3 style="font-size: 1.15rem; font-weight: 600; color: var(--theme-text-primary); margin-bottom: 0.5rem;">
-          Phát triển ứng dụng web cơ bản
-        </h3>
-        <p style="font-size: 0.8125rem; color: var(--theme-text-muted); margin-bottom: 0.25rem;">👨‍🏫 Giảng viên: <strong>ThS. Nguyễn Văn A</strong></p>
-        <p style="font-size: 0.8125rem; color: var(--theme-text-muted); margin-bottom: 1rem;">🏛️ Phòng học: <strong>A203</strong></p>
-        
-        <div>
-          <div style="display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--theme-text-muted); margin-bottom: 0.25rem;">
-            <span>Tiến độ hoàn thành</span>
-            <strong>80%</strong>
-          </div>
-          <div class="progress-bar-container">
-            <div class="progress-bar-fill" style="width: 80%;"></div>
-          </div>
-        </div>
-
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1.25rem;">
-          <a href="subject-detail.html" class="st-pill-btn st-pill-btn-primary" style="padding: 0.35rem 0.8rem; font-size: 0.75rem;">Chi tiết môn &rarr;</a>
-          <a href="documents.html" style="font-size: 0.8125rem; color: var(--theme-text-secondary);">📂 5 Tài liệu</a>
-        </div>
-      </div>
-
-      <div class="st-card">
-        <div class="st-card-header">
-          <span class="badge badge-primary">CSE281</span>
-          <span style="font-size: 0.8125rem; color: var(--theme-text-muted);">4 Tín chỉ</span>
-        </div>
-        <h3 style="font-size: 1.15rem; font-weight: 600; color: var(--theme-text-primary); margin-bottom: 0.5rem;">
-          Cấu trúc dữ liệu & Giải thuật
-        </h3>
-        <p style="font-size: 0.8125rem; color: var(--theme-text-muted); margin-bottom: 0.25rem;">👨‍🏫 Giảng viên: <strong>TS. Trần Thị B</strong></p>
-        <p style="font-size: 0.8125rem; color: var(--theme-text-muted); margin-bottom: 1rem;">🏛️ Phòng học: <strong>B102</strong></p>
-        
-        <div>
-          <div style="display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--theme-text-muted); margin-bottom: 0.25rem;">
-            <span>Tiến độ hoàn thành</span>
-            <strong>50%</strong>
-          </div>
-          <div class="progress-bar-container">
-            <div class="progress-bar-fill" style="width: 50%;"></div>
-          </div>
-        </div>
-
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1.25rem;">
-          <a href="subject-detail.html" class="st-pill-btn st-pill-btn-primary" style="padding: 0.35rem 0.8rem; font-size: 0.75rem;">Chi tiết môn &rarr;</a>
-          <a href="documents.html" style="font-size: 0.8125rem; color: var(--theme-text-secondary);">📂 8 Tài liệu</a>
-        </div>
-      </div>
-
-      <div class="st-card">
-        <div class="st-card-header">
-          <span class="badge badge-primary">MATH101</span>
-          <span style="font-size: 0.8125rem; color: var(--theme-text-muted);">3 Tín chỉ</span>
-        </div>
-        <h3 style="font-size: 1.15rem; font-weight: 600; color: var(--theme-text-primary); margin-bottom: 0.5rem;">
-          Giải tích 1
-        </h3>
-        <p style="font-size: 0.8125rem; color: var(--theme-text-muted); margin-bottom: 0.25rem;">👨‍🏫 Giảng viên: <strong>PGS. Lê Văn C</strong></p>
-        <p style="font-size: 0.8125rem; color: var(--theme-text-muted); margin-bottom: 1rem;">🏛️ Phòng học: <strong>C301</strong></p>
-        
-        <div>
-          <div style="display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--theme-text-muted); margin-bottom: 0.25rem;">
-            <span>Tiến độ hoàn thành</span>
-            <strong>30%</strong>
-          </div>
-          <div class="progress-bar-container">
-            <div class="progress-bar-fill" style="width: 30%; background: var(--status-warning);"></div>
-          </div>
-        </div>
-
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1.25rem;">
-          <a href="subject-detail.html" class="st-pill-btn st-pill-btn-primary" style="padding: 0.35rem 0.8rem; font-size: 0.75rem;">Chi tiết môn &rarr;</a>
-          <a href="documents.html" style="font-size: 0.8125rem; color: var(--theme-text-secondary);">📂 3 Tài liệu</a>
-        </div>
-      </div>
-
+    <!-- Dynamic Subjects Grid -->
+    <div id="subjectsGridContainer" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem;">
+      <!-- Populated dynamically by StorageService -->
     </div>
   </main>
 
+  <script src="../js/storage.js"></script>
+  <script src="../js/grades.js"></script>
   <script src="../js/main.js"></script>
   <script src="../js/theme.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      renderSubjectsGrid();
+    });
+
+    function renderSubjectsGrid() {
+      const grid = document.getElementById("subjectsGridContainer");
+      if (!grid) return;
+
+      const subjects = (window.StorageService ? window.StorageService.get(window.STORAGE_KEYS.SUBJECTS) : null) ||
+                       JSON.parse(localStorage.getItem("studymate_subjects")) || [];
+      const tasks = (window.StorageService ? window.StorageService.get(window.STORAGE_KEYS.TASKS) : null) ||
+                    JSON.parse(localStorage.getItem("studymate_tasks")) || [];
+
+      if (subjects.length === 0) {
+        grid.innerHTML = '<div style="grid-column: 1 / -1; padding: 2.5rem; text-align: center; color: var(--theme-text-muted); background: var(--theme-card); border-radius: 12px; border: 1px dashed var(--theme-border);">Chưa có môn học nào được đăng ký trong kỳ này. Hãy bấm <strong>+ Cài đặt & Thêm môn</strong> để bắt đầu!</div>';
+        return;
+      }
+
+      grid.innerHTML = subjects.map(s => {
+        const subTasks = tasks.filter(t => t.subjectId === s.id || t.subjectId === s.code);
+        const total = subTasks.length;
+        const done = subTasks.filter(t => t.completed === true || t.status === "completed").length;
+        const percent = total > 0 ? Math.round((done / total) * 100) : 0;
+        const subCode = s.code || s.id;
+        const colorHex = s.colorHex || "#2563EB";
+
+        return `
+          <div class="st-card">
+            <div class="st-card-header">
+              <span class="badge" style="background: rgba(37,99,235,0.15); color: ${colorHex}; border: 1px solid rgba(37,99,235,0.3); font-weight: 700;">${subCode}</span>
+              <span style="font-size: 0.8125rem; color: var(--theme-text-muted);">${s.credits || 3} Tín chỉ</span>
+            </div>
+            <h3 style="font-size: 1.15rem; font-weight: 600; color: var(--theme-text-primary); margin-bottom: 0.5rem;">
+              ${s.name}
+            </h3>
+            <p style="font-size: 0.8125rem; color: var(--theme-text-muted); margin-bottom: 0.25rem;">👨‍🏫 Giảng viên: <strong>${s.teacher || "Khoa CNTT"}</strong></p>
+            <p style="font-size: 0.8125rem; color: var(--theme-text-muted); margin-bottom: 1rem;">🏛️ Phòng học: <strong>${s.room || "P.402-A2"}</strong></p>
+            
+            <div>
+              <div style="display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--theme-text-muted); margin-bottom: 0.25rem;">
+                <span>Tiến độ thực tế</span>
+                <strong>${percent}% <span style="font-weight: 400; opacity: 0.8;">(${done}/${total} task)</span></strong>
+              </div>
+              <div class="progress-bar-container">
+                <div class="progress-bar-fill" style="width: ${percent}%; background: ${percent === 0 ? 'rgba(255,255,255,0.1)' : colorHex};"></div>
+              </div>
+            </div>
+
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1.25rem;">
+              <button type="button" class="st-pill-btn st-pill-btn-primary" onclick="openGradeCalculatorModal()" style="padding: 0.35rem 0.8rem; font-size: 0.75rem;">
+                🎯 Tính GPA &rarr;
+              </button>
+              <a href="tasks.html" style="font-size: 0.8125rem; color: var(--theme-text-secondary); text-decoration: none;">📋 Xem Deadline</a>
+            </div>
+          </div>
+        `;
+      }).join("");
+    }
+  </script>
 </body>
 </html>
 

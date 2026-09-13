@@ -29,9 +29,8 @@ function loadDashboardData() {
 }
 
 function renderDashboardStats() {
-  const subjects = JSON.parse(localStorage.getItem("studymate_subjects")) || [];
-  const tasks = JSON.parse(localStorage.getItem("studymate_tasks")) || [];
-  const exams = JSON.parse(localStorage.getItem("studymate_exams")) || [];
+  const subjects = (window.StorageService ? window.StorageService.get(window.STORAGE_KEYS.SUBJECTS) : null) || JSON.parse(localStorage.getItem("studymate_subjects")) || [];
+  const tasks = (window.StorageService ? window.StorageService.get(window.STORAGE_KEYS.TASKS) : null) || JSON.parse(localStorage.getItem("studymate_tasks")) || [];
 
   // 1. Số môn học & Tổng số tín chỉ
   const subjectsCountElem = document.getElementById("statSubjectsCount");
@@ -43,27 +42,27 @@ function renderDashboardStats() {
   }
 
   // 2. Nhiệm vụ chưa hoàn thành
-  const pendingTasks = tasks.filter(t => t.status !== "completed");
+  const pendingTasks = tasks.filter(t => !(t.completed === true || t.status === "completed"));
   const pendingTasksElem = document.getElementById("statPendingTasks");
   const pendingTasksSubElem = document.getElementById("statPendingTasksSub");
   if (pendingTasksElem) pendingTasksElem.textContent = pendingTasks.length;
   if (pendingTasksSubElem) {
-    pendingTasksSubElem.textContent = pendingTasks.length === 0 ? "Đang kiểm soát tốt" : "Cần ưu tiên hoàn thành";
+    pendingTasksSubElem.textContent = pendingTasks.length === 0 ? "Đang kiểm soát tốt (0 việc đọng)" : "Cần ưu tiên hoàn thành";
   }
 
-  // 3. Tiến độ trung bình
-  const completedTasks = tasks.filter(t => t.status === "completed");
+  // 3. Tiến độ trung bình (Authentic Progress: 0% nếu chưa có task hoàn thành)
+  const completedTasks = tasks.filter(t => t.completed === true || t.status === "completed");
   const progressPercent = tasks.length > 0 ? Math.round((completedTasks.length / tasks.length) * 100) : 0;
   const progressElem = document.getElementById("statAvgProgress");
   const progressSubElem = document.getElementById("statProgressSub");
   const progressFill = document.getElementById("statProgressFill");
   if (progressElem) progressElem.textContent = `${progressPercent}%`;
   if (progressSubElem) {
-    progressSubElem.textContent = tasks.length > 0 ? `${completedTasks.length}/${tasks.length} task đã làm` : "Tự động tính từ Task";
+    progressSubElem.textContent = tasks.length > 0 ? `${completedTasks.length}/${tasks.length} task đã làm` : "0% hoàn thành (0 bài)";
   }
   if (progressFill) progressFill.style.width = `${progressPercent}%`;
 
-  // 4. Kỳ thi sắp tới (Tính toán thời gian đến ngày thi dựa trên nhập tay của người dùng)
+  // 4. Kỳ thi sắp tới
   renderNearestExamStat();
 }
 
@@ -72,50 +71,65 @@ function renderTodaySchedule() {
   if (!container) return;
 
   const daysMap = ["Chủ Nhật", "Thứ Hai", "Thứ Ba", "Thứ Tư", "Thứ Năm", "Thứ Sáu", "Thứ Bảy"];
-  const todayName = daysMap[new Date().getDay()];
+  const jsDay = new Date().getDay();
+  const todayName = daysMap[jsDay];
+  const todayNumber = jsDay === 0 ? 8 : jsDay + 1; // 2..8
 
-  let savedSchedule = JSON.parse(localStorage.getItem("studymate_schedule"));
+  const schedules = (window.StorageService ? window.StorageService.get(window.STORAGE_KEYS.SCHEDULE) : null) ||
+                    JSON.parse(localStorage.getItem("studymate_schedule")) || [];
+  const subjects = (window.StorageService ? window.StorageService.get(window.STORAGE_KEYS.SUBJECTS) : null) ||
+                   JSON.parse(localStorage.getItem("studymate_subjects")) || [];
   
-  // Auto-upgrade if legacy data or empty
-  if (!savedSchedule || savedSchedule.length === 0 || (savedSchedule[0] && savedSchedule[0].time === "07:00 - 09:00")) {
-    savedSchedule = [
-      { subjectId: "CSE201", subjectName: "Lập trình hướng đối tượng", day: "Thứ Hai", time: "Tiết 1 - 3 (07:00 - 09:40)", room: "Phòng 205-B5", teacher: "Khoa CNTT", status: "Đang diễn ra" },
-      { subjectId: "CSE122", subjectName: "Phát triển ứng dụng web cơ bản", day: "Thứ Hai", time: "Tiết 4 - 6 (09:45 - 12:25)", room: "Phòng 205-B5", teacher: "Khoa CNTT", status: "Sắp tới" },
-      { subjectId: "CSE201", subjectName: "Lập trình hướng đối tượng", day: "Thứ Ba", time: "Tiết 1 - 2 (07:00 - 08:45)", room: "Phòng 211-B5", teacher: "Khoa CNTT", status: "Sắp tới" },
-      { subjectId: "CSE122", subjectName: "Phát triển ứng dụng web cơ bản", day: "Thứ Ba", time: "Tiết 3 - 4 (08:50 - 10:35)", room: "Phòng 211-B5", teacher: "Khoa CNTT", status: "Sắp tới" },
-      { subjectId: "CSE220", subjectName: "Cơ sở dữ liệu", day: "Thứ Ba", time: "Tiết 7 - 9 (12:55 - 15:35)", room: "Phòng 401-C5", teacher: "Khoa CNTT", status: "Sắp tới" },
-      { subjectId: "CSE220", subjectName: "Cơ sở dữ liệu", day: "Thứ Tư", time: "Tiết 4 - 5 (09:45 - 11:30)", room: "Phòng 310-B5", teacher: "Khoa CNTT", status: "Sắp tới" },
-      { subjectId: "CSE301", subjectName: "Hệ điều hành", day: "Thứ Năm", time: "Tiết 1 - 3 (07:00 - 09:40)", room: "Phòng 309-B5", teacher: "Khoa CNTT", status: "Sắp tới" },
-      { subjectId: "CSE302", subjectName: "Mạng máy tính", day: "Thứ Năm", time: "Tiết 4 - 6 (09:45 - 12:25)", room: "Phòng 309-B5", teacher: "Khoa CNTT", status: "Sắp tới" },
-      { subjectId: "CSE201", subjectName: "Lập trình hướng đối tượng", day: "Thứ Sáu", time: "Tiết 1 - 2 (07:00 - 08:45)", room: "Phòng 211-B5", teacher: "Khoa CNTT", status: "Sắp tới" },
-      { subjectId: "CSE122", subjectName: "Phát triển ứng dụng web cơ bản", day: "Thứ Sáu", time: "Tiết 3 - 4 (08:50 - 10:35)", room: "Phòng 211-B5", teacher: "Khoa CNTT", status: "Sắp tới" },
-      { subjectId: "CSE220", subjectName: "Cơ sở dữ liệu", day: "Thứ Bảy", time: "Tiết 4 - 5 (09:45 - 11:30)", room: "Phòng 310-B5", teacher: "Khoa CNTT", status: "Sắp tới" }
-    ];
-    localStorage.setItem("studymate_schedule", JSON.stringify(savedSchedule));
-  }
+  const subjectMap = {};
+  subjects.forEach(s => { subjectMap[s.id] = s; });
+
+  const todayMatches = schedules.filter(c => {
+    return (c.dayOfWeek === todayNumber) || (c.day && c.day.toLowerCase() === todayName.toLowerCase());
+  });
 
   let displayClasses = [];
-  const todayMatches = savedSchedule.filter(c => c.day === todayName);
-
   if (todayMatches.length > 0) {
-    displayClasses = todayMatches.map(c => ({
-      time: c.time,
-      subject: c.subjectName || c.subjectId,
-      room: c.room || "Phòng 205-B5",
-      teacher: c.teacher || "Khoa CNTT",
-      status: "Hôm nay",
-      day: c.day
-    }));
+    displayClasses = todayMatches.map(c => {
+      const sub = subjectMap[c.subjectId] || {};
+      const start = c.startPeriod || 1;
+      const span = c.totalPeriods || 3;
+      const timeStr = c.time || `Tiết ${start} - ${start + span - 1}`;
+      return {
+        time: timeStr,
+        subject: sub.name || c.subjectName || c.name || "Môn học",
+        room: c.room || sub.room || "P.402-A2",
+        teacher: sub.teacher || c.teacher || "Khoa CNTT - ĐH Thủy Lợi",
+        status: "Hôm nay",
+        day: todayName
+      };
+    });
   } else {
-    // If no classes today, show upcoming classes from next school day
-    displayClasses = savedSchedule.slice(0, 2).map(c => ({
-      time: c.time,
-      subject: c.subjectName || c.subjectId,
-      room: c.room || "Phòng 205-B5",
-      teacher: c.teacher || "Khoa CNTT",
-      status: c.day,
-      day: c.day
-    }));
+    // Nếu hôm nay không có ca học, hiển thị các ca học gần nhất
+    displayClasses = schedules.slice(0, 2).map(c => {
+      const sub = subjectMap[c.subjectId] || {};
+      const start = c.startPeriod || 1;
+      const span = c.totalPeriods || 3;
+      const timeStr = c.time || `Tiết ${start} - ${start + span - 1}`;
+      const dayStr = c.day || (c.dayOfWeek === 2 ? "Thứ Hai" : c.dayOfWeek === 3 ? "Thứ Ba" : c.dayOfWeek === 4 ? "Thứ Tư" : c.dayOfWeek === 5 ? "Thứ Năm" : c.dayOfWeek === 6 ? "Thứ Sáu" : c.dayOfWeek === 7 ? "Thứ Bảy" : "Chủ Nhật");
+      return {
+        time: timeStr,
+        subject: sub.name || c.subjectName || c.name || "Môn học",
+        room: c.room || sub.room || "P.402-A2",
+        teacher: sub.teacher || c.teacher || "Khoa CNTT - ĐH Thủy Lợi",
+        status: dayStr,
+        day: dayStr
+      };
+    });
+  }
+
+  if (displayClasses.length === 0) {
+    container.innerHTML = `
+      <div style="text-align: center; padding: 2rem 1rem; color: var(--theme-text-muted);">
+        <div style="font-size: 0.95rem; font-weight: 600; color: var(--theme-text-primary);">Hôm nay bạn không có lịch học!</div>
+        <div style="font-size: 0.8rem; margin-top: 4px;">Hãy tận dụng thời gian để hoàn thành các deadline bài tập lớn.</div>
+      </div>
+    `;
+    return;
   }
 
   container.innerHTML = displayClasses.map(c => `
@@ -144,8 +158,9 @@ function renderUpcomingDeadlines() {
   const container = document.getElementById("upcomingDeadlinesList");
   if (!container) return;
 
-  const tasks = JSON.parse(localStorage.getItem("studymate_tasks")) || [];
-  const activeTasks = tasks.filter(t => t.status !== "completed");
+  const tasks = (window.StorageService ? window.StorageService.get(window.STORAGE_KEYS.TASKS) : null) ||
+                JSON.parse(localStorage.getItem("studymate_tasks")) || [];
+  const activeTasks = tasks.filter(t => !(t.completed === true || t.status === "completed"));
 
   if (tasks.length === 0) {
     container.innerHTML = `
@@ -153,10 +168,9 @@ function renderUpcomingDeadlines() {
         <div class="st-empty-icon-glow">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
         </div>
-        <div class="st-empty-title">Không còn deadline tồn đọng</div>
-        <div class="st-empty-desc">Bạn đang kiểm soát rất tốt tiến độ học tập. Thư giãn hoặc lên kế hoạch trước cho tuần tới!</div>
+        <div class="st-empty-title">Không có deadline nào</div>
+        <div class="st-empty-desc">Bạn chưa thêm bài tập nào. Hãy bấm thêm deadline để đếm ngược!</div>
         <button type="button" onclick="openQuickTaskModal()" class="st-action-btn st-action-primary" style="margin-top: 1rem; font-size: 0.825rem; padding: 0.45rem 1.1rem;">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
           + Thêm nhiệm vụ mới
         </button>
       </div>
@@ -173,7 +187,6 @@ function renderUpcomingDeadlines() {
         <div class="st-empty-title">Đã hoàn thành tất cả!</div>
         <div class="st-empty-desc">Toàn bộ nhiệm vụ đã được giải quyết xong xuôi. Giữ vững phong độ này nhé!</div>
         <button type="button" onclick="openQuickTaskModal()" class="st-action-btn st-action-primary" style="margin-top: 1rem; font-size: 0.825rem; padding: 0.45rem 1.1rem;">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
           + Thêm deadline mới
         </button>
       </div>
@@ -181,46 +194,48 @@ function renderUpcomingDeadlines() {
     return;
   }
 
+  // Sắp xếp bài tập có deadline gần nhất lên đầu
+  activeTasks.sort((a, b) => {
+    const timeA = new Date(a.deadlineDate || a.deadline || "2099-01-01").getTime();
+    const timeB = new Date(b.deadlineDate || b.deadline || "2099-01-01").getTime();
+    return timeA - timeB;
+  });
+
   container.innerHTML = activeTasks.slice(0, 4).map(task => {
-    const deadlineDate = new Date(task.deadline);
+    const deadlineVal = task.deadlineDate || task.deadline || "2026-09-30T23:59:00";
+    const deadlineDate = new Date(deadlineVal);
     const now = new Date();
     const diffHours = Math.round((deadlineDate - now) / (1000 * 60 * 60));
     let badgeClass = "badge-safe";
     let badgeText = `Còn ${Math.ceil(diffHours / 24)} ngày`;
 
     if (diffHours < 0) {
-      badgeClass = "badge-overdue";
+      badgeClass = "badge-danger";
       badgeText = "Đã quá hạn";
     } else if (diffHours <= 24) {
       badgeClass = "badge-danger";
-      badgeText = "Hạn hôm nay";
+      badgeText = `Hạn hôm nay (${diffHours}h)`;
     } else if (diffHours <= 72) {
       badgeClass = "badge-warning";
       badgeText = `Sắp hạn (${Math.ceil(diffHours / 24)} ngày)`;
     }
 
-    const formattedDeadline = task.deadline ? task.deadline.replace("T", " ") : "";
-
     return `
-      <div class="st-schedule-card" style="padding: 0.85rem 1.1rem;">
-        <div class="st-schedule-card-top">
-          <span class="st-subject-id-badge">
-            ${task.subjectId || "CHUNG"}
-          </span>
-          <span class="badge ${badgeClass}" style="font-size: 0.75rem; padding: 0.22rem 0.65rem;">${badgeText}</span>
+      <div class="st-deadline-card" style="display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 1rem; background: rgba(255,255,255,0.03); border: 1px solid var(--theme-border); border-radius: 12px; margin-bottom: 0.65rem;">
+        <div>
+          <div style="font-weight: 700; color: var(--theme-text-primary); font-size: 0.875rem;">${task.title}</div>
+          <div style="font-size: 0.75rem; color: var(--theme-text-muted); margin-top: 2px;">
+            Hạn chót: ${deadlineVal.replace("T", " ")}
+          </div>
         </div>
-        <div class="st-schedule-subject" style="font-size: 0.95rem;">${task.title}</div>
-        <div class="st-schedule-meta">
-          <span>Hạn: ${formattedDeadline}</span>
-          <button type="button" onclick="quickCompleteTask('${task.id}')" style="margin-left: auto; background: none; border: none; color: #10b981; font-size: 0.775rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 0.3rem;" title="Đánh dấu hoàn thành">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            Xong
-          </button>
-        </div>
+        <span class="badge ${badgeClass}" style="font-size: 0.75rem; padding: 0.25rem 0.65rem; white-space: nowrap;">
+          ${badgeText}
+        </span>
       </div>
     `;
   }).join("");
 }
+
 
 function renderDashboardProgress() {
   const container = document.getElementById("dashboardProgressContainer");

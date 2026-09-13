@@ -26,6 +26,7 @@
     </div>
 
     <div class="st-nav-actions">
+      <button id="ambientSoundBtn" class="st-btn-icon" title="Thanh công cụ âm nhạc thư giãn">🎵</button>
       <button id="themePickerBtn" class="st-btn-icon" title="Đổi màu sắc giao diện">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a7 7 0 0 0 0 14v6a10 10 0 0 0 0-20z"></path></svg>
       </button>
@@ -73,6 +74,8 @@
           <button id="btnModeTable" onclick="setScheduleViewMode('table')" class="st-pill-btn active" style="padding: 0.4rem 1rem; font-size: 0.825rem; border: none; cursor: pointer;">Bảng tuần (TLU)</button>
           <button id="btnModeCards" onclick="setScheduleViewMode('cards')" class="st-pill-btn" style="padding: 0.4rem 1rem; font-size: 0.825rem; border: none; background: none; color: var(--theme-text-secondary); cursor: pointer;">Danh sách thẻ</button>
         </div>
+        <button type="button" onclick="openAddScheduleModal()" class="st-pill-btn" style="padding: 0.45rem 0.9rem; font-size: 0.825rem; border: 1px solid var(--theme-border); cursor: pointer;">+ Thêm ca học</button>
+        <button type="button" onclick="openGradeCalculatorModal()" class="st-pill-btn" style="padding: 0.45rem 0.9rem; font-size: 0.825rem; background: rgba(59,130,246,0.15); border: 1px solid rgba(59,130,246,0.35); color: #60a5fa; cursor: pointer;">🎯 Tính Điểm GPA</button>
         <a href="import-schedule.html" class="st-pill-btn st-pill-btn-primary" style="padding: 0.45rem 1rem; font-size: 0.85rem; text-decoration: none;">Quét TKB từ ảnh</a>
       </div>
     </div>
@@ -94,6 +97,8 @@
     </div>
   </main>
 
+  <script src="../js/storage.js"></script>
+  <script src="../js/grades.js"></script>
   <script src="../js/main.js"></script>
   <script src="../js/theme.js"></script>
   <script src="../js/schedule.js"></script>

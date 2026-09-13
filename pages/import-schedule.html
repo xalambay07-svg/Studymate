@@ -29,6 +29,7 @@
     </div>
 
     <div class="st-nav-actions">
+      <button id="ambientSoundBtn" class="st-btn-icon" title="Thanh công cụ âm nhạc thư giãn">🎵</button>
       <button id="themePickerBtn" class="st-btn-icon" title="Đổi màu sắc giao diện">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a7 7 0 0 0 0 14v6a10 10 0 0 0 0-20z"></path></svg>
       </button>
@@ -93,8 +94,8 @@
         </div>
 
         <div style="margin-top: 1rem; text-align: center;">
-          <button class="st-pill-btn" style="width: 100%; justify-content: center; font-size: 0.925rem; font-weight: 600; padding: 0.75rem;" onclick="simulateOcrProcessing('anh-tkb-tlu.png')">
-            Dùng thử ảnh TKB mẫu TLU
+          <button type="button" class="st-pill-btn" style="width: 100%; justify-content: center; font-size: 0.925rem; font-weight: 600; padding: 0.75rem; background: rgba(59,130,246,0.15); color: #60a5fa; border: 1px solid rgba(59,130,246,0.3);" onclick="simulateOcrProcessing('tkb-sinhvien1-tlu-tuan3.jpg')">
+            📸 Quét ảnh mẫu từ cổng sinhvien1.tlu.edu.vn
           </button>
         </div>
       </div>
@@ -112,10 +113,15 @@
         </p>
         <textarea id="pasteTextSchedule" class="form-control" rows="5" 
           style="flex: 1; min-height: 135px; font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 0.95rem; font-weight: 500; line-height: 1.65; padding: 0.9rem 1.1rem; border-radius: 12px;"
-          placeholder="Thứ 2: Tiết 1-3 Lập trình hướng đối tượng 205-B5&#10;Thứ 3: Tiết 7-9 Cơ sở dữ liệu 401-C5&#10;Thứ 5: Tiết 4-6 Mạng máy tính 302-A2"></textarea>
-        <button id="btnParseText" class="st-pill-btn st-pill-btn-primary" style="width: 100%; margin-top: 1rem; justify-content: center; font-size: 0.925rem; font-weight: 600; padding: 0.75rem; box-shadow: 0 4px 14px rgba(139, 92, 246, 0.35);">
-          Phân tích văn bản thành lịch
-        </button>
+          placeholder="Thứ 2: Tiết 1-3 Lập trình hướng đối tượng 205-B5&#10;Thứ 2: Tiết 4-6 Phát triển ứng dụng web cơ bản 205-B5&#10;Thứ 3: Tiết 1-2 Lập trình hướng đối tượng 211-B5&#10;Thứ 3: Tiết 3-4 Phát triển ứng dụng web cơ bản 211-B5&#10;Thứ 3: Tiết 7-9 Cơ sở dữ liệu 401-C5&#10;Thứ 4: Tiết 4-5 Cơ sở dữ liệu 310-B5&#10;Thứ 5: Tiết 1-3 Hệ điều hành 309-B5&#10;Thứ 5: Tiết 4-6 Mạng máy tính 309-B5&#10;Thứ 6: Tiết 1-2 Lập trình hướng đối tượng 211-B5&#10;Thứ 6: Tiết 3-4 Phát triển ứng dụng web cơ bản 211-B5&#10;Thứ 7: Tiết 4-5 Cơ sở dữ liệu 310-B5"></textarea>
+        <div style="display: flex; gap: 0.5rem; margin-top: 0.75rem;">
+          <button type="button" id="btnParseText" class="st-pill-btn st-pill-btn-primary" style="flex: 1; justify-content: center; font-size: 0.875rem; font-weight: 600; padding: 0.7rem; box-shadow: 0 4px 14px rgba(139, 92, 246, 0.35);">
+            Phân tích thành lịch
+          </button>
+          <button type="button" class="st-pill-btn" style="justify-content: center; font-size: 0.825rem; background: rgba(255,255,255,0.06); border: 1px dashed var(--theme-border);" onclick="fillSampleTextSchedule()" title="Dán 11 ca học mẫu từ TKB ảnh 2">
+            Mẫu 11 ca
+          </button>
+        </div>
       </div>
 
       <!-- Method 3: Nhập mã lớp -->
@@ -130,13 +136,13 @@
           Lớp trưởng có thể chia sẻ mã lớp để cả lớp tự đồng bộ TKB:
         </p>
         <div style="flex: 1; display: flex; flex-direction: column; justify-content: flex-start;">
-          <input type="text" class="form-control" placeholder="Mã lớp, ví dụ: 64CNTT1-2026" 
+          <input type="text" class="form-control" placeholder="Mã lớp, ví dụ: 64CNTT3-TLU" 
             style="margin-bottom: 0.85rem; font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 0.95rem; font-weight: 500; padding: 0.85rem 1.1rem; border-radius: 12px;">
           <div style="font-size: 0.825rem; color: #94a3b8; line-height: 1.5;">
             💡 Mã lớp dùng để nhận thời khóa biểu và phòng học được đồng bộ tức thì từ cán bộ lớp.
           </div>
         </div>
-        <button class="st-pill-btn" style="width: 100%; margin-top: 1rem; justify-content: center; font-size: 0.925rem; font-weight: 600; padding: 0.75rem;" onclick="showToast('Đã đồng bộ lịch học của lớp 64CNTT1!', 'success')">
+        <button class="st-pill-btn" style="width: 100%; margin-top: 1rem; justify-content: center; font-size: 0.925rem; font-weight: 600; padding: 0.75rem;" onclick="showToast('Đã đồng bộ lịch học của lớp 64CNTT3!', 'success')">
           Tham gia & Nhận lịch
         </button>
       </div>
@@ -145,17 +151,20 @@
 
     <!-- Kết quả nhận diện AI/OCR -->
     <div class="st-card" id="ocrResultArea" style="display: none; border-left: 3px solid var(--status-safe);">
-      <div class="st-card-header">
+      <div class="st-card-header" style="flex-wrap: wrap; gap: 1rem;">
         <div>
-          <div class="st-card-title" style="color: var(--status-safe);">
-            Kết quả nhận diện AI/OCR – Vui lòng kiểm tra lại
+          <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
+            <span class="st-card-title" style="color: var(--status-safe); margin: 0;">
+              Kết quả nhận diện AI/OCR – Vui lòng kiểm tra lại
+            </span>
+            <span class="badge badge-primary" style="font-size: 0.725rem; padding: 2px 8px;">sinhvien1.tlu.edu.vn • Tuần 3 (14/9 - 20/9/2026)</span>
           </div>
-          <p style="font-size: 0.75rem; color: var(--theme-text-muted); margin-top: 0.25rem;">
-            Bạn có thể chỉnh sửa trực tiếp nội dung từng ô trước khi lưu vào Thời khóa biểu.
+          <p style="font-size: 0.775rem; color: var(--theme-text-muted); margin-top: 0.25rem;">
+            Hệ thống đã nhận diện <strong>11 ca học</strong> của <strong>5 môn học</strong>. Bạn có thể chỉnh sửa trực tiếp nội dung từng ô trước khi lưu vào TKB.
           </p>
         </div>
-        <button class="st-pill-btn st-pill-btn-primary" onclick="confirmAndSaveSchedule()">
-          Xác nhận & Lưu vào TKB
+        <button class="st-pill-btn st-pill-btn-primary" onclick="confirmAndSaveSchedule()" style="box-shadow: 0 4px 14px rgba(16, 185, 129, 0.4);">
+          Xác nhận & Lưu vào TKB &rarr;
         </button>
       </div>
 
@@ -179,6 +188,8 @@
 
   </main>
 
+  <script src="../js/storage.js"></script>
+  <script src="../js/grades.js"></script>
   <script src="../js/main.js"></script>
   <script src="../js/theme.js"></script>
   <script src="../js/schedule.js"></script>

@@ -28,7 +28,7 @@
     </div>
 
     <div class="st-nav-actions">
-      <button id="ambientSoundBtn" class="st-btn-icon" title="Bật âm thanh mưa thư giãn">🌧️</button>
+      <button id="ambientSoundBtn" class="st-btn-icon" title="Thanh công cụ âm nhạc thư giãn">🎵</button>
       <button id="themePickerBtn" class="st-btn-icon" title="Đổi Theme">🎨</button>
 
       <div id="themeDropdown" class="theme-dropdown">
@@ -73,16 +73,15 @@
         <div style="width: 70px; height: 70px; border-radius: 50%; background: var(--theme-card-active); border: 2px solid var(--theme-primary); color: var(--theme-primary); display: flex; align-items: center; justify-content: center; font-size: 1.8rem; margin: 0 auto 1rem;">
           SV
         </div>
-        <h3 id="profileUserName" class="st-user-display" style="font-size: 1.15rem; font-weight: 600; color: var(--theme-text-primary);">Sinh viên</h3>
-        <p style="color: var(--theme-text-muted); font-size: 0.8125rem;">MSSV: 2251061234</p>
-        <span class="badge badge-primary" style="margin-top: 0.5rem;">Sinh viên chính quy</span>
+        <h3 id="profileUserName" class="st-user-display" style="font-size: 1.15rem; font-weight: 600; color: var(--theme-text-primary);">Nguyễn Hoàng Nam</h3>
+        <p id="profileMssvDisplay" style="color: var(--theme-text-muted); font-size: 0.8125rem;">MSSV: 2251172468</p>
+        <span class="badge badge-primary" style="margin-top: 0.5rem;">Sinh viên chính quy (TLU)</span>
         
         <hr style="margin: 1.5rem 0; border: 0; border-top: 1px solid var(--theme-border);">
         
         <div style="text-align: left; font-size: 0.8125rem; color: var(--theme-text-secondary); line-height: 1.8;">
-          <div>🏫 <strong>Trường:</strong> ĐH Thủy Lợi (TLU)</div>
-          <div>🎓 <strong>Khoa:</strong> Công nghệ thông tin</div>
-          <div>👥 <strong>Lớp:</strong> 64CNTT1</div>
+          <div>🏫 <strong>Trường:</strong> ĐH Thủy Lợi (TLU - 175 Tây Sơn)</div>
+          <div id="profileDeptDisplay">🎓 <strong>Khoa:</strong> Khoa CNTT - Lớp 64CNTT3</div>
         </div>
       </div>
 
@@ -123,9 +122,35 @@
     </div>
   </main>
 
+  <script src="../js/storage.js"></script>
+  <script src="../js/grades.js"></script>
   <script src="../js/main.js"></script>
   <script src="../js/theme.js"></script>
   <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      loadProfileData();
+    });
+
+    function loadProfileData() {
+      const user = (window.StorageService ? window.StorageService.get(window.STORAGE_KEYS.USER) : null) ||
+                   JSON.parse(localStorage.getItem('studymate_user') || sessionStorage.getItem('studymate_user') || '{}');
+
+      const fullName = user.fullName || user.name || "Nguyễn Hoàng Nam";
+      const studentId = user.studentId || "2251172468";
+      const email = user.email || "nam.nh2251172468@e.tlu.edu.vn";
+      const department = user.department || "Khoa Công nghệ Thông tin - Lớp 64CNTT3";
+
+      const nameInput = document.getElementById('profileFullName');
+      const emailInput = document.getElementById('profileEmail');
+      const mssvDisplay = document.getElementById('profileMssvDisplay');
+      const deptDisplay = document.getElementById('profileDeptDisplay');
+
+      if (nameInput) nameInput.value = fullName;
+      if (emailInput) emailInput.value = email;
+      if (mssvDisplay) mssvDisplay.textContent = `MSSV: ${studentId}`;
+      if (deptDisplay) deptDisplay.innerHTML = `🎓 <strong>Khoa:</strong> ${department}`;
+    }
+
     function handleProfileUpdate(e) {
       e.preventDefault();
       const nameInput = document.getElementById('profileFullName');
@@ -138,8 +163,13 @@
       try {
         user = JSON.parse(sessionStorage.getItem('studymate_user') || localStorage.getItem('studymate_user') || '{}');
       } catch (err) { user = {}; }
+      user.fullName = newName;
       user.name = newName;
-      localStorage.setItem('studymate_user', JSON.stringify(user));
+      if (window.StorageService) {
+        window.StorageService.set(window.STORAGE_KEYS.USER, user);
+      } else {
+        localStorage.setItem('studymate_user', JSON.stringify(user));
+      }
       sessionStorage.setItem('studymate_user', JSON.stringify(user));
       localStorage.setItem('studymate_is_authenticated', 'true');
       sessionStorage.setItem('studymate_is_authenticated', 'true');
@@ -155,6 +185,7 @@
       }
 
       updateUserHeader();
+      loadProfileData();
       showToast('Cập nhật họ tên thành công! Toàn bộ hệ thống đã được đồng bộ.', 'success');
     }
   </script>
