@@ -605,3 +605,333 @@ a:hover {
   border-radius: 50%;
 }
 
+/* ==========================================================================
+   ATHENIFY-STYLE LIGHT LANDING PAGE (IMAGE 2)
+   ========================================================================== */
+
+.athenify-body {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Light Navbar */
+.athen-navbar {
+  position: sticky;
+  top: 0;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid #e2e8f0;
+  z-index: 100;
+  padding: 0.85rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.athen-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #1e40af;
+  text-decoration: none;
+}
+
+.athen-nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.athen-nav-item {
+  color: #334155;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  transition: color 0.2s;
+}
+
+.athen-nav-item:hover {
+  color: #2563eb;
+}
+
+.athen-btn-outline {
+  padding: 0.5rem 1.1rem;
+  border-radius: 9999px;
+  border: 1px solid #cbd5e1;
+  background: #ffffff;
+  color: #0f172a;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.athen-btn-outline:hover {
+  background: #f8fafc;
+  border-color: #94a3b8;
+}
+
+.athen-btn-dark {
+  padding: 0.55rem 1.4rem;
+  border-radius: 9999px;
+  background: #0f172a;
+  color: #ffffff !important;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.athen-btn-dark:hover {
+  background: #1e293b;
+  transform: translateY(-1px);
+}
+
+/* Hero Section (Image 2) */
+.athen-hero-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 3.5rem 2rem 2rem;
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 3.5rem;
+  align-items: center;
+}
+
+.athen-tag-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
+  background: #eff6ff;
+  color: #2563eb;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  margin-bottom: 1.25rem;
+  text-transform: uppercase;
+}
+
+.athen-hero-title {
+  font-size: 3.25rem;
+  font-weight: 900;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: #0f172a;
+  margin-bottom: 1.25rem;
+}
+
+.athen-hero-title .highlight {
+  color: #2563eb;
+  position: relative;
+  display: inline-block;
+}
+
+.athen-hero-title .highlight::after {
+  content: "";
+  position: absolute;
+  right: -6px;
+  top: 10%;
+  bottom: 10%;
+  width: 3px;
+  background: #2563eb;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.athen-hero-subtitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #475569;
+  margin-bottom: 1rem;
+}
+
+.athen-hero-desc {
+  font-size: 0.95rem;
+  color: #64748b;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+/* 4 Feature Items Grid (Image 2) */
+.athen-features-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem 2rem;
+  margin-bottom: 2.25rem;
+}
+
+.athen-feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.athen-feature-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: #f1f5f9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  flex-shrink: 0;
+}
+
+.athen-feature-name {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.athen-feature-desc {
+  font-size: 0.8125rem;
+  color: #64748b;
+}
+
+/* Big CTA Button */
+.athen-big-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #0f172a;
+  color: #ffffff !important;
+  font-size: 1.1rem;
+  font-weight: 700;
+  padding: 0.85rem 2rem;
+  border-radius: 9999px;
+  text-decoration: none;
+  box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.3);
+  transition: all 0.25s;
+}
+
+.athen-big-cta:hover {
+  background: #1e293b;
+  transform: translateY(-2px);
+  box-shadow: 0 15px 30px -5px rgba(15, 23, 42, 0.4);
+}
+
+.athen-micro-copy {
+  font-size: 0.8rem;
+  color: #94a3b8;
+  margin-top: 0.75rem;
+}
+
+/* Mockup Showcase (Right Column) */
+.athen-mockup-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.athen-rating-badge {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.athen-rating-badge .stars {
+  color: #f59e0b;
+  font-size: 1.1rem;
+  margin-top: 0.25rem;
+}
+
+.athen-mockup-laptop {
+  width: 100%;
+  max-width: 520px;
+  background: #0f172a;
+  border-radius: 14px;
+  padding: 10px 10px 14px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.35);
+  border: 1px solid #334155;
+  position: relative;
+}
+
+.athen-mockup-screen {
+  background: #0f0f23;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #1e293b;
+}
+
+.athen-mockup-phone {
+  position: absolute;
+  bottom: -25px;
+  left: -25px;
+  width: 170px;
+  background: #0f172a;
+  border-radius: 24px;
+  padding: 8px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+  border: 2px solid #334155;
+}
+
+/* Social Proof Universities Bar */
+.athen-social-proof {
+  border-top: 1px solid #e2e8f0;
+  padding: 2.5rem 2rem;
+  text-align: center;
+  background: #fafafa;
+  margin-top: 3rem;
+}
+
+.athen-social-proof-text {
+  font-size: 0.9rem;
+  color: #475569;
+  font-weight: 500;
+  margin-bottom: 1.25rem;
+}
+
+.athen-uni-logos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+}
+
+.athen-uni-pill {
+  padding: 0.4rem 1rem;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 9999px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #334155;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+@media (max-width: 960px) {
+  .athen-hero-container {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    padding: 2rem 1.25rem;
+  }
+
+  .athen-hero-title {
+    font-size: 2.35rem;
+  }
+
+  .athen-nav-menu {
+    display: none;
+  }
+
+  .athen-mockup-phone {
+    display: none;
+  }
+}

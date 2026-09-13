@@ -1,55 +1,61 @@
 ﻿<!DOCTYPE html>
-<html lang="vi" data-theme="cosmic">
+<html lang="vi">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Đăng ký — StudyMate</title>
+  <title>Tạo tài khoản sinh viên — StudyMate</title>
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/responsive.css">
 </head>
-<body style="display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: 1rem;">
+<body style="background-color: #f8fafc; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 1.5rem; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
 
-  <div class="st-card" style="width: 100%; max-width: 440px; padding: 2.25rem;">
+  <div style="width: 100%; max-width: 460px; background: #ffffff; border-radius: 20px; padding: 2.5rem; box-shadow: 0 20px 40px -15px rgba(0,0,0,0.08); border: 1px solid #e2e8f0;">
+    
     <div style="text-align: center; margin-bottom: 2rem;">
-      <a href="index.html" class="st-logo" style="justify-content: center; font-size: 1.5rem; margin-bottom: 0.5rem;">
-        <div class="st-logo-icon">📖</div>
-        <span>Studies<span class="accent-word">Mate</span></span>
+      <a href="index.html" style="display: inline-flex; align-items: center; gap: 0.5rem; font-size: 1.5rem; font-weight: 800; color: #1e40af; text-decoration: none; margin-bottom: 0.5rem;">
+        <span style="font-size: 1.8rem;">🦉</span>
+        <span>Study<span style="color: #2563eb;">Mate</span></span>
       </a>
-      <p style="color: var(--theme-text-muted); font-size: 0.8125rem;">
-        Tạo tài khoản sinh viên để quản lý học tập thông minh
+      <h2 style="font-size: 1.25rem; font-weight: 700; color: #0f172a; margin-top: 0.5rem;">Tạo tài khoản sinh viên</h2>
+      <p style="color: #64748b; font-size: 0.875rem; margin-top: 0.25rem;">
+        Bắt đầu quản lý thời khóa biểu và deadline học tập ngay hôm nay
       </p>
     </div>
 
     <form id="registerForm">
       <div style="margin-bottom: 1.25rem;">
-        <label style="font-size: 0.75rem; color: var(--theme-text-muted); display: block; margin-bottom: 0.35rem; text-transform: uppercase;">Họ và tên</label>
-        <input type="text" id="fullName" class="form-control" placeholder="Nguyễn Văn A" required>
+        <label style="display: block; font-size: 0.8125rem; font-weight: 600; color: #334155; margin-bottom: 0.35rem;">Họ và tên sinh viên</label>
+        <input type="text" id="fullName" class="form-control" placeholder="Ví dụ: Trần Minh Đức" required style="border: 1px solid #cbd5e1; background: #fff; color: #0f172a;" value="Trần Minh Đức">
       </div>
 
       <div style="margin-bottom: 1.25rem;">
-        <label style="font-size: 0.75rem; color: var(--theme-text-muted); display: block; margin-bottom: 0.35rem; text-transform: uppercase;">Email trường</label>
-        <input type="email" id="regEmail" class="form-control" placeholder="tensinhvien@studymate.edu.vn" required>
+        <label style="display: block; font-size: 0.8125rem; font-weight: 600; color: #334155; margin-bottom: 0.35rem;">Email trường đại học</label>
+        <input type="email" id="regEmail" class="form-control" placeholder="duc.tm@tlu.edu.vn" required style="border: 1px solid #cbd5e1; background: #fff; color: #0f172a;" value="duc.tm@tlu.edu.vn">
       </div>
 
       <div style="margin-bottom: 1.25rem;">
-        <label style="font-size: 0.75rem; color: var(--theme-text-muted); display: block; margin-bottom: 0.35rem; text-transform: uppercase;">Mật khẩu</label>
-        <input type="password" id="regPassword" class="form-control" placeholder="Tối thiểu 6 ký tự" required minlength="6">
+        <label style="display: block; font-size: 0.8125rem; font-weight: 600; color: #334155; margin-bottom: 0.35rem;">Trường đại học / Lớp</label>
+        <input type="text" id="regSchool" class="form-control" placeholder="Ví dụ: ĐH Thủy Lợi - 64CNTT1" style="border: 1px solid #cbd5e1; background: #fff; color: #0f172a;" value="ĐH Thủy Lợi - 64CNTT1">
       </div>
 
-      <button type="submit" class="st-pill-btn st-pill-btn-primary" style="width: 100%; padding: 0.75rem; justify-content: center; margin-top: 0.5rem;">
-        Tạo tài khoản ngay
+      <div style="margin-bottom: 1.5rem;">
+        <label style="display: block; font-size: 0.8125rem; font-weight: 600; color: #334155; margin-bottom: 0.35rem;">Mật khẩu</label>
+        <input type="password" id="regPassword" class="form-control" placeholder="Tối thiểu 6 ký tự" required minlength="6" style="border: 1px solid #cbd5e1; background: #fff; color: #0f172a;" value="123456">
+      </div>
+
+      <button type="submit" class="athen-btn-dark" style="width: 100%; padding: 0.85rem; font-size: 1rem; border: none; cursor: pointer; text-align: center; display: block;">
+        Hoàn tất đăng ký & Mở Workspace &rarr;
       </button>
     </form>
 
-    <div style="text-align: center; margin-top: 1.5rem; font-size: 0.8125rem; color: var(--theme-text-muted);">
-      Đã có tài khoản? <a href="login.html" style="color: var(--theme-primary); font-weight: 500;">Đăng nhập</a><br>
-      <a href="index.html" style="font-size: 0.75rem; display: inline-block; margin-top: 0.75rem; color: var(--theme-text-secondary);">&larr; Quay về trang chủ</a>
+    <div style="text-align: center; margin-top: 1.5rem; font-size: 0.85rem; color: #64748b;">
+      Đã có tài khoản? <a href="login.html" style="color: #2563eb; font-weight: 600;">Đăng nhập tại đây</a><br>
+      <a href="index.html" style="font-size: 0.8125rem; color: #94a3b8; display: inline-block; margin-top: 0.75rem;">&larr; Quay lại trang chủ</a>
     </div>
+
   </div>
 
   <script src="../js/main.js"></script>
-  <script src="../js/theme.js"></script>
   <script src="../js/auth.js"></script>
 </body>
 </html>
-

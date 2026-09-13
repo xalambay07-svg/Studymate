@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="vi" data-theme="cosmic">
+<html lang="vi">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,53 +7,54 @@
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/responsive.css">
 </head>
-<body style="display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: 1rem;">
+<body style="background-color: #f8fafc; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 1.5rem; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
 
-  <div class="st-card" style="width: 100%; max-width: 420px; padding: 2.25rem;">
+  <div style="width: 100%; max-width: 440px; background: #ffffff; border-radius: 20px; padding: 2.5rem; box-shadow: 0 20px 40px -15px rgba(0,0,0,0.08); border: 1px solid #e2e8f0;">
+    
     <div style="text-align: center; margin-bottom: 2rem;">
-      <a href="index.html" class="st-logo" style="justify-content: center; font-size: 1.5rem; margin-bottom: 0.5rem;">
-        <div class="st-logo-icon">📖</div>
-        <span>Studies<span class="accent-word">Mate</span></span>
+      <a href="index.html" style="display: inline-flex; align-items: center; gap: 0.5rem; font-size: 1.5rem; font-weight: 800; color: #1e40af; text-decoration: none; margin-bottom: 0.5rem;">
+        <span style="font-size: 1.8rem;">🦉</span>
+        <span>Study<span style="color: #2563eb;">Mate</span></span>
       </a>
-      <p style="color: var(--theme-text-muted); font-size: 0.8125rem;">
-        Đăng nhập vào không gian quản lý học tập thông minh
+      <h2 style="font-size: 1.25rem; font-weight: 700; color: #0f172a; margin-top: 0.5rem;">Chào mừng quay trở lại</h2>
+      <p style="color: #64748b; font-size: 0.875rem; margin-top: 0.25rem;">
+        Đăng nhập để vào không gian học tập và theo dõi deadline
       </p>
     </div>
 
     <form id="loginForm">
       <div style="margin-bottom: 1.25rem;">
-        <label style="font-size: 0.75rem; color: var(--theme-text-muted); display: block; margin-bottom: 0.35rem; text-transform: uppercase;">Email sinh viên / Admin</label>
-        <input type="email" id="email" class="form-control" value="student@studymate.edu.vn" required>
+        <label style="display: block; font-size: 0.8125rem; font-weight: 600; color: #334155; margin-bottom: 0.35rem;">Email trường / sinh viên</label>
+        <input type="email" id="email" class="form-control" value="student@studymate.edu.vn" required style="border: 1px solid #cbd5e1; background: #fff; color: #0f172a;">
       </div>
 
-      <div style="margin-bottom: 1.25rem;">
+      <div style="margin-bottom: 1.5rem;">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem;">
-          <label style="font-size: 0.75rem; color: var(--theme-text-muted); text-transform: uppercase;">Mật khẩu</label>
-          <a href="#" style="font-size: 0.75rem;">Quên mật khẩu?</a>
+          <label style="font-size: 0.8125rem; font-weight: 600; color: #334155;">Mật khẩu</label>
+          <a href="#" style="font-size: 0.8125rem; color: #2563eb;">Quên mật khẩu?</a>
         </div>
-        <input type="password" id="password" class="form-control" value="123456" required>
+        <input type="password" id="password" class="form-control" value="123456" required style="border: 1px solid #cbd5e1; background: #fff; color: #0f172a;">
       </div>
 
-      <button type="submit" class="st-pill-btn st-pill-btn-primary" style="width: 100%; padding: 0.75rem; justify-content: center; margin-top: 0.5rem;">
-        Đăng nhập ngay
+      <button type="submit" class="athen-btn-dark" style="width: 100%; padding: 0.85rem; font-size: 1rem; border: none; cursor: pointer; text-align: center; display: block;">
+        Đăng nhập vào Workspace &rarr;
       </button>
     </form>
 
-    <div style="margin-top: 1.5rem; padding: 0.75rem 1rem; border-radius: 10px; background: var(--theme-card-active); border: 1px solid var(--theme-border); font-size: 0.75rem; color: var(--theme-text-secondary); line-height: 1.6;">
-      <strong>Tài khoản demo có sẵn:</strong><br>
-      • Sinh viên: <code>student@studymate.edu.vn</code> (MK: <code>123456</code>)<br>
-      • Admin: <code>admin@studymate.edu.vn</code> (MK: <code>admin123</code>)
+    <div style="margin-top: 1.5rem; padding: 0.85rem 1rem; border-radius: 12px; background: #eff6ff; border: 1px solid #bfdbfe; font-size: 0.775rem; color: #1e40af; line-height: 1.6;">
+      <strong>Tài khoản mẫu có sẵn:</strong><br>
+      • Sinh viên: <code>student@studymate.edu.vn</code> | MK: <code>123456</code><br>
+      • Admin: <code>admin@studymate.edu.vn</code> | MK: <code>admin123</code>
     </div>
 
-    <div style="text-align: center; margin-top: 1.5rem; font-size: 0.8125rem; color: var(--theme-text-muted);">
-      Chưa có tài khoản? <a href="register.html" style="color: var(--theme-primary); font-weight: 500;">Đăng ký miễn phí</a><br>
-      <a href="index.html" style="font-size: 0.75rem; display: inline-block; margin-top: 0.75rem; color: var(--theme-text-secondary);">&larr; Quay về trang chủ</a>
+    <div style="text-align: center; margin-top: 1.5rem; font-size: 0.85rem; color: #64748b;">
+      Chưa có tài khoản? <a href="register.html" style="color: #2563eb; font-weight: 600;">Tạo tài khoản sinh viên</a><br>
+      <a href="index.html" style="font-size: 0.8125rem; color: #94a3b8; display: inline-block; margin-top: 0.75rem;">&larr; Quay lại trang chủ</a>
     </div>
+
   </div>
 
   <script src="../js/main.js"></script>
-  <script src="../js/theme.js"></script>
   <script src="../js/auth.js"></script>
 </body>
 </html>
-
