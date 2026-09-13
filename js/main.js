@@ -59,12 +59,19 @@ function showToast(message, type = "info") {
 
 // 3. Quản lý phiên đăng nhập người dùng (Authentication Gatekeeper)
 function isUserLoggedIn() {
-  return sessionStorage.getItem("studymate_is_authenticated") === "true";
+  return sessionStorage.getItem("studymate_is_authenticated") === "true" ||
+         localStorage.getItem("studymate_is_authenticated") === "true" ||
+         !!(sessionStorage.getItem("studymate_user") || localStorage.getItem("studymate_user"));
 }
 
 function getCurrentUser() {
-  if (!isUserLoggedIn()) return null;
-  return JSON.parse(sessionStorage.getItem("studymate_user") || localStorage.getItem("studymate_user") || "null");
+  const userStr = sessionStorage.getItem("studymate_user") || localStorage.getItem("studymate_user");
+  if (!userStr) return null;
+  try {
+    return JSON.parse(userStr);
+  } catch (e) {
+    return null;
+  }
 }
 
 function logoutUser() {
@@ -135,19 +142,40 @@ function initSampleData() {
   }
 }
 
-// 5. Cập nhật thông tin User trên Header
+// 5. Cập nhật thông tin User trên Header & Toàn bộ giao diện
 function updateUserHeader() {
   const currentUser = getCurrentUser();
-  if (!currentUser) return;
+  const userName = (currentUser && currentUser.name && currentUser.name.trim()) ? currentUser.name.trim() : "Sinh viên";
+  const userRole = (currentUser && currentUser.role && currentUser.role.trim()) ? currentUser.role.trim() : "Sinh viên CNTT - ĐH Thủy Lợi";
 
   const nameElem = document.querySelector(".user-name");
   const roleElem = document.querySelector(".user-role");
-  if (nameElem) nameElem.textContent = currentUser.name;
-  if (roleElem) roleElem.textContent = currentUser.role || "Sinh viên CNTT - ĐH Thủy Lợi";
+  if (nameElem) nameElem.textContent = userName;
+  if (roleElem) roleElem.textContent = userRole;
 
-  // Cập nhật các badge tên người dùng tĩnh
+  // Cập nhật tất cả các badge tên người dùng tĩnh
   document.querySelectorAll(".st-user-display").forEach(el => {
-    el.textContent = currentUser.name;
+    el.textContent = userName;
   });
+
+  // Cập nhật tên sinh viên trên trang Thời khóa biểu (schedule.html)
+  const schedNameElem = document.getElementById("scheduleStudentName");
+  if (schedNameElem) {
+    schedNameElem.textContent = userName;
+  }
+
+  // Cập nhật trang Hồ sơ cá nhân (profile.html)
+  const profileNameElem = document.getElementById("profileUserName");
+  if (profileNameElem) {
+    profileNameElem.textContent = userName;
+  }
+  const profileFullNameInput = document.getElementById("profileFullName");
+  if (profileFullNameInput && currentUser && currentUser.name) {
+    profileFullNameInput.value = currentUser.name;
+  }
+  const profileEmailInput = document.getElementById("profileEmail");
+  if (profileEmailInput && currentUser && currentUser.email) {
+    profileEmailInput.value = currentUser.email;
+  }
 }
 

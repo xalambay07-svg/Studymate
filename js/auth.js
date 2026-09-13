@@ -29,17 +29,38 @@ document.addEventListener("DOMContentLoaded", () => {
           window.location.href = "admin-dashboard.html";
         }, 1000);
       } else if (password.length >= 6) {
+        let userName = "";
+        try {
+          const registeredUsers = JSON.parse(localStorage.getItem("studymate_registered_users") || "[]");
+          const found = registeredUsers.find(u => u.email.toLowerCase() === email.toLowerCase());
+          if (found && found.name) userName = found.name;
+        } catch (e) {}
+
+        if (!userName) {
+          try {
+            const savedUser = JSON.parse(localStorage.getItem("studymate_user") || "null");
+            if (savedUser && savedUser.email && savedUser.email.toLowerCase() === email.toLowerCase() && savedUser.name) {
+              userName = savedUser.name;
+            }
+          } catch (e) {}
+        }
+
+        if (!userName) {
+          userName = email.split("@")[0] || "Sinh viên";
+        }
+
         const userObj = {
-          name: "Nguyễn Minh Đức",
+          name: userName,
           email: email || "student@studymate.edu.vn",
           role: "Sinh viên CNTT - ĐH Thủy Lợi"
         };
         sessionStorage.setItem("studymate_is_authenticated", "true");
+        localStorage.setItem("studymate_is_authenticated", "true");
         sessionStorage.setItem("studymate_user", JSON.stringify(userObj));
         localStorage.setItem("studymate_user", JSON.stringify(userObj));
         showToast("Đăng nhập thành công! Đang chuyển hướng...", "success");
         setTimeout(() => {
-          window.location.href = "index.html#dashboard";
+          window.location.href = "dashboard.html";
         }, 1000);
       } else {
         showToast("Mật khẩu phải từ 6 ký tự trở lên!", "danger");
@@ -62,15 +83,28 @@ document.addEventListener("DOMContentLoaded", () => {
       const userObj = {
         name: fullName,
         email: email,
-        role: "Sinh viên mới"
+        role: "Sinh viên CNTT - ĐH Thủy Lợi"
       };
       sessionStorage.setItem("studymate_is_authenticated", "true");
+      localStorage.setItem("studymate_is_authenticated", "true");
       sessionStorage.setItem("studymate_user", JSON.stringify(userObj));
       localStorage.setItem("studymate_user", JSON.stringify(userObj));
 
+      // Lưu vào danh sách tài khoản đã đăng ký để khi đăng nhập lại vẫn giữ đúng tên
+      try {
+        const registeredUsers = JSON.parse(localStorage.getItem("studymate_registered_users") || "[]");
+        const idx = registeredUsers.findIndex(u => u.email.toLowerCase() === email.toLowerCase());
+        if (idx >= 0) {
+          registeredUsers[idx] = userObj;
+        } else {
+          registeredUsers.push(userObj);
+        }
+        localStorage.setItem("studymate_registered_users", JSON.stringify(registeredUsers));
+      } catch (e) {}
+
       showToast("Đăng ký thành công! Đang chuyển hướng đến Dashboard...", "success");
       setTimeout(() => {
-        window.location.href = "index.html#dashboard";
+        window.location.href = "dashboard.html";
       }, 1200);
     });
   }

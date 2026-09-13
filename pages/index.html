@@ -391,7 +391,7 @@
               <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.5rem; margin-bottom: 0.75rem;">
                 <span style="font-weight: 600; color: #8b5cf6;">StudiesMate</span>
                 <span style="font-size: 0.65rem; color: rgba(255,255,255,0.5);">Dashboard • Lịch học • Deadline</span>
-                <span style="font-size: 0.65rem; background: #8b5cf6; padding: 2px 8px; border-radius: 12px;">Nguyễn Gia Huy</span>
+                <span class="st-user-display" style="font-size: 0.65rem; background: #8b5cf6; padding: 2px 8px; border-radius: 12px;">Sinh viên</span>
               </div>
 
               <!-- Clock and Quote -->
@@ -1385,15 +1385,41 @@
           alert('Vui lòng nhập họ và tên của bạn!');
           return;
         }
+        try {
+          const regUsers = JSON.parse(localStorage.getItem('studymate_registered_users') || '[]');
+          const idx = regUsers.findIndex(u => u.email.toLowerCase() === email.toLowerCase());
+          const newEntry = { name: userName, email: email, role: 'Sinh viên CNTT - ĐH Thủy Lợi' };
+          if (idx >= 0) regUsers[idx] = newEntry;
+          else regUsers.push(newEntry);
+          localStorage.setItem('studymate_registered_users', JSON.stringify(regUsers));
+        } catch (err) {}
       } else {
-        userName = (nameInput && nameInput.value.trim()) ? nameInput.value.trim() : (email.split('@')[0] || 'Sinh viên');
+        let savedName = '';
+        try {
+          const regUsers = JSON.parse(localStorage.getItem('studymate_registered_users') || '[]');
+          const match = regUsers.find(u => u.email.toLowerCase() === email.toLowerCase());
+          if (match && match.name) savedName = match.name;
+        } catch (err) {}
+        if (!savedName) {
+          try {
+            const savedUser = JSON.parse(localStorage.getItem('studymate_user') || 'null');
+            if (savedUser && savedUser.email && savedUser.email.toLowerCase() === email.toLowerCase() && savedUser.name) {
+              savedName = savedUser.name;
+            }
+          } catch (err) {}
+        }
+        userName = savedName || ((nameInput && nameInput.value.trim()) ? nameInput.value.trim() : (email.split('@')[0] || 'Sinh viên'));
       }
 
-      // Mark session authenticated in sessionStorage and save user
+      // Mark session authenticated in sessionStorage and localStorage
       const userData = { name: userName, email: email, role: 'Sinh viên CNTT - ĐH Thủy Lợi' };
       sessionStorage.setItem('studymate_is_authenticated', 'true');
+      localStorage.setItem('studymate_is_authenticated', 'true');
       sessionStorage.setItem('studymate_user', JSON.stringify(userData));
       localStorage.setItem('studymate_user', JSON.stringify(userData));
+
+      // Update all user badges immediately
+      document.querySelectorAll('.st-user-display').forEach(el => el.textContent = userName);
 
       closeAuthModal();
       updateNavbarAuthUI();
@@ -1433,11 +1459,13 @@
           <button type="button" onclick="switchToWorkspace('${displayName}')" class="athen-btn-dark" style="border: none; cursor: pointer; padding: 0.5rem 1.1rem; font-size: 0.875rem;">Không gian học &rarr;</button>
           <button type="button" onclick="handleLogout()" class="athen-nav-item" style="background: none; border: 1px solid rgba(239,68,68,0.3); color: #f87171; border-radius: 9999px; padding: 0.45rem 0.9rem; font-weight: 600; cursor: pointer; font-size: 0.85rem;">Đăng xuất</button>
         `;
+        document.querySelectorAll('.st-user-display').forEach(el => el.textContent = displayName);
       } else {
         container.innerHTML = `
           <button type="button" onclick="openAuthModal('login')" class="athen-nav-item" style="background: none; border: none; font-weight: 600; cursor: pointer; color: #cbd5e1; font-size: 0.9rem;">Đăng nhập</button>
           <button type="button" onclick="openAuthModal('register')" class="athen-btn-dark" style="border: none; cursor: pointer; padding: 0.5rem 1.15rem; font-size: 0.875rem;">Tạo tài khoản</button>
         `;
+        document.querySelectorAll('.st-user-display').forEach(el => el.textContent = 'Sinh viên');
       }
     }
 
@@ -1450,6 +1478,7 @@
       // Reset username in workspace and badges
       const displayElem = document.getElementById('displayUserName');
       if (displayElem) displayElem.textContent = 'Sinh viên';
+      document.querySelectorAll('.st-user-display').forEach(el => el.textContent = 'Sinh viên');
 
       // Clear URL hash cleanly so page stays on landing without dashboard history
       if (window.location.hash) {

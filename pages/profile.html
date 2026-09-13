@@ -72,7 +72,7 @@
         <div style="width: 70px; height: 70px; border-radius: 50%; background: var(--theme-card-active); border: 2px solid var(--theme-primary); color: var(--theme-primary); display: flex; align-items: center; justify-content: center; font-size: 1.8rem; margin: 0 auto 1rem;">
           SV
         </div>
-        <h3 style="font-size: 1.15rem; font-weight: 600; color: var(--theme-text-primary);">Trần Minh Đức</h3>
+        <h3 id="profileUserName" class="st-user-display" style="font-size: 1.15rem; font-weight: 600; color: var(--theme-text-primary);">Sinh viên</h3>
         <p style="color: var(--theme-text-muted); font-size: 0.8125rem;">MSSV: 2251061234</p>
         <span class="badge badge-primary" style="margin-top: 0.5rem;">Sinh viên chính quy</span>
         
@@ -89,15 +89,15 @@
         <div class="st-card-header">
           <div class="st-card-title">Cập nhật thông tin</div>
         </div>
-        <form onsubmit="event.preventDefault(); showToast('Cập nhật hồ sơ thành công!', 'success');">
+        <form onsubmit="handleProfileUpdate(event)">
           <div style="margin-bottom: 1.25rem;">
             <label style="font-size: 0.75rem; color: var(--theme-text-muted); display: block; margin-bottom: 0.35rem; text-transform: uppercase;">Họ và tên</label>
-            <input type="text" class="form-control" value="Trần Minh Đức">
+            <input type="text" id="profileFullName" class="form-control" placeholder="Họ và tên sinh viên">
           </div>
 
           <div style="margin-bottom: 1.25rem;">
             <label style="font-size: 0.75rem; color: var(--theme-text-muted); display: block; margin-bottom: 0.35rem; text-transform: uppercase;">Email sinh viên</label>
-            <input type="email" class="form-control" value="student@studymate.edu.vn" readonly style="opacity: 0.7;">
+            <input type="email" id="profileEmail" class="form-control" placeholder="student@studymate.edu.vn" readonly style="opacity: 0.7;">
           </div>
 
           <div style="margin-bottom: 1.25rem;">
@@ -124,6 +124,39 @@
 
   <script src="../js/main.js"></script>
   <script src="../js/theme.js"></script>
+  <script>
+    function handleProfileUpdate(e) {
+      e.preventDefault();
+      const nameInput = document.getElementById('profileFullName');
+      const newName = nameInput ? nameInput.value.trim() : '';
+      if (!newName) {
+        showToast('Họ và tên không được để trống!', 'warning');
+        return;
+      }
+      let user = null;
+      try {
+        user = JSON.parse(sessionStorage.getItem('studymate_user') || localStorage.getItem('studymate_user') || '{}');
+      } catch (err) { user = {}; }
+      user.name = newName;
+      localStorage.setItem('studymate_user', JSON.stringify(user));
+      sessionStorage.setItem('studymate_user', JSON.stringify(user));
+      localStorage.setItem('studymate_is_authenticated', 'true');
+      sessionStorage.setItem('studymate_is_authenticated', 'true');
+
+      // Đồng bộ vào registered users nếu có email
+      if (user.email) {
+        try {
+          const regUsers = JSON.parse(localStorage.getItem('studymate_registered_users') || '[]');
+          const idx = regUsers.findIndex(u => u.email.toLowerCase() === user.email.toLowerCase());
+          if (idx >= 0) regUsers[idx].name = newName;
+          localStorage.setItem('studymate_registered_users', JSON.stringify(regUsers));
+        } catch (e) {}
+      }
+
+      updateUserHeader();
+      showToast('Cập nhật họ tên thành công! Toàn bộ hệ thống đã được đồng bộ.', 'success');
+    }
+  </script>
 </body>
 </html>
 

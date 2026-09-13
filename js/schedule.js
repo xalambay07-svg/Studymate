@@ -56,10 +56,22 @@ const DEFAULT_TLU_CLASSES = [
 let currentViewMode = "table";
 
 document.addEventListener("DOMContentLoaded", () => {
+  updateScheduleStudentInfo();
   initScheduleView();
   initOcrUpload();
   initTextParser();
 });
+
+function updateScheduleStudentInfo() {
+  const elem = document.getElementById("scheduleStudentName");
+  if (!elem) return;
+  let user = null;
+  try {
+    user = JSON.parse(sessionStorage.getItem("studymate_user") || localStorage.getItem("studymate_user"));
+  } catch(e) {}
+  const userName = (user && user.name && user.name.trim()) ? user.name.trim() : "Sinh viên";
+  elem.textContent = userName;
+}
 
 function setScheduleViewMode(mode) {
   currentViewMode = mode;
