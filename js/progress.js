@@ -26,8 +26,10 @@ function renderProgressOverview() {
     const percent = total > 0 ? Math.round((completed / total) * 100) : 0;
 
     let badgeStatus = "badge-primary";
-    if (percent >= 80) badgeStatus = "badge-safe";
-    else if (percent <= 30) badgeStatus = "badge-warning";
+    if (total > 0) {
+      if (percent >= 80) badgeStatus = "badge-safe";
+      else if (percent <= 30) badgeStatus = "badge-warning";
+    }
 
     return `
       <div class="st-card" style="margin-bottom: 1.25rem;">

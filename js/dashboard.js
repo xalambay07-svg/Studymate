@@ -248,22 +248,21 @@ function renderDashboardProgress() {
 
   const badgeColors = ["#a78bfa", "#60a5fa", "#34d399", "#fbbf24", "#f472b6"];
 
-  container.innerHTML = subjects.slice(0, 3).map((sub, idx) => {
+  let html = subjects.slice(0, 3).map((sub, idx) => {
     const subTasks = tasks.filter(t => t.subjectId === sub.id);
     const doneTasks = subTasks.filter(t => t.status === "completed");
     
-    // Default simulated progress if no tasks exist for this subject
-    const defaultPercents = [80, 50, 30];
+    // Tính tiến độ thật 100% từ bài tập thực tế của sinh viên (không dùng phần trăm giả)
     const percent = subTasks.length > 0 
       ? Math.round((doneTasks.length / subTasks.length) * 100) 
-      : (defaultPercents[idx % defaultPercents.length]);
+      : 0;
     
     const taskCountStr = subTasks.length > 0 
       ? `${doneTasks.length}/${subTasks.length} việc` 
-      : `${Math.round(percent / 10)}/10 việc`;
+      : `0/0 việc`;
 
     const gradient = gradientFills[idx % gradientFills.length];
-    const badgeColor = badgeColors[idx % badgeColors.length];
+    const badgeColor = percent > 0 ? badgeColors[idx % badgeColors.length] : "var(--theme-text-muted)";
 
     return `
       <div class="st-progress-item">
@@ -275,11 +274,21 @@ function renderDashboardProgress() {
           <strong style="color: ${badgeColor}; font-size: 0.85rem;">${percent}% <span style="font-weight: 500; opacity: 0.75; font-size: 0.775rem;">(${taskCountStr})</span></strong>
         </div>
         <div class="st-progress-track">
-          <div class="st-progress-fill-gradient" style="width: ${percent}%; background: ${gradient};"></div>
+          <div class="st-progress-fill-gradient" style="width: ${percent}%; ${percent > 0 ? `background: ${gradient};` : 'background: transparent;'}"></div>
         </div>
       </div>
     `;
   }).join("");
+
+  if (tasks.length === 0) {
+    html += `
+      <div style="margin-top: 0.25rem; padding: 0.65rem 0.85rem; border-radius: 10px; background: rgba(255, 255, 255, 0.03); border: 1px dashed var(--theme-border); font-size: 0.8rem; color: var(--theme-text-muted); text-align: center; line-height: 1.5;">
+        Chưa có bài tập nào được tạo. Hãy bấm <a href="tasks.html" style="color: var(--theme-primary); font-weight: 600; text-decoration: underline;">+ Thêm Deadline</a> để bắt đầu tính tiến độ nhé!
+      </div>
+    `;
+  }
+
+  container.innerHTML = html;
 }
 
 // =========================================================================
