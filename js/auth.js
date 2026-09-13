@@ -80,8 +80,9 @@ document.addEventListener("DOMContentLoaded", () => {
       e.preventDefault();
       sessionStorage.removeItem("studymate_is_authenticated");
       sessionStorage.removeItem("studymate_user");
+      localStorage.removeItem("studymate_is_authenticated");
       localStorage.removeItem("studymate_user");
-      window.location.href = "index.html";
+      window.location.replace("index.html");
     });
   }
 });

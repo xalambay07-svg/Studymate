@@ -70,8 +70,9 @@ function getCurrentUser() {
 function logoutUser() {
   sessionStorage.removeItem("studymate_is_authenticated");
   sessionStorage.removeItem("studymate_user");
+  localStorage.removeItem("studymate_is_authenticated");
   localStorage.removeItem("studymate_user");
-  window.location.href = "index.html";
+  window.location.replace("index.html");
 }
 
 // Kiểm tra quyền truy cập các trang thành phần
@@ -85,15 +86,24 @@ function checkPageAuth() {
     { file: "import-schedule.html", name: "Quét TKB bằng AI/OCR" },
     { file: "exams.html", name: "Đếm ngược kỳ thi" },
     { file: "subjects.html", name: "Quản lý Môn học" },
-    { file: "profile.html", name: "Hồ sơ cá nhân" }
+    { file: "subject-detail.html", name: "Chi tiết môn học" },
+    { file: "documents.html", name: "Tài liệu học tập" },
+    { file: "profile.html", name: "Hồ sơ cá nhân" },
+    { file: "admin-dashboard.html", name: "Quản trị viên" },
+    { file: "admin-users.html", name: "Quản trị người dùng" },
+    { file: "admin-subjects.html", name: "Quản trị môn học" },
+    { file: "admin-announcements.html", name: "Quản trị thông báo" }
   ];
 
   const matched = protectedPages.find(p => currentPath.endsWith(p.file));
   if (matched && !isUserLoggedIn()) {
-    // Chưa đăng nhập -> Chuyển về index.html và tự động mở form đăng nhập kèm thông báo
-    window.location.href = `index.html?auth=required&target=${encodeURIComponent(matched.file)}&name=${encodeURIComponent(matched.name)}`;
+    // Chưa đăng nhập -> Chuyển ngay về index.html và tự động mở form đăng nhập kèm thông báo
+    window.location.replace(`index.html?auth=required&target=${encodeURIComponent(matched.file)}&name=${encodeURIComponent(matched.name)}`);
   }
 }
+
+// Chạy kiểm tra ngay lập tức khi file script được load để chặn hiển thị trang nếu chưa đăng nhập
+checkPageAuth();
 
 // 4. Khởi tạo dữ liệu mẫu LocalStorage (nếu chưa có)
 function initSampleData() {

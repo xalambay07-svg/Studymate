@@ -11,7 +11,7 @@
 
   <nav class="st-navbar">
     <div style="display: flex; align-items: center; gap: 1rem;">
-      <a href="index.html" class="st-logo">
+      <a href="javascript:void(0)" onclick="logoutUser()" class="st-logo" title="Đăng xuất và về trang chủ">
         <div class="st-logo-icon">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
         </div>
@@ -48,6 +48,7 @@
       </div>
 
       <a href="profile.html" class="st-pill-btn st-user-display" style="padding: 0.4rem 0.8rem;">Sinh viên</a>
+      <button onclick="logoutUser()" class="st-pill-btn" style="padding: 0.45rem 1rem; font-size: 0.875rem; background: rgba(239,68,68,0.15); border: 1px solid rgba(239,68,68,0.4); color: #f87171; cursor: pointer; font-weight: 600;" title="Đăng xuất khỏi tài khoản">Đăng xuất</button>
       <button class="st-mobile-btn">☰</button>
     </div>
   </nav>
@@ -62,8 +63,8 @@
     <a href="import-schedule.html" class="st-pill-link">OCR TKB</a>
     <a href="progress.html" class="st-pill-link">Tiến độ</a>
     <a href="profile.html" class="st-pill-link">Hồ sơ cá nhân</a>
-    <a href="javascript:void(0)" onclick="logoutUser()" class="st-pill-link" style="margin-top: 1rem; border: 1px solid rgba(239,68,68,0.3); color: #f87171;">Đăng xuất</a>
-    <a href="index.html" class="st-pill-link" style="border: 1px solid var(--theme-border);">Thoát về trang chủ</a>
+    <a href="javascript:void(0)" onclick="logoutUser()" class="st-pill-link" style="margin-top: 1rem; border: 1px solid rgba(239,68,68,0.3); color: #f87171; font-weight: 600;">Đăng xuất</a>
+    <a href="javascript:void(0)" onclick="logoutUser()" class="st-pill-link" style="border: 1px solid var(--theme-border);">Đăng xuất về trang chủ</a>
   </div>
 
   <main class="st-main-container">
