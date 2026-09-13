@@ -1,5 +1,5 @@
 ﻿/**
- * STUDYMATE - SCHEDULE & OCR IMPORT SCRIPT
+ * STUDYMATE - SCHEDULE & OCR SCRIPT (Aesthetic StudiesTimer style)
  * Xử lý xem thời khóa biểu và tính năng nổi bật USP: Nhập lịch bằng ảnh (AI/OCR) & Text
  */
 
@@ -22,16 +22,21 @@ function initScheduleView() {
   ];
 
   scheduleContainer.innerHTML = scheduleData.map(item => `
-    <div class="card" style="margin-bottom: 1rem; border-left: 4px solid var(--primary);">
-      <div class="card-body" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
-        <div>
-          <span class="badge badge-primary" style="margin-bottom: 0.5rem;">${item.day} • ${item.time}</span>
-          <h4 style="font-size: 1.1rem; font-weight: 700;">${item.name} (${item.code})</h4>
-          <p style="color: var(--text-muted); font-size: 0.875rem;">🏛️ Phòng: <strong>${item.room}</strong> | 👨‍🏫 Giảng viên: ${item.teacher}</p>
+    <div class="st-card" style="margin-bottom: 1rem; border-left: 3px solid var(--theme-primary); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+      <div>
+        <div style="display: flex; gap: 0.5rem; align-items: center; margin-bottom: 0.4rem;">
+          <span class="badge badge-primary">${item.day}</span>
+          <span style="font-size: 0.8125rem; color: var(--theme-text-muted);">🕒 ${item.time}</span>
         </div>
-        <div>
-          <button class="btn btn-secondary btn-sm" onclick="showToast('Đang mở tài liệu môn...', 'info')">📂 Tài liệu</button>
-        </div>
+        <h3 style="font-size: 1.05rem; font-weight: 600; color: var(--theme-text-primary); margin-bottom: 0.25rem;">
+          ${item.name} (${item.code})
+        </h3>
+        <p style="color: var(--theme-text-muted); font-size: 0.8125rem;">
+          🏛️ Phòng: <strong>${item.room}</strong> • 👨‍🏫 Giảng viên: ${item.teacher}
+        </p>
+      </div>
+      <div>
+        <a href="documents.html" class="st-pill-btn" style="padding: 0.35rem 0.8rem; font-size: 0.75rem;">📂 Tài liệu môn</a>
       </div>
     </div>
   `).join("");
@@ -54,7 +59,6 @@ function initOcrUpload() {
     }
   });
 
-  // Drag and drop
   dropzone.addEventListener("dragover", (e) => {
     e.preventDefault();
     dropzone.classList.add("dragover");
@@ -76,9 +80,9 @@ function simulateOcrProcessing(fileName) {
   const ocrTableBody = document.getElementById("ocrTableBody");
   if (!resultArea || !ocrTableBody) return;
 
-  showToast(`Đang tải ảnh "${fileName}" và xử lý nhận diện AI/OCR...`, "info");
+  showToast(`Đang quét ảnh "${fileName}" và xử lý nhận diện AI/OCR...`, "info");
   resultArea.style.display = "block";
-  ocrTableBody.innerHTML = `<tr><td colspan="5" style="text-align:center; padding: 2rem;">⚡ Đang quét OCR và phân tích cấu trúc lịch học... Vui lòng đợi 1 giây!</td></tr>`;
+  ocrTableBody.innerHTML = `<tr><td colspan="5" style="text-align:center; padding: 2rem; color: var(--theme-text-muted);">⚡ Đang quét OCR và bóc tách dữ liệu môn học... Vui lòng đợi 1 giây!</td></tr>`;
 
   setTimeout(() => {
     const detectedSchedule = [
@@ -87,23 +91,22 @@ function simulateOcrProcessing(fileName) {
       { day: "Thứ Năm", time: "13:00 - 15:30", subject: "Cơ sở dữ liệu", room: "C205" }
     ];
 
-    ocrTableBody.innerHTML = detectedSchedule.map((row, idx) => `
+    ocrTableBody.innerHTML = detectedSchedule.map(row => `
       <tr>
-        <td><input type="text" class="form-control" value="${row.day}" style="padding: 0.25rem 0.5rem;"></td>
-        <td><input type="text" class="form-control" value="${row.time}" style="padding: 0.25rem 0.5rem;"></td>
-        <td><input type="text" class="form-control" value="${row.subject}" style="padding: 0.25rem 0.5rem;"></td>
-        <td><input type="text" class="form-control" value="${row.room}" style="padding: 0.25rem 0.5rem;"></td>
+        <td><input type="text" class="form-control" value="${row.day}" style="padding: 0.35rem 0.6rem;"></td>
+        <td><input type="text" class="form-control" value="${row.time}" style="padding: 0.35rem 0.6rem;"></td>
+        <td><input type="text" class="form-control" value="${row.subject}" style="padding: 0.35rem 0.6rem;"></td>
+        <td><input type="text" class="form-control" value="${row.room}" style="padding: 0.35rem 0.6rem;"></td>
         <td>
-          <button class="btn btn-secondary btn-sm" onclick="this.closest('tr').remove()" style="color: var(--status-danger);">Xóa</button>
+          <button class="st-pill-btn" onclick="this.closest('tr').remove()" style="color: var(--status-danger); padding: 0.25rem 0.6rem; font-size: 0.75rem;">Xóa</button>
         </td>
       </tr>
     `).join("");
 
-    showToast("Nhận diện thành công! Vui lòng kiểm tra và bấm Xác nhận lưu.", "success");
-  }, 1200);
+    showToast("Nhận diện AI/OCR thành công! Kiểm tra và bấm lưu.", "success");
+  }, 1000);
 }
 
-// Xử lý dán text lịch học
 function initTextParser() {
   const btnParse = document.getElementById("btnParseText");
   const textArea = document.getElementById("pasteTextSchedule");
@@ -113,18 +116,17 @@ function initTextParser() {
   btnParse.addEventListener("click", () => {
     const text = textArea.value.trim();
     if (!text) {
-      showToast("Vui lòng dán nội dung lịch học dạng văn bản!", "warning");
+      showToast("Vui lòng dán nội dung văn bản lịch học!", "warning");
       return;
     }
-
-    showToast("Đã phân tích văn bản thành công và thêm vào bảng kiểm tra!", "success");
+    showToast("Đã phân tích văn bản thành công!", "success");
     simulateOcrProcessing("văn bản dán nhanh");
   });
 }
 
 function confirmAndSaveSchedule() {
-  showToast("Đã lưu lịch học tự động vào Thời khóa biểu thành công!", "success");
+  showToast("Đã lưu lịch học tự động vào Thời khóa biểu!", "success");
   setTimeout(() => {
     window.location.href = "schedule.html";
-  }, 1200);
+  }, 1000);
 }

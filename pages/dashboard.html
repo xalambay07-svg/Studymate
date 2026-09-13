@@ -1,165 +1,202 @@
 ﻿<!DOCTYPE html>
-<html lang="vi">
+<html lang="vi" data-theme="cosmic">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard Sinh viên – StudyMate</title>
+  <title>Dashboard Sinh viên — StudyMate (Aesthetic Workspace)</title>
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/responsive.css">
 </head>
 <body>
-  <div class="app-container">
-    <!-- Sidebar Navigation -->
-    <aside class="sidebar">
-      <div class="sidebar-header">
-        <div class="logo-brand">
-          📚 StudyMate <span class="logo-badge">Sinh viên</span>
-        </div>
-      </div>
-      <nav class="sidebar-nav">
-        <div class="nav-section-title">Học tập</div>
-        <a href="dashboard.html" class="nav-item active">📊 Dashboard</a>
-        <a href="schedule.html" class="nav-item">📅 Lịch học / TKB</a>
-        <a href="tasks.html" class="nav-item">✅ Nhiệm vụ & Deadline</a>
-        <a href="subjects.html" class="nav-item">📖 Môn học</a>
-        <a href="exams.html" class="nav-item">🎯 Kỳ thi</a>
-        
-        <div class="nav-section-title">Công cụ & Tiến độ</div>
-        <a href="import-schedule.html" class="nav-item">📸 Nhập TKB (OCR / AI)</a>
-        <a href="documents.html" class="nav-item">📂 Kho tài liệu</a>
-        <a href="progress.html" class="nav-item">📈 Báo cáo tiến độ</a>
 
-        <div class="nav-section-title">Cá nhân</div>
-        <a href="profile.html" class="nav-item">👤 Hồ sơ cá nhân</a>
-        <a href="admin-dashboard.html" class="nav-item">⚙️ Sang trang Admin</a>
-      </nav>
-      <div class="sidebar-footer">
-        <button id="logoutBtn" class="btn btn-secondary btn-sm" style="width: 100%;">🚪 Đăng xuất</button>
-      </div>
-    </aside>
-
-    <!-- Main Content Wrapper -->
-    <div class="main-wrapper">
-      <!-- Top Header -->
-      <header class="top-header">
-        <div style="display: flex; align-items: center;">
-          <button class="mobile-menu-btn" aria-label="Toggle Menu">☰</button>
-          <div class="header-search">
-            <span class="search-icon">🔍</span>
-            <input type="text" placeholder="Tìm môn học, deadline, tài liệu...">
-          </div>
-        </div>
-        <div class="header-actions">
-          <a href="import-schedule.html" class="btn btn-primary btn-sm">+ Nhập TKB bằng ảnh</a>
-          <a href="profile.html" class="user-profile-menu">
-            <div class="avatar">SV</div>
-            <div class="user-info">
-              <div class="user-name">Trần Minh Đức</div>
-              <div class="user-role">K64 - CNTT (ĐH Thủy Lợi)</div>
-            </div>
-          </a>
-        </div>
-      </header>
-
-      <!-- Page Body Content -->
-      <main class="page-content">
-        <div class="page-header">
-          <div>
-            <h1 class="page-title">Chào buổi sáng, Minh Đức! 👋</h1>
-            <p class="page-subtitle">Dưới đây là tổng hợp việc cần làm hôm nay và các deadline quan trọng sắp đến.</p>
-          </div>
-          <div>
-            <span class="badge badge-primary" style="padding: 0.5rem 1rem; font-size: 0.85rem;">Học kỳ 1 - Năm học 2026</span>
-          </div>
-        </div>
-
-        <!-- Stat Cards Grid -->
-        <div class="stats-grid">
-          <div class="stat-card">
-            <div class="stat-card-header">
-              <span class="stat-card-title">Môn đang học</span>
-              <div class="stat-card-icon">📚</div>
-            </div>
-            <div class="stat-card-value" id="statSubjectsCount">4</div>
-            <div class="stat-card-footer">Đã đăng ký 12 tín chỉ</div>
-          </div>
-
-          <div class="stat-card">
-            <div class="stat-card-header">
-              <span class="stat-card-title">Việc chưa xong</span>
-              <div class="stat-card-icon" style="color: var(--status-warning); background: var(--status-warning-bg);">⏳</div>
-            </div>
-            <div class="stat-card-value" id="statPendingTasks">3</div>
-            <div class="stat-card-footer">Cần ưu tiên hoàn thành sớm</div>
-          </div>
-
-          <div class="stat-card">
-            <div class="stat-card-header">
-              <span class="stat-card-title">Kỳ thi sắp tới</span>
-              <div class="stat-card-icon" style="color: var(--status-danger); background: var(--status-danger-bg);">🎯</div>
-            </div>
-            <div class="stat-card-value" id="statExamsCount">3</div>
-            <div class="stat-card-footer">Gần nhất: Giải tích 1 (25/09)</div>
-          </div>
-
-          <div class="stat-card">
-            <div class="stat-card-header">
-              <span class="stat-card-title">Tiến độ trung bình</span>
-              <div class="stat-card-icon" style="color: var(--status-safe); background: var(--status-safe-bg);">📈</div>
-            </div>
-            <div class="stat-card-value" id="statAvgProgress">67%</div>
-            <div class="progress-bar-container">
-              <div class="progress-bar-fill" id="statProgressFill" style="width: 67%;"></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 2 Main Columns: Today's Schedule & Deadlines -->
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 1.5rem;">
-          <!-- Lịch học hôm nay -->
-          <div class="card">
-            <div class="card-header">
-              <h3 class="card-title">📅 Lịch học hôm nay</h3>
-              <a href="schedule.html" style="font-size: 0.875rem; font-weight: 600;">Xem toàn bộ tuần &rarr;</a>
-            </div>
-            <div class="card-body" style="padding: 0.5rem 1.5rem;" id="todayScheduleList">
-              <!-- Render by dashboard.js -->
-            </div>
-          </div>
-
-          <!-- Deadline sắp tới -->
-          <div class="card">
-            <div class="card-header">
-              <h3 class="card-title">⏰ Deadline cần hoàn thành</h3>
-              <a href="tasks.html" style="font-size: 0.875rem; font-weight: 600;">+ Thêm nhiệm vụ &rarr;</a>
-            </div>
-            <div class="card-body" style="padding: 0.5rem 1.5rem;" id="upcomingDeadlinesList">
-              <!-- Render by dashboard.js -->
-            </div>
-          </div>
-        </div>
-
-        <!-- StudyMate AI Suggestion Box -->
-        <div class="card" style="margin-top: 1.5rem; background: linear-gradient(135deg, #eff6ff 0%, #ffffff 100%); border-left: 4px solid var(--accent);">
-          <div class="card-body" style="display: flex; gap: 1.25rem; align-items: flex-start;">
-            <div style="font-size: 2rem;">💡</div>
-            <div>
-              <h4 style="font-size: 1rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.25rem;">
-                Gợi ý học tập từ StudyMate AI
-              </h4>
-              <p style="font-size: 0.875rem; color: var(--text-muted); line-height: 1.5;">
-                Bạn có bài tập <strong>"Ôn tập tích phân & chuỗi số"</strong> của môn Giải tích 1 sẽ hết hạn vào 17:00 ngày mai. Bạn nên dành 45 phút chiều nay sau giờ học môn Web để ôn tập trước!
-              </p>
-            </div>
-          </div>
-        </div>
-
-      </main>
+  <!-- StudiesTimer Frosted Navbar -->
+  <nav class="st-navbar">
+    <div style="display: flex; align-items: center; gap: 1rem;">
+      <a href="index.html" class="st-logo">
+        <div class="st-logo-icon">📖</div>
+        <span>Studies<span class="accent-word">Mate</span></span>
+      </a>
     </div>
+
+    <!-- Center Navigation Pills -->
+    <div class="st-nav-links">
+      <a href="dashboard.html" class="st-pill-link active">📊 Dashboard</a>
+      <a href="schedule.html" class="st-pill-link">📅 Lịch học</a>
+      <a href="tasks.html" class="st-pill-link">✅ Deadline</a>
+      <a href="subjects.html" class="st-pill-link">📖 Môn học</a>
+      <a href="exams.html" class="st-pill-link">🎯 Kỳ thi</a>
+      <a href="import-schedule.html" class="st-pill-link">📸 OCR TKB</a>
+      <a href="documents.html" class="st-pill-link">📂 Tài liệu</a>
+      <a href="progress.html" class="st-pill-link">📈 Tiến độ</a>
+    </div>
+
+    <!-- Right Utilities -->
+    <div class="st-nav-actions">
+      <!-- Ambient Sound Button -->
+      <button id="ambientSoundBtn" class="st-btn-icon" title="Bật âm thanh mưa thư giãn">
+        🌧️
+      </button>
+
+      <!-- Theme Switcher Button -->
+      <button id="themePickerBtn" class="st-btn-icon" title="Đổi màu chủ đề (Theme)">
+        🎨
+      </button>
+
+      <!-- Theme Dropdown -->
+      <div id="themeDropdown" class="theme-dropdown">
+        <div style="font-size: 0.75rem; color: var(--theme-text-muted); text-transform: uppercase; margin-bottom: 0.5rem; font-weight: 600;">Chọn bảng màu</div>
+        <div class="theme-option" data-theme="cosmic">
+          <span class="theme-dot" style="background: #8b5cf6;"></span> Cosmic Purple
+        </div>
+        <div class="theme-option" data-theme="sepia">
+          <span class="theme-dot" style="background: #D2691E;"></span> Warm Sepia
+        </div>
+        <div class="theme-option" data-theme="soft-gray">
+          <span class="theme-dot" style="background: #a855f7;"></span> Soft Gray
+        </div>
+        <div class="theme-option" data-theme="ocean">
+          <span class="theme-dot" style="background: #06b6d4;"></span> Ocean Night
+        </div>
+        <div class="theme-option" data-theme="forest">
+          <span class="theme-dot" style="background: #22c55e;"></span> Forest Green
+        </div>
+        <div class="theme-option" data-theme="pastel">
+          <span class="theme-dot" style="background: #faf5ef; border: 1px solid #ccc;"></span> Pastel Cream
+        </div>
+      </div>
+
+      <a href="profile.html" class="st-pill-btn" style="padding: 0.4rem 0.8rem; gap: 0.4rem;">
+        <span>👤</span> <span class="user-name">Minh Đức</span>
+      </a>
+
+      <!-- Mobile Menu Button -->
+      <button class="st-mobile-btn">☰</button>
+    </div>
+  </nav>
+
+  <!-- Mobile Drawer -->
+  <div class="st-drawer-overlay"></div>
+  <div class="st-mobile-drawer">
+    <a href="dashboard.html" class="st-pill-link active">📊 Dashboard sinh viên</a>
+    <a href="schedule.html" class="st-pill-link">📅 Lịch học / TKB</a>
+    <a href="tasks.html" class="st-pill-link">✅ Nhiệm vụ & Deadline</a>
+    <a href="import-schedule.html" class="st-pill-link">📸 Nhập TKB (OCR / AI)</a>
+    <a href="subjects.html" class="st-pill-link">📖 Danh sách Môn học</a>
+    <a href="exams.html" class="st-pill-link">🎯 Kỳ thi đếm ngược</a>
+    <a href="documents.html" class="st-pill-link">📂 Kho tài liệu</a>
+    <a href="progress.html" class="st-pill-link">📈 Báo cáo tiến độ</a>
+    <a href="admin-dashboard.html" class="st-pill-link">⚙️ Chuyển sang Admin</a>
+    <a href="profile.html" class="st-pill-link">👤 Hồ sơ cá nhân</a>
+    <a href="index.html" class="st-pill-link" style="margin-top: 1rem; border: 1px solid var(--theme-border);">🚪 Đăng xuất</a>
   </div>
 
+  <!-- Main Content: Student Workspace (NO TIMER) -->
+  <main class="st-main-container">
+    
+    <!-- Real-time Clock & Daily Quote -->
+    <div class="st-quote-box">
+      <div id="liveTime" style="font-size: 2.5rem; font-weight: 200; letter-spacing: 0.03em; color: var(--theme-text-primary); margin-bottom: 0.25rem;">17:45</div>
+      <div id="liveDate" style="font-size: 0.875rem; color: var(--theme-text-muted); margin-bottom: 0.85rem;">Chủ Nhật, 13 tháng 9</div>
+      <p class="st-quote-text">“Chào buổi chiều, Minh Đức! Hãy tập trung vào những việc quan trọng nhất hôm nay.”</p>
+    </div>
+
+    <!-- Quick Action Bar -->
+    <div class="st-action-bar">
+      <a href="tasks.html" class="st-pill-btn st-pill-btn-primary">
+        + Thêm nhiệm vụ / bài tập
+      </a>
+      <a href="import-schedule.html" class="st-pill-btn">
+        📸 Quét TKB bằng ảnh (OCR/AI)
+      </a>
+      <a href="schedule.html" class="st-pill-btn">
+        📅 Xem toàn bộ lịch học tuần
+      </a>
+      <a href="exams.html" class="st-pill-btn">
+        🎯 Đếm ngược kỳ thi
+      </a>
+    </div>
+
+    <!-- 4 Stats Pill Cards -->
+    <div class="st-stats-grid">
+      <div class="st-stat-box">
+        <div class="st-stat-icon">📚</div>
+        <div>
+          <div class="st-stat-value" id="statSubjectsCount">4</div>
+          <div class="st-stat-label">Môn học học kỳ</div>
+        </div>
+      </div>
+
+      <div class="st-stat-box">
+        <div class="st-stat-icon" style="color: var(--status-warning);">⏳</div>
+        <div>
+          <div class="st-stat-value" id="statPendingTasks">3</div>
+          <div class="st-stat-label">Deadline chưa xong</div>
+        </div>
+      </div>
+
+      <div class="st-stat-box">
+        <div class="st-stat-icon" style="color: var(--status-safe);">📈</div>
+        <div>
+          <div class="st-stat-value" id="statAvgProgress">67%</div>
+          <div class="st-stat-label">Tiến độ trung bình</div>
+        </div>
+      </div>
+
+      <div class="st-stat-box">
+        <div class="st-stat-icon" style="color: var(--theme-secondary);">🎯</div>
+        <div>
+          <div class="st-stat-value" id="statExamsCount">3</div>
+          <div class="st-stat-label">Kỳ thi sắp tới</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2 Central Glass Cards: Today's Schedule & Deadlines -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(420px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+      
+      <!-- Lịch học hôm nay -->
+      <div class="st-card">
+        <div class="st-card-header">
+          <div class="st-card-title">📅 Lịch học hôm nay</div>
+          <a href="schedule.html" style="font-size: 0.8125rem; color: var(--theme-primary);">Xem cả tuần &rarr;</a>
+        </div>
+        <div id="todayScheduleList" style="display: flex; flex-direction: column; gap: 0.85rem;">
+          <!-- Rendered by js/dashboard.js -->
+        </div>
+      </div>
+
+      <!-- Deadline sắp tới -->
+      <div class="st-card">
+        <div class="st-card-header">
+          <div class="st-card-title">⏰ Deadline cần ưu tiên</div>
+          <a href="tasks.html" style="font-size: 0.8125rem; color: var(--theme-primary);">Quản lý &rarr;</a>
+        </div>
+        <div id="upcomingDeadlinesList" style="display: flex; flex-direction: column; gap: 0.85rem;">
+          <!-- Rendered by js/dashboard.js -->
+        </div>
+      </div>
+
+    </div>
+
+    <!-- StudyMate AI Study Recommendation Box -->
+    <div class="st-card" style="border-left: 3px solid var(--theme-primary); background: linear-gradient(135deg, var(--theme-card-active) 0%, var(--theme-card) 100%);">
+      <div style="display: flex; gap: 1rem; align-items: flex-start;">
+        <div style="font-size: 1.75rem;">💡</div>
+        <div>
+          <h4 style="font-size: 0.95rem; font-weight: 600; color: var(--theme-text-primary); margin-bottom: 0.25rem;">
+            Gợi ý từ StudyMate AI
+          </h4>
+          <p style="font-size: 0.875rem; color: var(--theme-text-secondary); line-height: 1.5;">
+            Bài tập <strong>"Ôn tập tích phân & chuỗi số"</strong> của môn Giải tích 1 có hạn nộp lúc 17:00 ngày mai. Hệ thống đề xuất bạn nên ôn tập phần này trong 45 phút chiều nay sau giờ học môn Web!
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
   <script src="../js/main.js"></script>
-  <script src="../js/auth.js"></script>
+  <script src="../js/theme.js"></script>
   <script src="../js/dashboard.js"></script>
 </body>
 </html>

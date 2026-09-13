@@ -1,117 +1,275 @@
 ﻿<!DOCTYPE html>
-<html lang="vi">
+<html lang="vi" data-theme="cosmic">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>StudyMate – Your Academic Companion | Nền tảng quản lý học tập</title>
+  <title>StudyMate — Nền tảng quản lý học tập thông minh cho sinh viên</title>
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/responsive.css">
 </head>
 <body>
-  <!-- Header / Navbar -->
-  <header style="background: #ffffff; border-bottom: 1px solid var(--border-color); padding: 1rem 2rem; position: sticky; top: 0; z-index: 100;">
-    <div style="max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between;">
-      <div class="logo-brand">
-        📚 StudyMate <span class="logo-badge">CSE122</span>
-      </div>
-      <nav style="display: flex; gap: 1.5rem; align-items: center;">
-        <a href="#features" style="color: var(--text-main); font-weight: 500;">Tính năng</a>
-        <a href="#usp" style="color: var(--text-main); font-weight: 500;">OCR Thời khóa biểu</a>
-        <a href="#about" style="color: var(--text-main); font-weight: 500;">Về StudyMate</a>
-        <a href="login.html" class="btn btn-secondary">Đăng nhập</a>
-        <a href="register.html" class="btn btn-primary">Đăng ký ngay</a>
-      </nav>
-    </div>
-  </header>
 
-  <!-- Hero Section -->
-  <section style="padding: 5rem 2rem; background: linear-gradient(180deg, #eff6ff 0%, #ffffff 100%); text-align: center;">
-    <div style="max-width: 860px; margin: 0 auto;">
-      <span class="badge badge-primary" style="font-size: 0.9rem; padding: 0.4rem 1rem; margin-bottom: 1.5rem;">✨ Nền tảng quản lý học tập cho sinh viên</span>
-      <h1 style="font-size: 2.75rem; font-weight: 800; color: var(--text-main); line-height: 1.2; margin-bottom: 1.25rem;">
-        Biến dữ liệu học tập rời rạc thành một kế hoạch có thể theo dõi
-      </h1>
-      <p style="font-size: 1.125rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 2rem;">
-        Giúp sinh viên biết <strong>hôm nay cần làm gì</strong>, <strong>deadline nào sắp đến</strong> và <strong>tiến độ học tập hiện tại ra sao</strong> trên một nền tảng duy nhất.
-      </p>
-      <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-        <a href="dashboard.html" class="btn btn-primary" style="font-size: 1rem; padding: 0.75rem 1.75rem;">Trải nghiệm Dashboard</a>
-        <a href="import-schedule.html" class="btn btn-secondary" style="font-size: 1rem; padding: 0.75rem 1.75rem;">📸 Thử nhận diện ảnh TKB</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Problem & Solution Section -->
-  <section id="features" style="padding: 4rem 2rem; max-width: 1200px; margin: 0 auto;">
-    <div style="text-align: center; margin-bottom: 3rem;">
-      <h2 style="font-size: 2rem; font-weight: 700;">Giải pháp toàn diện cho sinh viên</h2>
-      <p style="color: var(--text-muted);">Không còn lo bỏ sót deadline hay lạc lối giữa nhiều nhóm Zalo, LMS</p>
+  <!-- StudiesTimer Frosted Navbar -->
+  <nav class="st-navbar">
+    <div style="display: flex; align-items: center; gap: 1rem;">
+      <a href="index.html" class="st-logo">
+        <div class="st-logo-icon">📖</div>
+        <span>Studies<span class="accent-word">Mate</span></span>
+      </a>
     </div>
 
-    <div class="stats-grid" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));">
-      <div class="card" style="padding: 1.5rem;">
-        <div class="stat-card-icon" style="margin-bottom: 1rem;">📊</div>
-        <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem;">Dashboard trực quan</h3>
-        <p style="color: var(--text-muted); font-size: 0.9rem;">Tổng hợp lịch học hôm nay, kỳ thi sắp đến, việc ưu tiên cao và tiến độ học tập.</p>
-      </div>
-
-      <div class="card" style="padding: 1.5rem;">
-        <div class="stat-card-icon" style="margin-bottom: 1rem;">⏰</div>
-        <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem;">Tự tính Deadline</h3>
-        <p style="color: var(--text-muted); font-size: 0.9rem;">Nhập deadline 1 lần, hệ thống tự động phân loại màu sắc: Còn nhiều, Sắp đến hạn hoặc Quá hạn.</p>
-      </div>
-
-      <div class="card" style="padding: 1.5rem;">
-        <div class="stat-card-icon" style="margin-bottom: 1rem;">📈</div>
-        <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem;">Tự đo lường Tiến độ</h3>
-        <p style="color: var(--text-muted); font-size: 0.9rem;">Tiến độ từng môn học được tính tự động từ số nhiệm vụ hoàn thành. Không cần nhập tay % thủ công.</p>
-      </div>
-
-      <div class="card" style="padding: 1.5rem;">
-        <div class="stat-card-icon" style="margin-bottom: 1rem;">🤖</div>
-        <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem;">StudyMate AI</h3>
-        <p style="color: var(--text-muted); font-size: 0.9rem;">Gợi ý lịch học, sắp xếp thứ tự công việc ưu tiên và hỗ trợ OCR ảnh thời khóa biểu.</p>
-      </div>
+    <!-- Center Navigation Pills -->
+    <div class="st-nav-links">
+      <a href="index.html" class="st-pill-link active">🏠 Giới thiệu</a>
+      <a href="dashboard.html" class="st-pill-link">📊 Dashboard</a>
+      <a href="schedule.html" class="st-pill-link">📅 Lịch học</a>
+      <a href="tasks.html" class="st-pill-link">✅ Deadline</a>
+      <a href="import-schedule.html" class="st-pill-link">📸 OCR TKB</a>
+      <a href="progress.html" class="st-pill-link">📈 Tiến độ</a>
     </div>
-  </section>
 
-  <!-- USP Feature Highlight -->
-  <section id="usp" style="padding: 4rem 2rem; background: var(--primary-light);">
-    <div style="max-width: 1000px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 3rem; flex-wrap: wrap;">
-      <div style="flex: 1; min-width: 300px;">
-        <span class="badge badge-primary" style="margin-bottom: 1rem;">Tính năng nổi bật (USP)</span>
-        <h2 style="font-size: 2.25rem; font-weight: 800; margin-bottom: 1rem;">Không bắt buộc nhập tay thời khóa biểu!</h2>
-        <p style="color: var(--text-muted); font-size: 1rem; line-height: 1.6; margin-bottom: 1.5rem;">
-          Chỉ cần chụp ảnh thời khóa biểu từ trang đăng ký tín chỉ trường. AI/OCR sẽ nhận diện thứ, giờ, phòng và tên môn học để tự động tạo lịch học.
-        </p>
-        <div style="background: #ffffff; padding: 1rem; border-radius: var(--border-radius); border: 1px solid var(--border-color); font-family: monospace; font-size: 0.85rem;">
-          📸 Ảnh TKB ➔ 🤖 AI Nhận diện ➔ 📋 Kiểm tra & Xác nhận ➔ 📅 Tự động tạo lịch
+    <!-- Right Utilities: Ambient Sound, Theme Picker, Auth -->
+    <div class="st-nav-actions">
+      <!-- Ambient Sound Button -->
+      <button id="ambientSoundBtn" class="st-btn-icon" title="Bật âm thanh mưa thư giãn">
+        🌧️
+      </button>
+
+      <!-- Theme Switcher Button -->
+      <button id="themePickerBtn" class="st-btn-icon" title="Đổi màu chủ đề (Theme)">
+        🎨
+      </button>
+
+      <!-- Theme Dropdown -->
+      <div id="themeDropdown" class="theme-dropdown">
+        <div style="font-size: 0.75rem; color: var(--theme-text-muted); text-transform: uppercase; margin-bottom: 0.5rem; font-weight: 600;">Chọn bảng màu</div>
+        <div class="theme-option" data-theme="cosmic">
+          <span class="theme-dot" style="background: #8b5cf6;"></span> Cosmic Purple
         </div>
-        <div style="margin-top: 1.5rem;">
-          <a href="import-schedule.html" class="btn btn-primary">Trải nghiệm tính năng OCR ngay &rarr;</a>
+        <div class="theme-option" data-theme="sepia">
+          <span class="theme-dot" style="background: #D2691E;"></span> Warm Sepia
+        </div>
+        <div class="theme-option" data-theme="soft-gray">
+          <span class="theme-dot" style="background: #a855f7;"></span> Soft Gray
+        </div>
+        <div class="theme-option" data-theme="ocean">
+          <span class="theme-dot" style="background: #06b6d4;"></span> Ocean Night
+        </div>
+        <div class="theme-option" data-theme="forest">
+          <span class="theme-dot" style="background: #22c55e;"></span> Forest Green
+        </div>
+        <div class="theme-option" data-theme="pastel">
+          <span class="theme-dot" style="background: #faf5ef; border: 1px solid #ccc;"></span> Pastel Cream
         </div>
       </div>
-      <div style="flex: 1; min-width: 300px; background: #ffffff; padding: 2rem; border-radius: var(--border-radius-lg); box-shadow: var(--shadow-md); border: 1px solid var(--border-color);">
-        <h4 style="margin-bottom: 1rem; font-size: 1.1rem;">⚡ Minh họa nhận diện:</h4>
-        <div style="background: #f1f5f9; padding: 0.75rem; border-radius: 8px; margin-bottom: 1rem; font-size: 0.85rem;">
-          <strong>Input ảnh:</strong> <code>Thứ 2 | 07:00 - 09:00 | Lập trình nâng cao | A203</code>
+
+      <a href="login.html" class="st-pill-btn" style="padding: 0.4rem 0.9rem;">Đăng nhập</a>
+      <a href="dashboard.html" class="st-pill-btn st-pill-btn-primary" style="padding: 0.4rem 1rem;">Bắt đầu</a>
+
+      <!-- Mobile Menu Button -->
+      <button class="st-mobile-btn">☰</button>
+    </div>
+  </nav>
+
+  <!-- Mobile Drawer -->
+  <div class="st-drawer-overlay"></div>
+  <div class="st-mobile-drawer">
+    <a href="index.html" class="st-pill-link active">🏠 Giới thiệu</a>
+    <a href="dashboard.html" class="st-pill-link">📊 Dashboard sinh viên</a>
+    <a href="schedule.html" class="st-pill-link">📅 Lịch học / TKB</a>
+    <a href="tasks.html" class="st-pill-link">✅ Nhiệm vụ & Deadline</a>
+    <a href="import-schedule.html" class="st-pill-link">📸 Nhập TKB (OCR / AI)</a>
+    <a href="subjects.html" class="st-pill-link">📖 Danh sách Môn học</a>
+    <a href="exams.html" class="st-pill-link">🎯 Kỳ thi đếm ngược</a>
+    <a href="progress.html" class="st-pill-link">📈 Báo cáo tiến độ</a>
+    <a href="login.html" class="st-pill-link" style="margin-top: 1rem; border: 1px solid var(--theme-border);">🚪 Đăng nhập</a>
+  </div>
+
+  <!-- Main Hero Workspace (NO TIMER) -->
+  <main class="st-main-container">
+    
+    <!-- Daily Live Clock & Quote (StudiesTimer signature) -->
+    <div class="st-quote-box">
+      <div id="liveTime" style="font-size: 2.25rem; font-weight: 200; letter-spacing: 0.04em; margin-bottom: 0.25rem; color: var(--theme-text-primary);">17:45</div>
+      <div id="liveDate" style="font-size: 0.875rem; color: var(--theme-text-muted); margin-bottom: 1rem;">Chủ Nhật, 13 tháng 9</div>
+      <p class="st-quote-text">“The secret of getting ahead is getting started.”</p>
+      <div class="st-quote-author">— Mark Twain</div>
+    </div>
+
+    <!-- Floating Action Pills -->
+    <div class="st-action-bar">
+      <a href="dashboard.html" class="st-pill-btn st-pill-btn-primary">
+        📊 Mở Dashboard học tập
+      </a>
+      <a href="import-schedule.html" class="st-pill-btn">
+        📸 Quét TKB bằng ảnh (AI/OCR)
+      </a>
+      <a href="tasks.html" class="st-pill-btn">
+        ✅ Quản lý Deadline
+      </a>
+      <a href="schedule.html" class="st-pill-btn">
+        📅 Xem Thời khóa biểu
+      </a>
+    </div>
+
+    <!-- 4 Stats Pill Boxes -->
+    <div class="st-stats-grid">
+      <div class="st-stat-box">
+        <div class="st-stat-icon">📚</div>
+        <div>
+          <div class="st-stat-value">4</div>
+          <div class="st-stat-label">Môn học học kỳ</div>
         </div>
-        <div style="border-left: 3px solid var(--primary); padding-left: 1rem;">
-          <div style="font-size: 0.875rem; margin-bottom: 0.25rem;"><strong>Môn:</strong> Lập trình nâng cao</div>
-          <div style="font-size: 0.875rem; margin-bottom: 0.25rem;"><strong>Thời gian:</strong> Thứ Hai (07:00 - 09:00)</div>
-          <div style="font-size: 0.875rem; margin-bottom: 0.25rem;"><strong>Phòng:</strong> A203</div>
-          <span class="badge badge-safe" style="margin-top: 0.5rem;">Đã sẵn sàng lưu vào TKB</span>
+      </div>
+
+      <div class="st-stat-box">
+        <div class="st-stat-icon" style="color: var(--status-warning);">⏳</div>
+        <div>
+          <div class="st-stat-value">3</div>
+          <div class="st-stat-label">Deadline sắp đến</div>
+        </div>
+      </div>
+
+      <div class="st-stat-box">
+        <div class="st-stat-icon" style="color: var(--status-safe);">📈</div>
+        <div>
+          <div class="st-stat-value">70%</div>
+          <div class="st-stat-label">Tiến độ hoàn thành</div>
+        </div>
+      </div>
+
+      <div class="st-stat-box">
+        <div class="st-stat-icon" style="color: var(--theme-secondary);">🎯</div>
+        <div>
+          <div class="st-stat-value">12 ngày</div>
+          <div class="st-stat-label">Kỳ thi gần nhất</div>
         </div>
       </div>
     </div>
-  </section>
+
+    <!-- 3 Core Academic Pillars (Glass Cards) -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; margin-bottom: 2.5rem;">
+      
+      <!-- Pillar 1: Today's schedule -->
+      <div class="st-card">
+        <div class="st-card-header">
+          <div class="st-card-title">📅 Hôm nay cần làm gì?</div>
+          <a href="schedule.html" style="font-size: 0.75rem; color: var(--theme-primary);">Xem tuần &rarr;</a>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 0.85rem;">
+          <div style="padding: 0.75rem; border-radius: 10px; background: rgba(255,255,255,0.03); border: 1px solid var(--theme-border);">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <strong style="font-size: 0.875rem;">Phát triển ứng dụng Web (CSE122)</strong>
+              <span class="badge badge-safe">07:00 - 09:00</span>
+            </div>
+            <div style="font-size: 0.75rem; color: var(--theme-text-muted); margin-top: 0.25rem;">🏛️ Phòng A203 • ThS. Nguyễn Văn A</div>
+          </div>
+
+          <div style="padding: 0.75rem; border-radius: 10px; background: rgba(255,255,255,0.03); border: 1px solid var(--theme-border);">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <strong style="font-size: 0.875rem;">Cấu trúc dữ liệu & Giải thuật</strong>
+              <span class="badge badge-primary">09:15 - 11:30</span>
+            </div>
+            <div style="font-size: 0.75rem; color: var(--theme-text-muted); margin-top: 0.25rem;">🏛️ Phòng B102 • TS. Trần Thị B</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pillar 2: Deadlines -->
+      <div class="st-card">
+        <div class="st-card-header">
+          <div class="st-card-title">⏰ Deadline nào sắp đến?</div>
+          <a href="tasks.html" style="font-size: 0.75rem; color: var(--theme-primary);">Tất cả &rarr;</a>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 0.85rem;">
+          <div style="padding: 0.75rem; border-radius: 10px; background: rgba(255,255,255,0.03); border: 1px solid var(--theme-border);">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <strong style="font-size: 0.875rem;">Ôn tập tích phân & chuỗi</strong>
+              <span class="badge badge-danger">🔴 Hạn hôm nay</span>
+            </div>
+            <div style="font-size: 0.75rem; color: var(--theme-text-muted); margin-top: 0.25rem;">Giải tích 1 • Hạn chót: 17:00</div>
+          </div>
+
+          <div style="padding: 0.75rem; border-radius: 10px; background: rgba(255,255,255,0.03); border: 1px solid var(--theme-border);">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <strong style="font-size: 0.875rem;">Báo cáo BTL Website StudyMate</strong>
+              <span class="badge badge-warning">🟡 Còn 7 ngày</span>
+            </div>
+            <div style="font-size: 0.75rem; color: var(--theme-text-muted); margin-top: 0.25rem;">CSE122 • 20/09/2026</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pillar 3: Automatic Progress -->
+      <div class="st-card">
+        <div class="st-card-header">
+          <div class="st-card-title">📈 Tiến độ học tập ra sao?</div>
+          <a href="progress.html" style="font-size: 0.75rem; color: var(--theme-primary);">Chi tiết &rarr;</a>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 1rem;">
+          <div>
+            <div style="display: flex; justify-content: space-between; font-size: 0.8125rem; margin-bottom: 0.35rem;">
+              <span>CSE122 - Web cơ bản</span>
+              <strong>80% (8/10 việc)</strong>
+            </div>
+            <div class="progress-bar-container">
+              <div class="progress-bar-fill" style="width: 80%;"></div>
+            </div>
+          </div>
+
+          <div>
+            <div style="display: flex; justify-content: space-between; font-size: 0.8125rem; margin-bottom: 0.35rem;">
+              <span>CSE281 - Cấu trúc dữ liệu</span>
+              <strong>50% (5/10 việc)</strong>
+            </div>
+            <div class="progress-bar-container">
+              <div class="progress-bar-fill" style="width: 50%;"></div>
+            </div>
+          </div>
+
+          <div>
+            <div style="display: flex; justify-content: space-between; font-size: 0.8125rem; margin-bottom: 0.35rem;">
+              <span>MATH101 - Giải tích 1</span>
+              <strong>30% (3/10 việc)</strong>
+            </div>
+            <div class="progress-bar-container">
+              <div class="progress-bar-fill" style="width: 30%; background: var(--status-warning);"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- USP Feature Section (Aesthetic Glass Spotlight) -->
+    <div class="st-card" style="border: 1px solid var(--theme-primary); background: linear-gradient(135deg, var(--theme-card-active) 0%, var(--theme-card) 100%);">
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem;">
+        <div style="max-width: 650px;">
+          <span class="badge badge-primary" style="margin-bottom: 0.5rem;">✨ Tính năng nổi bật (USP)</span>
+          <h2 style="font-size: 1.5rem; font-weight: 600; margin-bottom: 0.5rem;">
+            Không bắt buộc nhập tay thời khóa biểu!
+          </h2>
+          <p style="color: var(--theme-text-secondary); font-size: 0.875rem; line-height: 1.6;">
+            Chụp ảnh màn hình lịch học từ cổng đào tạo trường. AI/OCR sẽ nhận diện thứ, giờ, phòng và tên môn học để tự động tạo lịch và tính deadline.
+          </p>
+        </div>
+        <div>
+          <a href="import-schedule.html" class="st-pill-btn st-pill-btn-primary" style="padding: 0.75rem 1.5rem; font-size: 0.875rem;">
+            📸 Trải nghiệm quét ảnh TKB ngay &rarr;
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </main>
 
   <!-- Footer -->
-  <footer style="background: #ffffff; border-top: 1px solid var(--border-color); padding: 2rem; text-align: center; color: var(--text-muted); font-size: 0.875rem;">
-    <p>© 2026 StudyMate – Dự án BTL Phát triển ứng dụng web cơ bản (CSE122) – Trường Đại học Thủy Lợi.</p>
-    <p style="margin-top: 0.5rem;"><a href="login.html">Đăng nhập tài khoản</a> • <a href="admin-dashboard.html">Khu vực Quản trị viên (Admin)</a></p>
+  <footer style="border-top: 1px solid var(--theme-border); padding: 2rem; text-align: center; color: var(--theme-text-muted); font-size: 0.75rem;">
+    <p>© 2026 StudyMate – Dự án Phát triển ứng dụng web cơ bản (CSE122) – Trường Đại học Thủy Lợi.</p>
+    <p style="margin-top: 0.35rem;">Thiết kế thẩm mỹ lấy cảm hứng từ StudiesTimer (Giao diện tối giản, Kính mờ, Bỏ phần Timer)</p>
   </footer>
 
   <script src="../js/main.js"></script>
+  <script src="../js/theme.js"></script>
 </body>
 </html>

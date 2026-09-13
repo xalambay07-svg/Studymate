@@ -1,5 +1,5 @@
 ﻿/**
- * STUDYMATE - DASHBOARD SCRIPT
+ * STUDYMATE - DASHBOARD SCRIPT (Aesthetic Glass Design)
  * Tổng hợp thông tin học tập, deadline gần nhất, việc hôm nay, tự động tính tiến độ
  */
 
@@ -41,20 +41,20 @@ function renderTodaySchedule() {
   if (!container) return;
 
   const todayClasses = [
-    { time: "07:00 - 09:00", subject: "Phát triển ứng dụng web cơ bản (CSE122)", room: "Phòng A203", teacher: "ThS. Nguyễn Văn A" },
-    { time: "09:15 - 11:30", subject: "Cấu trúc dữ liệu và giải thuật (CSE281)", room: "Phòng B102", teacher: "TS. Trần Thị B" }
+    { time: "07:00 - 09:00", subject: "Phát triển ứng dụng web cơ bản (CSE122)", room: "Phòng A203", teacher: "ThS. Nguyễn Văn A", status: "Đang diễn ra" },
+    { time: "09:15 - 11:30", subject: "Cấu trúc dữ liệu và giải thuật (CSE281)", room: "Phòng B102", teacher: "TS. Trần Thị B", status: "Sắp tới" }
   ];
 
   container.innerHTML = todayClasses.map(c => `
-    <div style="display: flex; align-items: center; justify-content: space-between; padding: 1rem; border-bottom: 1px solid var(--border-color);">
-      <div style="display: flex; gap: 1rem; align-items: center;">
-        <span class="badge badge-primary" style="font-size: 0.85rem; padding: 0.35rem 0.75rem;">${c.time}</span>
+    <div style="display: flex; align-items: center; justify-content: space-between; padding: 0.85rem 1rem; border-radius: 12px; background: rgba(255,255,255,0.03); border: 1px solid var(--theme-border); transition: var(--transition);">
+      <div style="display: flex; gap: 0.85rem; align-items: center;">
+        <span class="badge badge-primary" style="font-size: 0.8rem; padding: 0.3rem 0.6rem;">${c.time}</span>
         <div>
-          <div style="font-weight: 600; color: var(--text-main);">${c.subject}</div>
-          <div style="font-size: 0.8125rem; color: var(--text-muted);">🏛️ ${c.room} • 👨‍🏫 ${c.teacher}</div>
+          <div style="font-weight: 600; color: var(--theme-text-primary); font-size: 0.9rem;">${c.subject}</div>
+          <div style="font-size: 0.75rem; color: var(--theme-text-muted);">🏛️ ${c.room} • 👨‍🏫 ${c.teacher}</div>
         </div>
       </div>
-      <span class="badge badge-safe">Đang diễn ra</span>
+      <span class="badge ${c.status === 'Đang diễn ra' ? 'badge-safe' : 'badge-warning'}">${c.status}</span>
     </div>
   `).join("");
 }
@@ -67,7 +67,7 @@ function renderUpcomingDeadlines() {
   const activeTasks = tasks.filter(t => t.status !== "completed");
 
   if (activeTasks.length === 0) {
-    container.innerHTML = `<div style="padding: 1.5rem; text-align: center; color: var(--text-muted);">Tuyệt vời! Không có deadline nào chưa hoàn thành 🎉</div>`;
+    container.innerHTML = `<div style="padding: 1.5rem; text-align: center; color: var(--theme-text-muted);">Tuyệt vời! Không có deadline nào chưa hoàn thành 🎉</div>`;
     return;
   }
 
@@ -83,17 +83,17 @@ function renderUpcomingDeadlines() {
       badgeText = "Đã quá hạn";
     } else if (diffHours <= 24) {
       badgeClass = "badge-danger";
-      badgeText = "Hạn hôm nay / Rất gần!";
+      badgeText = "Hạn hôm nay";
     } else if (diffHours <= 72) {
       badgeClass = "badge-warning";
-      badgeText = `Sắp đến hạn (${Math.ceil(diffHours / 24)} ngày)`;
+      badgeText = `Sắp hạn (${Math.ceil(diffHours / 24)} ngày)`;
     }
 
     return `
-      <div style="display: flex; align-items: center; justify-content: space-between; padding: 0.875rem 0; border-bottom: 1px solid var(--border-color);">
+      <div style="display: flex; align-items: center; justify-content: space-between; padding: 0.85rem 1rem; border-radius: 12px; background: rgba(255,255,255,0.03); border: 1px solid var(--theme-border); transition: var(--transition);">
         <div>
-          <div style="font-weight: 600;">${task.title}</div>
-          <div style="font-size: 0.8125rem; color: var(--text-muted);">Môn: ${task.subjectId} • Hạn chót: ${task.deadline.replace("T", " ")}</div>
+          <div style="font-weight: 600; color: var(--theme-text-primary); font-size: 0.9rem;">${task.title}</div>
+          <div style="font-size: 0.75rem; color: var(--theme-text-muted);">Môn: ${task.subjectId} • Hạn chót: ${task.deadline.replace("T", " ")}</div>
         </div>
         <span class="badge ${badgeClass}">${badgeText}</span>
       </div>

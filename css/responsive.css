@@ -1,100 +1,95 @@
 ﻿/* ==========================================================================
-   STUDYMATE - RESPONSIVE STYLES
-   Tối ưu hiển thị cho Tablet (<= 1024px) và Mobile (<= 768px)
+   STUDYMATE - RESPONSIVE STYLES (STUDIESTIMER MOBILE DESIGN)
    ========================================================================== */
 
-/* Menu toggle button (mặc định ẩn trên desktop) */
-.mobile-menu-btn {
+.st-mobile-btn {
   display: none;
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  color: var(--text-main);
+  background: transparent;
+  border: 1px solid var(--theme-border);
+  color: var(--theme-text-primary);
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  font-size: 1.25rem;
   cursor: pointer;
-  margin-right: 0.75rem;
 }
 
-/* Backdrop mờ khi mở menu trên mobile */
-.sidebar-overlay {
-  display: none;
+/* Mobile Drawer Menu */
+.st-mobile-drawer {
   position: fixed;
-  top: 0;
-  left: 0;
+  top: 60px;
   right: 0;
   bottom: 0;
-  background: rgba(15, 23, 42, 0.5);
-  z-index: 95;
+  width: 280px;
+  background: var(--theme-navbar-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-left: 1px solid var(--theme-border);
+  padding: 1.5rem 1rem;
+  z-index: 99;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  transform: translateX(100%);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Tablet & Màn hình nhỏ (<= 1024px) */
-@media (max-width: 1024px) {
-  .top-header {
-    padding: 0 1.25rem;
+.st-mobile-drawer.open {
+  transform: translateX(0);
+}
+
+.st-drawer-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 95;
+  display: none;
+}
+
+.st-drawer-overlay.active {
+  display: block;
+}
+
+@media (max-width: 900px) {
+  .st-nav-links {
+    display: none;
   }
 
-  .header-search {
-    width: 220px;
+  .st-mobile-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
-  .page-content {
-    padding: 1.25rem;
+  .st-main-container {
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
 
-  .stats-grid {
+  .st-stats-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-/* Mobile Devices (<= 768px) */
-@media (max-width: 768px) {
-  .mobile-menu-btn {
-    display: block;
+@media (max-width: 600px) {
+  .st-navbar {
+    padding: 0 1rem;
   }
 
-  .sidebar {
-    transform: translateX(-100%);
-    box-shadow: var(--shadow-lg);
-  }
-
-  .sidebar.open {
-    transform: translateX(0);
-  }
-
-  .sidebar-overlay.active {
-    display: block;
-  }
-
-  .main-wrapper {
-    margin-left: 0;
-  }
-
-  .header-search {
-    display: none; /* Ẩn ô tìm kiếm trên mobile để tiết kiệm diện tích */
-  }
-
-  .stats-grid {
+  .st-stats-grid {
     grid-template-columns: 1fr;
   }
 
-  .page-header {
-    flex-direction: column;
-    align-items: flex-start;
+  .st-action-bar {
+    gap: 0.5rem;
   }
 
-  .card-header {
-    flex-direction: column;
-    align-items: flex-start;
+  .st-pill-btn {
+    padding: 0.45rem 0.9rem;
+    font-size: 0.75rem;
   }
 
-  .card-body {
-    padding: 1rem;
-  }
-
-  .user-info {
-    display: none; /* Ẩn tên, chỉ hiện avatar */
-  }
-
-  .ocr-dropzone {
-    padding: 1.5rem 1rem;
+  .st-quote-text {
+    font-size: 0.85rem;
   }
 }

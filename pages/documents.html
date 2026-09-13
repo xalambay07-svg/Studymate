@@ -1,130 +1,120 @@
 ﻿<!DOCTYPE html>
-<html lang="vi">
+<html lang="vi" data-theme="cosmic">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kho Tài Liệu Học Tập – StudyMate</title>
+  <title>Kho Tài liệu — StudyMate</title>
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/responsive.css">
 </head>
 <body>
-  <div class="app-container">
-    <aside class="sidebar">
-      <div class="sidebar-header">
-        <div class="logo-brand">
-          📚 StudyMate <span class="logo-badge">Sinh viên</span>
-        </div>
-      </div>
-      <nav class="sidebar-nav">
-        <div class="nav-section-title">Học tập</div>
-        <a href="dashboard.html" class="nav-item">📊 Dashboard</a>
-        <a href="schedule.html" class="nav-item">📅 Lịch học / TKB</a>
-        <a href="tasks.html" class="nav-item">✅ Nhiệm vụ & Deadline</a>
-        <a href="subjects.html" class="nav-item">📖 Môn học</a>
-        <a href="exams.html" class="nav-item">🎯 Kỳ thi</a>
-        
-        <div class="nav-section-title">Công cụ & Tiến độ</div>
-        <a href="import-schedule.html" class="nav-item">📸 Nhập TKB (OCR / AI)</a>
-        <a href="documents.html" class="nav-item active">📂 Kho tài liệu</a>
-        <a href="progress.html" class="nav-item">📈 Báo cáo tiến độ</a>
 
-        <div class="nav-section-title">Cá nhân</div>
-        <a href="profile.html" class="nav-item">👤 Hồ sơ cá nhân</a>
-      </nav>
-      <div class="sidebar-footer">
-        <button id="logoutBtn" class="btn btn-secondary btn-sm" style="width: 100%;">🚪 Đăng xuất</button>
-      </div>
-    </aside>
-
-    <div class="main-wrapper">
-      <header class="top-header">
-        <button class="mobile-menu-btn" aria-label="Toggle Menu">☰</button>
-        <div class="header-search">
-          <span class="search-icon">🔍</span>
-          <input type="text" placeholder="Tìm kiếm tài liệu, slide, đề cương...">
-        </div>
-        <div class="header-actions">
-          <button class="btn btn-primary btn-sm" onclick="showToast('Mở hộp thoại tải lên tài liệu', 'info')">+ Tải tài liệu lên</button>
-          <a href="profile.html" class="user-profile-menu">
-            <div class="avatar">SV</div>
-            <div class="user-info">
-              <div class="user-name">Trần Minh Đức</div>
-              <div class="user-role">K64 - CNTT</div>
-            </div>
-          </a>
-        </div>
-      </header>
-
-      <main class="page-content">
-        <div class="page-header">
-          <div>
-            <h1 class="page-title">Kho tài liệu học tập 📂</h1>
-            <p class="page-subtitle">Phân loại theo môn: Slide bài giảng, Bài tập thực hành, Đề cương ôn thi và Tài liệu tham khảo.</p>
-          </div>
-          <div style="display: flex; gap: 0.5rem;">
-            <button class="btn btn-primary btn-sm">Tất cả</button>
-            <button class="btn btn-secondary btn-sm">Slide bài giảng</button>
-            <button class="btn btn-secondary btn-sm">Bài tập / Lab</button>
-            <button class="btn btn-secondary btn-sm">Đề cương ôn thi</button>
-          </div>
-        </div>
-
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem;">
-          
-          <div class="card">
-            <div class="card-body">
-              <span class="badge badge-primary">CSE122 - Web</span>
-              <h4 style="margin: 0.5rem 0; font-size: 1.05rem;">Slide 01 - Nhập môn HTML5 & CSS3</h4>
-              <p style="color: var(--text-muted); font-size: 0.8125rem;">Kích thước: 3.4 MB • Cập nhật: 2 ngày trước</p>
-              <div style="margin-top: 1rem; display: flex; justify-content: space-between;">
-                <button class="btn btn-secondary btn-sm" onclick="showToast('Bắt đầu tải xuống file...', 'success')">⬇️ Tải về</button>
-                <button class="btn btn-secondary btn-sm" onclick="showToast('Mở xem trực tiếp', 'info')">👁️ Xem trước</button>
-              </div>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="card-body">
-              <span class="badge badge-primary">CSE122 - Web</span>
-              <h4 style="margin: 0.5rem 0; font-size: 1.05rem;">Đề cương BTL Web nhóm 3 người</h4>
-              <p style="color: var(--text-muted); font-size: 0.8125rem;">Kích thước: 1.2 MB • Cập nhật: 1 tuần trước</p>
-              <div style="margin-top: 1rem; display: flex; justify-content: space-between;">
-                <button class="btn btn-secondary btn-sm" onclick="showToast('Bắt đầu tải xuống file...', 'success')">⬇️ Tải về</button>
-                <button class="btn btn-secondary btn-sm" onclick="showToast('Mở xem trực tiếp', 'info')">👁️ Xem trước</button>
-              </div>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="card-body">
-              <span class="badge badge-primary">CSE281 - CTDL</span>
-              <h4 style="margin: 0.5rem 0; font-size: 1.05rem;">Bài tập lớn Linked List & Cay Nhi Phan</h4>
-              <p style="color: var(--text-muted); font-size: 0.8125rem;">Kích thước: 5.1 MB • Cập nhật: Hôm qua</p>
-              <div style="margin-top: 1rem; display: flex; justify-content: space-between;">
-                <button class="btn btn-secondary btn-sm" onclick="showToast('Bắt đầu tải xuống file...', 'success')">⬇️ Tải về</button>
-                <button class="btn btn-secondary btn-sm" onclick="showToast('Mở xem trực tiếp', 'info')">👁️ Xem trước</button>
-              </div>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="card-body">
-              <span class="badge badge-primary">MATH101 - Giải tích</span>
-              <h4 style="margin: 0.5rem 0; font-size: 1.05rem;">Tổng hợp công thức Tích phân & Vi phân</h4>
-              <p style="color: var(--text-muted); font-size: 0.8125rem;">Kích thước: 850 KB • Cập nhật: 3 ngày trước</p>
-              <div style="margin-top: 1rem; display: flex; justify-content: space-between;">
-                <button class="btn btn-secondary btn-sm" onclick="showToast('Bắt đầu tải xuống file...', 'success')">⬇️ Tải về</button>
-                <button class="btn btn-secondary btn-sm" onclick="showToast('Mở xem trực tiếp', 'info')">👁️ Xem trước</button>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </main>
+  <nav class="st-navbar">
+    <div style="display: flex; align-items: center; gap: 1rem;">
+      <a href="index.html" class="st-logo">
+        <div class="st-logo-icon">📖</div>
+        <span>Studies<span class="accent-word">Mate</span></span>
+      </a>
     </div>
+
+    <div class="st-nav-links">
+      <a href="dashboard.html" class="st-pill-link">📊 Dashboard</a>
+      <a href="schedule.html" class="st-pill-link">📅 Lịch học</a>
+      <a href="tasks.html" class="st-pill-link">✅ Deadline</a>
+      <a href="subjects.html" class="st-pill-link">📖 Môn học</a>
+      <a href="exams.html" class="st-pill-link">🎯 Kỳ thi</a>
+      <a href="import-schedule.html" class="st-pill-link">📸 OCR TKB</a>
+      <a href="documents.html" class="st-pill-link active">📂 Tài liệu</a>
+      <a href="progress.html" class="st-pill-link">📈 Tiến độ</a>
+    </div>
+
+    <div class="st-nav-actions">
+      <button id="ambientSoundBtn" class="st-btn-icon" title="Bật âm thanh mưa thư giãn">🌧️</button>
+      <button id="themePickerBtn" class="st-btn-icon" title="Đổi Theme">🎨</button>
+
+      <div id="themeDropdown" class="theme-dropdown">
+        <div style="font-size: 0.75rem; color: var(--theme-text-muted); text-transform: uppercase; margin-bottom: 0.5rem; font-weight: 600;">Chọn bảng màu</div>
+        <div class="theme-option" data-theme="cosmic"><span class="theme-dot" style="background: #8b5cf6;"></span> Cosmic Purple</div>
+        <div class="theme-option" data-theme="sepia"><span class="theme-dot" style="background: #D2691E;"></span> Warm Sepia</div>
+        <div class="theme-option" data-theme="soft-gray"><span class="theme-dot" style="background: #a855f7;"></span> Soft Gray</div>
+        <div class="theme-option" data-theme="ocean"><span class="theme-dot" style="background: #06b6d4;"></span> Ocean Night</div>
+        <div class="theme-option" data-theme="forest"><span class="theme-dot" style="background: #22c55e;"></span> Forest Green</div>
+        <div class="theme-option" data-theme="pastel"><span class="theme-dot" style="background: #faf5ef; border: 1px solid #ccc;"></span> Pastel Cream</div>
+      </div>
+
+      <a href="profile.html" class="st-pill-btn" style="padding: 0.4rem 0.8rem;">👤 Minh Đức</a>
+      <button class="st-mobile-btn">☰</button>
+    </div>
+  </nav>
+
+  <div class="st-drawer-overlay"></div>
+  <div class="st-mobile-drawer">
+    <a href="dashboard.html" class="st-pill-link">📊 Dashboard</a>
+    <a href="schedule.html" class="st-pill-link">📅 Lịch học</a>
+    <a href="tasks.html" class="st-pill-link">✅ Deadline</a>
+    <a href="subjects.html" class="st-pill-link">📖 Môn học</a>
+    <a href="exams.html" class="st-pill-link">🎯 Kỳ thi</a>
+    <a href="documents.html" class="st-pill-link active">📂 Tài liệu</a>
+    <a href="progress.html" class="st-pill-link">📈 Tiến độ</a>
   </div>
 
+  <main class="st-main-container">
+    <div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+      <div>
+        <h1 style="font-size: 1.75rem; font-weight: 600; color: var(--theme-text-primary);">Kho tài liệu môn học 📂</h1>
+        <p style="font-size: 0.875rem; color: var(--theme-text-secondary); margin-top: 0.25rem;">
+          Tập trung slide bài giảng, đề cương ôn tập và bài tập thực hành theo từng môn.
+        </p>
+      </div>
+      <button class="st-pill-btn st-pill-btn-primary" onclick="showToast('Mở hộp thoại tải lên tài liệu', 'info')">+ Tải tài liệu lên</button>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem;">
+      
+      <div class="st-card">
+        <span class="badge badge-primary">CSE122 - Web cơ bản</span>
+        <h4 style="margin: 0.5rem 0; font-size: 1rem; font-weight: 600; color: var(--theme-text-primary);">Slide 01 - Nhập môn HTML5 & CSS3</h4>
+        <p style="color: var(--theme-text-muted); font-size: 0.75rem;">Dung lượng: 3.4 MB • Cập nhật: 2 ngày trước</p>
+        <div style="margin-top: 1rem; display: flex; justify-content: space-between;">
+          <button class="st-pill-btn" style="font-size: 0.75rem; padding: 0.35rem 0.8rem;" onclick="showToast('Bắt đầu tải file...', 'success')">⬇️ Tải về</button>
+          <button class="st-pill-btn" style="font-size: 0.75rem; padding: 0.35rem 0.8rem;" onclick="showToast('Xem trước tài liệu', 'info')">👁️ Xem trước</button>
+        </div>
+      </div>
+
+      <div class="st-card">
+        <span class="badge badge-primary">CSE122 - Web cơ bản</span>
+        <h4 style="margin: 0.5rem 0; font-size: 1rem; font-weight: 600; color: var(--theme-text-primary);">Đề cương BTL Web nhóm 3 SV</h4>
+        <p style="color: var(--theme-text-muted); font-size: 0.75rem;">Dung lượng: 1.2 MB • Cập nhật: 1 tuần trước</p>
+        <div style="margin-top: 1rem; display: flex; justify-content: space-between;">
+          <button class="st-pill-btn" style="font-size: 0.75rem; padding: 0.35rem 0.8rem;" onclick="showToast('Bắt đầu tải file...', 'success')">⬇️ Tải về</button>
+          <button class="st-pill-btn" style="font-size: 0.75rem; padding: 0.35rem 0.8rem;" onclick="showToast('Xem trước tài liệu', 'info')">👁️ Xem trước</button>
+        </div>
+      </div>
+
+      <div class="st-card">
+        <span class="badge badge-primary">CSE281 - CTDL & GT</span>
+        <h4 style="margin: 0.5rem 0; font-size: 1rem; font-weight: 600; color: var(--theme-text-primary);">Bài tập lớn Cây Nhị Phân & Stack</h4>
+        <p style="color: var(--theme-text-muted); font-size: 0.75rem;">Dung lượng: 5.1 MB • Cập nhật: Hôm qua</p>
+        <div style="margin-top: 1rem; display: flex; justify-content: space-between;">
+          <button class="st-pill-btn" style="font-size: 0.75rem; padding: 0.35rem 0.8rem;" onclick="showToast('Bắt đầu tải file...', 'success')">⬇️ Tải về</button>
+          <button class="st-pill-btn" style="font-size: 0.75rem; padding: 0.35rem 0.8rem;" onclick="showToast('Xem trước tài liệu', 'info')">👁️ Xem trước</button>
+        </div>
+      </div>
+
+      <div class="st-card">
+        <span class="badge badge-primary">MATH101 - Giải tích 1</span>
+        <h4 style="margin: 0.5rem 0; font-size: 1rem; font-weight: 600; color: var(--theme-text-primary);">Bộ công thức Tích phân & Vi phân</h4>
+        <p style="color: var(--theme-text-muted); font-size: 0.75rem;">Dung lượng: 850 KB • Cập nhật: 3 ngày trước</p>
+        <div style="margin-top: 1rem; display: flex; justify-content: space-between;">
+          <button class="st-pill-btn" style="font-size: 0.75rem; padding: 0.35rem 0.8rem;" onclick="showToast('Bắt đầu tải file...', 'success')">⬇️ Tải về</button>
+          <button class="st-pill-btn" style="font-size: 0.75rem; padding: 0.35rem 0.8rem;" onclick="showToast('Xem trước tài liệu', 'info')">👁️ Xem trước</button>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
   <script src="../js/main.js"></script>
-  <script src="../js/auth.js"></script>
+  <script src="../js/theme.js"></script>
 </body>
 </html>

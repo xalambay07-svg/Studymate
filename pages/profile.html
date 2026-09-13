@@ -1,130 +1,127 @@
 ﻿<!DOCTYPE html>
-<html lang="vi">
+<html lang="vi" data-theme="cosmic">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hồ sơ cá nhân – StudyMate</title>
+  <title>Hồ sơ cá nhân — StudyMate</title>
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/responsive.css">
 </head>
 <body>
-  <div class="app-container">
-    <aside class="sidebar">
-      <div class="sidebar-header">
-        <div class="logo-brand">
-          📚 StudyMate <span class="logo-badge">Sinh viên</span>
-        </div>
-      </div>
-      <nav class="sidebar-nav">
-        <div class="nav-section-title">Học tập</div>
-        <a href="dashboard.html" class="nav-item">📊 Dashboard</a>
-        <a href="schedule.html" class="nav-item">📅 Lịch học / TKB</a>
-        <a href="tasks.html" class="nav-item">✅ Nhiệm vụ & Deadline</a>
-        <a href="subjects.html" class="nav-item">📖 Môn học</a>
-        <a href="exams.html" class="nav-item">🎯 Kỳ thi</a>
-        
-        <div class="nav-section-title">Công cụ & Tiến độ</div>
-        <a href="import-schedule.html" class="nav-item">📸 Nhập TKB (OCR / AI)</a>
-        <a href="documents.html" class="nav-item">📂 Kho tài liệu</a>
-        <a href="progress.html" class="nav-item">📈 Báo cáo tiến độ</a>
 
-        <div class="nav-section-title">Cá nhân</div>
-        <a href="profile.html" class="nav-item active">👤 Hồ sơ cá nhân</a>
-      </nav>
-      <div class="sidebar-footer">
-        <button id="logoutBtn" class="btn btn-secondary btn-sm" style="width: 100%;">🚪 Đăng xuất</button>
-      </div>
-    </aside>
-
-    <div class="main-wrapper">
-      <header class="top-header">
-        <button class="mobile-menu-btn" aria-label="Toggle Menu">☰</button>
-        <div class="header-search">
-          <span class="search-icon">🔍</span>
-          <input type="text" placeholder="Tìm kiếm...">
-        </div>
-        <div class="header-actions">
-          <a href="profile.html" class="user-profile-menu">
-            <div class="avatar">SV</div>
-            <div class="user-info">
-              <div class="user-name">Trần Minh Đức</div>
-              <div class="user-role">K64 - CNTT</div>
-            </div>
-          </a>
-        </div>
-      </header>
-
-      <main class="page-content">
-        <div class="page-header">
-          <div>
-            <h1 class="page-title">Hồ sơ cá nhân & Cài đặt</h1>
-            <p class="page-subtitle">Quản lý thông tin tài khoản sinh viên và tùy chọn thông báo deadline.</p>
-          </div>
-        </div>
-
-        <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 1.5rem;">
-          <!-- Left: Avatar Card -->
-          <div class="card" style="text-align: center;">
-            <div class="card-body">
-              <div class="avatar" style="width: 80px; height: 80px; font-size: 2rem; margin: 0 auto 1rem;">
-                SV
-              </div>
-              <h3 style="font-size: 1.25rem;">Trần Minh Đức</h3>
-              <p style="color: var(--text-muted); font-size: 0.875rem;">MSSV: 2251061234</p>
-              <span class="badge badge-primary" style="margin-top: 0.5rem;">Sinh viên chính quy</span>
-              
-              <hr style="margin: 1.5rem 0; border: 0; border-top: 1px solid var(--border-color);">
-              
-              <div style="text-align: left; font-size: 0.875rem; color: var(--text-muted);">
-                <p style="margin-bottom: 0.5rem;">🏫 <strong>Trường:</strong> ĐH Thủy Lợi (TLU)</p>
-                <p style="margin-bottom: 0.5rem;">🎓 <strong>Khoa:</strong> Công nghệ thông tin</p>
-                <p style="margin-bottom: 0.5rem;">👥 <strong>Lớp:</strong> 64CNTT1</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Right: Profile Form -->
-          <div class="card">
-            <div class="card-header">
-              <h3 class="card-title">Cập nhật thông tin sinh viên</h3>
-            </div>
-            <div class="card-body">
-              <form onsubmit="event.preventDefault(); showToast('Cập nhật hồ sơ thành công!', 'success');">
-                <div class="form-group">
-                  <label class="form-label">Họ và tên</label>
-                  <input type="text" class="form-control" value="Trần Minh Đức">
-                </div>
-
-                <div class="form-group">
-                  <label class="form-label">Email trường</label>
-                  <input type="email" class="form-control" value="student@studymate.edu.vn" readonly style="background: #f1f5f9;">
-                </div>
-
-                <div class="form-group">
-                  <label class="form-label">Số điện thoại</label>
-                  <input type="tel" class="form-control" value="0987654321">
-                </div>
-
-                <div class="form-group">
-                  <label class="form-label">Cài đặt thông báo</label>
-                  <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.875rem; margin-top: 0.5rem;">
-                    <input type="checkbox" checked> Nhận cảnh báo email trước hạn deadline 24 giờ
-                  </label>
-                  <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.875rem; margin-top: 0.5rem;">
-                    <input type="checkbox" checked> Nhận gợi ý thứ tự ưu tiên học tập từ StudyMate AI
-                  </label>
-                </div>
-
-                <button type="submit" class="btn btn-primary">Lưu thay đổi</button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </main>
+  <nav class="st-navbar">
+    <div style="display: flex; align-items: center; gap: 1rem;">
+      <a href="index.html" class="st-logo">
+        <div class="st-logo-icon">📖</div>
+        <span>Studies<span class="accent-word">Mate</span></span>
+      </a>
     </div>
+
+    <div class="st-nav-links">
+      <a href="dashboard.html" class="st-pill-link">📊 Dashboard</a>
+      <a href="schedule.html" class="st-pill-link">📅 Lịch học</a>
+      <a href="tasks.html" class="st-pill-link">✅ Deadline</a>
+      <a href="subjects.html" class="st-pill-link">📖 Môn học</a>
+      <a href="exams.html" class="st-pill-link">🎯 Kỳ thi</a>
+      <a href="import-schedule.html" class="st-pill-link">📸 OCR TKB</a>
+      <a href="progress.html" class="st-pill-link">📈 Tiến độ</a>
+    </div>
+
+    <div class="st-nav-actions">
+      <button id="ambientSoundBtn" class="st-btn-icon" title="Bật âm thanh mưa thư giãn">🌧️</button>
+      <button id="themePickerBtn" class="st-btn-icon" title="Đổi Theme">🎨</button>
+
+      <div id="themeDropdown" class="theme-dropdown">
+        <div style="font-size: 0.75rem; color: var(--theme-text-muted); text-transform: uppercase; margin-bottom: 0.5rem; font-weight: 600;">Chọn bảng màu</div>
+        <div class="theme-option" data-theme="cosmic"><span class="theme-dot" style="background: #8b5cf6;"></span> Cosmic Purple</div>
+        <div class="theme-option" data-theme="sepia"><span class="theme-dot" style="background: #D2691E;"></span> Warm Sepia</div>
+        <div class="theme-option" data-theme="soft-gray"><span class="theme-dot" style="background: #a855f7;"></span> Soft Gray</div>
+        <div class="theme-option" data-theme="ocean"><span class="theme-dot" style="background: #06b6d4;"></span> Ocean Night</div>
+        <div class="theme-option" data-theme="forest"><span class="theme-dot" style="background: #22c55e;"></span> Forest Green</div>
+        <div class="theme-option" data-theme="pastel"><span class="theme-dot" style="background: #faf5ef; border: 1px solid #ccc;"></span> Pastel Cream</div>
+      </div>
+
+      <a href="profile.html" class="st-pill-btn active" style="padding: 0.4rem 0.8rem;">👤 Minh Đức</a>
+      <button class="st-mobile-btn">☰</button>
+    </div>
+  </nav>
+
+  <div class="st-drawer-overlay"></div>
+  <div class="st-mobile-drawer">
+    <a href="dashboard.html" class="st-pill-link">📊 Dashboard</a>
+    <a href="schedule.html" class="st-pill-link">📅 Lịch học</a>
+    <a href="tasks.html" class="st-pill-link">✅ Deadline</a>
+    <a href="subjects.html" class="st-pill-link">📖 Môn học</a>
+    <a href="exams.html" class="st-pill-link">🎯 Kỳ thi</a>
+    <a href="profile.html" class="st-pill-link active">👤 Hồ sơ</a>
+    <a href="index.html" class="st-pill-link" style="margin-top: 1rem; border: 1px solid var(--theme-border);">🚪 Đăng xuất</a>
   </div>
 
+  <main class="st-main-container">
+    <div style="margin-bottom: 2rem;">
+      <h1 style="font-size: 1.75rem; font-weight: 600; color: var(--theme-text-primary);">Hồ sơ cá nhân & Cài đặt 👤</h1>
+      <p style="font-size: 0.875rem; color: var(--theme-text-secondary); margin-top: 0.25rem;">
+        Quản lý thông tin tài khoản sinh viên và cấu hình nhắc nhở deadline.
+      </p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 1.5rem;">
+      
+      <div class="st-card" style="text-align: center;">
+        <div style="width: 70px; height: 70px; border-radius: 50%; background: var(--theme-card-active); border: 2px solid var(--theme-primary); color: var(--theme-primary); display: flex; align-items: center; justify-content: center; font-size: 1.8rem; margin: 0 auto 1rem;">
+          SV
+        </div>
+        <h3 style="font-size: 1.15rem; font-weight: 600; color: var(--theme-text-primary);">Trần Minh Đức</h3>
+        <p style="color: var(--theme-text-muted); font-size: 0.8125rem;">MSSV: 2251061234</p>
+        <span class="badge badge-primary" style="margin-top: 0.5rem;">Sinh viên chính quy</span>
+        
+        <hr style="margin: 1.5rem 0; border: 0; border-top: 1px solid var(--theme-border);">
+        
+        <div style="text-align: left; font-size: 0.8125rem; color: var(--theme-text-secondary); line-height: 1.8;">
+          <div>🏫 <strong>Trường:</strong> ĐH Thủy Lợi (TLU)</div>
+          <div>🎓 <strong>Khoa:</strong> Công nghệ thông tin</div>
+          <div>👥 <strong>Lớp:</strong> 64CNTT1</div>
+        </div>
+      </div>
+
+      <div class="st-card">
+        <div class="st-card-header">
+          <div class="st-card-title">Cập nhật thông tin</div>
+        </div>
+        <form onsubmit="event.preventDefault(); showToast('Cập nhật hồ sơ thành công!', 'success');">
+          <div style="margin-bottom: 1.25rem;">
+            <label style="font-size: 0.75rem; color: var(--theme-text-muted); display: block; margin-bottom: 0.35rem; text-transform: uppercase;">Họ và tên</label>
+            <input type="text" class="form-control" value="Trần Minh Đức">
+          </div>
+
+          <div style="margin-bottom: 1.25rem;">
+            <label style="font-size: 0.75rem; color: var(--theme-text-muted); display: block; margin-bottom: 0.35rem; text-transform: uppercase;">Email sinh viên</label>
+            <input type="email" class="form-control" value="student@studymate.edu.vn" readonly style="opacity: 0.7;">
+          </div>
+
+          <div style="margin-bottom: 1.25rem;">
+            <label style="font-size: 0.75rem; color: var(--theme-text-muted); display: block; margin-bottom: 0.35rem; text-transform: uppercase;">Số điện thoại</label>
+            <input type="tel" class="form-control" value="0987654321">
+          </div>
+
+          <div style="margin-bottom: 1.5rem;">
+            <label style="font-size: 0.75rem; color: var(--theme-text-muted); display: block; margin-bottom: 0.5rem; text-transform: uppercase;">Tùy chọn thông báo</label>
+            <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.8125rem; color: var(--theme-text-secondary); margin-bottom: 0.4rem; cursor: pointer;">
+              <input type="checkbox" checked> Nhắc nhở hạn nộp qua email trước 24 giờ
+            </label>
+            <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.8125rem; color: var(--theme-text-secondary); cursor: pointer;">
+              <input type="checkbox" checked> Nhận gợi ý thứ tự ưu tiên học tập từ StudyMate AI
+            </label>
+          </div>
+
+          <button type="submit" class="st-pill-btn st-pill-btn-primary">Lưu thay đổi</button>
+        </form>
+      </div>
+
+    </div>
+  </main>
+
   <script src="../js/main.js"></script>
-  <script src="../js/auth.js"></script>
+  <script src="../js/theme.js"></script>
 </body>
 </html>

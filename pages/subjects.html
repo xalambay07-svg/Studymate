@@ -1,163 +1,160 @@
 ﻿<!DOCTYPE html>
-<html lang="vi">
+<html lang="vi" data-theme="cosmic">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Quản lý Môn học – StudyMate</title>
+  <title>Môn học — StudyMate</title>
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/responsive.css">
 </head>
 <body>
-  <div class="app-container">
-    <aside class="sidebar">
-      <div class="sidebar-header">
-        <div class="logo-brand">
-          📚 StudyMate <span class="logo-badge">Sinh viên</span>
-        </div>
-      </div>
-      <nav class="sidebar-nav">
-        <div class="nav-section-title">Học tập</div>
-        <a href="dashboard.html" class="nav-item">📊 Dashboard</a>
-        <a href="schedule.html" class="nav-item">📅 Lịch học / TKB</a>
-        <a href="tasks.html" class="nav-item">✅ Nhiệm vụ & Deadline</a>
-        <a href="subjects.html" class="nav-item active">📖 Môn học</a>
-        <a href="exams.html" class="nav-item">🎯 Kỳ thi</a>
-        
-        <div class="nav-section-title">Công cụ & Tiến độ</div>
-        <a href="import-schedule.html" class="nav-item">📸 Nhập TKB (OCR / AI)</a>
-        <a href="documents.html" class="nav-item">📂 Kho tài liệu</a>
-        <a href="progress.html" class="nav-item">📈 Báo cáo tiến độ</a>
 
-        <div class="nav-section-title">Cá nhân</div>
-        <a href="profile.html" class="nav-item">👤 Hồ sơ cá nhân</a>
-      </nav>
-      <div class="sidebar-footer">
-        <button id="logoutBtn" class="btn btn-secondary btn-sm" style="width: 100%;">🚪 Đăng xuất</button>
-      </div>
-    </aside>
-
-    <div class="main-wrapper">
-      <header class="top-header">
-        <button class="mobile-menu-btn" aria-label="Toggle Menu">☰</button>
-        <div class="header-search">
-          <span class="search-icon">🔍</span>
-          <input type="text" placeholder="Tìm môn học theo tên, mã môn...">
-        </div>
-        <div class="header-actions">
-          <button class="btn btn-primary btn-sm" onclick="showToast('Mở form thêm môn học mới', 'info')">+ Thêm môn học</button>
-          <a href="profile.html" class="user-profile-menu">
-            <div class="avatar">SV</div>
-            <div class="user-info">
-              <div class="user-name">Trần Minh Đức</div>
-              <div class="user-role">K64 - CNTT</div>
-            </div>
-          </a>
-        </div>
-      </header>
-
-      <main class="page-content">
-        <div class="page-header">
-          <div>
-            <h1 class="page-title">Môn học học kỳ này</h1>
-            <p class="page-subtitle">Theo dõi danh sách môn, giảng viên hướng dẫn, phòng học và tiến độ hoàn thành.</p>
-          </div>
-        </div>
-
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
-          
-          <!-- Subject Card 1 -->
-          <div class="card">
-            <div class="card-header">
-              <div>
-                <span class="badge badge-primary">CSE122</span>
-                <h3 class="card-title" style="margin-top: 0.25rem;">Phát triển ứng dụng web cơ bản</h3>
-              </div>
-            </div>
-            <div class="card-body">
-              <p style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 0.5rem;">👨‍🏫 Giảng viên: <strong>ThS. Nguyễn Văn A</strong></p>
-              <p style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 0.5rem;">🏛️ Phòng: <strong>A203</strong> • 3 Tín chỉ</p>
-              
-              <div style="margin: 1rem 0;">
-                <div style="display: flex; justify-content: space-between; font-size: 0.8125rem;">
-                  <span>Tiến độ bài tập:</span>
-                  <strong>80%</strong>
-                </div>
-                <div class="progress-bar-container">
-                  <div class="progress-bar-fill" style="width: 80%;"></div>
-                </div>
-              </div>
-
-              <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1.25rem;">
-                <a href="subject-detail.html" class="btn btn-primary btn-sm">Xem chi tiết môn &rarr;</a>
-                <a href="documents.html" style="font-size: 0.8125rem;">📂 5 Tài liệu</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Subject Card 2 -->
-          <div class="card">
-            <div class="card-header">
-              <div>
-                <span class="badge badge-primary">CSE281</span>
-                <h3 class="card-title" style="margin-top: 0.25rem;">Cấu trúc dữ liệu & Giải thuật</h3>
-              </div>
-            </div>
-            <div class="card-body">
-              <p style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 0.5rem;">👨‍🏫 Giảng viên: <strong>TS. Trần Thị B</strong></p>
-              <p style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 0.5rem;">🏛️ Phòng: <strong>B102</strong> • 4 Tín chỉ</p>
-              
-              <div style="margin: 1rem 0;">
-                <div style="display: flex; justify-content: space-between; font-size: 0.8125rem;">
-                  <span>Tiến độ bài tập:</span>
-                  <strong>50%</strong>
-                </div>
-                <div class="progress-bar-container">
-                  <div class="progress-bar-fill" style="width: 50%;"></div>
-                </div>
-              </div>
-
-              <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1.25rem;">
-                <a href="subject-detail.html" class="btn btn-primary btn-sm">Xem chi tiết môn &rarr;</a>
-                <a href="documents.html" style="font-size: 0.8125rem;">📂 8 Tài liệu</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Subject Card 3 -->
-          <div class="card">
-            <div class="card-header">
-              <div>
-                <span class="badge badge-primary">MATH101</span>
-                <h3 class="card-title" style="margin-top: 0.25rem;">Giải tích 1</h3>
-              </div>
-            </div>
-            <div class="card-body">
-              <p style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 0.5rem;">👨‍🏫 Giảng viên: <strong>PGS. Lê Văn C</strong></p>
-              <p style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 0.5rem;">🏛️ Phòng: <strong>C301</strong> • 3 Tín chỉ</p>
-              
-              <div style="margin: 1rem 0;">
-                <div style="display: flex; justify-content: space-between; font-size: 0.8125rem;">
-                  <span>Tiến độ bài tập:</span>
-                  <strong>30%</strong>
-                </div>
-                <div class="progress-bar-container">
-                  <div class="progress-bar-fill" style="width: 30%; background: var(--status-warning);"></div>
-                </div>
-              </div>
-
-              <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1.25rem;">
-                <a href="subject-detail.html" class="btn btn-primary btn-sm">Xem chi tiết môn &rarr;</a>
-                <a href="documents.html" style="font-size: 0.8125rem;">📂 3 Tài liệu</a>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </main>
+  <nav class="st-navbar">
+    <div style="display: flex; align-items: center; gap: 1rem;">
+      <a href="index.html" class="st-logo">
+        <div class="st-logo-icon">📖</div>
+        <span>Studies<span class="accent-word">Mate</span></span>
+      </a>
     </div>
+
+    <div class="st-nav-links">
+      <a href="dashboard.html" class="st-pill-link">📊 Dashboard</a>
+      <a href="schedule.html" class="st-pill-link">📅 Lịch học</a>
+      <a href="tasks.html" class="st-pill-link">✅ Deadline</a>
+      <a href="subjects.html" class="st-pill-link active">📖 Môn học</a>
+      <a href="exams.html" class="st-pill-link">🎯 Kỳ thi</a>
+      <a href="import-schedule.html" class="st-pill-link">📸 OCR TKB</a>
+      <a href="progress.html" class="st-pill-link">📈 Tiến độ</a>
+    </div>
+
+    <div class="st-nav-actions">
+      <button id="ambientSoundBtn" class="st-btn-icon" title="Bật âm thanh mưa thư giãn">🌧️</button>
+      <button id="themePickerBtn" class="st-btn-icon" title="Đổi Theme">🎨</button>
+
+      <div id="themeDropdown" class="theme-dropdown">
+        <div style="font-size: 0.75rem; color: var(--theme-text-muted); text-transform: uppercase; margin-bottom: 0.5rem; font-weight: 600;">Chọn bảng màu</div>
+        <div class="theme-option" data-theme="cosmic"><span class="theme-dot" style="background: #8b5cf6;"></span> Cosmic Purple</div>
+        <div class="theme-option" data-theme="sepia"><span class="theme-dot" style="background: #D2691E;"></span> Warm Sepia</div>
+        <div class="theme-option" data-theme="soft-gray"><span class="theme-dot" style="background: #a855f7;"></span> Soft Gray</div>
+        <div class="theme-option" data-theme="ocean"><span class="theme-dot" style="background: #06b6d4;"></span> Ocean Night</div>
+        <div class="theme-option" data-theme="forest"><span class="theme-dot" style="background: #22c55e;"></span> Forest Green</div>
+        <div class="theme-option" data-theme="pastel"><span class="theme-dot" style="background: #faf5ef; border: 1px solid #ccc;"></span> Pastel Cream</div>
+      </div>
+
+      <a href="profile.html" class="st-pill-btn" style="padding: 0.4rem 0.8rem;">👤 Minh Đức</a>
+      <button class="st-mobile-btn">☰</button>
+    </div>
+  </nav>
+
+  <div class="st-drawer-overlay"></div>
+  <div class="st-mobile-drawer">
+    <a href="dashboard.html" class="st-pill-link">📊 Dashboard</a>
+    <a href="schedule.html" class="st-pill-link">📅 Lịch học</a>
+    <a href="tasks.html" class="st-pill-link">✅ Deadline</a>
+    <a href="subjects.html" class="st-pill-link active">📖 Môn học</a>
+    <a href="exams.html" class="st-pill-link">🎯 Kỳ thi</a>
+    <a href="import-schedule.html" class="st-pill-link">📸 OCR TKB</a>
+    <a href="progress.html" class="st-pill-link">📈 Tiến độ</a>
   </div>
 
+  <main class="st-main-container">
+    <div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+      <div>
+        <h1 style="font-size: 1.75rem; font-weight: 600; color: var(--theme-text-primary);">Môn học học kỳ này</h1>
+        <p style="font-size: 0.875rem; color: var(--theme-text-secondary); margin-top: 0.25rem;">
+          Theo dõi giảng viên phụ trách, phòng học và tiến độ hoàn thành các bài tập.
+        </p>
+      </div>
+      <button class="st-pill-btn st-pill-btn-primary" onclick="showToast('Mở form thêm môn học', 'info')">+ Thêm môn học</button>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem;">
+      
+      <div class="st-card">
+        <div class="st-card-header">
+          <span class="badge badge-primary">CSE122</span>
+          <span style="font-size: 0.8125rem; color: var(--theme-text-muted);">3 Tín chỉ</span>
+        </div>
+        <h3 style="font-size: 1.15rem; font-weight: 600; color: var(--theme-text-primary); margin-bottom: 0.5rem;">
+          Phát triển ứng dụng web cơ bản
+        </h3>
+        <p style="font-size: 0.8125rem; color: var(--theme-text-muted); margin-bottom: 0.25rem;">👨‍🏫 Giảng viên: <strong>ThS. Nguyễn Văn A</strong></p>
+        <p style="font-size: 0.8125rem; color: var(--theme-text-muted); margin-bottom: 1rem;">🏛️ Phòng học: <strong>A203</strong></p>
+        
+        <div>
+          <div style="display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--theme-text-muted); margin-bottom: 0.25rem;">
+            <span>Tiến độ hoàn thành</span>
+            <strong>80%</strong>
+          </div>
+          <div class="progress-bar-container">
+            <div class="progress-bar-fill" style="width: 80%;"></div>
+          </div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1.25rem;">
+          <a href="subject-detail.html" class="st-pill-btn st-pill-btn-primary" style="padding: 0.35rem 0.8rem; font-size: 0.75rem;">Chi tiết môn &rarr;</a>
+          <a href="documents.html" style="font-size: 0.8125rem; color: var(--theme-text-secondary);">📂 5 Tài liệu</a>
+        </div>
+      </div>
+
+      <div class="st-card">
+        <div class="st-card-header">
+          <span class="badge badge-primary">CSE281</span>
+          <span style="font-size: 0.8125rem; color: var(--theme-text-muted);">4 Tín chỉ</span>
+        </div>
+        <h3 style="font-size: 1.15rem; font-weight: 600; color: var(--theme-text-primary); margin-bottom: 0.5rem;">
+          Cấu trúc dữ liệu & Giải thuật
+        </h3>
+        <p style="font-size: 0.8125rem; color: var(--theme-text-muted); margin-bottom: 0.25rem;">👨‍🏫 Giảng viên: <strong>TS. Trần Thị B</strong></p>
+        <p style="font-size: 0.8125rem; color: var(--theme-text-muted); margin-bottom: 1rem;">🏛️ Phòng học: <strong>B102</strong></p>
+        
+        <div>
+          <div style="display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--theme-text-muted); margin-bottom: 0.25rem;">
+            <span>Tiến độ hoàn thành</span>
+            <strong>50%</strong>
+          </div>
+          <div class="progress-bar-container">
+            <div class="progress-bar-fill" style="width: 50%;"></div>
+          </div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1.25rem;">
+          <a href="subject-detail.html" class="st-pill-btn st-pill-btn-primary" style="padding: 0.35rem 0.8rem; font-size: 0.75rem;">Chi tiết môn &rarr;</a>
+          <a href="documents.html" style="font-size: 0.8125rem; color: var(--theme-text-secondary);">📂 8 Tài liệu</a>
+        </div>
+      </div>
+
+      <div class="st-card">
+        <div class="st-card-header">
+          <span class="badge badge-primary">MATH101</span>
+          <span style="font-size: 0.8125rem; color: var(--theme-text-muted);">3 Tín chỉ</span>
+        </div>
+        <h3 style="font-size: 1.15rem; font-weight: 600; color: var(--theme-text-primary); margin-bottom: 0.5rem;">
+          Giải tích 1
+        </h3>
+        <p style="font-size: 0.8125rem; color: var(--theme-text-muted); margin-bottom: 0.25rem;">👨‍🏫 Giảng viên: <strong>PGS. Lê Văn C</strong></p>
+        <p style="font-size: 0.8125rem; color: var(--theme-text-muted); margin-bottom: 1rem;">🏛️ Phòng học: <strong>C301</strong></p>
+        
+        <div>
+          <div style="display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--theme-text-muted); margin-bottom: 0.25rem;">
+            <span>Tiến độ hoàn thành</span>
+            <strong>30%</strong>
+          </div>
+          <div class="progress-bar-container">
+            <div class="progress-bar-fill" style="width: 30%; background: var(--status-warning);"></div>
+          </div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1.25rem;">
+          <a href="subject-detail.html" class="st-pill-btn st-pill-btn-primary" style="padding: 0.35rem 0.8rem; font-size: 0.75rem;">Chi tiết môn &rarr;</a>
+          <a href="documents.html" style="font-size: 0.8125rem; color: var(--theme-text-secondary);">📂 3 Tài liệu</a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
   <script src="../js/main.js"></script>
-  <script src="../js/auth.js"></script>
+  <script src="../js/theme.js"></script>
 </body>
 </html>
