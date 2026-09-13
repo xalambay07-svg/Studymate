@@ -44,9 +44,9 @@
         <div class="theme-option" data-theme="pastel"><span class="theme-dot" style="background: #ffffff; border: 1px solid #94a3b8;"></span> Pastel Cream</div>
       </div>
 
-      <a href="index.html#onboarding" class="st-pill-btn" style="padding: 0.45rem 1.1rem; font-size: 0.9rem; background: rgba(37,99,235,0.22); border: 1px solid rgba(96,165,250,0.45); color: #93c5fd; text-decoration: none;">Cài đặt môn & TKB</a>
+      <a href="index.html#onboarding" class="st-pill-btn st-btn-onboarding">Cài đặt môn & TKB</a>
       <span class="st-user-display" style="font-size: 0.925rem; font-weight: 600; color: var(--theme-text-secondary); background: rgba(255,255,255,0.08); padding: 0.45rem 1rem; border-radius: 9999px; border: 1px solid var(--theme-border);">Sinh viên</span>
-      <button onclick="logoutUser()" class="st-pill-btn" style="padding: 0.45rem 1rem; font-size: 0.875rem; background: rgba(239,68,68,0.15); border: 1px solid rgba(239,68,68,0.4); color: #f87171; cursor: pointer; font-weight: 600;" title="Đăng xuất khỏi tài khoản">Đăng xuất</button>
+      <button onclick="logoutUser()" class="st-pill-btn st-btn-logout" title="Đăng xuất khỏi tài khoản">Đăng xuất</button>
       <button class="st-mobile-btn">☰</button>
     </div>
   </nav>
@@ -59,16 +59,15 @@
     <a href="tasks.html" class="st-pill-link">Deadline</a>
     <a href="import-schedule.html" class="st-pill-link active">OCR TKB</a>
     <a href="progress.html" class="st-pill-link">Tiến độ</a>
-    <a href="javascript:void(0)" onclick="logoutUser()" class="st-pill-link" style="margin-top: 1rem; border: 1px solid rgba(239,68,68,0.3); color: #f87171; font-weight: 600;">Đăng xuất</a>
+    <a href="javascript:void(0)" onclick="logoutUser()" class="st-pill-link st-btn-logout" style="margin-top: 1rem;">Đăng xuất</a>
     <a href="javascript:void(0)" onclick="logoutUser()" class="st-pill-link" style="border: 1px solid var(--theme-border);">Đăng xuất về trang chủ</a>
   </div>
 
   <main class="st-main-container">
     <div style="margin-bottom: 2rem;">
-      <span class="badge badge-primary" style="margin-bottom: 0.5rem;">Tính năng nổi bật (USP)</span>
-      <h1 style="font-size: 1.75rem; font-weight: 600; color: var(--theme-text-primary);">Nhập Thời Khóa Biểu Tự Động</h1>
+      <h1 style="font-size: 1.75rem; font-weight: 600; color: var(--theme-text-primary);">Nhập Lịch Học Tự Động (OCR AI)</h1>
       <p style="font-size: 0.875rem; color: var(--theme-text-secondary); margin-top: 0.25rem;">
-        Không cần nhập tay! Chụp ảnh màn hình TKB trường hoặc dán đoạn văn bản để AI/OCR bóc tách dữ liệu chuẩn tiết học TLU.
+        Quét ảnh màn hình lịch học từ cổng đào tạo trường, tự động điền môn học, phòng học, thứ và tiết.
       </p>
     </div>
 
@@ -76,20 +75,20 @@
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
       
       <!-- Method 1: Chụp ảnh OCR -->
-      <div class="st-card" style="border-color: var(--theme-primary); display: flex; flex-direction: column;">
+      <div class="st-card" style="display: flex; flex-direction: column;">
         <div class="st-card-header" style="margin-bottom: 0.75rem;">
-          <div class="st-card-title" style="font-size: 1.125rem; font-weight: 700; color: #f8fafc;">
-            <span style="display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; border-radius: 8px; background: rgba(139, 92, 246, 0.25); color: #c4b5fd; font-size: 0.85rem; font-weight: 700; margin-right: 8px;">1</span>
+          <div class="st-card-title" style="font-size: 1.125rem; font-weight: 700; color: var(--theme-text-primary);">
+            <span class="badge badge-primary" style="display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; border-radius: 8px; font-size: 0.85rem; font-weight: 700; margin-right: 8px;">1</span>
             Cách 1: Tải ảnh chụp TKB (OCR AI)
           </div>
         </div>
-        <p style="font-size: 0.875rem; color: #cbd5e1; margin-bottom: 1rem; line-height: 1.55;">
+        <p style="font-size: 0.875rem; color: var(--theme-text-secondary); margin-bottom: 1rem; line-height: 1.55;">
           Chụp ảnh TKB từ cổng đào tạo trường và thả vào khung bên dưới:
         </p>
         
         <div id="ocrDropzone" style="border: 2px dashed rgba(139, 92, 246, 0.35); background: rgba(139, 92, 246, 0.08); border-radius: var(--radius); padding: 2.25rem 1.5rem; text-align: center; cursor: pointer; transition: var(--transition); flex: 1; display: flex; flex-direction: column; justify-content: center;">
-          <div style="font-weight: 600; font-size: 1.05rem; color: #f1f5f9; margin-bottom: 0.35rem;">Bấm để tải ảnh hoặc kéo thả vào đây</div>
-          <div style="font-size: 0.825rem; color: #94a3b8; margin-top: 0.25rem;">Hỗ trợ JPG, PNG từ website sinhvien1.tlu.edu.vn</div>
+          <div style="font-weight: 600; font-size: 1.05rem; color: var(--theme-text-primary); margin-bottom: 0.35rem;">Bấm để tải ảnh hoặc kéo thả vào đây</div>
+          <div style="font-size: 0.825rem; color: var(--theme-text-muted); margin-top: 0.25rem;">Hỗ trợ JPG, PNG từ website sinhvien1.tlu.edu.vn</div>
           <input type="file" id="ocrFileInput" accept="image/*" style="display: none;">
         </div>
 
@@ -103,12 +102,12 @@
       <!-- Method 2: Dán văn bản Text -->
       <div class="st-card" style="display: flex; flex-direction: column;">
         <div class="st-card-header" style="margin-bottom: 0.75rem;">
-          <div class="st-card-title" style="font-size: 1.125rem; font-weight: 700; color: #f8fafc;">
-            <span style="display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; border-radius: 8px; background: rgba(59, 130, 246, 0.25); color: #93c5fd; font-size: 0.85rem; font-weight: 700; margin-right: 8px;">2</span>
+          <div class="st-card-title" style="font-size: 1.125rem; font-weight: 700; color: var(--theme-text-primary);">
+            <span class="badge badge-primary" style="display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; border-radius: 8px; font-size: 0.85rem; font-weight: 700; margin-right: 8px;">2</span>
             Cách 2: Dán nội dung text
           </div>
         </div>
-        <p style="font-size: 0.875rem; color: #cbd5e1; margin-bottom: 0.85rem; line-height: 1.55;">
+        <p style="font-size: 0.875rem; color: var(--theme-text-secondary); margin-bottom: 0.85rem; line-height: 1.55;">
           Dán nhanh danh sách môn học từ Zalo / Messenger:
         </p>
         <textarea id="pasteTextSchedule" class="form-control" rows="5" 

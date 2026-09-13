@@ -46,9 +46,9 @@
         <div class="theme-option" data-theme="pastel"><span class="theme-dot" style="background: #ffffff; border: 1px solid #94a3b8;"></span> Pastel Cream</div>
       </div>
 
-      <a href="index.html#onboarding" class="st-pill-btn" style="padding: 0.45rem 1.1rem; font-size: 0.9rem; background: rgba(37,99,235,0.22); border: 1px solid rgba(96,165,250,0.45); color: #93c5fd; text-decoration: none;">Cài đặt môn & TKB</a>
+      <a href="index.html#onboarding" class="st-pill-btn st-btn-onboarding">Cài đặt môn & TKB</a>
       <span class="st-user-display" style="font-size: 0.925rem; font-weight: 600; color: var(--theme-text-secondary); background: rgba(255,255,255,0.08); padding: 0.45rem 1rem; border-radius: 9999px; border: 1px solid var(--theme-border);">Sinh viên</span>
-      <button onclick="logoutUser()" class="st-pill-btn" style="padding: 0.45rem 1rem; font-size: 0.875rem; background: rgba(239,68,68,0.15); border: 1px solid rgba(239,68,68,0.4); color: #f87171; cursor: pointer; font-weight: 600;" title="Đăng xuất khỏi tài khoản">Đăng xuất</button>
+      <button onclick="logoutUser()" class="st-pill-btn st-btn-logout" title="Đăng xuất khỏi tài khoản">Đăng xuất</button>
       <button class="st-mobile-btn">☰</button>
     </div>
   </nav>
@@ -60,12 +60,12 @@
     <a href="schedule.html" class="st-pill-link">Lịch học / TKB</a>
     <a href="tasks.html" class="st-pill-link">Nhiệm vụ & Deadline</a>
     <a href="import-schedule.html" class="st-pill-link">Quét ảnh TKB (AI/OCR)</a>
-    <a href="index.html#onboarding" class="st-pill-link" style="color: #93c5fd;">Cài đặt môn học & Lịch học</a>
+    <a href="index.html#onboarding" class="st-pill-link" style="color: var(--theme-primary);">Cài đặt môn học & Lịch học</a>
     <a href="subjects.html" class="st-pill-link">Danh mục môn học</a>
     <a href="exams.html" class="st-pill-link">Kỳ thi</a>
     <a href="progress.html" class="st-pill-link">Tiến độ</a>
     <a href="profile.html" class="st-pill-link">Hồ sơ cá nhân</a>
-    <a href="javascript:void(0)" onclick="logoutUser()" class="st-pill-link" style="margin-top: 1rem; border: 1px solid rgba(239,68,68,0.3); color: #f87171; font-weight: 600;">Đăng xuất</a>
+    <a href="javascript:void(0)" onclick="logoutUser()" class="st-pill-link st-btn-logout" style="margin-top: 1rem;">Đăng xuất</a>
   </div>
 
   <!-- Workspace Container (Elevated, Perfectly Centered, No Sagging) -->
@@ -218,11 +218,11 @@
     </div>
 
     <!-- USP Spotlight Banner (No Icons) -->
-    <div class="st-card" style="border: 1px solid rgba(139, 92, 246, 0.4); background: linear-gradient(135deg, rgba(139, 92, 246, 0.15) 0%, rgba(15, 15, 35, 0.6) 100%);">
+    <div class="st-card st-usp-banner">
       <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.25rem;">
         <div>
           <span class="badge badge-primary" style="margin-bottom: 0.4rem; font-size: 0.8rem; font-weight: 600;">Tính năng nổi bật</span>
-          <h2 style="font-size: 1.4rem; font-weight: 700; color: #ffffff; margin-bottom: 0.35rem;">
+          <h2 style="font-size: 1.4rem; font-weight: 700; color: var(--theme-text-primary); margin-bottom: 0.35rem;">
             Không bắt buộc nhập tay thời khóa biểu!
           </h2>
           <p style="color: var(--theme-text-secondary); font-size: 0.9rem;">
@@ -247,12 +247,12 @@
       <button class="spa-modal-close" onclick="closeExamModal()" title="Đóng">&times;</button>
       
       <div style="display: flex; align-items: center; gap: 0.85rem; margin-bottom: 1.25rem;">
-        <div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(139, 92, 246, 0.2); border: 1px solid rgba(167, 139, 250, 0.35); display: flex; align-items: center; justify-content: center; color: #a78bfa; flex-shrink: 0;">
+        <div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(139, 92, 246, 0.2); border: 1px solid rgba(167, 139, 250, 0.35); display: flex; align-items: center; justify-content: center; color: var(--theme-primary); flex-shrink: 0;">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
         </div>
         <div>
-          <h3 id="examModalTitle" style="font-size: 1.25rem; font-weight: 800; color: #ffffff; margin: 0;">Thiết lập kỳ thi & Ngày thi</h3>
-          <p style="font-size: 0.8rem; color: #94a3b8; margin: 0;">Nhập ngày thi để tự động tính thời gian đếm ngược chính xác</p>
+          <h3 id="examModalTitle" style="font-size: 1.25rem; font-weight: 800; color: var(--theme-text-primary); margin: 0;">Thiết lập kỳ thi & Ngày thi</h3>
+          <p style="font-size: 0.8rem; color: var(--theme-text-muted); margin: 0;">Nhập ngày thi để tự động tính thời gian đếm ngược chính xác</p>
         </div>
       </div>
 
@@ -261,17 +261,17 @@
 
         <!-- Chọn Môn học hoặc Nhập môn mới -->
         <div style="margin-bottom: 0.85rem;">
-          <label style="display: block; font-size: 0.8rem; font-weight: 600; color: #cbd5e1; margin-bottom: 0.35rem;">Môn thi / Tên kỳ thi *</label>
-          <select id="examSubjectSelect" onchange="handleExamSubjectSelectChange()" style="width: 100%; padding: 0.65rem 0.85rem; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.15); background: #1e293b; color: #ffffff; font-size: 0.875rem;">
+          <label style="display: block; font-size: 0.8rem; font-weight: 600; color: var(--theme-text-secondary); margin-bottom: 0.35rem;">Môn thi / Tên kỳ thi *</label>
+          <select id="examSubjectSelect" onchange="handleExamSubjectSelectChange()" class="form-control" style="font-size: 0.875rem;">
             <!-- Populated dynamically with user's subjects -->
           </select>
-          <input type="text" id="examCustomSubjectInput" placeholder="Hoặc nhập tên môn thi khác..." style="display: none; width: 100%; padding: 0.65rem 0.85rem; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.15); background: rgba(255, 255, 255, 0.06); color: #ffffff; font-size: 0.875rem; margin-top: 0.4rem;">
+          <input type="text" id="examCustomSubjectInput" placeholder="Hoặc nhập tên môn thi khác..." class="form-control" style="display: none; font-size: 0.875rem; margin-top: 0.4rem;">
         </div>
 
         <!-- Ngày thi (Bắt buộc) & Live Countdown Preview -->
         <div style="margin-bottom: 0.85rem;">
-          <label style="display: block; font-size: 0.8rem; font-weight: 600; color: #cbd5e1; margin-bottom: 0.35rem;">Ngày thi (Dùng để tính thời gian còn lại) *</label>
-          <input type="date" id="examDateInput" required oninput="previewExamCountdown()" style="width: 100%; padding: 0.65rem 0.85rem; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.15); background: #1e293b; color: #ffffff; font-size: 0.875rem;">
+          <label style="display: block; font-size: 0.8rem; font-weight: 600; color: var(--theme-text-secondary); margin-bottom: 0.35rem;">Ngày thi (Dùng để tính thời gian còn lại) *</label>
+          <input type="date" id="examDateInput" required oninput="previewExamCountdown()" class="form-control" style="font-size: 0.875rem;">
           <!-- Live countdown calculation preview -->
           <div id="examCountdownLivePreview" style="margin-top: 0.45rem; font-size: 0.85rem; font-weight: 600; color: #a78bfa; padding: 0.45rem 0.75rem; border-radius: 6px; background: rgba(139, 92, 246, 0.1); border: 1px solid rgba(139, 92, 246, 0.2); display: none;">
             <!-- dynamic preview text -->
@@ -281,19 +281,19 @@
         <!-- Giờ thi & Phòng thi (2 cột) -->
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 0.85rem;">
           <div>
-            <label style="display: block; font-size: 0.8rem; font-weight: 600; color: #cbd5e1; margin-bottom: 0.35rem;">Giờ thi</label>
-            <input type="time" id="examTimeInput" value="08:00" style="width: 100%; padding: 0.65rem 0.85rem; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.15); background: #1e293b; color: #ffffff; font-size: 0.875rem;">
+            <label style="display: block; font-size: 0.8rem; font-weight: 600; color: var(--theme-text-secondary); margin-bottom: 0.35rem;">Giờ thi</label>
+            <input type="time" id="examTimeInput" value="08:00" class="form-control" style="font-size: 0.875rem;">
           </div>
           <div>
-            <label style="display: block; font-size: 0.8rem; font-weight: 600; color: #cbd5e1; margin-bottom: 0.35rem;">Phòng thi</label>
-            <input type="text" id="examRoomInput" placeholder="VD: Phòng 205-B5" style="width: 100%; padding: 0.65rem 0.85rem; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.15); background: rgba(255, 255, 255, 0.06); color: #ffffff; font-size: 0.875rem;">
+            <label style="display: block; font-size: 0.8rem; font-weight: 600; color: var(--theme-text-secondary); margin-bottom: 0.35rem;">Phòng thi</label>
+            <input type="text" id="examRoomInput" placeholder="VD: Phòng 205-B5" class="form-control" style="font-size: 0.875rem;">
           </div>
         </div>
 
         <!-- Ghi chú -->
         <div style="margin-bottom: 1.25rem;">
-          <label style="display: block; font-size: 0.8rem; font-weight: 600; color: #cbd5e1; margin-bottom: 0.35rem;">Ghi chú / Đề cương</label>
-          <input type="text" id="examNoteInput" placeholder="VD: Thi trắc nghiệm máy tính, được mang Atlat/Casio" style="width: 100%; padding: 0.65rem 0.85rem; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.15); background: rgba(255, 255, 255, 0.06); color: #ffffff; font-size: 0.875rem;">
+          <label style="display: block; font-size: 0.8rem; font-weight: 600; color: var(--theme-text-secondary); margin-bottom: 0.35rem;">Ghi chú / Đề cương</label>
+          <input type="text" id="examNoteInput" placeholder="VD: Thi trắc nghiệm máy tính, được mang Atlat/Casio" class="form-control" style="font-size: 0.875rem;">
         </div>
 
         <!-- Actions -->
@@ -304,17 +304,17 @@
           <button type="button" id="examDeleteBtn" onclick="handleDeleteCurrentExam()" style="display: none; padding: 0.75rem 1rem; border-radius: 10px; background: rgba(239, 68, 68, 0.15); border: 1px solid rgba(239, 68, 68, 0.3); color: #f87171; font-weight: 600; font-size: 0.9rem; cursor: pointer; transition: all 0.2s;">
             Xóa
           </button>
-          <button type="button" onclick="closeExamModal()" style="padding: 0.75rem 1rem; border-radius: 10px; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); color: #cbd5e1; font-weight: 600; font-size: 0.9rem; cursor: pointer; transition: all 0.2s;">
+          <button type="button" onclick="closeExamModal()" class="st-pill-btn" style="padding: 0.75rem 1rem; border-radius: 10px; font-size: 0.9rem;">
             Đóng
           </button>
         </div>
       </form>
 
       <!-- Danh sách các kỳ thi đã lưu (nếu có) -->
-      <div id="savedExamsListSection" style="margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid rgba(255, 255, 255, 0.1); display: none;">
+      <div id="savedExamsListSection" style="margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid var(--theme-border); display: none;">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
-          <span style="font-size: 0.8rem; font-weight: 700; color: #cbd5e1; text-transform: uppercase; letter-spacing: 0.05em;">Tất cả kỳ thi đã lưu</span>
-          <button type="button" onclick="resetExamFormForNew()" style="background: none; border: none; font-size: 0.775rem; color: #a78bfa; cursor: pointer; font-weight: 600;">+ Thêm kỳ thi mới</button>
+          <span style="font-size: 0.8rem; font-weight: 700; color: var(--theme-text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Tất cả kỳ thi đã lưu</span>
+          <button type="button" onclick="resetExamFormForNew()" style="background: none; border: none; font-size: 0.775rem; color: var(--theme-primary); cursor: pointer; font-weight: 600;">+ Thêm kỳ thi mới</button>
         </div>
         <div id="savedExamsListItems" style="max-height: 160px; overflow-y: auto; display: flex; flex-direction: column; gap: 0.4rem;">
           <!-- Dynamic items -->
@@ -332,45 +332,45 @@
       <button class="spa-modal-close" onclick="closeQuickTaskModal()" title="Đóng">&times;</button>
       
       <div style="display: flex; align-items: center; gap: 0.85rem; margin-bottom: 1.25rem;">
-        <div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(124, 58, 237, 0.2); border: 1px solid rgba(167, 139, 250, 0.35); display: flex; align-items: center; justify-content: center; color: #a78bfa; flex-shrink: 0;">
+        <div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(124, 58, 237, 0.2); border: 1px solid rgba(167, 139, 250, 0.35); display: flex; align-items: center; justify-content: center; color: var(--theme-primary); flex-shrink: 0;">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
         </div>
         <div>
-          <h3 style="font-size: 1.25rem; font-weight: 800; color: #ffffff; margin: 0;">Thêm nhiệm vụ / Deadline</h3>
-          <p style="font-size: 0.8rem; color: #94a3b8; margin: 0;">Lên lịch hoàn thành bài tập, đồ án hoặc ôn thi</p>
+          <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--theme-text-primary); margin: 0;">Thêm nhiệm vụ / Deadline</h3>
+          <p style="font-size: 0.8rem; color: var(--theme-text-muted); margin: 0;">Lên lịch hoàn thành bài tập, đồ án hoặc ôn thi</p>
         </div>
       </div>
 
       <form id="quickTaskForm" onsubmit="handleQuickTaskSubmit(event)">
         <div style="margin-bottom: 0.85rem;">
-          <label style="display: block; font-size: 0.8rem; font-weight: 600; color: #cbd5e1; margin-bottom: 0.35rem;">Tên nhiệm vụ / Deadline *</label>
-          <input type="text" id="quickTaskTitle" required placeholder="Ví dụ: Nộp bài tập tuần 3, Bài tập lớn..." style="width: 100%; padding: 0.65rem 0.85rem; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.15); background: #1e293b; color: #ffffff; font-size: 0.875rem;">
+          <label style="display: block; font-size: 0.8rem; font-weight: 600; color: var(--theme-text-secondary); margin-bottom: 0.35rem;">Tên nhiệm vụ / Deadline *</label>
+          <input type="text" id="quickTaskTitle" required placeholder="Ví dụ: Nộp bài tập tuần 3, Bài tập lớn..." class="form-control" style="font-size: 0.875rem;">
         </div>
 
         <div style="margin-bottom: 0.85rem;">
-          <label style="display: block; font-size: 0.8rem; font-weight: 600; color: #cbd5e1; margin-bottom: 0.35rem;">Thuộc môn học</label>
-          <select id="quickTaskSubject" style="width: 100%; padding: 0.65rem 0.85rem; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.15); background: #1e293b; color: #ffffff; font-size: 0.875rem;">
+          <label style="display: block; font-size: 0.8rem; font-weight: 600; color: var(--theme-text-secondary); margin-bottom: 0.35rem;">Thuộc môn học</label>
+          <select id="quickTaskSubject" class="form-control" style="font-size: 0.875rem;">
             <!-- Populated dynamically -->
           </select>
         </div>
 
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 1.25rem;">
           <div>
-            <label style="display: block; font-size: 0.8rem; font-weight: 600; color: #cbd5e1; margin-bottom: 0.35rem;">Hạn chót *</label>
-            <input type="datetime-local" id="quickTaskDeadline" required style="width: 100%; padding: 0.65rem 0.85rem; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.15); background: #1e293b; color: #ffffff; font-size: 0.825rem;">
+            <label style="display: block; font-size: 0.8rem; font-weight: 600; color: var(--theme-text-secondary); margin-bottom: 0.35rem;">Hạn chót *</label>
+            <input type="datetime-local" id="quickTaskDeadline" required class="form-control" style="font-size: 0.825rem;">
           </div>
           <div>
-            <label style="display: block; font-size: 0.8rem; font-weight: 600; color: #cbd5e1; margin-bottom: 0.35rem;">Mức độ ưu tiên</label>
-            <select id="quickTaskPriority" style="width: 100%; padding: 0.65rem 0.85rem; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.15); background: #1e293b; color: #ffffff; font-size: 0.875rem;">
-              <option value="high" style="background-color: #171533; color: #ffffff;">Cao (Gấp)</option>
-              <option value="medium" selected style="background-color: #171533; color: #ffffff;">Bình thường</option>
-              <option value="low" style="background-color: #171533; color: #ffffff;">Thấp</option>
+            <label style="display: block; font-size: 0.8rem; font-weight: 600; color: var(--theme-text-secondary); margin-bottom: 0.35rem;">Mức độ ưu tiên</label>
+            <select id="quickTaskPriority" class="form-control" style="font-size: 0.875rem;">
+              <option value="high">Cao (Gấp)</option>
+              <option value="medium" selected>Bình thường</option>
+              <option value="low">Thấp</option>
             </select>
           </div>
         </div>
 
         <div style="display: flex; justify-content: flex-end; gap: 0.75rem;">
-          <button type="button" onclick="closeQuickTaskModal()" style="padding: 0.65rem 1.2rem; border-radius: 8px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.15); color: #cbd5e1; font-weight: 600; cursor: pointer; font-size: 0.875rem;">Hủy</button>
+          <button type="button" onclick="closeQuickTaskModal()" class="st-pill-btn" style="padding: 0.65rem 1.2rem; border-radius: 8px; font-size: 0.875rem;">Hủy</button>
           <button type="submit" style="padding: 0.65rem 1.5rem; border-radius: 8px; background: linear-gradient(135deg, #7c3aed 0%, #2563eb 100%); border: none; color: #ffffff; font-weight: 700; cursor: pointer; font-size: 0.875rem; box-shadow: 0 4px 12px rgba(124, 58, 237, 0.4);">+ Lưu deadline</button>
         </div>
       </form>

@@ -160,11 +160,11 @@ function renderTableView(container) {
         html += `
           <td rowspan="${session.span}" style="padding: 0.6rem 0.75rem; border-right: 1px solid var(--theme-border); vertical-align: top; background: rgba(37,99,235,0.08);">
             <div style="height: 100%; display: flex; flex-direction: column; justify-content: space-between; gap: 0.35rem;">
-              <div style="font-weight: 600; color: #93c5fd; font-size: 0.875rem; line-height: 1.35;">
+              <div style="font-weight: 700; color: var(--theme-text-primary); font-size: 0.875rem; line-height: 1.35;">
                 ${session.name}
               </div>
               <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.35rem;">
-                <span style="font-size: 0.75rem; font-weight: 700; color: #f87171; background: rgba(239,68,68,0.12); padding: 2px 7px; border-radius: 4px; border: 1px solid rgba(239,68,68,0.25);">
+                <span class="badge badge-danger" style="font-size: 0.725rem; padding: 2px 6px;">
                   ${session.room}
                 </span>
                 <span style="font-size: 0.725rem; color: var(--theme-text-muted);">
@@ -216,7 +216,7 @@ function renderCardsView(container) {
           <div>
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem;">
               <span class="badge badge-primary" style="font-size: 0.775rem;">Tiết ${s.startPeriod} - ${endPeriod} (${s.time})</span>
-              <span style="font-size: 0.75rem; font-weight: 700; color: #f87171; background: rgba(239,68,68,0.12); padding: 2px 7px; border-radius: 4px; border: 1px solid rgba(239,68,68,0.25);">${s.room}</span>
+              <span class="badge badge-danger" style="font-size: 0.75rem; padding: 2px 7px;">${s.room}</span>
             </div>
             <div style="font-weight: 600; font-size: 0.975rem; color: var(--theme-text-primary); margin-bottom: 0.25rem;">
               ${s.name}

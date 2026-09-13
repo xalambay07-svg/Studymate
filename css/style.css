@@ -112,22 +112,406 @@ html[data-theme="forest"] {
   --theme-card-solid: #103324;
 }
 
-/* 5. Pastel Cream (Light Aesthetic) */
+/* 5. Pastel Cream (High-Contrast Light Aesthetic) */
 html[data-theme="pastel"] {
+  color-scheme: light;
   --theme-primary: #6d28d9;
-  --theme-secondary: #be185d;
-  --theme-accent: #1d4ed8;
-  --theme-background: #faf8f5;
+  --theme-secondary: #334155;
+  --theme-accent: #2563eb;
+  --theme-background: #f8fafc;
   --theme-card: #ffffff;
-  --theme-card-hover: #ffffff;
-  --theme-border: rgba(148, 163, 184, 0.4);
+  --theme-card-hover: #f1f5f9;
+  --theme-border: #cbd5e1;
   --theme-text-primary: #0f172a;
   --theme-text-secondary: #334155;
-  --theme-text-muted: #64748b;
-  --theme-navbar-bg: rgba(255, 255, 255, 0.94);
-  --theme-card-active: rgba(109, 40, 217, 0.08);
+  --theme-text-muted: #475569;
+  --theme-navbar-bg: rgba(255, 255, 255, 0.96);
+  --theme-card-active: rgba(109, 40, 217, 0.1);
   --theme-card-solid: #ffffff;
+
+  --status-safe: #15803d;
+  --status-safe-bg: #dcfce7;
+  --status-warning: #b45309;
+  --status-warning-bg: #fef3c7;
+  --status-danger: #b91c1c;
+  --status-danger-bg: #fee2e2;
+  --status-overdue: #475569;
+  --status-overdue-bg: #f1f5f9;
 }
+
+/* Pastel Cream Comprehensive Contrast Overrides */
+html[data-theme="pastel"] body {
+  background-color: #f8fafc;
+  color: #0f172a;
+}
+
+html[data-theme="pastel"] .st-navbar {
+  background: rgba(255, 255, 255, 0.96) !important;
+  border-bottom: 1px solid #e2e8f0 !important;
+  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.04) !important;
+}
+
+html[data-theme="pastel"] .st-brand {
+  color: #0f172a !important;
+}
+
+html[data-theme="pastel"] .st-pill-link {
+  color: #334155 !important;
+}
+
+html[data-theme="pastel"] .st-pill-link:hover {
+  color: #0f172a !important;
+  background: #f1f5f9 !important;
+}
+
+html[data-theme="pastel"] .st-pill-link.active {
+  color: #6d28d9 !important;
+  background: #ede9fe !important;
+  border-color: #c4b5fd !important;
+}
+
+html[data-theme="pastel"] .st-btn-icon {
+  background: #ffffff !important;
+  border-color: #cbd5e1 !important;
+  color: #334155 !important;
+}
+
+html[data-theme="pastel"] .st-btn-icon:hover {
+  background: #f1f5f9 !important;
+  color: #0f172a !important;
+}
+
+html[data-theme="pastel"] .st-card {
+  background: #ffffff !important;
+  border: 1px solid #cbd5e1 !important;
+  box-shadow: 0 2px 12px rgba(15, 23, 42, 0.05) !important;
+}
+
+html[data-theme="pastel"] .st-card-title,
+html[data-theme="pastel"] .st-hero-title,
+html[data-theme="pastel"] h1,
+html[data-theme="pastel"] h2,
+html[data-theme="pastel"] h3,
+html[data-theme="pastel"] h4 {
+  color: #0f172a !important;
+}
+
+html[data-theme="pastel"] .st-gradient-text {
+  background: linear-gradient(135deg, #6d28d9 0%, #2563eb 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+html[data-theme="pastel"] .st-hero-header {
+  background: #ffffff !important;
+  border: 1px solid #cbd5e1 !important;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.05) !important;
+}
+
+html[data-theme="pastel"] .st-hero-header::after {
+  display: none !important;
+}
+
+html[data-theme="pastel"] .st-clock-widget {
+  background: #f8fafc !important;
+  border: 1px solid #cbd5e1 !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) !important;
+}
+
+html[data-theme="pastel"] .st-clock-time {
+  color: #1e1b4b !important;
+  text-shadow: none !important;
+}
+
+html[data-theme="pastel"] .st-clock-caption {
+  color: #475569 !important;
+}
+
+html[data-theme="pastel"] .st-hero-quote {
+  color: #334155 !important;
+}
+
+html[data-theme="pastel"] .st-action-secondary {
+  background: #ffffff !important;
+  color: #0f172a !important;
+  border: 1px solid #cbd5e1 !important;
+}
+
+html[data-theme="pastel"] .st-action-secondary:hover {
+  background: #f1f5f9 !important;
+  border-color: #94a3b8 !important;
+}
+
+html[data-theme="pastel"] .st-stat-box {
+  background: #ffffff !important;
+  border: 1px solid #cbd5e1 !important;
+  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.04) !important;
+}
+
+html[data-theme="pastel"] .st-stat-box:hover {
+  border-color: #94a3b8 !important;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.08) !important;
+}
+
+html[data-theme="pastel"] .st-stat-num {
+  color: #0f172a !important;
+}
+
+html[data-theme="pastel"] .st-stat-label {
+  color: #334155 !important;
+}
+
+html[data-theme="pastel"] .st-stat-sub {
+  color: #475569 !important;
+}
+
+html[data-theme="pastel"] .st-stat-box.stat-indigo {
+  border-left: 4px solid #4f46e5 !important;
+}
+
+html[data-theme="pastel"] .st-stat-box.stat-amber {
+  border-left: 4px solid #d97706 !important;
+}
+
+html[data-theme="pastel"] .st-stat-box.stat-emerald {
+  border-left: 4px solid #059669 !important;
+}
+
+html[data-theme="pastel"] .st-stat-box.stat-purple {
+  border-left: 4px solid #7c3aed !important;
+}
+
+html[data-theme="pastel"] .st-schedule-card {
+  background: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04) !important;
+}
+
+html[data-theme="pastel"] .st-schedule-card:hover {
+  border-color: #94a3b8 !important;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08) !important;
+}
+
+html[data-theme="pastel"] .st-schedule-subject {
+  color: #0f172a !important;
+}
+
+html[data-theme="pastel"] .st-schedule-time {
+  background: #dbeafe !important;
+  border: 1px solid #93c5fd !important;
+  color: #1e40af !important;
+  font-weight: 700 !important;
+}
+
+html[data-theme="pastel"] .st-schedule-meta {
+  color: #475569 !important;
+}
+
+html[data-theme="pastel"] .st-meta-room {
+  color: #334155 !important;
+  font-weight: 600 !important;
+}
+
+html[data-theme="pastel"] .st-empty-deadline-box {
+  background: #ffffff !important;
+  border: 1px dashed #cbd5e1 !important;
+}
+
+html[data-theme="pastel"] .st-empty-title {
+  color: #0f172a !important;
+}
+
+html[data-theme="pastel"] .st-empty-desc {
+  color: #475569 !important;
+}
+
+html[data-theme="pastel"] .st-progress-item {
+  background: #f8fafc !important;
+  border: 1px solid #e2e8f0 !important;
+}
+
+html[data-theme="pastel"] .st-progress-item:hover {
+  background: #f1f5f9 !important;
+}
+
+html[data-theme="pastel"] .st-subject-id-badge {
+  background: #ede9fe !important;
+  color: #5b21b6 !important;
+  border: 1px solid #c4b5fd !important;
+}
+
+html[data-theme="pastel"] .st-progress-subject-name {
+  color: #0f172a !important;
+}
+
+html[data-theme="pastel"] .st-progress-track {
+  background: #e2e8f0 !important;
+}
+
+html[data-theme="pastel"] .st-stat-mini-progress {
+  background: #e2e8f0 !important;
+}
+
+html[data-theme="pastel"] .st-usp-banner {
+  background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%) !important;
+  border: 1px solid #c4b5fd !important;
+}
+
+html[data-theme="pastel"] .st-usp-banner h2 {
+  color: #2e1065 !important;
+}
+
+html[data-theme="pastel"] .st-usp-banner p {
+  color: #475569 !important;
+}
+
+/* Forms and Inputs */
+html[data-theme="pastel"] .form-control,
+html[data-theme="pastel"] input,
+html[data-theme="pastel"] textarea {
+  color-scheme: light !important;
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  border: 1px solid #cbd5e1 !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05) !important;
+}
+
+html[data-theme="pastel"] .form-control::placeholder,
+html[data-theme="pastel"] input::placeholder,
+html[data-theme="pastel"] textarea::placeholder {
+  color: #64748b !important;
+  opacity: 1 !important;
+}
+
+html[data-theme="pastel"] .form-control:focus,
+html[data-theme="pastel"] input:focus,
+html[data-theme="pastel"] textarea:focus {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  border-color: #6d28d9 !important;
+  box-shadow: 0 0 0 3px rgba(109, 40, 217, 0.15) !important;
+}
+
+html[data-theme="pastel"] select.form-control,
+html[data-theme="pastel"] select {
+  color-scheme: light !important;
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  border: 1px solid #cbd5e1 !important;
+}
+
+html[data-theme="pastel"] select option,
+html[data-theme="pastel"] option {
+  color-scheme: light !important;
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+}
+
+/* Table styling */
+html[data-theme="pastel"] .table th {
+  background: #f8fafc !important;
+  color: #334155 !important;
+  font-weight: 700 !important;
+  border-bottom: 2px solid #cbd5e1 !important;
+}
+
+html[data-theme="pastel"] .table td {
+  color: #0f172a !important;
+  border-bottom: 1px solid #e2e8f0 !important;
+}
+
+html[data-theme="pastel"] .table tr:hover td {
+  background: #f8fafc !important;
+}
+
+/* Badges */
+html[data-theme="pastel"] .badge {
+  font-weight: 700 !important;
+}
+
+html[data-theme="pastel"] .badge-safe {
+  background: #dcfce7 !important;
+  color: #15803d !important;
+  border-color: #86efac !important;
+}
+
+html[data-theme="pastel"] .badge-warning {
+  background: #fef3c7 !important;
+  color: #b45309 !important;
+  border-color: #fde68a !important;
+}
+
+html[data-theme="pastel"] .badge-danger {
+  background: #fee2e2 !important;
+  color: #b91c1c !important;
+  border-color: #fca5a5 !important;
+}
+
+html[data-theme="pastel"] .badge-overdue {
+  background: #f1f5f9 !important;
+  color: #475569 !important;
+  border-color: #cbd5e1 !important;
+}
+
+html[data-theme="pastel"] .badge-primary {
+  background: #ede9fe !important;
+  color: #6d28d9 !important;
+  border-color: #c4b5fd !important;
+}
+
+/* Onboarding & Action pill buttons */
+html[data-theme="pastel"] .st-btn-onboarding {
+  background: #ede9fe !important;
+  border-color: #c4b5fd !important;
+  color: #6d28d9 !important;
+}
+
+html[data-theme="pastel"] .st-btn-logout {
+  background: #fee2e2 !important;
+  border-color: #fca5a5 !important;
+  color: #b91c1c !important;
+}
+
+/* Modals */
+html[data-theme="pastel"] .spa-modal-card {
+  background: #ffffff !important;
+  border: 1px solid #cbd5e1 !important;
+  box-shadow: 0 20px 50px -10px rgba(15, 23, 42, 0.15) !important;
+  color: #0f172a !important;
+}
+
+html[data-theme="pastel"] .spa-modal-card h3,
+html[data-theme="pastel"] .spa-modal-card label {
+  color: #0f172a !important;
+}
+
+html[data-theme="pastel"] .spa-modal-close {
+  background: #f1f5f9 !important;
+  border-color: #cbd5e1 !important;
+  color: #334155 !important;
+}
+
+html[data-theme="pastel"] .spa-modal-close:hover {
+  background: #e2e8f0 !important;
+  color: #0f172a !important;
+}
+
+/* Theme picker dropdown */
+html[data-theme="pastel"] .theme-dropdown {
+  background: #ffffff !important;
+  border-color: #cbd5e1 !important;
+  box-shadow: 0 15px 35px rgba(15, 23, 42, 0.12), 0 0 15px rgba(15, 23, 42, 0.05) !important;
+}
+
+html[data-theme="pastel"] .theme-option {
+  color: #0f172a !important;
+}
+
+html[data-theme="pastel"] .theme-option:hover {
+  background: #f1f5f9 !important;
+  color: #6d28d9 !important;
+}
+
 
 /* 6. Midnight Blue (Nền Đen Tuyệt Đối - Viền Xanh Dương Dạ Quang) */
 html[data-theme="midnight-blue"] {
@@ -416,6 +800,25 @@ a:hover {
   background: var(--theme-primary);
 }
 
+.st-btn-onboarding {
+  padding: 0.45rem 1.1rem;
+  font-size: 0.9rem;
+  background: rgba(37, 99, 235, 0.22);
+  border: 1px solid rgba(96, 165, 250, 0.45);
+  color: #93c5fd;
+  text-decoration: none;
+}
+
+.st-btn-logout {
+  padding: 0.45rem 1rem;
+  font-size: 0.875rem;
+  background: rgba(239, 68, 68, 0.15);
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  color: #f87171;
+  cursor: pointer;
+  font-weight: 600;
+}
+
 /* Liquid Glass Cards */
 .st-card {
   background: var(--theme-card);
@@ -575,7 +978,7 @@ a:hover {
   border-radius: 12px;
   border: 1px solid var(--theme-border);
   background: rgba(255, 255, 255, 0.05);
-  color: #f8fafc;
+  color: var(--theme-text-primary);
   font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 0.95rem;
   font-weight: 500;
@@ -586,7 +989,7 @@ a:hover {
 }
 
 .form-control::placeholder {
-  color: rgba(203, 213, 225, 0.55);
+  color: var(--theme-text-muted);
   font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 0.925rem;
   font-weight: 400;
@@ -597,7 +1000,7 @@ a:hover {
   border-color: var(--theme-primary);
   background: rgba(255, 255, 255, 0.08);
   box-shadow: 0 0 0 3px var(--theme-card-active), inset 0 1px 2px rgba(0, 0, 0, 0.2);
-  color: #ffffff;
+  color: var(--theme-text-primary);
 }
 
 textarea.form-control {
@@ -1808,7 +2211,7 @@ html[data-theme="pastel"] select option:hover {
 .st-hero-title {
   font-size: 1.65rem;
   font-weight: 800;
-  color: #ffffff;
+  color: var(--theme-text-primary);
   letter-spacing: -0.02em;
   line-height: 1.25;
   margin: 0;
@@ -2005,7 +2408,7 @@ html[data-theme="pastel"] select option:hover {
 .st-schedule-subject {
   font-size: 1.025rem;
   font-weight: 700;
-  color: #ffffff;
+  color: var(--theme-text-primary);
   line-height: 1.4;
   margin: 0.15rem 0;
   width: 100%;
@@ -2025,7 +2428,7 @@ html[data-theme="pastel"] select option:hover {
   display: inline-flex;
   align-items: center;
   gap: 0.3rem;
-  color: #cbd5e1;
+  color: var(--theme-text-secondary);
 }
 
 .st-meta-sep {
@@ -2063,7 +2466,7 @@ html[data-theme="pastel"] select option:hover {
 .st-empty-title {
   font-size: 1.05rem;
   font-weight: 700;
-  color: #ffffff;
+  color: var(--theme-text-primary);
   margin-bottom: 0.35rem;
 }
 
@@ -2110,7 +2513,7 @@ html[data-theme="pastel"] select option:hover {
 .st-progress-subject-name {
   font-size: 0.9rem;
   font-weight: 600;
-  color: #f1f5f9;
+  color: var(--theme-text-primary);
 }
 
 .st-progress-badge {

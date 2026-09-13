@@ -204,7 +204,7 @@ function renderUpcomingDeadlines() {
     return `
       <div class="st-schedule-card" style="padding: 0.85rem 1.1rem;">
         <div class="st-schedule-card-top">
-          <span style="font-size: 0.75rem; font-weight: 700; color: #a78bfa; background: rgba(139, 92, 246, 0.15); padding: 0.2rem 0.6rem; border-radius: 6px; border: 1px solid rgba(139, 92, 246, 0.3);">
+          <span class="st-subject-id-badge">
             ${task.subjectId || "CHUNG"}
           </span>
           <span class="badge ${badgeClass}" style="font-size: 0.75rem; padding: 0.22rem 0.65rem;">${badgeText}</span>
@@ -708,14 +708,14 @@ function renderSavedExamsList() {
     let badgeColor = d > 3 ? "#10b981" : (d >= 0 ? "#f59e0b" : "#94a3b8");
 
     return `
-      <div style="display: flex; align-items: center; justify-content: space-between; padding: 0.5rem 0.75rem; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; font-size: 0.825rem;">
+      <div style="display: flex; align-items: center; justify-content: space-between; padding: 0.5rem 0.75rem; background: rgba(255,255,255,0.03); border: 1px solid var(--theme-border); border-radius: 8px; font-size: 0.825rem;">
         <div style="cursor: pointer; flex: 1;" onclick="openExamModal('${e.id}')">
-          <span style="font-weight: 600; color: #ffffff;">${e.subjectName}</span>
-          <span style="color: #94a3b8; margin-left: 6px;">(${formatDateDisplay(e.date)})</span>
+          <span style="font-weight: 600; color: var(--theme-text-primary);">${e.subjectName}</span>
+          <span style="color: var(--theme-text-muted); margin-left: 6px;">(${formatDateDisplay(e.date)})</span>
         </div>
         <div style="display: flex; align-items: center; gap: 0.5rem;">
           <span style="font-size: 0.75rem; font-weight: 600; color: ${badgeColor};">${badgeText}</span>
-          <button type="button" onclick="openExamModal('${e.id}')" style="background: none; border: none; color: #60a5fa; cursor: pointer; font-size: 0.75rem;">Sửa</button>
+          <button type="button" onclick="openExamModal('${e.id}')" style="background: none; border: none; color: var(--theme-primary); cursor: pointer; font-size: 0.75rem; font-weight: 600;">Sửa</button>
         </div>
       </div>
     `;
@@ -838,11 +838,11 @@ function openQuickTaskModal() {
   const select = document.getElementById("quickTaskSubject");
   if (select) {
     const subjects = JSON.parse(localStorage.getItem("studymate_subjects")) || [];
-    let html = `<option value="" style="background-color: #171533; color: #ffffff;">-- Chọn môn học --</option>`;
+    let html = `<option value="">-- Chọn môn học --</option>`;
     subjects.forEach(s => {
-      html += `<option value="${s.id}" style="background-color: #171533; color: #ffffff;">${s.id} - ${s.name}</option>`;
+      html += `<option value="${s.id}">${s.id} - ${s.name}</option>`;
     });
-    html += `<option value="CHUNG" style="background-color: #171533; color: #ffffff;">Môn khác / Việc chung</option>`;
+    html += `<option value="CHUNG">Môn khác / Việc chung</option>`;
     select.innerHTML = html;
   }
 
