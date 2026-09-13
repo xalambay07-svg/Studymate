@@ -21,12 +21,225 @@
         <span>Study<span style="color: #2563eb;">Mate</span></span>
       </a>
 
-      <!-- Middle Menu with Dropdowns -->
+      <!-- Middle Menu with Rich Dropdowns (Interactive Mega Menus) -->
       <div class="athen-nav-menu">
-        <a href="#features" class="athen-nav-item">Tính năng <span>▾</span></a>
-        <a href="#features" class="athen-nav-item">Mục tiêu học tập <span>▾</span></a>
-        <a href="#features" class="athen-nav-item">Quét TKB AI/OCR <span>▾</span></a>
-        <a href="#features" class="athen-nav-item">Về StudyMate <span>▾</span></a>
+        
+        <!-- 1. Tính năng (Features) Dropdown -->
+        <div class="athen-dropdown-wrapper" id="ddFeatures">
+          <button type="button" class="athen-nav-btn" onclick="toggleAthenDropdown('ddFeatures')">
+            Tính năng <span class="athen-caret">▾</span>
+          </button>
+          <div class="athen-dropdown-menu w-features">
+            <div style="font-size: 0.725rem; font-weight: 700; text-transform: uppercase; color: #64748b; letter-spacing: 0.05em; margin-bottom: 0.75rem;">
+              ⚡ CÔNG CỤ HỌC TẬP THÔNG MINH
+            </div>
+            <div class="athen-dropdown-grid-2">
+              <div class="athen-dropdown-item" onclick="switchToWorkspace()">
+                <div class="athen-dd-icon" style="background: #f5f3ff; color: #8b5cf6;">📊</div>
+                <div class="athen-dd-content">
+                  <div class="athen-dd-title">Dashboard học tập <span class="athen-dd-badge badge-hot">Hot</span></div>
+                  <div class="athen-dd-desc">Đồng hồ lớn, danh ngôn động lực và thống kê ngày học.</div>
+                </div>
+              </div>
+
+              <div class="athen-dropdown-item" onclick="window.location.href='tasks.html'">
+                <div class="athen-dd-icon" style="background: #fffbeb; color: #f59e0b;">⏰</div>
+                <div class="athen-dd-content">
+                  <div class="athen-dd-title">Quản lý Deadline <span class="athen-dd-badge badge-hot">Gấp</span></div>
+                  <div class="athen-dd-desc">Phân màu 🟢🟡🔴, cảnh báo bài tập sắp đến hạn nộp.</div>
+                </div>
+              </div>
+
+              <div class="athen-dropdown-item" onclick="window.location.href='import-schedule.html'">
+                <div class="athen-dd-icon" style="background: #fdf4ff; color: #c026d3;">📸</div>
+                <div class="athen-dd-content">
+                  <div class="athen-dd-title">Quét TKB AI/OCR <span class="athen-dd-badge badge-usp">USP</span></div>
+                  <div class="athen-dd-desc">Chụp ảnh lịch trường tự động bóc tách tiết & phòng.</div>
+                </div>
+              </div>
+
+              <div class="athen-dropdown-item" onclick="window.location.href='schedule.html'">
+                <div class="athen-dd-icon" style="background: #eff6ff; color: #2563eb;">📅</div>
+                <div class="athen-dd-content">
+                  <div class="athen-dd-title">Thời khóa biểu tuần</div>
+                  <div class="athen-dd-desc">Lịch học trực quan theo thứ, giảng viên và phòng học.</div>
+                </div>
+              </div>
+
+              <div class="athen-dropdown-item" onclick="window.location.href='progress.html'">
+                <div class="athen-dd-icon" style="background: #f0fdf4; color: #10b981;">📈</div>
+                <div class="athen-dd-content">
+                  <div class="athen-dd-title">Đo lường tiến độ</div>
+                  <div class="athen-dd-desc">Tự tính % môn học theo task hoàn thành, không nhập tay.</div>
+                </div>
+              </div>
+
+              <div class="athen-dropdown-item" onclick="window.location.href='exams.html'">
+                <div class="athen-dd-icon" style="background: #fef2f2; color: #ef4444;">🎯</div>
+                <div class="athen-dd-content">
+                  <div class="athen-dd-title">Đếm ngược kỳ thi</div>
+                  <div class="athen-dd-desc">Đếm lùi số ngày tới các bài thi giữa kỳ & cuối kỳ.</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="athen-dropdown-footer">
+              <span>✨ Hoạt động mượt mà trong cùng 1 tab trình duyệt</span>
+              <button type="button" onclick="switchToWorkspace()">Vào Dashboard ngay &rarr;</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Mục tiêu học tập (Study Goals) Dropdown -->
+        <div class="athen-dropdown-wrapper" id="ddGoals">
+          <button type="button" class="athen-nav-btn" onclick="toggleAthenDropdown('ddGoals')">
+            Mục tiêu học tập <span class="athen-caret">▾</span>
+          </button>
+          <div class="athen-dropdown-menu w-goals">
+            <div style="font-size: 0.725rem; font-weight: 700; text-transform: uppercase; color: #64748b; letter-spacing: 0.05em; margin-bottom: 0.75rem;">
+              🎯 PHƯƠNG PHÁP HỌC HIỆU QUẢ
+            </div>
+            <div class="athen-dropdown-list">
+              <div class="athen-dropdown-item" onclick="showFeatureDetail('momentum')">
+                <div class="athen-dd-icon" style="background: #fef3c7; color: #d97706;">🏆</div>
+                <div class="athen-dd-content">
+                  <div class="athen-dd-title">Xây dựng đà học tập (Momentum)</div>
+                  <div class="athen-dd-desc">Duy trì thói quen học tập đều đặn mỗi ngày, tránh bị "ngợp" trước kỳ thi.</div>
+                </div>
+              </div>
+
+              <div class="athen-dropdown-item" onclick="showFeatureDetail('procrastination')">
+                <div class="athen-dd-icon" style="background: #ecfeff; color: #0891b2;">⚡</div>
+                <div class="athen-dd-content">
+                  <div class="athen-dd-title">Chống trì hoãn (Anti-procrastination)</div>
+                  <div class="athen-dd-desc">Bẻ nhỏ bài tập lớn thành từng việc nhỏ 15-30 phút để giải quyết ngay.</div>
+                </div>
+              </div>
+
+              <div class="athen-dropdown-item" onclick="showFeatureDetail('spaced')">
+                <div class="athen-dd-icon" style="background: #f0fdf4; color: #16a34a;">📚</div>
+                <div class="athen-dd-content">
+                  <div class="athen-dd-title">Ôn thi ngắt quãng (Spaced Repetition)</div>
+                  <div class="athen-dd-desc">Lên lịch ôn tập cách nhật khoa học để ghi nhớ kiến thức lâu dài.</div>
+                </div>
+              </div>
+
+              <div class="athen-dropdown-item" onclick="showFeatureDetail('badges')">
+                <div class="athen-dd-icon" style="background: #f5f3ff; color: #7c3aed;">🏅</div>
+                <div class="athen-dd-content">
+                  <div class="athen-dd-title">Hệ thống huy hiệu thành tích</div>
+                  <div class="athen-dd-desc">Mở khóa huy hiệu xuất sắc khi nộp bài trước hạn và hoàn thành kỳ thi.</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="athen-dropdown-footer">
+              <span>Được thiết kế riêng cho sinh viên đại học</span>
+              <button type="button" onclick="showFeatureDetail('momentum')">Xem chi tiết &rarr;</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Quét TKB AI/OCR Dropdown -->
+        <div class="athen-dropdown-wrapper" id="ddOcr">
+          <button type="button" class="athen-nav-btn" onclick="toggleAthenDropdown('ddOcr')">
+            Quét TKB AI/OCR <span class="athen-caret">▾</span>
+          </button>
+          <div class="athen-dropdown-menu w-ocr">
+            <div style="font-size: 0.725rem; font-weight: 700; text-transform: uppercase; color: #64748b; letter-spacing: 0.05em; margin-bottom: 0.75rem;">
+              📸 TÍNH NĂNG ĐẶC TRƯNG (USP)
+            </div>
+            <div class="athen-dropdown-list">
+              <div class="athen-dropdown-item" onclick="window.location.href='import-schedule.html'">
+                <div class="athen-dd-icon" style="background: #eff6ff; color: #2563eb;">📸</div>
+                <div class="athen-dd-content">
+                  <div class="athen-dd-title">Quét ảnh chụp TKB trường <span class="athen-dd-badge badge-usp">USP</span></div>
+                  <div class="athen-dd-desc">Chỉ cần tải ảnh chụp màn hình lịch trường, không cần nhập tay từng môn.</div>
+                </div>
+              </div>
+
+              <div class="athen-dropdown-item" onclick="window.location.href='import-schedule.html'">
+                <div class="athen-dd-icon" style="background: #fdf4ff; color: #c026d3;">🤖</div>
+                <div class="athen-dd-content">
+                  <div class="athen-dd-title">Bóc tách tự động bằng OCR</div>
+                  <div class="athen-dd-desc">Tự động nhận diện Tên môn học, Thứ, Tiết bắt đầu, Số tiết và Phòng học.</div>
+                </div>
+              </div>
+
+              <div class="athen-dropdown-item" onclick="window.location.href='import-schedule.html'">
+                <div class="athen-dd-icon" style="background: #fffbeb; color: #d97706;">✏️</div>
+                <div class="athen-dd-content">
+                  <div class="athen-dd-title">Kiểm tra & Hiệu chỉnh trực tiếp</div>
+                  <div class="athen-dd-desc">Dễ dàng sửa thông tin môn học trước khi lưu vào thời khóa biểu chính thức.</div>
+                </div>
+              </div>
+
+              <div class="athen-dropdown-item" onclick="window.location.href='import-schedule.html'">
+                <div class="athen-dd-icon" style="background: #f0fdf4; color: #16a34a;">📥</div>
+                <div class="athen-dd-content">
+                  <div class="athen-dd-title">Nạp mẫu TKB ĐH Thủy Lợi (TLU)</div>
+                  <div class="athen-dd-desc">Bấm 1 chạm nạp sẵn lịch học mẫu môn CSE122, Toán, Cấu trúc dữ liệu.</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="athen-dropdown-footer">
+              <span>Hỗ trợ ảnh PNG, JPG, JPEG</span>
+              <a href="import-schedule.html">Mở trang quét TKB &rarr;</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Về StudyMate Dropdown -->
+        <div class="athen-dropdown-wrapper" id="ddAbout">
+          <button type="button" class="athen-nav-btn" onclick="toggleAthenDropdown('ddAbout')">
+            Về StudyMate <span class="athen-caret">▾</span>
+          </button>
+          <div class="athen-dropdown-menu w-about">
+            <div style="font-size: 0.725rem; font-weight: 700; text-transform: uppercase; color: #64748b; letter-spacing: 0.05em; margin-bottom: 0.75rem;">
+              🦉 THÔNG TIN DỰ ÁN
+            </div>
+            <div class="athen-dropdown-list">
+              <div class="athen-dropdown-item" onclick="showFeatureDetail('story')">
+                <div class="athen-dd-icon" style="background: #eff6ff; color: #2563eb;">🦉</div>
+                <div class="athen-dd-content">
+                  <div class="athen-dd-title">Câu chuyện & Sứ mệnh</div>
+                  <div class="athen-dd-desc">Tạo ra ứng dụng học tập thẩm mỹ, thiết thực cho sinh viên Việt Nam.</div>
+                </div>
+              </div>
+
+              <div class="athen-dropdown-item" onclick="showFeatureDetail('cse122')">
+                <div class="athen-dd-icon" style="background: #f5f3ff; color: #7c3aed;">🎓</div>
+                <div class="athen-dd-content">
+                  <div class="athen-dd-title">Đề tài CSE122 (Lập trình Web)</div>
+                  <div class="athen-dd-desc">Bài tập lớn học phần Lập trình Web - Trường Đại học Thủy Lợi (TLU).</div>
+                </div>
+              </div>
+
+              <div class="athen-dropdown-item" onclick="showFeatureDetail('privacy')">
+                <div class="athen-dd-icon" style="background: #f0fdf4; color: #16a34a;">🛡️</div>
+                <div class="athen-dd-content">
+                  <div class="athen-dd-title">Bảo mật dữ liệu (Local-first)</div>
+                  <div class="athen-dd-desc">Dữ liệu lưu an toàn trong trình duyệt của bạn, không thu thập thông tin cá nhân.</div>
+                </div>
+              </div>
+
+              <div class="athen-dropdown-item" onclick="showFeatureDetail('team')">
+                <div class="athen-dd-icon" style="background: #fffbeb; color: #d97706;">👥</div>
+                <div class="athen-dd-content">
+                  <div class="athen-dd-title">Nhóm sinh viên phát triển</div>
+                  <div class="athen-dd-desc">Khoa Công nghệ Thông tin - Trường Đại học Thủy Lợi.</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="athen-dropdown-footer">
+              <span>Phiên bản 2.0 • Năm học 2025-2026</span>
+              <button type="button" onclick="showFeatureDetail('cse122')">Xem giới thiệu &rarr;</button>
+            </div>
+          </div>
+        </div>
+
       </div>
 
       <!-- Right Actions -->
@@ -695,6 +908,253 @@
         switchToLanding();
       }
     });
+
+    // =======================================================================
+    // ATHENIFY DROPDOWN CONTROLLERS (HOVER + CLICK TOGGLE)
+    // =======================================================================
+    function toggleAthenDropdown(wrapperId) {
+      const target = document.getElementById(wrapperId);
+      if (!target) return;
+      const isOpen = target.classList.contains('active');
+      
+      // Close all dropdowns first
+      closeAllAthenDropdowns();
+
+      // If it wasn't open, open it
+      if (!isOpen) {
+        target.classList.add('active');
+      }
+    }
+
+    function closeAllAthenDropdowns() {
+      document.querySelectorAll('.athen-dropdown-wrapper').forEach(el => {
+        el.classList.remove('active');
+      });
+    }
+
+    // Close dropdowns when clicking outside
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('.athen-dropdown-wrapper')) {
+        closeAllAthenDropdowns();
+      }
+    });
+
+    // Close on ESC key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeAllAthenDropdowns();
+        closeFeatureDetail();
+        closeAuthModal();
+      }
+    });
+
+    // =======================================================================
+    // FEATURE DETAIL MODAL DATA & CONTROLLER
+    // =======================================================================
+    const featureData = {
+      momentum: {
+        icon: '🏆',
+        badge: 'PHƯƠNG PHÁP HỌC TẬP',
+        badgeBg: '#fef3c7',
+        badgeColor: '#d97706',
+        title: 'Xây dựng đà học tập (Study Momentum)',
+        desc: 'Học tập ở đại học không phải là cuộc đua nước rút thâu đêm trước ngày thi, mà là duy trì nhịp độ liên tục mỗi ngày.',
+        points: [
+          '<strong>Duy trì chuỗi học tập (Streak):</strong> Đánh dấu mỗi ngày bạn hoàn thành ít nhất 1 bài tập hoặc ôn tập 20 phút.',
+          '<strong>Giảm tải áp lực thi cử:</strong> Khi tích lũy kiến thức từng ngày, bạn sẽ tự tin bước vào phòng thi mà không phải thức trắng đêm.',
+          '<strong>Tự động đo lường:</strong> Hệ thống StudyMate ghi nhận tiến độ và trao huy hiệu khen thưởng.'
+        ],
+        ctaText: 'Bắt đầu tạo đà học tập ngay →',
+        ctaAction: 'switchToWorkspace()'
+      },
+      procrastination: {
+        icon: '⚡',
+        badge: 'CHỐNG TRÌ HOÃN',
+        badgeBg: '#ecfeff',
+        badgeColor: '#0891b2',
+        title: 'Chống trì hoãn (Anti-procrastination)',
+        desc: 'Nhiều sinh viên trì hoãn bài tập lớn vì cảm thấy nhiệm vụ quá đồ sộ. StudyMate áp dụng phương pháp vi mô hóa.',
+        points: [
+          '<strong>Quy tắc 2 phút & chia nhỏ:</strong> Tách một bài tập lớn 10 trang thành 5 nhiệm vụ nhỏ 2 trang.',
+          '<strong>Màu sắc cảnh báo gấp:</strong> Deadline hôm nay được gắn thẻ đỏ 🔴 và đưa lên vị trí ưu tiên số 1.',
+          '<strong>Tập trung từng việc:</strong> Không cần làm hết cùng lúc, chỉ cần tích chọn 1 task để thấy thanh tiến độ nhảy lên.'
+        ],
+        ctaText: 'Xem danh sách Deadline mẫu →',
+        ctaAction: "window.location.href='tasks.html'"
+      },
+      spaced: {
+        icon: '📚',
+        badge: 'KHOA HỌC NÃO BỘ',
+        badgeBg: '#f0fdf4',
+        badgeColor: '#16a34a',
+        title: 'Ôn thi ngắt quãng (Spaced Repetition)',
+        desc: 'Đường cong quên lãng Ebbinghaus chứng minh rằng ôn tập nhắc lại sau 1 ngày, 3 ngày và 7 ngày giúp nhớ lâu gấp 4 lần.',
+        points: [
+          '<strong>Đếm ngược ngày thi:</strong> Module Exam Tracker nhắc nhở bạn bắt đầu ôn trước ngày thi 14 ngày.',
+          '<strong>Chia theo học phần:</strong> Phân bổ ngày chẵn ôn Lý thuyết, ngày lẻ giải Đề thi các năm trước.',
+          '<strong>Không học dồn (Cramming):</strong> Giữ gìn sức khỏe tinh thần và phong độ đỉnh cao khi thi.'
+        ],
+        ctaText: 'Xem lịch thi & đếm ngược →',
+        ctaAction: "window.location.href='exams.html'"
+      },
+      badges: {
+        icon: '🏅',
+        badge: 'HỆ THỐNG DANH HIỆU',
+        badgeBg: '#f5f3ff',
+        badgeColor: '#7c3aed',
+        title: 'Huy hiệu thành tích sinh viên',
+        desc: 'Tạo động lực thông qua cơ chế Gamification hóa trải nghiệm học tập đại học.',
+        points: [
+          '<strong>🦉 Cú đêm thông thái:</strong> Hoàn thành môn học đầu tiên đạt 100% tiến độ.',
+          '<strong>⚡ Vua tốc độ Deadline:</strong> Nộp bài tập trước hạn ít nhất 48 tiếng.',
+          '<strong>🎯 Thần đèn ôn thi:</strong> Thiết lập lịch ôn tập đầy đủ trước kỳ thi 2 tuần.'
+        ],
+        ctaText: 'Khám phá tiến độ môn học →',
+        ctaAction: "window.location.href='progress.html'"
+      },
+      story: {
+        icon: '🦉',
+        badge: 'CÂU CHUYỆN SẢN PHẨM',
+        badgeBg: '#eff6ff',
+        badgeColor: '#2563eb',
+        title: 'Vì sao StudyMate ra đời?',
+        desc: 'Sinh viên đại học thường xuyên bị quá tải thông tin: Deadline trôi trong nhóm Zalo lớp, lịch học xem trên web trường khó tra cứu bằng điện thoại.',
+        points: [
+          '<strong>Tập trung 1 nơi duy nhất:</strong> Lịch học, deadline, tài liệu và tiến độ gói gọn trong một màn hình thẩm mỹ.',
+          '<strong>Tính năng quét ảnh TKB AI/OCR:</strong> Giải quyết triệt để sự lười nhập tay thời khóa biểu đầu kỳ của sinh viên.',
+          '<strong>Giao diện tối tập trung:</strong> Được tinh chỉnh tỉ mỉ giúp học tập ban đêm êm dịu, không mỏi mắt.'
+        ],
+        ctaText: 'Trải nghiệm không gian học ngay →',
+        ctaAction: 'switchToWorkspace()'
+      },
+      cse122: {
+        icon: '🎓',
+        badge: 'HỌC PHẦN CSE122',
+        badgeBg: '#f5f3ff',
+        badgeColor: '#7c3aed',
+        title: 'Dự án Lập trình Web — ĐH Thủy Lợi (TLU)',
+        desc: 'StudyMate là bài tập lớn nghiên cứu và xây dựng ứng dụng Web thực tế phục vụ trực tiếp cho sinh viên trong trường.',
+        points: [
+          '<strong>Công nghệ sử dụng:</strong> HTML5 ngữ nghĩa, CSS3 Flexbox/Grid responsive hiện đại, JavaScript ES6+ Local-first.',
+          '<strong>Mô hình SPA mượt mà:</strong> Chuyển đổi giữa Landing Page và Dashboard học tập ngay trong 1 tab không tải lại trang.',
+          '<strong>Mã nguồn chuẩn chỉ:</strong> Tổ chức thư mục MVC tinh gọn (css, js, pages, assets, docs) có tài liệu thiết kế đầy đủ.'
+        ],
+        ctaText: 'Mở Dashboard học tập sinh viên →',
+        ctaAction: 'switchToWorkspace()'
+      },
+      privacy: {
+        icon: '🛡️',
+        badge: 'BẢO MẬT & RIÊNG TƯ',
+        badgeBg: '#f0fdf4',
+        badgeColor: '#16a34a',
+        title: 'Bảo mật dữ liệu (Local-first)',
+        desc: 'Chúng tôi tôn trọng tuyệt đối quyền riêng tư và thông tin học tập của sinh viên.',
+        points: [
+          '<strong>Lưu trữ tại chỗ (Local-first):</strong> Tất cả thời khóa biểu, danh sách môn học và deadline lưu an toàn trong trình duyệt.',
+          '<strong>Không chia sẻ dữ liệu:</strong> Không gửi dữ liệu học tập của bạn cho bất kỳ bên thứ ba hay máy chủ theo dõi nào.',
+          '<strong>Sử dụng Offline:</strong> Có thể mở xem lại lịch học ngay cả khi mất mạng wifi trên giảng đường.'
+        ],
+        ctaText: 'Đã hiểu & Vào học tập →',
+        ctaAction: 'switchToWorkspace()'
+      },
+      team: {
+        icon: '👥',
+        badge: 'NHÓM PHÁT TRIỂN',
+        badgeBg: '#fffbeb',
+        badgeColor: '#d97706',
+        title: 'Nhóm sinh viên Khoa CNTT — ĐH Thủy Lợi',
+        desc: 'Dự án được xây dựng với tinh thần cống hiến cho cộng đồng sinh viên, nhằm nâng cao điểm số và giảm bớt căng thẳng thi cử.',
+        points: [
+          '<strong>Trường:</strong> Đại học Thủy Lợi (TLU) - 175 Tây Sơn, Đống Đa, Hà Nội.',
+          '<strong>Khoa:</strong> Công nghệ Thông tin (CSE).',
+          '<strong>Mục tiêu:</strong> Mang đến giải pháp công nghệ trực quan, dễ dùng nhất cho bạn bè cùng khóa.'
+        ],
+        ctaText: 'Mở không gian học tập StudyMate →',
+        ctaAction: 'switchToWorkspace()'
+      }
+    };
+
+    function showFeatureDetail(key) {
+      closeAllAthenDropdowns();
+      const data = featureData[key] || featureData.momentum;
+      const modal = document.getElementById('featureDetailModal');
+      
+      document.getElementById('fdIcon').textContent = data.icon;
+      const badgeElem = document.getElementById('fdBadge');
+      badgeElem.textContent = data.badge;
+      badgeElem.style.background = data.badgeBg;
+      badgeElem.style.color = data.badgeColor;
+
+      document.getElementById('fdTitle').textContent = data.title;
+      document.getElementById('fdDesc').textContent = data.desc;
+
+      const pointsContainer = document.getElementById('fdPoints');
+      pointsContainer.innerHTML = data.points.map(p => `
+        <li style="margin-bottom: 0.6rem; display: flex; align-items: flex-start; gap: 0.5rem; line-height: 1.5; font-size: 0.85rem; color: #334155;">
+          <span style="color: #2563eb; font-weight: 700;">✓</span>
+          <span>${p}</span>
+        </li>
+      `).join('');
+
+      const ctaBtn = document.getElementById('fdCtaBtn');
+      ctaBtn.textContent = data.ctaText;
+      ctaBtn.setAttribute('onclick', `${data.ctaAction}; closeFeatureDetail();`);
+
+      modal.classList.add('active');
+    }
+
+    function closeFeatureDetail() {
+      const modal = document.getElementById('featureDetailModal');
+      if (modal) modal.classList.remove('active');
+    }
+
+    // Close feature modal when clicking overlay
+    document.getElementById('featureDetailModal')?.addEventListener('click', function(e) {
+      if (e.target === this) {
+        closeFeatureDetail();
+      }
+    });
   </script>
+
+  <!-- ========================================================================= -->
+  <!-- FEATURE DETAIL MODAL (HIỂN THỊ CHI TIẾT KHI BẤM VÀO MENU TÍNH NĂNG)       -->
+  <!-- ========================================================================= -->
+  <div id="featureDetailModal" class="spa-modal-overlay">
+    <div class="spa-modal-card" style="max-width: 520px;">
+      <button class="spa-modal-close" onclick="closeFeatureDetail()" title="Đóng">&times;</button>
+      
+      <div style="display: flex; align-items: center; gap: 0.85rem; margin-bottom: 1.25rem;">
+        <div id="fdIcon" style="width: 52px; height: 52px; border-radius: 14px; background: #eff6ff; display: flex; align-items: center; justify-content: center; font-size: 1.85rem; flex-shrink: 0; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+          🏆
+        </div>
+        <div>
+          <span id="fdBadge" style="display: inline-block; font-size: 0.65rem; font-weight: 800; text-transform: uppercase; padding: 2px 8px; border-radius: 9999px; margin-bottom: 0.25rem; letter-spacing: 0.05em;">
+            TÍNH NĂNG
+          </span>
+          <h3 id="fdTitle" style="font-size: 1.3rem; font-weight: 800; color: #0f172a; margin: 0; line-height: 1.25;">
+            Tên tính năng
+          </h3>
+        </div>
+      </div>
+
+      <p id="fdDesc" style="color: #475569; font-size: 0.875rem; line-height: 1.6; margin-bottom: 1rem; background: #f8fafc; padding: 0.85rem 1rem; border-radius: 10px; border-left: 3px solid #2563eb;">
+        Mô tả tính năng chi tiết...
+      </p>
+
+      <ul id="fdPoints" style="list-style: none; padding: 0; margin: 0 0 1.5rem 0;">
+        <!-- Filled dynamically -->
+      </ul>
+
+      <div style="display: flex; gap: 0.75rem;">
+        <button type="button" id="fdCtaBtn" style="flex: 1; padding: 0.8rem 1rem; border-radius: 10px; background: #2563eb; color: #ffffff; font-weight: 700; font-size: 0.9rem; border: none; cursor: pointer; transition: all 0.2s;">
+          Trải nghiệm ngay &rarr;
+        </button>
+        <button type="button" onclick="closeFeatureDetail()" style="padding: 0.8rem 1.25rem; border-radius: 10px; background: #f1f5f9; color: #475569; font-weight: 600; font-size: 0.9rem; border: none; cursor: pointer;">
+          Đóng
+        </button>
+      </div>
+    </div>
+  </div>
+
 </body>
 </html>

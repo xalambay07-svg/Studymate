@@ -1,4 +1,4 @@
-﻿/* ==========================================================================
+/* ==========================================================================
    STUDYMATE - AESTHETIC DESIGN SYSTEM (INSPIRED BY STUDYMATE)
    Minimalist, Dark Aesthetic, Glassmorphism, Theme Switcher, NO TIMER
    ========================================================================== */
@@ -1000,3 +1000,222 @@ a:hover {
 .spa-view {
   transition: opacity 0.3s ease;
 }
+
+/* ========================================================================= */
+/* ATHENIFY NAVBAR DROPDOWN MENUS (INTERACTIVE POPUPS)                       */
+/* ========================================================================= */
+.athen-dropdown-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.athen-nav-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.45rem 0.65rem;
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: #334155;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  border-radius: 8px;
+}
+
+.athen-nav-btn:hover,
+.athen-dropdown-wrapper:hover .athen-nav-btn,
+.athen-dropdown-wrapper.active .athen-nav-btn {
+  color: #2563eb;
+  background: rgba(37, 99, 235, 0.08);
+}
+
+.athen-caret {
+  display: inline-block;
+  font-size: 0.75rem;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  color: #64748b;
+}
+
+.athen-dropdown-wrapper:hover .athen-caret,
+.athen-dropdown-wrapper.active .athen-caret {
+  transform: rotate(180deg);
+  color: #2563eb;
+}
+
+.athen-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%) translateY(8px);
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+  box-shadow: 0 20px 45px -12px rgba(15, 23, 42, 0.18), 0 0 0 1px rgba(0, 0, 0, 0.04);
+  padding: 1.25rem;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 250;
+  text-align: left;
+}
+
+/* Hover bridge: allows cursor to transition smoothly between button and menu */
+.athen-dropdown-menu::before {
+  content: "";
+  position: absolute;
+  top: -14px;
+  left: 0;
+  right: 0;
+  height: 16px;
+  display: block;
+}
+
+.athen-dropdown-wrapper:hover .athen-dropdown-menu,
+.athen-dropdown-wrapper.active .athen-dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Specific Dropdown widths */
+.athen-dropdown-menu.w-features {
+  width: 580px;
+}
+
+.athen-dropdown-menu.w-goals {
+  width: 420px;
+}
+
+.athen-dropdown-menu.w-ocr {
+  width: 440px;
+}
+
+.athen-dropdown-menu.w-about {
+  width: 400px;
+}
+
+/* Responsive adjustment for left align when menu is near edges */
+.athen-dropdown-wrapper:first-child .athen-dropdown-menu {
+  left: 0;
+  transform: translateX(0) translateY(8px);
+}
+.athen-dropdown-wrapper:first-child:hover .athen-dropdown-menu,
+.athen-dropdown-wrapper:first-child.active .athen-dropdown-menu {
+  transform: translateX(0) translateY(0);
+}
+
+.athen-dropdown-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+
+.athen-dropdown-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.athen-dropdown-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.75rem 0.85rem;
+  border-radius: 12px;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.15s ease;
+  cursor: pointer;
+  border: 1px solid transparent;
+  background: #ffffff;
+}
+
+.athen-dropdown-item:hover {
+  background: #f8fafc;
+  border-color: #e2e8f0;
+  transform: translateY(-1px);
+}
+
+.athen-dd-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+.athen-dd-content {
+  flex: 1;
+}
+
+.athen-dd-title {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 0.15rem;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.athen-dd-badge {
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 1px 6px;
+  border-radius: 9999px;
+  background: #eff6ff;
+  color: #2563eb;
+}
+
+.athen-dd-badge.badge-hot {
+  background: #fef2f2;
+  color: #ef4444;
+}
+
+.athen-dd-badge.badge-usp {
+  background: #f5f3ff;
+  color: #8b5cf6;
+}
+
+.athen-dd-desc {
+  font-size: 0.75rem;
+  color: #64748b;
+  line-height: 1.4;
+}
+
+.athen-dropdown-footer {
+  margin-top: 0.85rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid #f1f5f9;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.775rem;
+  color: #64748b;
+}
+
+.athen-dropdown-footer a,
+.athen-dropdown-footer button {
+  color: #2563eb;
+  font-weight: 600;
+  text-decoration: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  font-size: 0.775rem;
+}
+
+.athen-dropdown-footer a:hover,
+.athen-dropdown-footer button:hover {
+  text-decoration: underline;
+}
+
