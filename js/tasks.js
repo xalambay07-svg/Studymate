@@ -115,3 +115,4 @@ function deleteTask(id) {
   renderTasksTable();
   showToast("Đã xóa nhiệm vụ!", "info");
 }
+

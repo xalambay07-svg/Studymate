@@ -1,5 +1,5 @@
 ﻿/**
- * STUDYMATE - SCHEDULE & OCR SCRIPT (Aesthetic StudiesTimer style)
+ * STUDYMATE - SCHEDULE & OCR SCRIPT (Aesthetic StudyMate style)
  * Xử lý xem thời khóa biểu và tính năng nổi bật USP: Nhập lịch bằng ảnh (AI/OCR) & Text
  */
 
@@ -130,3 +130,4 @@ function confirmAndSaveSchedule() {
     window.location.href = "schedule.html";
   }, 1000);
 }
+

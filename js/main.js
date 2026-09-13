@@ -102,3 +102,4 @@ function updateUserHeader() {
   if (nameElem) nameElem.textContent = currentUser.name;
   if (roleElem) roleElem.textContent = currentUser.role;
 }
+

@@ -1,5 +1,5 @@
 ﻿/**
- * STUDYMATE - THEME & AMBIENT AUDIO ENGINE (STUDIESTIMER VIBES)
+ * STUDYMATE - THEME & AMBIENT AUDIO ENGINE (StudyMate VIBES)
  * Hỗ trợ đổi 6 chủ đề thẩm mỹ và phát âm thanh thư giãn học tập
  */
 
@@ -166,3 +166,4 @@ function initMobileDrawer() {
     });
   }
 }
+

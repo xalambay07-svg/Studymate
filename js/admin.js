@@ -55,3 +55,4 @@ function renderAdminSubjects() {
     </tr>
   `).join("");
 }
+

@@ -1,10 +1,10 @@
 ﻿/* ==========================================================================
-   STUDYMATE - AESTHETIC DESIGN SYSTEM (INSPIRED BY STUDIESTIMER.COM)
+   STUDYMATE - AESTHETIC DESIGN SYSTEM (INSPIRED BY STUDYMATE)
    Minimalist, Dark Aesthetic, Glassmorphism, Theme Switcher, NO TIMER
    ========================================================================== */
 
 :root {
-  /* Default: Cosmic Purple Theme (StudiesTimer signature) */
+  /* Default: Cosmic Purple Theme (StudyMate signature) */
   --theme-primary: #8b5cf6;
   --theme-secondary: #6366f1;
   --theme-accent: #3b82f6;
@@ -38,7 +38,7 @@
 }
 
 /* ==========================================================================
-   THEME PALETTES (STUDIESTIMER THEMES)
+   THEME PALETTES (StudyMate THEMES)
    ========================================================================== */
 
 /* 1. Sepia / Warm Coffee */
@@ -154,7 +154,7 @@ a:hover {
 }
 
 /* ==========================================================================
-   STUDIESTIMER-STYLE FROSTED TOP NAVBAR
+   StudyMate-STYLE FROSTED TOP NAVBAR
    ========================================================================== */
 .st-navbar {
   position: fixed;
@@ -278,7 +278,7 @@ a:hover {
   padding-right: 1.5rem;
 }
 
-/* Quote box (Signature StudiesTimer feature) */
+/* Quote box (Signature StudyMate feature) */
 .st-quote-box {
   text-align: center;
   max-width: 680px;
@@ -604,3 +604,4 @@ a:hover {
   height: 14px;
   border-radius: 50%;
 }
+
