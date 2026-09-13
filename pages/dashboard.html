@@ -30,7 +30,8 @@
     <!-- Right Utilities (Clean, icon-free) -->
     <div class="st-nav-actions">
       <a href="index.html#onboarding" class="st-pill-btn" style="padding: 0.45rem 1.1rem; font-size: 0.9rem; background: rgba(37,99,235,0.22); border: 1px solid rgba(96,165,250,0.45); color: #93c5fd; text-decoration: none;">Cài đặt môn & TKB</a>
-      <a href="index.html" class="st-pill-btn" style="padding: 0.45rem 1rem; font-size: 0.9rem; background: none; border: 1px solid var(--theme-border); color: var(--theme-text-secondary); text-decoration: none;">Thoát</a>
+      <span class="st-user-display" style="font-size: 0.925rem; font-weight: 600; color: var(--theme-text-secondary); background: rgba(255,255,255,0.08); padding: 0.45rem 1rem; border-radius: 9999px; border: 1px solid var(--theme-border);">Sinh viên</span>
+      <button onclick="logoutUser()" class="st-pill-btn" style="padding: 0.45rem 0.9rem; font-size: 0.85rem; background: none; border: 1px solid rgba(239,68,68,0.35); color: #f87171; cursor: pointer;">Đăng xuất</button>
       <button class="st-mobile-btn">☰</button>
     </div>
   </nav>
@@ -48,7 +49,8 @@
     <a href="exams.html" class="st-pill-link">Kỳ thi</a>
     <a href="progress.html" class="st-pill-link">Tiến độ</a>
     <a href="profile.html" class="st-pill-link">Hồ sơ cá nhân</a>
-    <a href="index.html" class="st-pill-link" style="margin-top: 1rem; border: 1px solid var(--theme-border);">Thoát về trang chủ</a>
+    <a href="javascript:void(0)" onclick="logoutUser()" class="st-pill-link" style="margin-top: 1rem; border: 1px solid rgba(239,68,68,0.3); color: #f87171;">Đăng xuất</a>
+    <a href="index.html" class="st-pill-link" style="border: 1px solid var(--theme-border);">Thoát về trang chủ</a>
   </div>
 
   <!-- Workspace Container (Elevated, Perfectly Centered, No Sagging) -->

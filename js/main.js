@@ -59,15 +59,17 @@ function showToast(message, type = "info") {
 
 // 3. Quản lý phiên đăng nhập người dùng (Authentication Gatekeeper)
 function isUserLoggedIn() {
-  const user = JSON.parse(localStorage.getItem("studymate_user") || "null");
-  return !!(user && (user.name || user.email));
+  return sessionStorage.getItem("studymate_is_authenticated") === "true";
 }
 
 function getCurrentUser() {
-  return JSON.parse(localStorage.getItem("studymate_user") || "null");
+  if (!isUserLoggedIn()) return null;
+  return JSON.parse(sessionStorage.getItem("studymate_user") || localStorage.getItem("studymate_user") || "null");
 }
 
 function logoutUser() {
+  sessionStorage.removeItem("studymate_is_authenticated");
+  sessionStorage.removeItem("studymate_user");
   localStorage.removeItem("studymate_user");
   window.location.href = "index.html";
 }
@@ -76,12 +78,14 @@ function logoutUser() {
 function checkPageAuth() {
   const currentPath = window.location.pathname.toLowerCase();
   const protectedPages = [
+    { file: "dashboard.html", name: "Dashboard học tập" },
     { file: "tasks.html", name: "Quản lý Deadline & Nhiệm vụ" },
     { file: "schedule.html", name: "Thời khóa biểu sinh viên" },
     { file: "progress.html", name: "Đo lường tiến độ học tập" },
     { file: "import-schedule.html", name: "Quét TKB bằng AI/OCR" },
     { file: "exams.html", name: "Đếm ngược kỳ thi" },
-    { file: "subjects.html", name: "Quản lý Môn học" }
+    { file: "subjects.html", name: "Quản lý Môn học" },
+    { file: "profile.html", name: "Hồ sơ cá nhân" }
   ];
 
   const matched = protectedPages.find(p => currentPath.endsWith(p.file));
@@ -124,16 +128,13 @@ function initSampleData() {
 
 // 5. Cập nhật thông tin User trên Header
 function updateUserHeader() {
-  const currentUser = getCurrentUser() || {
-    name: "Nguyễn Gia Huy",
-    role: "Sinh viên CNTT - ĐH Thủy Lợi",
-    email: "giahuy@tlu.edu.vn"
-  };
+  const currentUser = getCurrentUser();
+  if (!currentUser) return;
 
   const nameElem = document.querySelector(".user-name");
   const roleElem = document.querySelector(".user-role");
   if (nameElem) nameElem.textContent = currentUser.name;
-  if (roleElem) roleElem.textContent = currentUser.role;
+  if (roleElem) roleElem.textContent = currentUser.role || "Sinh viên CNTT - ĐH Thủy Lợi";
 
   // Cập nhật các badge tên người dùng tĩnh
   document.querySelectorAll(".st-user-display").forEach(el => {

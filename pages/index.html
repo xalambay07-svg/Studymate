@@ -997,17 +997,17 @@
       <form id="authForm" onsubmit="handleAuthSubmit(event)">
         <div id="nameGroup" style="margin-bottom: 0.85rem;">
           <label style="display: block; font-size: 0.8rem; font-weight: 600; color: #cbd5e1; margin-bottom: 0.35rem;">Họ và tên của bạn</label>
-          <input type="text" id="authNameInput" placeholder="Ví dụ: Nguyễn Gia Huy" style="width: 100%; padding: 0.65rem 0.85rem; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.15); background: rgba(255, 255, 255, 0.06); color: #ffffff; font-size: 0.875rem;" value="Nguyễn Gia Huy">
+          <input type="text" id="authNameInput" placeholder="Ví dụ: Nguyễn Minh Đức" style="width: 100%; padding: 0.65rem 0.85rem; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.15); background: rgba(255, 255, 255, 0.06); color: #ffffff; font-size: 0.875rem;">
         </div>
 
         <div style="margin-bottom: 0.85rem;">
           <label style="display: block; font-size: 0.8rem; font-weight: 600; color: #cbd5e1; margin-bottom: 0.35rem;">Email trường / Mã sinh viên</label>
-          <input type="text" id="authEmailInput" placeholder="giahuy@tlu.edu.vn hoặc 215106..." required style="width: 100%; padding: 0.65rem 0.85rem; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.15); background: rgba(255, 255, 255, 0.06); color: #ffffff; font-size: 0.875rem;" value="giahuy@tlu.edu.vn">
+          <input type="text" id="authEmailInput" placeholder="sinhvien@tlu.edu.vn hoặc mã SV" required style="width: 100%; padding: 0.65rem 0.85rem; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.15); background: rgba(255, 255, 255, 0.06); color: #ffffff; font-size: 0.875rem;">
         </div>
 
         <div style="margin-bottom: 1.25rem;">
           <label style="display: block; font-size: 0.8rem; font-weight: 600; color: #cbd5e1; margin-bottom: 0.35rem;">Mật khẩu</label>
-          <input type="password" id="authPassInput" placeholder="••••••••" required style="width: 100%; padding: 0.65rem 0.85rem; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.15); background: rgba(255, 255, 255, 0.06); color: #ffffff; font-size: 0.875rem;" value="studymate2026">
+          <input type="password" id="authPassInput" placeholder="Tối thiểu 6 ký tự" required style="width: 100%; padding: 0.65rem 0.85rem; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.15); background: rgba(255, 255, 255, 0.06); color: #ffffff; font-size: 0.875rem;">
         </div>
 
         <button type="submit" id="authSubmitBtn" style="width: 100%; padding: 0.75rem; border-radius: 10px; background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%); color: #ffffff; font-weight: 700; font-size: 0.95rem; border: none; cursor: pointer; transition: all 0.2s; box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);">
@@ -1058,14 +1058,21 @@
     let currentAuthMode = 'register';
     let pendingAuthContext = null;
 
+    // Session Authentication Helpers
+    function isUserLoggedIn() {
+      return sessionStorage.getItem('studymate_is_authenticated') === 'true';
+    }
+
+    function getCurrentUser() {
+      if (!isUserLoggedIn()) return null;
+      return JSON.parse(sessionStorage.getItem('studymate_user') || localStorage.getItem('studymate_user') || 'null');
+    }
+
     // Global Feature Navigator with Login Check
     function navigateToFeature(featureKey, targetUrl, featureName) {
       closeAllAthenDropdowns();
       
-      const user = JSON.parse(localStorage.getItem('studymate_user') || 'null');
-      const isLoggedIn = user && (user.name || user.email);
-
-      if (!isLoggedIn) {
+      if (!isUserLoggedIn()) {
         // Not logged in -> Show login modal with required notice
         openAuthModal('login', {
           featureName: featureName || 'Tính năng này',
@@ -1075,9 +1082,12 @@
         return;
       }
 
+      const user = getCurrentUser();
+      const userName = user ? user.name : 'Sinh viên';
+
       // Logged in -> Proceed directly
       if (featureKey === 'dashboard' || targetUrl === '#dashboard') {
-        switchToWorkspace(user.name);
+        switchToWorkspace(userName);
       } else if (targetUrl) {
         window.location.href = targetUrl;
       }
@@ -1164,12 +1174,44 @@
       e.preventDefault();
       const nameInput = document.getElementById('authNameInput');
       const emailInput = document.getElementById('authEmailInput');
-      const userName = (nameInput && nameInput.value.trim()) ? nameInput.value.trim() : (emailInput.value.split('@')[0] || 'Nguyễn Gia Huy');
+      const passInput = document.getElementById('authPassInput');
       
-      // Save session
-      localStorage.setItem('studymate_user', JSON.stringify({ name: userName, email: emailInput.value }));
+      const email = emailInput ? emailInput.value.trim() : '';
+      const password = passInput ? passInput.value.trim() : '';
+
+      if (!email || !password) {
+        alert('Vui lòng nhập đầy đủ Email và Mật khẩu!');
+        return;
+      }
+
+      if (password.length < 6) {
+        alert('Mật khẩu phải từ 6 ký tự trở lên!');
+        return;
+      }
+
+      let userName = '';
+      if (currentAuthMode === 'register') {
+        userName = (nameInput && nameInput.value.trim()) ? nameInput.value.trim() : email.split('@')[0];
+        if (!userName) {
+          alert('Vui lòng nhập họ và tên của bạn!');
+          return;
+        }
+      } else {
+        userName = (nameInput && nameInput.value.trim()) ? nameInput.value.trim() : (email.split('@')[0] || 'Sinh viên');
+      }
+
+      // Mark session authenticated in sessionStorage and save user
+      const userData = { name: userName, email: email, role: 'Sinh viên CNTT - ĐH Thủy Lợi' };
+      sessionStorage.setItem('studymate_is_authenticated', 'true');
+      sessionStorage.setItem('studymate_user', JSON.stringify(userData));
+      localStorage.setItem('studymate_user', JSON.stringify(userData));
+
       closeAuthModal();
       updateNavbarAuthUI();
+
+      if (typeof showToast === 'function') {
+        showToast(`Đăng nhập thành công! Chào mừng ${userName}`, 'success');
+      }
 
       const hasOnboarded = localStorage.getItem('studymate_onboarded') === 'true';
       const redirectTarget = pendingAuthContext ? pendingAuthContext.targetUrl : null;
@@ -1192,11 +1234,11 @@
       const container = document.getElementById('navAuthActions');
       if (!container) return;
 
-      const user = JSON.parse(localStorage.getItem('studymate_user') || 'null');
-      const isLoggedIn = user && (user.name || user.email);
+      const loggedIn = isUserLoggedIn();
+      const user = getCurrentUser();
 
-      if (isLoggedIn) {
-        const displayName = user.name || 'Nguyễn Gia Huy';
+      if (loggedIn && user) {
+        const displayName = user.name || 'Sinh viên';
         container.innerHTML = `
           <span style="font-size: 0.9rem; font-weight: 600; color: #cbd5e1; background: rgba(255,255,255,0.08); padding: 0.45rem 1rem; border-radius: 9999px; border: 1px solid rgba(255,255,255,0.15);">${displayName}</span>
           <button type="button" onclick="switchToWorkspace('${displayName}')" class="athen-btn-dark" style="border: none; cursor: pointer; padding: 0.5rem 1.1rem; font-size: 0.875rem;">Không gian học &rarr;</button>
@@ -1211,6 +1253,8 @@
     }
 
     function handleLogout() {
+      sessionStorage.removeItem('studymate_is_authenticated');
+      sessionStorage.removeItem('studymate_user');
       localStorage.removeItem('studymate_user');
       updateNavbarAuthUI();
       if (typeof showToast === 'function') {
@@ -1221,8 +1265,7 @@
 
     // Switch view to Onboarding Wizard (Bước 1: Môn học, Bước 2: Lịch học)
     function switchToOnboarding(name) {
-      const user = JSON.parse(localStorage.getItem('studymate_user') || 'null');
-      if (!user || (!user.name && !user.email)) {
+      if (!isUserLoggedIn()) {
         openAuthModal('login', {
           featureName: 'Cài đặt môn học & Thời khóa biểu',
           targetUrl: '#onboarding',
@@ -1568,8 +1611,7 @@
 
     // Switch view to Workspace (Image 1) in the exact SAME TAB
     function switchToWorkspace(name) {
-      const user = JSON.parse(localStorage.getItem('studymate_user') || 'null');
-      if (!user || (!user.name && !user.email)) {
+      if (!isUserLoggedIn()) {
         openAuthModal('login', {
           featureName: 'Không gian học tập StudyMate',
           targetUrl: '#dashboard',
@@ -1596,7 +1638,8 @@
       document.documentElement.setAttribute('data-theme', savedTheme);
 
       // Update username if available
-      const userName = name || (JSON.parse(localStorage.getItem('studymate_user') || '{}').name) || 'Nguyễn Gia Huy';
+      const user = getCurrentUser();
+      const userName = name || (user ? user.name : 'Sinh viên');
       const displayElem = document.getElementById('displayUserName');
       if (displayElem) displayElem.textContent = userName;
 
@@ -1635,8 +1678,26 @@
     // Listen for browser Back/Forward buttons in the same tab
     window.addEventListener('hashchange', function() {
       if (window.location.hash === '#dashboard') {
+        if (!isUserLoggedIn()) {
+          switchToLanding();
+          openAuthModal('login', {
+            featureName: 'Dashboard học tập',
+            targetUrl: '#dashboard',
+            featureKey: 'dashboard'
+          });
+          return;
+        }
         switchToWorkspace();
       } else if (window.location.hash === '#onboarding') {
+        if (!isUserLoggedIn()) {
+          switchToLanding();
+          openAuthModal('login', {
+            featureName: 'Cài đặt môn học & Thời khóa biểu',
+            targetUrl: '#onboarding',
+            featureKey: 'onboarding'
+          });
+          return;
+        }
         switchToOnboarding();
       } else {
         switchToLanding();
@@ -1645,6 +1706,11 @@
 
     // Handle initial state on page load
     document.addEventListener('DOMContentLoaded', function() {
+      // Clean up stale localStorage user if not authenticated in active session
+      if (!isUserLoggedIn()) {
+        localStorage.removeItem('studymate_user');
+      }
+
       updateNavbarAuthUI();
 
       // Check if URL specifies auth required from subpages
@@ -1662,8 +1728,7 @@
       }
 
       if (window.location.hash === '#dashboard') {
-        const user = JSON.parse(localStorage.getItem('studymate_user') || 'null');
-        if (!user || (!user.name && !user.email)) {
+        if (!isUserLoggedIn()) {
           openAuthModal('login', {
             featureName: 'Dashboard học tập',
             targetUrl: '#dashboard',
@@ -1674,8 +1739,7 @@
         }
         switchToWorkspace();
       } else if (window.location.hash === '#onboarding') {
-        const user = JSON.parse(localStorage.getItem('studymate_user') || 'null');
-        if (!user || (!user.name && !user.email)) {
+        if (!isUserLoggedIn()) {
           openAuthModal('login', {
             featureName: 'Cài đặt môn học & Thời khóa biểu',
             targetUrl: '#onboarding',
