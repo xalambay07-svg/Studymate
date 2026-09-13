@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Đăng nhập – StudyMate</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body style="display: flex; align-items: center; justify-content: center; min-height: 100vh; background: var(--bg-body);">
+
+  <div class="card" style="width: 100%; max-width: 420px; margin: 1.5rem; box-shadow: var(--shadow-lg);">
+    <div class="card-body" style="padding: 2.25rem;">
+      <div style="text-align: center; margin-bottom: 2rem;">
+        <div class="logo-brand" style="justify-content: center; font-size: 1.5rem; margin-bottom: 0.5rem;">
+          📚 StudyMate
+        </div>
+        <p style="color: var(--text-muted); font-size: 0.875rem;">Đăng nhập để quản lý học tập và theo dõi deadline</p>
+      </div>
+
+      <form id="loginForm">
+        <div class="form-group">
+          <label class="form-label" for="email">Email sinh viên / Admin</label>
+          <input type="email" id="email" class="form-control" placeholder="student@studymate.edu.vn" required value="student@studymate.edu.vn">
+        </div>
+
+        <div class="form-group">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.375rem;">
+            <label class="form-label" for="password" style="margin-bottom: 0;">Mật khẩu</label>
+            <a href="#" style="font-size: 0.8125rem;">Quên mật khẩu?</a>
+          </div>
+          <input type="password" id="password" class="form-control" placeholder="••••••••" required value="123456">
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width: 100%; padding: 0.75rem; margin-top: 1rem;">
+          Đăng nhập ngay
+        </button>
+      </form>
+
+      <div style="margin-top: 1.5rem; padding: 0.75rem; background: var(--primary-light); border-radius: var(--border-radius-sm); font-size: 0.8125rem;">
+        <strong>Tài khoản demo:</strong><br>
+        • Sinh viên: <code>student@studymate.edu.vn</code> | MK: <code>123456</code><br>
+        • Admin: <code>admin@studymate.edu.vn</code> | MK: <code>admin123</code>
+      </div>
+
+      <div style="text-align: center; margin-top: 1.5rem; font-size: 0.875rem; color: var(--text-muted);">
+        Chưa có tài khoản? <a href="register.html" style="font-weight: 600;">Đăng ký ngay</a><br>
+        <a href="index.html" style="font-size: 0.8125rem; display: inline-block; margin-top: 0.5rem;">&larr; Về trang chủ</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/auth.js"></script>
+</body>
+</html>

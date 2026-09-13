@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StudyMate – Your Academic Companion | Nền tảng quản lý học tập</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body>
+  <!-- Header / Navbar -->
+  <header style="background: #ffffff; border-bottom: 1px solid var(--border-color); padding: 1rem 2rem; position: sticky; top: 0; z-index: 100;">
+    <div style="max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between;">
+      <div class="logo-brand">
+        📚 StudyMate <span class="logo-badge">CSE122</span>
+      </div>
+      <nav style="display: flex; gap: 1.5rem; align-items: center;">
+        <a href="#features" style="color: var(--text-main); font-weight: 500;">Tính năng</a>
+        <a href="#usp" style="color: var(--text-main); font-weight: 500;">OCR Thời khóa biểu</a>
+        <a href="#about" style="color: var(--text-main); font-weight: 500;">Về StudyMate</a>
+        <a href="login.html" class="btn btn-secondary">Đăng nhập</a>
+        <a href="register.html" class="btn btn-primary">Đăng ký ngay</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section style="padding: 5rem 2rem; background: linear-gradient(180deg, #eff6ff 0%, #ffffff 100%); text-align: center;">
+    <div style="max-width: 860px; margin: 0 auto;">
+      <span class="badge badge-primary" style="font-size: 0.9rem; padding: 0.4rem 1rem; margin-bottom: 1.5rem;">✨ Nền tảng quản lý học tập cho sinh viên</span>
+      <h1 style="font-size: 2.75rem; font-weight: 800; color: var(--text-main); line-height: 1.2; margin-bottom: 1.25rem;">
+        Biến dữ liệu học tập rời rạc thành một kế hoạch có thể theo dõi
+      </h1>
+      <p style="font-size: 1.125rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 2rem;">
+        Giúp sinh viên biết <strong>hôm nay cần làm gì</strong>, <strong>deadline nào sắp đến</strong> và <strong>tiến độ học tập hiện tại ra sao</strong> trên một nền tảng duy nhất.
+      </p>
+      <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+        <a href="dashboard.html" class="btn btn-primary" style="font-size: 1rem; padding: 0.75rem 1.75rem;">Trải nghiệm Dashboard</a>
+        <a href="import-schedule.html" class="btn btn-secondary" style="font-size: 1rem; padding: 0.75rem 1.75rem;">📸 Thử nhận diện ảnh TKB</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Problem & Solution Section -->
+  <section id="features" style="padding: 4rem 2rem; max-width: 1200px; margin: 0 auto;">
+    <div style="text-align: center; margin-bottom: 3rem;">
+      <h2 style="font-size: 2rem; font-weight: 700;">Giải pháp toàn diện cho sinh viên</h2>
+      <p style="color: var(--text-muted);">Không còn lo bỏ sót deadline hay lạc lối giữa nhiều nhóm Zalo, LMS</p>
+    </div>
+
+    <div class="stats-grid" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));">
+      <div class="card" style="padding: 1.5rem;">
+        <div class="stat-card-icon" style="margin-bottom: 1rem;">📊</div>
+        <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem;">Dashboard trực quan</h3>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">Tổng hợp lịch học hôm nay, kỳ thi sắp đến, việc ưu tiên cao và tiến độ học tập.</p>
+      </div>
+
+      <div class="card" style="padding: 1.5rem;">
+        <div class="stat-card-icon" style="margin-bottom: 1rem;">⏰</div>
+        <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem;">Tự tính Deadline</h3>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">Nhập deadline 1 lần, hệ thống tự động phân loại màu sắc: Còn nhiều, Sắp đến hạn hoặc Quá hạn.</p>
+      </div>
+
+      <div class="card" style="padding: 1.5rem;">
+        <div class="stat-card-icon" style="margin-bottom: 1rem;">📈</div>
+        <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem;">Tự đo lường Tiến độ</h3>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">Tiến độ từng môn học được tính tự động từ số nhiệm vụ hoàn thành. Không cần nhập tay % thủ công.</p>
+      </div>
+
+      <div class="card" style="padding: 1.5rem;">
+        <div class="stat-card-icon" style="margin-bottom: 1rem;">🤖</div>
+        <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem;">StudyMate AI</h3>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">Gợi ý lịch học, sắp xếp thứ tự công việc ưu tiên và hỗ trợ OCR ảnh thời khóa biểu.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- USP Feature Highlight -->
+  <section id="usp" style="padding: 4rem 2rem; background: var(--primary-light);">
+    <div style="max-width: 1000px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 3rem; flex-wrap: wrap;">
+      <div style="flex: 1; min-width: 300px;">
+        <span class="badge badge-primary" style="margin-bottom: 1rem;">Tính năng nổi bật (USP)</span>
+        <h2 style="font-size: 2.25rem; font-weight: 800; margin-bottom: 1rem;">Không bắt buộc nhập tay thời khóa biểu!</h2>
+        <p style="color: var(--text-muted); font-size: 1rem; line-height: 1.6; margin-bottom: 1.5rem;">
+          Chỉ cần chụp ảnh thời khóa biểu từ trang đăng ký tín chỉ trường. AI/OCR sẽ nhận diện thứ, giờ, phòng và tên môn học để tự động tạo lịch học.
+        </p>
+        <div style="background: #ffffff; padding: 1rem; border-radius: var(--border-radius); border: 1px solid var(--border-color); font-family: monospace; font-size: 0.85rem;">
+          📸 Ảnh TKB ➔ 🤖 AI Nhận diện ➔ 📋 Kiểm tra & Xác nhận ➔ 📅 Tự động tạo lịch
+        </div>
+        <div style="margin-top: 1.5rem;">
+          <a href="import-schedule.html" class="btn btn-primary">Trải nghiệm tính năng OCR ngay &rarr;</a>
+        </div>
+      </div>
+      <div style="flex: 1; min-width: 300px; background: #ffffff; padding: 2rem; border-radius: var(--border-radius-lg); box-shadow: var(--shadow-md); border: 1px solid var(--border-color);">
+        <h4 style="margin-bottom: 1rem; font-size: 1.1rem;">⚡ Minh họa nhận diện:</h4>
+        <div style="background: #f1f5f9; padding: 0.75rem; border-radius: 8px; margin-bottom: 1rem; font-size: 0.85rem;">
+          <strong>Input ảnh:</strong> <code>Thứ 2 | 07:00 - 09:00 | Lập trình nâng cao | A203</code>
+        </div>
+        <div style="border-left: 3px solid var(--primary); padding-left: 1rem;">
+          <div style="font-size: 0.875rem; margin-bottom: 0.25rem;"><strong>Môn:</strong> Lập trình nâng cao</div>
+          <div style="font-size: 0.875rem; margin-bottom: 0.25rem;"><strong>Thời gian:</strong> Thứ Hai (07:00 - 09:00)</div>
+          <div style="font-size: 0.875rem; margin-bottom: 0.25rem;"><strong>Phòng:</strong> A203</div>
+          <span class="badge badge-safe" style="margin-top: 0.5rem;">Đã sẵn sàng lưu vào TKB</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer style="background: #ffffff; border-top: 1px solid var(--border-color); padding: 2rem; text-align: center; color: var(--text-muted); font-size: 0.875rem;">
+    <p>© 2026 StudyMate – Dự án BTL Phát triển ứng dụng web cơ bản (CSE122) – Trường Đại học Thủy Lợi.</p>
+    <p style="margin-top: 0.5rem;"><a href="login.html">Đăng nhập tài khoản</a> • <a href="admin-dashboard.html">Khu vực Quản trị viên (Admin)</a></p>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

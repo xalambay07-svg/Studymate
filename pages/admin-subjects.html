@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quản lý Môn học Hệ thống – StudyMate Admin</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body>
+  <div class="app-container">
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="logo-brand">
+          📚 StudyMate <span class="logo-badge" style="background: var(--status-danger-bg); color: var(--status-danger);">Admin</span>
+        </div>
+      </div>
+      <nav class="sidebar-nav">
+        <div class="nav-section-title">Quản trị hệ thống</div>
+        <a href="admin-dashboard.html" class="nav-item">📊 Báo cáo thống kê</a>
+        <a href="admin-users.html" class="nav-item">👥 Quản lý người dùng</a>
+        <a href="admin-subjects.html" class="nav-item active">📖 Danh mục môn học</a>
+        <a href="admin-announcements.html" class="nav-item">📢 Quản lý thông báo</a>
+        
+        <div class="nav-section-title">Xem vai trò</div>
+        <a href="dashboard.html" class="nav-item">🎓 Giao diện Sinh viên</a>
+        <a href="index.html" class="nav-item">🏠 Trang chủ khách</a>
+      </nav>
+      <div class="sidebar-footer">
+        <button id="logoutBtn" class="btn btn-secondary btn-sm" style="width: 100%;">🚪 Đăng xuất</button>
+      </div>
+    </aside>
+
+    <div class="main-wrapper">
+      <header class="top-header">
+        <button class="mobile-menu-btn" aria-label="Toggle Menu">☰</button>
+        <div class="header-search">
+          <span class="search-icon">🔍</span>
+          <input type="text" placeholder="Tìm kiếm môn học...">
+        </div>
+        <div class="header-actions">
+          <button class="btn btn-primary btn-sm" onclick="showToast('Thêm môn học vào danh mục chung', 'info')">+ Thêm môn mới</button>
+          <div class="avatar" style="background: var(--status-danger);">AD</div>
+        </div>
+      </header>
+
+      <main class="page-content">
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">Quản lý Danh mục Môn học Hệ thống</h1>
+            <p class="page-subtitle">Danh mục môn học chuẩn của trường để sinh viên chọn và đồng bộ thời khóa biểu.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-body" style="padding: 0;">
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Mã môn</th>
+                    <th>Tên môn học</th>
+                    <th>Số tín chỉ</th>
+                    <th>Giảng viên phụ trách</th>
+                    <th>Phòng mặc định</th>
+                    <th>Thao tác</th>
+                  </tr>
+                </thead>
+                <tbody id="adminSubjectsTableBody">
+                  <!-- Rendered dynamically by js/admin.js -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,144 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chi tiết môn học – StudyMate</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body>
+  <div class="app-container">
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="logo-brand">
+          📚 StudyMate <span class="logo-badge">Sinh viên</span>
+        </div>
+      </div>
+      <nav class="sidebar-nav">
+        <div class="nav-section-title">Học tập</div>
+        <a href="dashboard.html" class="nav-item">📊 Dashboard</a>
+        <a href="schedule.html" class="nav-item">📅 Lịch học / TKB</a>
+        <a href="tasks.html" class="nav-item">✅ Nhiệm vụ & Deadline</a>
+        <a href="subjects.html" class="nav-item active">📖 Môn học</a>
+        <a href="exams.html" class="nav-item">🎯 Kỳ thi</a>
+        
+        <div class="nav-section-title">Công cụ & Tiến độ</div>
+        <a href="import-schedule.html" class="nav-item">📸 Nhập TKB (OCR / AI)</a>
+        <a href="documents.html" class="nav-item">📂 Kho tài liệu</a>
+        <a href="progress.html" class="nav-item">📈 Báo cáo tiến độ</a>
+
+        <div class="nav-section-title">Cá nhân</div>
+        <a href="profile.html" class="nav-item">👤 Hồ sơ cá nhân</a>
+      </nav>
+      <div class="sidebar-footer">
+        <button id="logoutBtn" class="btn btn-secondary btn-sm" style="width: 100%;">🚪 Đăng xuất</button>
+      </div>
+    </aside>
+
+    <div class="main-wrapper">
+      <header class="top-header">
+        <button class="mobile-menu-btn" aria-label="Toggle Menu">☰</button>
+        <div class="header-search">
+          <span class="search-icon">🔍</span>
+          <input type="text" placeholder="Tìm kiếm...">
+        </div>
+        <div class="header-actions">
+          <a href="profile.html" class="user-profile-menu">
+            <div class="avatar">SV</div>
+            <div class="user-info">
+              <div class="user-name">Trần Minh Đức</div>
+              <div class="user-role">K64 - CNTT</div>
+            </div>
+          </a>
+        </div>
+      </header>
+
+      <main class="page-content">
+        <div class="page-header">
+          <div>
+            <a href="subjects.html" style="font-size: 0.875rem;">&larr; Quay lại danh sách môn học</a>
+            <h1 class="page-title" style="margin-top: 0.5rem;">Phát triển ứng dụng web cơ bản (CSE122)</h1>
+            <p class="page-subtitle">Giảng viên: ThS. Nguyễn Văn A • 3 Tín chỉ • Phòng A203 • Thứ Hai (07:00 - 09:00)</p>
+          </div>
+          <div style="display: flex; gap: 0.5rem;">
+            <a href="tasks.html" class="btn btn-primary btn-sm">+ Thêm bài tập cho môn</a>
+            <a href="documents.html" class="btn btn-secondary btn-sm">Tải lên slide/tài liệu</a>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 1.5rem;">
+          <!-- Left: Danh sách bài tập môn này -->
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">📝 Bài tập & Deadline môn Web cơ bản</h3>
+            </div>
+            <div class="card-body" style="padding: 0;">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Nhiệm vụ</th>
+                    <th>Hạn nộp</th>
+                    <th>Trạng thái</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Báo cáo BTL Website StudyMate</strong></td>
+                    <td>20/09/2026</td>
+                    <td><span class="badge badge-warning">🟡 Sắp đến hạn (7 ngày)</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Thiết kế wireframe Figma CSE122</strong></td>
+                    <td>10/09/2026</td>
+                    <td><span class="badge badge-safe">✓ Đã hoàn thành</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Bài tập thực hành HTML/CSS Responsive</strong></td>
+                    <td>05/09/2026</td>
+                    <td><span class="badge badge-safe">✓ Đã hoàn thành</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Right: Tài liệu & Đề cương -->
+          <div>
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">📂 Tài liệu môn học</h3>
+              </div>
+              <div class="card-body">
+                <ul style="display: flex; flex-direction: column; gap: 0.75rem; font-size: 0.875rem;">
+                  <li>📄 <a href="#">Slide 01 - Gioi_thieu_HTML_CSS.pdf</a></li>
+                  <li>📄 <a href="#">Slide 02 - Responsive_Design.pdf</a></li>
+                  <li>📄 <a href="#">De_cuong_BTL_CSE122.docx</a></li>
+                  <li>📄 <a href="#">Mau_bao_cao_nhom_3_SV.pdf</a></li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">🎯 Lịch thi môn này</h3>
+              </div>
+              <div class="card-body">
+                <p><strong>Ngày thi:</strong> 10/10/2026 (07:30)</p>
+                <p><strong>Hình thức:</strong> Vấn đáp & bảo vệ sản phẩm BTL</p>
+                <p><strong>Phòng thi:</strong> PM-302</p>
+                <div style="margin-top: 0.75rem;">
+                  <span class="badge badge-safe">Còn 27 ngày</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/auth.js"></script>
+</body>
+</html>

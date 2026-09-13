@@ -1,0 +1,127 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quản lý Thông báo – StudyMate Admin</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body>
+  <div class="app-container">
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="logo-brand">
+          📚 StudyMate <span class="logo-badge" style="background: var(--status-danger-bg); color: var(--status-danger);">Admin</span>
+        </div>
+      </div>
+      <nav class="sidebar-nav">
+        <div class="nav-section-title">Quản trị hệ thống</div>
+        <a href="admin-dashboard.html" class="nav-item">📊 Báo cáo thống kê</a>
+        <a href="admin-users.html" class="nav-item">👥 Quản lý người dùng</a>
+        <a href="admin-subjects.html" class="nav-item">📖 Danh mục môn học</a>
+        <a href="admin-announcements.html" class="nav-item active">📢 Quản lý thông báo</a>
+        
+        <div class="nav-section-title">Xem vai trò</div>
+        <a href="dashboard.html" class="nav-item">🎓 Giao diện Sinh viên</a>
+        <a href="index.html" class="nav-item">🏠 Trang chủ khách</a>
+      </nav>
+      <div class="sidebar-footer">
+        <button id="logoutBtn" class="btn btn-secondary btn-sm" style="width: 100%;">🚪 Đăng xuất</button>
+      </div>
+    </aside>
+
+    <div class="main-wrapper">
+      <header class="top-header">
+        <button class="mobile-menu-btn" aria-label="Toggle Menu">☰</button>
+        <div class="header-search">
+          <span class="search-icon">🔍</span>
+          <input type="text" placeholder="Tìm kiếm thông báo...">
+        </div>
+        <div class="header-actions">
+          <div class="avatar" style="background: var(--status-danger);">AD</div>
+        </div>
+      </header>
+
+      <main class="page-content">
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">Quản lý Thông báo Hệ thống 📢</h1>
+            <p class="page-subtitle">Phát thông báo học vụ, lịch thi chung và lịch bảo trì đến toàn bộ sinh viên.</p>
+          </div>
+        </div>
+
+        <div class="card" style="margin-bottom: 2rem;">
+          <div class="card-header">
+            <h3 class="card-title">+ Tạo thông báo mới</h3>
+          </div>
+          <div class="card-body">
+            <form onsubmit="event.preventDefault(); showToast('Đã phát thông báo thành công tới tất cả sinh viên!', 'success'); this.reset();">
+              <div class="form-group">
+                <label class="form-label">Tiêu đề thông báo</label>
+                <input type="text" class="form-control" placeholder="Ví dụ: Lịch bảo dưỡng cổng đào tạo cuối tuần này..." required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Đối tượng nhận</label>
+                <select class="form-control">
+                  <option>Toàn bộ sinh viên</option>
+                  <option>Khóa K64 CNTT</option>
+                  <option>Khóa K65 CNTT</option>
+                  <option>Lớp trưởng các lớp</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Nội dung thông báo</label>
+                <textarea class="form-control" rows="4" placeholder="Nhập nội dung chi tiết..." required></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary">Phát hành thông báo</button>
+            </form>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Các thông báo đã gửi gần đây</h3>
+          </div>
+          <div class="card-body" style="padding: 0;">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Tiêu đề</th>
+                  <th>Đối tượng</th>
+                  <th>Thời gian gửi</th>
+                  <th>Trạng thái</th>
+                  <th>Thao tác</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Nhắc nhở nộp báo cáo BTL Web CSE122 đúng hạn</strong></td>
+                  <td>Khóa K64 CNTT</td>
+                  <td>13/09/2026</td>
+                  <td><span class="badge badge-safe">Đã gửi</span></td>
+                  <td><button class="btn btn-secondary btn-sm" onclick="showToast('Đã gỡ thông báo', 'info')">Gỡ bỏ</button></td>
+                </tr>
+                <tr>
+                  <td><strong>Cập nhật tính năng nhận diện ảnh TKB thông minh V2.0</strong></td>
+                  <td>Toàn bộ sinh viên</td>
+                  <td>10/09/2026</td>
+                  <td><span class="badge badge-safe">Đã gửi</span></td>
+                  <td><button class="btn btn-secondary btn-sm" onclick="showToast('Đã gỡ thông báo', 'info')">Gỡ bỏ</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/admin.js"></script>
+</body>
+</html>

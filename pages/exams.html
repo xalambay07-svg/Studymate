@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lịch thi & Đếm ngược – StudyMate</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body>
+  <div class="app-container">
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="logo-brand">
+          📚 StudyMate <span class="logo-badge">Sinh viên</span>
+        </div>
+      </div>
+      <nav class="sidebar-nav">
+        <div class="nav-section-title">Học tập</div>
+        <a href="dashboard.html" class="nav-item">📊 Dashboard</a>
+        <a href="schedule.html" class="nav-item">📅 Lịch học / TKB</a>
+        <a href="tasks.html" class="nav-item">✅ Nhiệm vụ & Deadline</a>
+        <a href="subjects.html" class="nav-item">📖 Môn học</a>
+        <a href="exams.html" class="nav-item active">🎯 Kỳ thi</a>
+        
+        <div class="nav-section-title">Công cụ & Tiến độ</div>
+        <a href="import-schedule.html" class="nav-item">📸 Nhập TKB (OCR / AI)</a>
+        <a href="documents.html" class="nav-item">📂 Kho tài liệu</a>
+        <a href="progress.html" class="nav-item">📈 Báo cáo tiến độ</a>
+
+        <div class="nav-section-title">Cá nhân</div>
+        <a href="profile.html" class="nav-item">👤 Hồ sơ cá nhân</a>
+      </nav>
+      <div class="sidebar-footer">
+        <button id="logoutBtn" class="btn btn-secondary btn-sm" style="width: 100%;">🚪 Đăng xuất</button>
+      </div>
+    </aside>
+
+    <div class="main-wrapper">
+      <header class="top-header">
+        <button class="mobile-menu-btn" aria-label="Toggle Menu">☰</button>
+        <div class="header-search">
+          <span class="search-icon">🔍</span>
+          <input type="text" placeholder="Tìm lịch thi...">
+        </div>
+        <div class="header-actions">
+          <button class="btn btn-primary btn-sm" onclick="showToast('Mở form thêm lịch thi mới', 'info')">+ Thêm lịch thi</button>
+          <a href="profile.html" class="user-profile-menu">
+            <div class="avatar">SV</div>
+            <div class="user-info">
+              <div class="user-name">Trần Minh Đức</div>
+              <div class="user-role">K64 - CNTT</div>
+            </div>
+          </a>
+        </div>
+      </header>
+
+      <main class="page-content">
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">Lịch thi học kỳ & Đếm ngược 🎯</h1>
+            <p class="page-subtitle">Theo dõi phòng thi, giờ thi và số ngày còn lại để chuẩn bị kế hoạch ôn tập tốt nhất.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-body" style="padding: 0;">
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Môn thi</th>
+                    <th>Ngày thi</th>
+                    <th>Giờ thi</th>
+                    <th>Phòng thi</th>
+                    <th>Đếm ngược thời gian</th>
+                    <th>Thao tác</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Giải tích 1 (MATH101)</strong></td>
+                    <td>25/09/2026</td>
+                    <td>08:00 - 09:30</td>
+                    <td><span class="badge badge-primary">Phòng C301</span></td>
+                    <td><span class="badge badge-warning" style="font-size: 0.85rem;">⏳ Còn 12 ngày</span></td>
+                    <td><button class="btn btn-secondary btn-sm">Xem đề cương</button></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Cấu trúc dữ liệu & Giải thuật (CSE281)</strong></td>
+                    <td>02/10/2026</td>
+                    <td>13:30 - 15:00</td>
+                    <td><span class="badge badge-primary">Phòng B102</span></td>
+                    <td><span class="badge badge-safe" style="font-size: 0.85rem;">🟢 Còn 19 ngày</span></td>
+                    <td><button class="btn btn-secondary btn-sm">Xem đề cương</button></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Phát triển ứng dụng web cơ bản (CSE122)</strong></td>
+                    <td>10/10/2026</td>
+                    <td>07:30 - 11:30</td>
+                    <td><span class="badge badge-primary">Phòng A203 (PM)</span></td>
+                    <td><span class="badge badge-safe" style="font-size: 0.85rem;">🟢 Còn 27 ngày</span></td>
+                    <td><button class="btn btn-secondary btn-sm">Xem đề cương</button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/auth.js"></script>
+</body>
+</html>

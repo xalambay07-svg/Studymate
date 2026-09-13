@@ -1,0 +1,100 @@
+﻿/* ==========================================================================
+   STUDYMATE - RESPONSIVE STYLES
+   Tối ưu hiển thị cho Tablet (<= 1024px) và Mobile (<= 768px)
+   ========================================================================== */
+
+/* Menu toggle button (mặc định ẩn trên desktop) */
+.mobile-menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--text-main);
+  cursor: pointer;
+  margin-right: 0.75rem;
+}
+
+/* Backdrop mờ khi mở menu trên mobile */
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(15, 23, 42, 0.5);
+  z-index: 95;
+}
+
+/* Tablet & Màn hình nhỏ (<= 1024px) */
+@media (max-width: 1024px) {
+  .top-header {
+    padding: 0 1.25rem;
+  }
+
+  .header-search {
+    width: 220px;
+  }
+
+  .page-content {
+    padding: 1.25rem;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile Devices (<= 768px) */
+@media (max-width: 768px) {
+  .mobile-menu-btn {
+    display: block;
+  }
+
+  .sidebar {
+    transform: translateX(-100%);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+  .sidebar-overlay.active {
+    display: block;
+  }
+
+  .main-wrapper {
+    margin-left: 0;
+  }
+
+  .header-search {
+    display: none; /* Ẩn ô tìm kiếm trên mobile để tiết kiệm diện tích */
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .page-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .card-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .card-body {
+    padding: 1rem;
+  }
+
+  .user-info {
+    display: none; /* Ẩn tên, chỉ hiện avatar */
+  }
+
+  .ocr-dropzone {
+    padding: 1.5rem 1rem;
+  }
+}

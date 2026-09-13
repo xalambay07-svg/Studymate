@@ -1,0 +1,170 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nhập Thời Khóa Biểu Thông Minh (OCR / AI) – StudyMate</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body>
+  <div class="app-container">
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="logo-brand">
+          📚 StudyMate <span class="logo-badge">Sinh viên</span>
+        </div>
+      </div>
+      <nav class="sidebar-nav">
+        <div class="nav-section-title">Học tập</div>
+        <a href="dashboard.html" class="nav-item">📊 Dashboard</a>
+        <a href="schedule.html" class="nav-item">📅 Lịch học / TKB</a>
+        <a href="tasks.html" class="nav-item">✅ Nhiệm vụ & Deadline</a>
+        <a href="subjects.html" class="nav-item">📖 Môn học</a>
+        <a href="exams.html" class="nav-item">🎯 Kỳ thi</a>
+        
+        <div class="nav-section-title">Công cụ & Tiến độ</div>
+        <a href="import-schedule.html" class="nav-item active">📸 Nhập TKB (OCR / AI)</a>
+        <a href="documents.html" class="nav-item">📂 Kho tài liệu</a>
+        <a href="progress.html" class="nav-item">📈 Báo cáo tiến độ</a>
+
+        <div class="nav-section-title">Cá nhân</div>
+        <a href="profile.html" class="nav-item">👤 Hồ sơ cá nhân</a>
+      </nav>
+      <div class="sidebar-footer">
+        <button id="logoutBtn" class="btn btn-secondary btn-sm" style="width: 100%;">🚪 Đăng xuất</button>
+      </div>
+    </aside>
+
+    <div class="main-wrapper">
+      <header class="top-header">
+        <button class="mobile-menu-btn" aria-label="Toggle Menu">☰</button>
+        <div class="header-search">
+          <span class="search-icon">🔍</span>
+          <input type="text" placeholder="Tìm kiếm...">
+        </div>
+        <div class="header-actions">
+          <a href="profile.html" class="user-profile-menu">
+            <div class="avatar">SV</div>
+            <div class="user-info">
+              <div class="user-name">Trần Minh Đức</div>
+              <div class="user-role">K64 - CNTT</div>
+            </div>
+          </a>
+        </div>
+      </header>
+
+      <main class="page-content">
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">Nhập Thời khóa biểu thông minh ⚡</h1>
+            <p class="page-subtitle">Không cần nhập tay! Chụp ảnh màn hình TKB trường hoặc dán đoạn văn bản để tự động tạo lịch.</p>
+          </div>
+        </div>
+
+        <!-- 3 Import Methods Cards -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+          
+          <!-- Method 1: Chụp ảnh OCR (USP) -->
+          <div class="card" style="border: 2px solid var(--primary-border);">
+            <div class="card-header" style="background: var(--primary-light);">
+              <h3 class="card-title" style="color: var(--primary);">📸 Cách 1: Tải ảnh chụp TKB (OCR AI)</h3>
+            </div>
+            <div class="card-body">
+              <p style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 1rem;">
+                Chụp ảnh màn hình TKB từ trang Đào tạo/LMS của trường và kéo thả vào đây:
+              </p>
+              
+              <div class="ocr-dropzone" id="ocrDropzone">
+                <div class="ocr-icon">📷</div>
+                <div class="ocr-title">Bấm để chọn ảnh hoặc kéo thả vào đây</div>
+                <div class="ocr-desc">Hỗ trợ định dạng JPG, PNG (Ảnh TKB trường)</div>
+                <input type="file" id="ocrFileInput" accept="image/*" style="display: none;">
+              </div>
+
+              <div style="margin-top: 1rem; text-align: center;">
+                <button class="btn btn-secondary btn-sm" onclick="simulateOcrProcessing('anh-tkb-mau-dhtl.png')">
+                  ⚡ Dùng thử ảnh TKB mẫu
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Method 2: Dán nội dung Text -->
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">📝 Cách 2: Dán nội dung text</h3>
+            </div>
+            <div class="card-body">
+              <p style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 0.75rem;">
+                Dán nhanh đoạn văn bản lịch học từ tin nhắn Zalo/LMS:
+              </p>
+              <textarea id="pasteTextSchedule" class="form-control" rows="5" placeholder="Ví dụ:&#10;Thứ 2: 7h-9h Lập trình nâng cao phòng A203&#10;Thứ 3: 9h-11h Giải tích phòng B101"></textarea>
+              <button id="btnParseText" class="btn btn-secondary" style="width: 100%; margin-top: 1rem;">
+                🔍 Phân tích văn bản thành lịch
+              </button>
+            </div>
+          </div>
+
+          <!-- Method 3: Tham gia lớp học chung -->
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">👥 Cách 3: Đồng bộ qua Mã Lớp</h3>
+            </div>
+            <div class="card-body">
+              <p style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 0.75rem;">
+                Nhập mã lớp do Lớp trưởng chia sẻ để đồng bộ TKB và Deadline chung của lớp:
+              </p>
+              <input type="text" class="form-control" placeholder="Mã lớp, ví dụ: 64CNTT1-2026" style="margin-bottom: 1rem;">
+              <button class="btn btn-secondary" style="width: 100%;" onclick="showToast('Đã đồng bộ lịch và deadline của lớp 64CNTT1!', 'success')">
+                🔗 Tham gia & Nhận lịch
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Verification Area: AI/OCR Parsed Results Table -->
+        <div class="card" id="ocrResultArea" style="display: none; border-left: 4px solid var(--status-safe);">
+          <div class="card-header" style="background: #f0fdf4;">
+            <div>
+              <h3 class="card-title" style="color: var(--status-safe);">
+                ✅ Kết quả nhận diện AI/OCR – Vui lòng kiểm tra lại
+              </h3>
+              <p style="font-size: 0.8125rem; color: var(--text-muted);">
+                Sinh viên có thể chỉnh sửa trực tiếp trên từng ô trước khi xác nhận lưu vào hệ thống.
+              </p>
+            </div>
+            <button class="btn btn-primary" onclick="confirmAndSaveSchedule()">
+              💾 Xác nhận & Lưu vào Thời khóa biểu
+            </button>
+          </div>
+          <div class="card-body" style="padding: 0;">
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Thứ / Ngày</th>
+                    <th>Thời gian</th>
+                    <th>Tên môn học</th>
+                    <th>Phòng học</th>
+                    <th>Hành động</th>
+                  </tr>
+                </thead>
+                <tbody id="ocrTableBody">
+                  <!-- Generated by OCR logic -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/schedule.js"></script>
+</body>
+</html>

@@ -1,0 +1,150 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quản lý Nhiệm vụ & Deadline – StudyMate</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="logo-brand">
+          📚 StudyMate <span class="logo-badge">Sinh viên</span>
+        </div>
+      </div>
+      <nav class="sidebar-nav">
+        <div class="nav-section-title">Học tập</div>
+        <a href="dashboard.html" class="nav-item">📊 Dashboard</a>
+        <a href="schedule.html" class="nav-item">📅 Lịch học / TKB</a>
+        <a href="tasks.html" class="nav-item active">✅ Nhiệm vụ & Deadline</a>
+        <a href="subjects.html" class="nav-item">📖 Môn học</a>
+        <a href="exams.html" class="nav-item">🎯 Kỳ thi</a>
+        
+        <div class="nav-section-title">Công cụ & Tiến độ</div>
+        <a href="import-schedule.html" class="nav-item">📸 Nhập TKB (OCR / AI)</a>
+        <a href="documents.html" class="nav-item">📂 Kho tài liệu</a>
+        <a href="progress.html" class="nav-item">📈 Báo cáo tiến độ</a>
+
+        <div class="nav-section-title">Cá nhân</div>
+        <a href="profile.html" class="nav-item">👤 Hồ sơ cá nhân</a>
+      </nav>
+      <div class="sidebar-footer">
+        <button id="logoutBtn" class="btn btn-secondary btn-sm" style="width: 100%;">🚪 Đăng xuất</button>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="main-wrapper">
+      <header class="top-header">
+        <button class="mobile-menu-btn" aria-label="Toggle Menu">☰</button>
+        <div class="header-search">
+          <span class="search-icon">🔍</span>
+          <input type="text" placeholder="Tìm kiếm nhiệm vụ, deadline...">
+        </div>
+        <div class="header-actions">
+          <a href="profile.html" class="user-profile-menu">
+            <div class="avatar">SV</div>
+            <div class="user-info">
+              <div class="user-name">Trần Minh Đức</div>
+              <div class="user-role">K64 - CNTT</div>
+            </div>
+          </a>
+        </div>
+      </header>
+
+      <main class="page-content">
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">Quản lý Nhiệm vụ & Deadline</h1>
+            <p class="page-subtitle">Nhập deadline 1 lần – hệ thống tự động tính ngày còn lại và cập nhật tiến độ.</p>
+          </div>
+        </div>
+
+        <!-- Add Task Card -->
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">+ Thêm nhiệm vụ / bài tập mới</h3>
+          </div>
+          <div class="card-body">
+            <form id="addTaskForm" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; align-items: flex-end;">
+              <div class="form-group" style="margin-bottom: 0;">
+                <label class="form-label">Tên nhiệm vụ / bài tập</label>
+                <input type="text" id="taskTitle" class="form-control" placeholder="Ví dụ: Báo cáo BTL Web CSE122" required>
+              </div>
+
+              <div class="form-group" style="margin-bottom: 0;">
+                <label class="form-label">Chọn môn học</label>
+                <select id="taskSubject" class="form-control">
+                  <option value="CSE122">CSE122 - Web cơ bản</option>
+                  <option value="CSE281">CSE281 - Cấu trúc dữ liệu</option>
+                  <option value="MATH101">MATH101 - Giải tích 1</option>
+                  <option value="ENG201">ENG201 - Tiếng Anh CN</option>
+                </select>
+              </div>
+
+              <div class="form-group" style="margin-bottom: 0;">
+                <label class="form-label">Hạn chót (Deadline)</label>
+                <input type="datetime-local" id="taskDeadline" class="form-control" required>
+              </div>
+
+              <div class="form-group" style="margin-bottom: 0;">
+                <label class="form-label">Mức độ ưu tiên</label>
+                <select id="taskPriority" class="form-control">
+                  <option value="normal">Bình thường</option>
+                  <option value="high">Ưu tiên cao</option>
+                  <option value="urgent">Khẩn cấp</option>
+                </select>
+              </div>
+
+              <button type="submit" class="btn btn-primary" style="height: 42px;">
+                + Lưu nhiệm vụ
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Task Table List -->
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">📋 Danh sách công việc cần theo dõi</h3>
+            <div style="display: flex; gap: 0.5rem;">
+              <span class="badge badge-safe">🟢 Còn nhiều</span>
+              <span class="badge badge-warning">🟡 Sắp hạn</span>
+              <span class="badge badge-danger">🔴 Hạn hôm nay</span>
+              <span class="badge badge-overdue">⚫ Quá hạn</span>
+            </div>
+          </div>
+          <div class="card-body" style="padding: 0;">
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 40px;">Xong</th>
+                    <th>Tên nhiệm vụ / Bài tập</th>
+                    <th>Môn học</th>
+                    <th>Hạn nộp</th>
+                    <th>Mức ưu tiên</th>
+                    <th>Trạng thái hạn chót</th>
+                    <th>Thao tác</th>
+                  </tr>
+                </thead>
+                <tbody id="tasksTableBody">
+                  <!-- Render dynamically by js/tasks.js -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/tasks.js"></script>
+</body>
+</html>
