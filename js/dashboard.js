@@ -8,6 +8,19 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function loadDashboardData() {
+  // Auto-init or migrate subjects to TLU standard
+  let subjects = JSON.parse(localStorage.getItem("studymate_subjects"));
+  if (!subjects || subjects.length === 0 || subjects.some(s => s.id === "ENG201" || s.id === "MATH101")) {
+    subjects = [
+      { id: "CSE201", name: "Lập trình hướng đối tượng", credits: 3, room: "205-B5 / 211-B5", teacher: "Khoa CNTT" },
+      { id: "CSE122", name: "Phát triển ứng dụng web cơ bản", credits: 3, room: "205-B5 / 211-B5", teacher: "Khoa CNTT" },
+      { id: "CSE220", name: "Cơ sở dữ liệu", credits: 3, room: "401-C5 / 310-B5", teacher: "Khoa CNTT" },
+      { id: "CSE301", name: "Hệ điều hành", credits: 3, room: "309-B5", teacher: "Khoa CNTT" },
+      { id: "CSE302", name: "Mạng máy tính", credits: 3, room: "309-B5", teacher: "Khoa CNTT" }
+    ];
+    localStorage.setItem("studymate_subjects", JSON.stringify(subjects));
+  }
+
   renderDashboardStats();
   renderTodaySchedule();
   renderUpcomingDeadlines();
@@ -48,51 +61,60 @@ function renderTodaySchedule() {
   const daysMap = ["Chủ Nhật", "Thứ Hai", "Thứ Ba", "Thứ Tư", "Thứ Năm", "Thứ Sáu", "Thứ Bảy"];
   const todayName = daysMap[new Date().getDay()];
 
-  const savedSchedule = JSON.parse(localStorage.getItem("studymate_schedule")) || [];
-  let displayClasses = [];
-
-  if (savedSchedule.length > 0) {
-    const todayMatches = savedSchedule.filter(c => c.day === todayName);
-    if (todayMatches.length > 0) {
-      displayClasses = todayMatches.map(c => ({
-        time: c.time,
-        subject: c.subjectName || c.subjectId,
-        room: c.room || "Phòng A203",
-        teacher: c.teacher || "Giảng viên",
-        status: "Đang diễn ra",
-        day: c.day
-      }));
-    } else {
-      // If none today, show first 2-3 registered classes in the week
-      displayClasses = savedSchedule.slice(0, 2).map(c => ({
-        time: c.time,
-        subject: c.subjectName || c.subjectId,
-        room: c.room || "Phòng A203",
-        teacher: c.teacher || "Giảng viên",
-        status: `${c.day}`,
-        day: c.day
-      }));
-    }
+  let savedSchedule = JSON.parse(localStorage.getItem("studymate_schedule"));
+  
+  // Auto-upgrade if legacy data or empty
+  if (!savedSchedule || savedSchedule.length === 0 || (savedSchedule[0] && savedSchedule[0].time === "07:00 - 09:00")) {
+    savedSchedule = [
+      { subjectId: "CSE201", subjectName: "Lập trình hướng đối tượng", day: "Thứ Hai", time: "Tiết 1 - 3 (07:00 - 09:40)", room: "Phòng 205-B5", teacher: "Khoa CNTT", status: "Đang diễn ra" },
+      { subjectId: "CSE122", subjectName: "Phát triển ứng dụng web cơ bản", day: "Thứ Hai", time: "Tiết 4 - 6 (09:45 - 12:25)", room: "Phòng 205-B5", teacher: "Khoa CNTT", status: "Sắp tới" },
+      { subjectId: "CSE201", subjectName: "Lập trình hướng đối tượng", day: "Thứ Ba", time: "Tiết 1 - 2 (07:00 - 08:45)", room: "Phòng 211-B5", teacher: "Khoa CNTT", status: "Sắp tới" },
+      { subjectId: "CSE122", subjectName: "Phát triển ứng dụng web cơ bản", day: "Thứ Ba", time: "Tiết 3 - 4 (08:50 - 10:35)", room: "Phòng 211-B5", teacher: "Khoa CNTT", status: "Sắp tới" },
+      { subjectId: "CSE220", subjectName: "Cơ sở dữ liệu", day: "Thứ Ba", time: "Tiết 7 - 9 (12:55 - 15:35)", room: "Phòng 401-C5", teacher: "Khoa CNTT", status: "Sắp tới" },
+      { subjectId: "CSE220", subjectName: "Cơ sở dữ liệu", day: "Thứ Tư", time: "Tiết 4 - 5 (09:45 - 11:30)", room: "Phòng 310-B5", teacher: "Khoa CNTT", status: "Sắp tới" },
+      { subjectId: "CSE301", subjectName: "Hệ điều hành", day: "Thứ Năm", time: "Tiết 1 - 3 (07:00 - 09:40)", room: "Phòng 309-B5", teacher: "Khoa CNTT", status: "Sắp tới" },
+      { subjectId: "CSE302", subjectName: "Mạng máy tính", day: "Thứ Năm", time: "Tiết 4 - 6 (09:45 - 12:25)", room: "Phòng 309-B5", teacher: "Khoa CNTT", status: "Sắp tới" },
+      { subjectId: "CSE201", subjectName: "Lập trình hướng đối tượng", day: "Thứ Sáu", time: "Tiết 1 - 2 (07:00 - 08:45)", room: "Phòng 211-B5", teacher: "Khoa CNTT", status: "Sắp tới" },
+      { subjectId: "CSE122", subjectName: "Phát triển ứng dụng web cơ bản", day: "Thứ Sáu", time: "Tiết 3 - 4 (08:50 - 10:35)", room: "Phòng 211-B5", teacher: "Khoa CNTT", status: "Sắp tới" },
+      { subjectId: "CSE220", subjectName: "Cơ sở dữ liệu", day: "Thứ Bảy", time: "Tiết 4 - 5 (09:45 - 11:30)", room: "Phòng 310-B5", teacher: "Khoa CNTT", status: "Sắp tới" }
+    ];
+    localStorage.setItem("studymate_schedule", JSON.stringify(savedSchedule));
   }
 
-  // Fallback to sample data if no schedule saved
-  if (displayClasses.length === 0) {
-    displayClasses = [
-      { time: "07:00 - 09:00", subject: "Phát triển ứng dụng web cơ bản (CSE122)", room: "Phòng A203", teacher: "ThS. Nguyễn Văn A", status: "Đang diễn ra" },
-      { time: "09:15 - 11:30", subject: "Cấu trúc dữ liệu và giải thuật (CSE281)", room: "Phòng B102", teacher: "TS. Trần Thị B", status: "Sắp tới" }
-    ];
+  let displayClasses = [];
+  const todayMatches = savedSchedule.filter(c => c.day === todayName);
+
+  if (todayMatches.length > 0) {
+    displayClasses = todayMatches.map(c => ({
+      time: c.time,
+      subject: c.subjectName || c.subjectId,
+      room: c.room || "Phòng 205-B5",
+      teacher: c.teacher || "Khoa CNTT",
+      status: "Hôm nay",
+      day: c.day
+    }));
+  } else {
+    // If no classes today, show upcoming classes from next school day
+    displayClasses = savedSchedule.slice(0, 2).map(c => ({
+      time: c.time,
+      subject: c.subjectName || c.subjectId,
+      room: c.room || "Phòng 205-B5",
+      teacher: c.teacher || "Khoa CNTT",
+      status: c.day,
+      day: c.day
+    }));
   }
 
   container.innerHTML = displayClasses.map(c => `
     <div style="display: flex; align-items: center; justify-content: space-between; padding: 0.9rem 1.15rem; border-radius: 12px; background: rgba(255,255,255,0.03); border: 1px solid var(--theme-border); transition: var(--transition);">
       <div style="display: flex; gap: 0.85rem; align-items: center;">
-        <span class="badge badge-primary" style="font-size: 0.85rem; padding: 0.35rem 0.75rem;">${c.time}</span>
+        <span class="badge badge-primary" style="font-size: 0.825rem; padding: 0.35rem 0.75rem; white-space: nowrap;">${c.time}</span>
         <div>
           <div style="font-weight: 600; color: var(--theme-text-primary); font-size: 0.975rem;">${c.subject}</div>
           <div style="font-size: 0.825rem; color: var(--theme-text-muted); margin-top: 2px;">${c.room} • ${c.teacher}</div>
         </div>
       </div>
-      <span class="badge ${c.status === 'Đang diễn ra' ? 'badge-safe' : 'badge-warning'}" style="font-size: 0.8rem; padding: 0.3rem 0.7rem;">${c.status}</span>
+      <span class="badge ${c.status === 'Hôm nay' ? 'badge-safe' : 'badge-warning'}" style="font-size: 0.8rem; padding: 0.3rem 0.7rem; white-space: nowrap;">${c.status}</span>
     </div>
   `).join("");
 }

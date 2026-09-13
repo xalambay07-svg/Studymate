@@ -35,27 +35,39 @@
   <!-- Mobile Drawer -->
   <div class="st-drawer-overlay"></div>
   <div class="st-mobile-drawer">
-    <a href="dashboard.html" class="st-pill-link">📊 Dashboard</a>
-    <a href="schedule.html" class="st-pill-link active">📅 Lịch học / TKB</a>
-    <a href="tasks.html" class="st-pill-link">✅ Nhiệm vụ & Deadline</a>
-    <a href="import-schedule.html" class="st-pill-link">📸 Nhập TKB (OCR / AI)</a>
-    <a href="subjects.html" class="st-pill-link">📖 Môn học</a>
-    <a href="exams.html" class="st-pill-link">🎯 Kỳ thi</a>
-    <a href="progress.html" class="st-pill-link">📈 Báo cáo tiến độ</a>
-    <a href="index.html" class="st-pill-link" style="margin-top: 1rem; border: 1px solid var(--theme-border);">🚪 Trang chủ</a>
+    <a href="index.html#dashboard" class="st-pill-link">Dashboard</a>
+    <a href="schedule.html" class="st-pill-link active">Lịch học</a>
+    <a href="tasks.html" class="st-pill-link">Deadline</a>
+    <a href="import-schedule.html" class="st-pill-link">OCR TKB</a>
+    <a href="progress.html" class="st-pill-link">Tiến độ</a>
+    <a href="index.html" class="st-pill-link" style="margin-top: 1rem; border: 1px solid var(--theme-border);">Trang chủ</a>
   </div>
 
   <main class="st-main-container">
-    <div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+    <div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem;">
       <div>
         <h1 style="font-size: 1.75rem; font-weight: 600; color: var(--theme-text-primary);">Thời khóa biểu sinh viên</h1>
         <p style="font-size: 0.875rem; color: var(--theme-text-secondary); margin-top: 0.25rem;">
-          Theo dõi lịch học trong tuần, phòng học và giảng viên hướng dẫn.
+          Lịch học 1 tuần, tiết học chuẩn và phòng học (Đại học Thủy Lợi - TLU).
         </p>
       </div>
-      <div style="display: flex; gap: 0.5rem;">
-        <a href="import-schedule.html" class="st-pill-btn st-pill-btn-primary">📸 Quét TKB từ ảnh</a>
-        <button class="st-pill-btn" onclick="showToast('Đang hiển thị lịch tuần hiện tại', 'info')">Xem tuần này</button>
+      <div style="display: flex; gap: 0.65rem; align-items: center; flex-wrap: wrap;">
+        <div style="display: flex; background: rgba(255,255,255,0.06); border: 1px solid var(--theme-border); border-radius: 9999px; padding: 3px;">
+          <button id="btnModeTable" onclick="setScheduleViewMode('table')" class="st-pill-btn active" style="padding: 0.4rem 1rem; font-size: 0.825rem; border: none; cursor: pointer;">Bảng tuần (TLU)</button>
+          <button id="btnModeCards" onclick="setScheduleViewMode('cards')" class="st-pill-btn" style="padding: 0.4rem 1rem; font-size: 0.825rem; border: none; background: none; color: var(--theme-text-secondary); cursor: pointer;">Danh sách thẻ</button>
+        </div>
+        <a href="import-schedule.html" class="st-pill-btn st-pill-btn-primary" style="padding: 0.45rem 1rem; font-size: 0.85rem; text-decoration: none;">Quét TKB từ ảnh</a>
+      </div>
+    </div>
+
+    <!-- Week Info Banner -->
+    <div class="st-card" style="margin-bottom: 1.5rem; padding: 0.85rem 1.25rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; border-color: rgba(96,165,250,0.3);">
+      <div style="display: flex; align-items: center; gap: 1rem;">
+        <span style="font-weight: 700; color: var(--theme-text-primary); font-size: 0.95rem;">Tuần thứ 3 (14/9/2026 - 20/9/2026)</span>
+        <span style="font-size: 0.75rem; color: #93c5fd; background: rgba(37,99,235,0.15); padding: 3px 8px; border-radius: 6px; border: 1px solid rgba(96,165,250,0.3);">Học kỳ 1 • sinhvien1.tlu.edu.vn</span>
+      </div>
+      <div style="font-size: 0.85rem; color: var(--theme-text-secondary);">
+        Sinh viên: <strong style="color: var(--theme-text-primary);">Nguyễn Gia Huy</strong>
       </div>
     </div>
 

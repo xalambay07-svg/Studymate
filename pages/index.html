@@ -350,9 +350,9 @@
             <div style="background: #0f0f23; padding: 1.25rem; color: #ede9fe; font-size: 0.75rem; border-radius: 8px;">
               <!-- Top bar -->
               <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.5rem; margin-bottom: 0.75rem;">
-                <span style="font-weight: 600; color: #8b5cf6;">📖 StudiesMate</span>
-                <span style="font-size: 0.65rem; color: rgba(255,255,255,0.5);">📊 Dashboard • 📅 Lịch học • ✅ Deadline</span>
-                <span style="font-size: 0.65rem; background: #8b5cf6; padding: 2px 8px; border-radius: 12px;">Minh Đức</span>
+                <span style="font-weight: 600; color: #8b5cf6;">StudiesMate</span>
+                <span style="font-size: 0.65rem; color: rgba(255,255,255,0.5);">Dashboard • Lịch học • Deadline</span>
+                <span style="font-size: 0.65rem; background: #8b5cf6; padding: 2px 8px; border-radius: 12px;">Nguyễn Gia Huy</span>
               </div>
 
               <!-- Clock and Quote -->
@@ -385,7 +385,7 @@
               <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px;">
                 <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 6px;">
                   <div style="font-weight: 600; font-size: 0.65rem; margin-bottom: 2px;">📅 Hôm nay cần làm gì?</div>
-                  <div style="font-size: 0.6rem; color: rgba(255,255,255,0.6);">• Web cơ bản (07:00 - 09:00)</div>
+                  <div style="font-size: 0.6rem; color: rgba(255,255,255,0.6);">• Lập trình hướng đối tượng (07:00 - 09:40)</div>
                   <div style="font-size: 0.6rem; color: rgba(255,255,255,0.6);">• Cấu trúc dữ liệu (B102)</div>
                 </div>
                 <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 6px;">
@@ -531,22 +531,22 @@
 
         <!-- Quick Add Chips -->
         <div style="margin-bottom: 1.25rem;">
-          <div style="font-size: 0.75rem; color: #cbd5e1; font-weight: 600; margin-bottom: 0.5rem;">💡 Gợi ý thêm nhanh 1-Click (ĐH Thủy Lợi):</div>
+          <div style="font-size: 0.75rem; color: #cbd5e1; font-weight: 600; margin-bottom: 0.5rem;">Gợi ý thêm nhanh 1-Click (ĐH Thủy Lợi - TLU):</div>
           <div class="quick-add-container">
-            <button type="button" class="quick-add-chip" onclick="addQuickSubject('CSE122', 'Phát triển ứng dụng web cơ bản', 3, 'A203', 'ThS. Nguyễn Văn A')">
+            <button type="button" class="quick-add-chip" onclick="addQuickSubject('CSE201', 'Lập trình hướng đối tượng', 3, '205-B5', 'Khoa CNTT')">
+              + Lập trình hướng đối tượng (CSE201)
+            </button>
+            <button type="button" class="quick-add-chip" onclick="addQuickSubject('CSE122', 'Phát triển ứng dụng web cơ bản', 3, '205-B5', 'Khoa CNTT')">
               + Web cơ bản (CSE122)
             </button>
-            <button type="button" class="quick-add-chip" onclick="addQuickSubject('CSE281', 'Cấu trúc dữ liệu và giải thuật', 4, 'B102', 'TS. Trần Thị B')">
-              + Cấu trúc dữ liệu (CSE281)
-            </button>
-            <button type="button" class="quick-add-chip" onclick="addQuickSubject('MATH101', 'Giải tích 1', 3, 'C301', 'PGS. Lê Văn C')">
-              + Giải tích 1 (MATH101)
-            </button>
-            <button type="button" class="quick-add-chip" onclick="addQuickSubject('ENG201', 'Tiếng Anh chuyên ngành', 2, 'D405', 'ThS. Phạm Thị D')">
-              + Tiếng Anh (ENG201)
-            </button>
-            <button type="button" class="quick-add-chip" onclick="addQuickSubject('CSE220', 'Cơ sở dữ liệu', 3, 'A302', 'TS. Vũ Minh E')">
+            <button type="button" class="quick-add-chip" onclick="addQuickSubject('CSE220', 'Cơ sở dữ liệu', 3, '401-C5', 'Khoa CNTT')">
               + Cơ sở dữ liệu (CSE220)
+            </button>
+            <button type="button" class="quick-add-chip" onclick="addQuickSubject('CSE301', 'Hệ điều hành', 3, '309-B5', 'Khoa CNTT')">
+              + Hệ điều hành (CSE301)
+            </button>
+            <button type="button" class="quick-add-chip" onclick="addQuickSubject('CSE302', 'Mạng máy tính', 3, '309-B5', 'Khoa CNTT')">
+              + Mạng máy tính (CSE302)
             </button>
           </div>
         </div>
@@ -617,20 +617,20 @@
         <!-- Mode Toggle Tabs -->
         <div style="display: flex; gap: 0.5rem; margin-bottom: 1.25rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.75rem;">
           <button type="button" id="tabScheduleManual" onclick="setScheduleTab('manual')" style="padding: 0.5rem 1rem; border-radius: 8px; background: rgba(37, 99, 235, 0.2); border: 1px solid rgba(96, 165, 250, 0.4); color: #93c5fd; font-weight: 600; font-size: 0.825rem; cursor: pointer;">
-            ✍️ Gán lịch học theo môn
+            Gán lịch học theo môn
           </button>
           <button type="button" id="tabScheduleOCR" onclick="setScheduleTab('ocr')" style="padding: 0.5rem 1rem; border-radius: 8px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.12); color: #94a3b8; font-weight: 600; font-size: 0.825rem; cursor: pointer;">
-            📸 Quét ảnh chụp TKB (AI/OCR)
+            Quét ảnh chụp TKB (AI/OCR)
           </button>
         </div>
 
         <!-- Tab 1 Content: Manual Schedule Assignment -->
         <div id="tabScheduleManualContent">
           <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 14px; padding: 1.25rem; margin-bottom: 1.5rem;">
-            <div style="display: grid; grid-template-columns: 1.8fr 1.2fr 1.5fr auto; gap: 0.75rem; align-items: flex-end;">
+            <div style="display: grid; grid-template-columns: 1.6fr 1fr 1.6fr 1fr auto; gap: 0.75rem; align-items: flex-end;">
               <div>
                 <label style="display: block; font-size: 0.725rem; color: #94a3b8; margin-bottom: 0.25rem;">Chọn môn học</label>
-                <select id="obSchedSubject" class="form-control" style="background: #1e293b; color: #fff; border: 1px solid rgba(255,255,255,0.15);">
+                <select id="obSchedSubject" onchange="autoFillSlotRoom()" class="form-control" style="background: #1e293b; color: #fff; border: 1px solid rgba(255,255,255,0.15);">
                   <!-- Filled dynamically from subjects -->
                 </select>
               </div>
@@ -647,16 +647,44 @@
                 </select>
               </div>
               <div>
-                <label style="display: block; font-size: 0.725rem; color: #94a3b8; margin-bottom: 0.25rem;">Ca học (Giờ lên lớp)</label>
+                <label style="display: block; font-size: 0.725rem; color: #94a3b8; margin-bottom: 0.25rem;">Tiết học (Chuẩn ĐH Thủy Lợi)</label>
                 <select id="obSchedTime" class="form-control" style="background: #1e293b; color: #fff; border: 1px solid rgba(255,255,255,0.15);">
-                  <option value="07:00 - 09:00">Ca 1: 07:00 - 09:00</option>
-                  <option value="09:15 - 11:30">Ca 2: 09:15 - 11:30</option>
-                  <option value="13:00 - 15:00">Ca 3: 13:00 - 15:00</option>
-                  <option value="15:15 - 17:30">Ca 4: 15:15 - 17:30</option>
-                  <option value="18:00 - 20:30">Ca tối: 18:00 - 20:30</option>
+                  <optgroup label="Ca học phổ biến (TLU)">
+                    <option value="Tiết 1 - 3 (07:00 - 09:40)">Tiết 1 - 3: 07:00 - 09:40 (3 tiết đầu sáng)</option>
+                    <option value="Tiết 4 - 6 (09:45 - 12:25)">Tiết 4 - 6: 09:45 - 12:25 (3 tiết cuối sáng)</option>
+                    <option value="Tiết 1 - 2 (07:00 - 08:45)">Tiết 1 - 2: 07:00 - 08:45 (2 tiết đầu sáng)</option>
+                    <option value="Tiết 3 - 4 (08:50 - 10:35)">Tiết 3 - 4: 08:50 - 10:35 (2 tiết giữa sáng)</option>
+                    <option value="Tiết 4 - 5 (09:45 - 11:30)">Tiết 4 - 5: 09:45 - 11:30 (2 tiết cuối sáng)</option>
+                    <option value="Tiết 7 - 9 (12:55 - 15:35)">Tiết 7 - 9: 12:55 - 15:35 (3 tiết đầu chiều)</option>
+                    <option value="Tiết 7 - 8 (12:55 - 14:40)">Tiết 7 - 8: 12:55 - 14:40 (2 tiết đầu chiều)</option>
+                    <option value="Tiết 9 - 10 (14:45 - 16:30)">Tiết 9 - 10: 14:45 - 16:30 (2 tiết giữa chiều)</option>
+                    <option value="Tiết 10 - 12 (15:40 - 18:20)">Tiết 10 - 12: 15:40 - 18:20 (3 tiết cuối chiều)</option>
+                    <option value="Tiết 13 - 15 (18:50 - 21:30)">Tiết 13 - 15: 18:50 - 21:30 (3 tiết ca tối)</option>
+                  </optgroup>
+                  <optgroup label="Từng tiết học chi tiết">
+                    <option value="Tiết 1 (07:00 - 07:50)">Tiết 1: 07:00 - 07:50</option>
+                    <option value="Tiết 2 (07:55 - 08:45)">Tiết 2: 07:55 - 08:45</option>
+                    <option value="Tiết 3 (08:50 - 09:40)">Tiết 3: 08:50 - 09:40</option>
+                    <option value="Tiết 4 (09:45 - 10:35)">Tiết 4: 09:45 - 10:35</option>
+                    <option value="Tiết 5 (10:40 - 11:30)">Tiết 5: 10:40 - 11:30</option>
+                    <option value="Tiết 6 (11:35 - 12:25)">Tiết 6: 11:35 - 12:25</option>
+                    <option value="Tiết 7 (12:55 - 13:45)">Tiết 7: 12:55 - 13:45</option>
+                    <option value="Tiết 8 (13:50 - 14:40)">Tiết 8: 13:50 - 14:40</option>
+                    <option value="Tiết 9 (14:45 - 15:35)">Tiết 9: 14:45 - 15:35</option>
+                    <option value="Tiết 10 (15:40 - 16:30)">Tiết 10: 15:40 - 16:30</option>
+                    <option value="Tiết 11 (16:35 - 17:25)">Tiết 11: 16:35 - 17:25</option>
+                    <option value="Tiết 12 (17:30 - 18:20)">Tiết 12: 17:30 - 18:20</option>
+                    <option value="Tiết 13 (18:50 - 19:40)">Tiết 13: 18:50 - 19:40</option>
+                    <option value="Tiết 14 (19:45 - 20:35)">Tiết 14: 19:45 - 20:35</option>
+                    <option value="Tiết 15 (20:40 - 21:30)">Tiết 15: 20:40 - 21:30</option>
+                  </optgroup>
                 </select>
               </div>
-              <button type="button" onclick="addScheduleSlotFromForm()" style="padding: 0.65rem 1.25rem; border-radius: 8px; background: #7c3aed; color: #fff; font-weight: 700; font-size: 0.85rem; border: none; cursor: pointer; white-space: nowrap; transition: background 0.2s;">
+              <div>
+                <label style="display: block; font-size: 0.725rem; color: #94a3b8; margin-bottom: 0.25rem;">Phòng học</label>
+                <input type="text" id="obSchedRoom" placeholder="205-B5" class="form-control" style="background: #1e293b; color: #fff; border: 1px solid rgba(255,255,255,0.15);">
+              </div>
+              <button type="button" onclick="addScheduleSlotFromForm()" style="padding: 0.65rem 1.25rem; border-radius: 8px; background: #2563eb; color: #fff; font-weight: 700; font-size: 0.85rem; border: none; cursor: pointer; white-space: nowrap; transition: background 0.2s;">
                 + Gán vào TKB
               </button>
             </div>
@@ -674,15 +702,14 @@
         <!-- Tab 2 Content: Smart OCR Schedule Upload -->
         <div id="tabScheduleOCRContent" style="display: none; margin-bottom: 1.5rem;">
           <div class="ocr-upload-zone" onclick="simulateOCROnboarding()">
-            <div style="font-size: 2.2rem; margin-bottom: 0.5rem;">📸</div>
-            <div style="font-weight: 700; font-size: 1rem; color: #ffffff; margin-bottom: 0.25rem;">
-              Kéo thả hoặc bấm để tải ảnh chụp Thời khóa biểu trường
+            <div style="font-weight: 700; font-size: 1.05rem; color: #ffffff; margin-bottom: 0.35rem;">
+              Kéo thả hoặc bấm để tải ảnh chụp Thời khóa biểu trường (TLU)
             </div>
             <p style="font-size: 0.8rem; color: #94a3b8; margin-bottom: 0.75rem;">
-              AI/OCR sẽ tự động nhận diện thứ, giờ, phòng và tên môn học để xếp vào lịch học cho bạn.
+              AI/OCR sẽ tự động nhận diện thứ, tiết học, phòng và tên môn học để tự động xếp vào thời khóa biểu cho bạn.
             </p>
-            <button type="button" style="padding: 0.45rem 1rem; border-radius: 8px; background: #7c3aed; color: #fff; font-size: 0.8rem; font-weight: 600; border: none; cursor: pointer;">
-              ⚡ Bấm để thử nhận diện ảnh mẫu TLU (Demo)
+            <button type="button" style="padding: 0.45rem 1rem; border-radius: 8px; background: #2563eb; color: #fff; font-size: 0.8rem; font-weight: 600; border: none; cursor: pointer;">
+              Nhận diện tự động từ TKB Thủy Lợi (Demo)
             </button>
           </div>
         </div>
@@ -697,7 +724,7 @@
               Dùng lịch mặc định
             </button>
             <button type="button" onclick="completeOnboarding()" style="padding: 0.75rem 1.75rem; border-radius: 10px; background: linear-gradient(135deg, #10b981 0%, #2563eb 100%); color: #ffffff; font-weight: 700; font-size: 0.95rem; border: none; cursor: pointer; transition: all 0.2s; box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);">
-              🎉 Hoàn tất & Vào không gian học tập &rarr;
+              Hoàn tất & Vào không gian học tập &rarr;
             </button>
           </div>
         </div>
@@ -736,7 +763,7 @@
       <!-- Right Utilities (Clean, icon-free) -->
       <div class="st-nav-actions">
         <span id="userNameBadge" style="font-size: 0.925rem; font-weight: 600; color: var(--theme-text-secondary); background: rgba(255,255,255,0.08); padding: 0.45rem 1rem; border-radius: 9999px; border: 1px solid var(--theme-border);">
-          <span id="displayUserName">Minh Đức</span>
+          <span id="displayUserName">Nguyễn Gia Huy</span>
         </span>
         <button type="button" onclick="switchToOnboarding()" class="st-pill-btn" style="padding: 0.45rem 1.1rem; font-size: 0.9rem; background: rgba(37,99,235,0.22); border: 1px solid rgba(96,165,250,0.45); cursor: pointer; color: #93c5fd;" title="Thiết lập môn học & Thời khóa biểu">
           Cài đặt môn & TKB
@@ -917,12 +944,12 @@
       <form id="authForm" onsubmit="handleAuthSubmit(event)">
         <div id="nameGroup" style="margin-bottom: 0.85rem;">
           <label style="display: block; font-size: 0.8rem; font-weight: 600; color: #cbd5e1; margin-bottom: 0.35rem;">Họ và tên của bạn</label>
-          <input type="text" id="authNameInput" placeholder="Ví dụ: Nguyễn Minh Đức" style="width: 100%; padding: 0.65rem 0.85rem; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.15); background: rgba(255, 255, 255, 0.06); color: #ffffff; font-size: 0.875rem;" value="Nguyễn Minh Đức">
+          <input type="text" id="authNameInput" placeholder="Ví dụ: Nguyễn Gia Huy" style="width: 100%; padding: 0.65rem 0.85rem; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.15); background: rgba(255, 255, 255, 0.06); color: #ffffff; font-size: 0.875rem;" value="Nguyễn Gia Huy">
         </div>
 
         <div style="margin-bottom: 0.85rem;">
           <label style="display: block; font-size: 0.8rem; font-weight: 600; color: #cbd5e1; margin-bottom: 0.35rem;">Email trường / Mã sinh viên</label>
-          <input type="text" id="authEmailInput" placeholder="sinhvien@tlu.edu.vn hoặc 215106..." required style="width: 100%; padding: 0.65rem 0.85rem; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.15); background: rgba(255, 255, 255, 0.06); color: #ffffff; font-size: 0.875rem;" value="minhduc@tlu.edu.vn">
+          <input type="text" id="authEmailInput" placeholder="giahuy@tlu.edu.vn hoặc 215106..." required style="width: 100%; padding: 0.65rem 0.85rem; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.15); background: rgba(255, 255, 255, 0.06); color: #ffffff; font-size: 0.875rem;" value="giahuy@tlu.edu.vn">
         </div>
 
         <div style="margin-bottom: 1.25rem;">
@@ -946,19 +973,27 @@
   <script src="../js/dashboard.js"></script>
 
   <script>
-    // Default sample data
+    // Default sample data (Chuẩn TLU từ thời khóa biểu tuần thực tế)
     const defaultSampleSubjects = [
-      { id: "CSE122", name: "Phát triển ứng dụng web cơ bản", credits: 3, room: "A203", teacher: "ThS. Nguyễn Văn A" },
-      { id: "CSE281", name: "Cấu trúc dữ liệu và giải thuật", credits: 4, room: "B102", teacher: "TS. Trần Thị B" },
-      { id: "MATH101", name: "Giải tích 1", credits: 3, room: "C301", teacher: "PGS. Lê Văn C" },
-      { id: "ENG201", name: "Tiếng Anh chuyên ngành", credits: 2, room: "D405", teacher: "ThS. Phạm Thị D" }
+      { id: "CSE201", name: "Lập trình hướng đối tượng", credits: 3, room: "205-B5 / 211-B5", teacher: "Khoa CNTT" },
+      { id: "CSE122", name: "Phát triển ứng dụng web cơ bản", credits: 3, room: "205-B5 / 211-B5", teacher: "Khoa CNTT" },
+      { id: "CSE220", name: "Cơ sở dữ liệu", credits: 3, room: "401-C5 / 310-B5", teacher: "Khoa CNTT" },
+      { id: "CSE301", name: "Hệ điều hành", credits: 3, room: "309-B5", teacher: "Khoa CNTT" },
+      { id: "CSE302", name: "Mạng máy tính", credits: 3, room: "309-B5", teacher: "Khoa CNTT" }
     ];
 
     const defaultSampleSchedule = [
-      { subjectId: "CSE122", subjectName: "Phát triển ứng dụng web cơ bản (CSE122)", day: "Thứ Hai", time: "07:00 - 09:00", room: "Phòng A203", teacher: "ThS. Nguyễn Văn A", status: "Đang diễn ra" },
-      { subjectId: "CSE281", subjectName: "Cấu trúc dữ liệu và giải thuật (CSE281)", day: "Thứ Hai", time: "09:15 - 11:30", room: "Phòng B102", teacher: "TS. Trần Thị B", status: "Sắp tới" },
-      { subjectId: "MATH101", subjectName: "Giải tích 1 (MATH101)", day: "Thứ Tư", time: "07:00 - 09:00", room: "Phòng C301", teacher: "PGS. Lê Văn C", status: "Sắp tới" },
-      { subjectId: "ENG201", subjectName: "Tiếng Anh chuyên ngành (ENG201)", day: "Thứ Sáu", time: "13:00 - 15:00", room: "Phòng D405", teacher: "ThS. Phạm Thị D", status: "Sắp tới" }
+      { subjectId: "CSE201", subjectName: "Lập trình hướng đối tượng", day: "Thứ Hai", time: "Tiết 1 - 3 (07:00 - 09:40)", room: "Phòng 205-B5", teacher: "Khoa CNTT", status: "Đang diễn ra" },
+      { subjectId: "CSE122", subjectName: "Phát triển ứng dụng web cơ bản", day: "Thứ Hai", time: "Tiết 4 - 6 (09:45 - 12:25)", room: "Phòng 205-B5", teacher: "Khoa CNTT", status: "Sắp tới" },
+      { subjectId: "CSE201", subjectName: "Lập trình hướng đối tượng", day: "Thứ Ba", time: "Tiết 1 - 2 (07:00 - 08:45)", room: "Phòng 211-B5", teacher: "Khoa CNTT", status: "Sắp tới" },
+      { subjectId: "CSE122", subjectName: "Phát triển ứng dụng web cơ bản", day: "Thứ Ba", time: "Tiết 3 - 4 (08:50 - 10:35)", room: "Phòng 211-B5", teacher: "Khoa CNTT", status: "Sắp tới" },
+      { subjectId: "CSE220", subjectName: "Cơ sở dữ liệu", day: "Thứ Ba", time: "Tiết 7 - 9 (12:55 - 15:35)", room: "Phòng 401-C5", teacher: "Khoa CNTT", status: "Sắp tới" },
+      { subjectId: "CSE220", subjectName: "Cơ sở dữ liệu", day: "Thứ Tư", time: "Tiết 4 - 5 (09:45 - 11:30)", room: "Phòng 310-B5", teacher: "Khoa CNTT", status: "Sắp tới" },
+      { subjectId: "CSE301", subjectName: "Hệ điều hành", day: "Thứ Năm", time: "Tiết 1 - 3 (07:00 - 09:40)", room: "Phòng 309-B5", teacher: "Khoa CNTT", status: "Sắp tới" },
+      { subjectId: "CSE302", subjectName: "Mạng máy tính", day: "Thứ Năm", time: "Tiết 4 - 6 (09:45 - 12:25)", room: "Phòng 309-B5", teacher: "Khoa CNTT", status: "Sắp tới" },
+      { subjectId: "CSE201", subjectName: "Lập trình hướng đối tượng", day: "Thứ Sáu", time: "Tiết 1 - 2 (07:00 - 08:45)", room: "Phòng 211-B5", teacher: "Khoa CNTT", status: "Sắp tới" },
+      { subjectId: "CSE122", subjectName: "Phát triển ứng dụng web cơ bản", day: "Thứ Sáu", time: "Tiết 3 - 4 (08:50 - 10:35)", room: "Phòng 211-B5", teacher: "Khoa CNTT", status: "Sắp tới" },
+      { subjectId: "CSE220", subjectName: "Cơ sở dữ liệu", day: "Thứ Bảy", time: "Tiết 4 - 5 (09:45 - 11:30)", room: "Phòng 310-B5", teacher: "Khoa CNTT", status: "Sắp tới" }
     ];
 
     // Onboarding Wizard Working State
@@ -1030,7 +1065,7 @@
       e.preventDefault();
       const nameInput = document.getElementById('authNameInput');
       const emailInput = document.getElementById('authEmailInput');
-      const userName = (nameInput && nameInput.value.trim()) ? nameInput.value.trim() : (emailInput.value.split('@')[0] || 'Minh Đức');
+      const userName = (nameInput && nameInput.value.trim()) ? nameInput.value.trim() : (emailInput.value.split('@')[0] || 'Nguyễn Gia Huy');
       
       // Save session
       localStorage.setItem('studymate_user', JSON.stringify({ name: userName, email: emailInput.value }));
@@ -1244,14 +1279,27 @@
       }
 
       selectElem.innerHTML = obSubjects.map(s => `
-        <option value="${s.id}">${s.id} - ${s.name}</option>
+        <option value="${s.id}">${s.name} (${s.id})</option>
       `).join('');
+
+      autoFillSlotRoom();
+    }
+
+    function autoFillSlotRoom() {
+      const selectElem = document.getElementById('obSchedSubject');
+      const roomInput = document.getElementById('obSchedRoom');
+      if (!selectElem || !roomInput) return;
+      const sub = obSubjects.find(s => s.id === selectElem.value);
+      if (sub && sub.room) {
+        roomInput.value = sub.room.split(' / ')[0] || sub.room;
+      }
     }
 
     function addScheduleSlotFromForm() {
       const selectElem = document.getElementById('obSchedSubject');
       const dayElem = document.getElementById('obSchedDay');
       const timeElem = document.getElementById('obSchedTime');
+      const roomInput = document.getElementById('obSchedRoom');
 
       if (!selectElem || !selectElem.value) {
         alert('Vui lòng chọn môn học!');
@@ -1261,14 +1309,15 @@
       const subId = selectElem.value;
       const day = dayElem.value;
       const time = timeElem.value;
-      const subject = obSubjects.find(s => s.id === subId) || { id: subId, name: subId, room: 'A203', teacher: 'Giảng viên' };
+      const subject = obSubjects.find(s => s.id === subId) || { id: subId, name: subId, room: '205-B5', teacher: 'Khoa CNTT' };
+      const roomVal = (roomInput && roomInput.value.trim()) ? roomInput.value.trim() : subject.room;
 
       obSchedule.push({
         subjectId: subject.id,
-        subjectName: `${subject.name} (${subject.id})`,
+        subjectName: subject.name,
         day: day,
         time: time,
-        room: `Phòng ${subject.room}`,
+        room: roomVal.startsWith('Phòng') ? roomVal : `Phòng ${roomVal}`,
         teacher: subject.teacher,
         status: 'Sắp tới'
       });
@@ -1311,16 +1360,16 @@
               <div style="font-size: 0.725rem; color: #94a3b8;">${slot.room} • ${slot.teacher}</div>
             </div>
           </div>
-          <button type="button" onclick="removeOnboardingSchedule(${idx})" style="background: none; border: none; color: #ef4444; font-size: 0.85rem; cursor: pointer; padding: 4px 8px;" title="Xóa ca học này">
-            🗑️
+          <button type="button" onclick="removeOnboardingSchedule(${idx})" style="background: rgba(239,68,68,0.15); border: 1px solid rgba(239,68,68,0.3); color: #f87171; font-size: 0.75rem; font-weight: 600; border-radius: 6px; cursor: pointer; padding: 4px 10px;" title="Xóa ca học này">
+            Xóa
           </button>
         </div>
       `).join('');
     }
 
-    // Simulate OCR Timetable Recognition
+    // Simulate OCR Timetable Recognition from TLU photo
     function simulateOCROnboarding() {
-      // Add default subjects if not added
+      // Add standard 5 subjects if not added
       defaultSampleSubjects.forEach(sub => {
         if (!obSubjects.some(s => s.id === sub.id)) {
           obSubjects.push(sub);
@@ -1329,17 +1378,24 @@
       renderOnboardingSubjects();
       populateScheduleSubjectDropdown();
 
-      // Set schedule slots
+      // Set exact 11 slots from TLU weekly timetable
       obSchedule = [
-        { subjectId: "CSE122", subjectName: "Phát triển ứng dụng web cơ bản (CSE122)", day: "Thứ Hai", time: "07:00 - 09:00", room: "Phòng A203", teacher: "ThS. Nguyễn Văn A", status: "Đang diễn ra" },
-        { subjectId: "CSE281", subjectName: "Cấu trúc dữ liệu và giải thuật (CSE281)", day: "Thứ Hai", time: "09:15 - 11:30", room: "Phòng B102", teacher: "TS. Trần Thị B", status: "Sắp tới" },
-        { subjectId: "MATH101", subjectName: "Giải tích 1 (MATH101)", day: "Thứ Tư", time: "07:00 - 09:00", room: "Phòng C301", teacher: "PGS. Lê Văn C", status: "Sắp tới" },
-        { subjectId: "ENG201", subjectName: "Tiếng Anh chuyên ngành (ENG201)", day: "Thứ Sáu", time: "13:00 - 15:00", room: "Phòng D405", teacher: "ThS. Phạm Thị D", status: "Sắp tới" }
+        { subjectId: "CSE201", subjectName: "Lập trình hướng đối tượng", day: "Thứ Hai", time: "Tiết 1 - 3 (07:00 - 09:40)", room: "Phòng 205-B5", teacher: "Khoa CNTT", status: "Đang diễn ra" },
+        { subjectId: "CSE122", subjectName: "Phát triển ứng dụng web cơ bản", day: "Thứ Hai", time: "Tiết 4 - 6 (09:45 - 12:25)", room: "Phòng 205-B5", teacher: "Khoa CNTT", status: "Sắp tới" },
+        { subjectId: "CSE201", subjectName: "Lập trình hướng đối tượng", day: "Thứ Ba", time: "Tiết 1 - 2 (07:00 - 08:45)", room: "Phòng 211-B5", teacher: "Khoa CNTT", status: "Sắp tới" },
+        { subjectId: "CSE122", subjectName: "Phát triển ứng dụng web cơ bản", day: "Thứ Ba", time: "Tiết 3 - 4 (08:50 - 10:35)", room: "Phòng 211-B5", teacher: "Khoa CNTT", status: "Sắp tới" },
+        { subjectId: "CSE220", subjectName: "Cơ sở dữ liệu", day: "Thứ Ba", time: "Tiết 7 - 9 (12:55 - 15:35)", room: "Phòng 401-C5", teacher: "Khoa CNTT", status: "Sắp tới" },
+        { subjectId: "CSE220", subjectName: "Cơ sở dữ liệu", day: "Thứ Tư", time: "Tiết 4 - 5 (09:45 - 11:30)", room: "Phòng 310-B5", teacher: "Khoa CNTT", status: "Sắp tới" },
+        { subjectId: "CSE301", subjectName: "Hệ điều hành", day: "Thứ Năm", time: "Tiết 1 - 3 (07:00 - 09:40)", room: "Phòng 309-B5", teacher: "Khoa CNTT", status: "Sắp tới" },
+        { subjectId: "CSE302", subjectName: "Mạng máy tính", day: "Thứ Năm", time: "Tiết 4 - 6 (09:45 - 12:25)", room: "Phòng 309-B5", teacher: "Khoa CNTT", status: "Sắp tới" },
+        { subjectId: "CSE201", subjectName: "Lập trình hướng đối tượng", day: "Thứ Sáu", time: "Tiết 1 - 2 (07:00 - 08:45)", room: "Phòng 211-B5", teacher: "Khoa CNTT", status: "Sắp tới" },
+        { subjectId: "CSE122", subjectName: "Phát triển ứng dụng web cơ bản", day: "Thứ Sáu", time: "Tiết 3 - 4 (08:50 - 10:35)", room: "Phòng 211-B5", teacher: "Khoa CNTT", status: "Sắp tới" },
+        { subjectId: "CSE220", subjectName: "Cơ sở dữ liệu", day: "Thứ Bảy", time: "Tiết 4 - 5 (09:45 - 11:30)", room: "Phòng 310-B5", teacher: "Khoa CNTT", status: "Sắp tới" }
       ];
 
       setScheduleTab('manual');
       renderOnboardingSchedule();
-      alert('✨ AI/OCR đã nhận diện thành công 4 môn học & 4 ca học từ ảnh chụp Thời khóa biểu Thủy Lợi!');
+      alert('AI/OCR đã nhận diện thành công 5 môn học & 11 ca học từ ảnh chụp Thời khóa biểu Thủy Lợi!');
     }
 
     // Complete Onboarding & Enter Workspace
@@ -1383,7 +1439,7 @@
       document.documentElement.setAttribute('data-theme', savedTheme);
 
       // Update username if available
-      const userName = name || (JSON.parse(localStorage.getItem('studymate_user') || '{}').name) || 'Minh Đức';
+      const userName = name || (JSON.parse(localStorage.getItem('studymate_user') || '{}').name) || 'Nguyễn Gia Huy';
       const displayElem = document.getElementById('displayUserName');
       if (displayElem) displayElem.textContent = userName;
 
