@@ -324,7 +324,6 @@ a:hover {
   font-size: 0.8125rem;
   font-weight: 500;
   cursor: pointer;
-  backdrop-filter: blur(10px);
   transition: var(--transition);
 }
 
@@ -350,18 +349,16 @@ a:hover {
   background: var(--theme-card);
   border: 1px solid var(--theme-border);
   border-radius: var(--radius);
-  backdrop-filter: blur(24px) saturate(190%);
-  -webkit-backdrop-filter: blur(24px) saturate(190%);
   padding: 1.5rem;
-  box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.08);
-  transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  box-shadow: 0 12px 30px -8px rgba(0, 0, 0, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.08);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s, box-shadow 0.2s;
+  transform: translateZ(0);
 }
 
 .st-card:hover {
-  background: var(--theme-card-hover);
   border-color: rgba(139, 92, 246, 0.35);
-  box-shadow: 0 20px 45px -10px rgba(139, 92, 246, 0.18), inset 0 1px 1.5px rgba(255, 255, 255, 0.15);
-  transform: translateY(-2px);
+  box-shadow: 0 18px 40px -10px rgba(139, 92, 246, 0.18), inset 0 1px 1.5px rgba(255, 255, 255, 0.15);
+  transform: translate3d(0, -2px, 0);
 }
 
 .st-card-header {
@@ -392,21 +389,19 @@ a:hover {
   background: var(--theme-card);
   border: 1px solid var(--theme-border);
   border-radius: var(--radius);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
   padding: 1.25rem;
   display: flex;
   align-items: center;
   gap: 1rem;
-  box-shadow: 0 10px 25px -8px rgba(0, 0, 0, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.08);
-  transition: all 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+  box-shadow: 0 8px 20px -6px rgba(0, 0, 0, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.08);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s, box-shadow 0.2s;
+  transform: translateZ(0);
 }
 
 .st-stat-box:hover {
-  background: var(--theme-card-hover);
   border-color: rgba(139, 92, 246, 0.4);
-  box-shadow: 0 16px 32px -8px rgba(139, 92, 246, 0.22), inset 0 1px 1.5px rgba(255, 255, 255, 0.15);
-  transform: translateY(-3px) scale(1.015);
+  box-shadow: 0 14px 28px -6px rgba(139, 92, 246, 0.22), inset 0 1px 1.5px rgba(255, 255, 255, 0.15);
+  transform: translate3d(0, -2px, 0);
 }
 
 .st-stat-icon {
@@ -626,7 +621,7 @@ a:hover {
 }
 
 /* ========================================================================= */
-/* LIQUID GLASS AMBIENT BACKGROUND MESH (VIBRANT AURORA GLOWS)               */
+/* LIQUID GLASS AMBIENT BACKGROUND MESH (HIGH-PERFORMANCE ZERO-BLUR SHADER)  */
 /* ========================================================================= */
 .liquid-bg-mesh {
   position: fixed;
@@ -634,91 +629,37 @@ a:hover {
   pointer-events: none;
   z-index: 0;
   overflow: hidden;
+  background-color: #090d16;
+  background-image: 
+    radial-gradient(ellipse 60% 50% at 8% 12%, rgba(37, 99, 235, 0.45) 0%, rgba(37, 99, 235, 0.12) 40%, transparent 70%),
+    radial-gradient(ellipse 65% 55% at 92% 16%, rgba(147, 51, 234, 0.4) 0%, rgba(147, 51, 234, 0.1) 40%, transparent 70%),
+    radial-gradient(ellipse 55% 45% at 25% 75%, rgba(6, 182, 212, 0.32) 0%, rgba(6, 182, 212, 0.08) 35%, transparent 65%),
+    radial-gradient(ellipse 50% 45% at 88% 85%, rgba(236, 72, 153, 0.28) 0%, rgba(236, 72, 153, 0.06) 30%, transparent 60%);
+  background-attachment: fixed;
+  transform: translateZ(0);
 }
 
 .liquid-orb {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(110px);
-  opacity: 0.55;
-  pointer-events: none;
-  will-change: transform;
-}
-
-.liquid-orb-1 {
-  top: -8%;
-  left: -5%;
-  width: 620px;
-  height: 620px;
-  background: radial-gradient(circle, rgba(37, 99, 235, 0.6) 0%, rgba(59, 130, 246, 0.25) 45%, rgba(37, 99, 235, 0) 70%);
-  animation: liquidFloat1 18s ease-in-out infinite alternate;
-}
-
-.liquid-orb-2 {
-  top: 10%;
-  right: -8%;
-  width: 680px;
-  height: 680px;
-  background: radial-gradient(circle, rgba(147, 51, 234, 0.55) 0%, rgba(168, 85, 247, 0.22) 45%, rgba(139, 92, 246, 0) 70%);
-  animation: liquidFloat2 20s ease-in-out infinite alternate;
-}
-
-.liquid-orb-3 {
-  top: 55%;
-  left: 20%;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(6, 182, 212, 0.45) 0%, rgba(14, 165, 233, 0.2) 45%, rgba(6, 182, 212, 0) 70%);
-  animation: liquidFloat3 22s ease-in-out infinite alternate;
-}
-
-.liquid-orb-4 {
-  top: 75%;
-  right: 15%;
-  width: 520px;
-  height: 520px;
-  background: radial-gradient(circle, rgba(236, 72, 153, 0.38) 0%, rgba(219, 39, 119, 0) 70%);
-  animation: liquidFloat1 24s ease-in-out infinite alternate-reverse;
-}
-
-@keyframes liquidFloat1 {
-  0% { transform: translate3d(0, 0, 0) scale(1) rotate(0deg); }
-  50% { transform: translate3d(60px, 40px, 0) scale(1.1) rotate(60deg); }
-  100% { transform: translate3d(-30px, 70px, 0) scale(0.95) rotate(120deg); }
-}
-
-@keyframes liquidFloat2 {
-  0% { transform: translate3d(0, 0, 0) scale(1) rotate(0deg); }
-  50% { transform: translate3d(-70px, 35px, 0) scale(1.08) rotate(-60deg); }
-  100% { transform: translate3d(30px, -50px, 0) scale(0.94) rotate(-120deg); }
-}
-
-@keyframes liquidFloat3 {
-  0% { transform: translate3d(0, 0, 0) scale(1); }
-  50% { transform: translate3d(50px, -35px, 0) scale(1.12); }
-  100% { transform: translate3d(-35px, 25px, 0) scale(0.94); }
+  display: none !important;
 }
 
 /* ========================================================================= */
-/* LIQUID GLASS NAVBAR (STUTTER-FREE GPU ACCELERATED)                        */
+/* LIQUID GLASS NAVBAR (HIGH-PERFORMANCE 60/120 FPS)                         */
 /* ========================================================================= */
 .athen-navbar {
   position: sticky;
   top: 0;
-  background: rgba(10, 14, 25, 0.75);
-  backdrop-filter: blur(24px) saturate(200%);
-  -webkit-backdrop-filter: blur(24px) saturate(200%);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 
-    0 10px 30px rgba(0, 0, 0, 0.35),
-    inset 0 -1px 0 rgba(255, 255, 255, 0.05),
-    inset 0 1px 1px rgba(255, 255, 255, 0.2);
+  background: rgba(9, 13, 24, 0.82);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
   z-index: 100;
   padding: 0.85rem 2rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  transition: background 0.25s ease, border-color 0.25s ease;
+  transform: translateZ(0);
 }
 
 .athen-logo {
@@ -761,7 +702,6 @@ a:hover {
   font-size: 0.875rem;
   font-weight: 600;
   text-decoration: none;
-  backdrop-filter: blur(10px);
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -780,7 +720,6 @@ a:hover {
   font-size: 0.875rem;
   font-weight: 600;
   text-decoration: none;
-  backdrop-filter: blur(12px);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.3);
   transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
@@ -821,7 +760,6 @@ a:hover {
   letter-spacing: 0.05em;
   margin-bottom: 1.25rem;
   text-transform: uppercase;
-  backdrop-filter: blur(10px);
 }
 
 .athen-hero-title {
@@ -883,22 +821,20 @@ a:hover {
   display: flex;
   align-items: flex-start;
   gap: 0.85rem;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.02) 100%);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 16px;
   padding: 1rem 1.15rem;
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.18);
-  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: transform;
+  box-shadow: 0 8px 20px -5px rgba(0, 0, 0, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.15);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s, background 0.2s, box-shadow 0.2s;
+  transform: translateZ(0);
 }
 
 .athen-feature-item:hover {
-  transform: translate3d(0, -3px, 0);
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.04) 100%);
-  border-color: rgba(139, 92, 246, 0.5);
-  box-shadow: 0 18px 35px -8px rgba(139, 92, 246, 0.3), inset 0 1px 1.5px rgba(255, 255, 255, 0.3);
+  transform: translate3d(0, -2px, 0);
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(139, 92, 246, 0.45);
+  box-shadow: 0 14px 30px -8px rgba(139, 92, 246, 0.25), inset 0 1px 1.5px rgba(255, 255, 255, 0.25);
 }
 
 .athen-feature-icon {
@@ -964,8 +900,7 @@ a:hover {
 .athen-rating-badge {
   text-align: center;
   margin-bottom: 1.5rem;
-  background: rgba(15, 23, 42, 0.85);
-  backdrop-filter: blur(16px);
+  background: rgba(15, 23, 42, 0.9);
   border: 1px solid rgba(255, 255, 255, 0.15);
   padding: 0.6rem 1.4rem;
   border-radius: 9999px;
@@ -982,21 +917,20 @@ a:hover {
 .athen-mockup-laptop {
   width: 100%;
   max-width: 520px;
-  background: rgba(15, 23, 42, 0.85);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
+  background: rgba(15, 23, 42, 0.9);
   border-radius: 16px;
   padding: 10px 10px 14px;
-  box-shadow: 0 30px 70px -15px rgba(0, 0, 0, 0.7), inset 0 1px 2px rgba(255, 255, 255, 0.25);
-  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 25px 60px -12px rgba(0, 0, 0, 0.7), inset 0 1px 1.5px rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.14);
   position: relative;
-  transition: all 0.26s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.22s, border-color 0.22s;
+  transform: translateZ(0);
 }
 
 .athen-mockup-laptop:hover {
-  transform: translate3d(0, -4px, 0) scale(1.01);
-  box-shadow: 0 40px 85px -18px rgba(139, 92, 246, 0.35), inset 0 1px 2px rgba(255, 255, 255, 0.35);
-  border-color: rgba(139, 92, 246, 0.5);
+  transform: translate3d(0, -3px, 0);
+  box-shadow: 0 32px 70px -15px rgba(139, 92, 246, 0.3), inset 0 1px 2px rgba(255, 255, 255, 0.3);
+  border-color: rgba(139, 92, 246, 0.45);
 }
 
 .athen-mockup-screen {
@@ -1011,17 +945,17 @@ a:hover {
   bottom: -25px;
   left: -25px;
   width: 170px;
-  background: rgba(15, 23, 42, 0.92);
-  backdrop-filter: blur(20px);
+  background: rgba(15, 23, 42, 0.95);
   border-radius: 24px;
   padding: 8px;
-  box-shadow: 0 20px 45px rgba(0,0,0,0.6), inset 0 1px 1.5px rgba(255, 255, 255, 0.25);
-  border: 2px solid rgba(255, 255, 255, 0.18);
-  transition: all 0.26s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 20px 45px rgba(0,0,0,0.6), inset 0 1px 1.5px rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.16);
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateZ(0);
 }
 
 .athen-mockup-phone:hover {
-  transform: translate3d(0, -3px, 0) scale(1.03);
+  transform: translate3d(0, -2px, 0) scale(1.02);
 }
 
 @media (max-width: 960px) {
@@ -1050,44 +984,41 @@ a:hover {
 .spa-modal-overlay {
   position: fixed;
   inset: 0;
-  background: radial-gradient(circle at center, rgba(8, 12, 22, 0.65) 0%, rgba(5, 8, 15, 0.88) 100%);
-  backdrop-filter: blur(18px) saturate(180%);
-  -webkit-backdrop-filter: blur(18px) saturate(180%);
+  background: rgba(5, 8, 15, 0.78);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   z-index: 999;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 1rem;
   opacity: 0;
+  visibility: hidden;
   pointer-events: none;
-  transition: opacity 0.24s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 0.18s ease, visibility 0.18s;
+  transform: translateZ(0);
 }
 
 .spa-modal-overlay.active {
   opacity: 1;
+  visibility: visible;
   pointer-events: auto;
 }
 
 .spa-modal-card {
   width: 100%;
   max-width: 480px;
-  background: linear-gradient(145deg, rgba(17, 24, 43, 0.95) 0%, rgba(10, 15, 30, 0.94) 100%);
-  backdrop-filter: blur(36px) saturate(210%);
-  -webkit-backdrop-filter: blur(36px) saturate(210%);
+  background: rgba(15, 23, 42, 0.97);
   border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: 24px;
+  border-radius: 20px;
   padding: 2.25rem;
   box-shadow: 
-    0 40px 90px -15px rgba(0, 0, 0, 0.8),
-    0 15px 40px -8px rgba(59, 130, 246, 0.2),
-    inset 0 1.5px 2px rgba(255, 255, 255, 0.3),
-    inset 0 -1.5px 2px rgba(0, 0, 0, 0.3);
-  transform: translate3d(0, 16px, 0) scale(0.96);
+    0 30px 60px -12px rgba(0, 0, 0, 0.85),
+    0 10px 25px -6px rgba(59, 130, 246, 0.25),
+    inset 0 1px 2px rgba(255, 255, 255, 0.25);
+  transform: translate3d(0, 10px, 0) scale(0.97);
   opacity: 0;
-  will-change: transform, opacity;
-  transition: 
-    transform 0.26s cubic-bezier(0.16, 1, 0.3, 1),
-    opacity 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.18s ease;
   position: relative;
   color: #f1f5f9;
 }
@@ -1102,7 +1033,6 @@ a:hover {
   top: 1.25rem;
   right: 1.25rem;
   background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(8px);
   border: 1px solid rgba(255, 255, 255, 0.2);
   width: 34px;
   height: 34px;
@@ -1157,7 +1087,6 @@ a:hover {
   color: #60a5fa;
   background: rgba(59, 130, 246, 0.15);
   border-color: rgba(96, 165, 250, 0.3);
-  backdrop-filter: blur(10px);
   transform: translate3d(0, -1px, 0);
 }
 
@@ -1179,28 +1108,24 @@ a:hover {
   position: absolute;
   top: calc(100% + 8px);
   left: 50%;
-  transform: translate3d(-50%, 8px, 0) scale(0.97);
-  background: linear-gradient(145deg, rgba(16, 23, 42, 0.94) 0%, rgba(11, 17, 32, 0.92) 100%);
-  backdrop-filter: blur(32px) saturate(210%);
-  -webkit-backdrop-filter: blur(32px) saturate(210%);
+  transform: translate3d(-50%, 6px, 0) scale(0.98);
+  background: rgba(15, 23, 42, 0.95);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   border: 1px solid rgba(255, 255, 255, 0.16);
-  border-radius: 22px;
+  border-radius: 20px;
   box-shadow: 
-    0 30px 70px -10px rgba(0, 0, 0, 0.7),
-    0 10px 30px -5px rgba(59, 130, 246, 0.2),
-    inset 0 1.5px 2px 0 rgba(255, 255, 255, 0.3),
-    inset 0 -1.5px 2px 0 rgba(0, 0, 0, 0.3);
+    0 25px 50px -12px rgba(0, 0, 0, 0.75),
+    0 8px 20px -5px rgba(59, 130, 246, 0.2),
+    inset 0 1px 1.5px rgba(255, 255, 255, 0.25);
   padding: 1.25rem;
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  will-change: transform, opacity;
-  transition: 
-    opacity 0.22s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 0.24s cubic-bezier(0.16, 1, 0.3, 1),
-    visibility 0.24s allow-discrete;
+  transition: opacity 0.16s ease, transform 0.18s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.18s;
   z-index: 250;
   text-align: left;
+  transform: translateZ(0);
 }
 
 /* Liquid Hover Bridge */
@@ -1402,18 +1327,17 @@ a:hover {
 .athen-feature-card {
   padding: 2rem;
   border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.18);
-  transition: all 0.24s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.035);
+  box-shadow: 0 12px 30px -8px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.15);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s, box-shadow 0.2s;
+  transform: translateZ(0);
 }
 
 .athen-feature-card:hover {
-  transform: translate3d(0, -4px, 0);
+  transform: translate3d(0, -3px, 0);
   border-color: rgba(139, 92, 246, 0.45);
-  box-shadow: 0 25px 50px -12px rgba(139, 92, 246, 0.25), inset 0 1px 1.5px rgba(255, 255, 255, 0.25);
+  box-shadow: 0 20px 40px -10px rgba(139, 92, 246, 0.2), inset 0 1px 1.5px rgba(255, 255, 255, 0.22);
 }
 
 .athen-feature-card h3 {
@@ -1425,8 +1349,7 @@ a:hover {
 }
 
 .athen-footer {
-  background: rgba(8, 12, 22, 0.85);
-  backdrop-filter: blur(20px);
+  background: rgba(8, 12, 22, 0.95);
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   padding: 2.5rem 2rem;
   text-align: center;
