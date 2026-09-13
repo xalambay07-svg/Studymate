@@ -21,6 +21,7 @@ function loadDashboardData() {
     localStorage.setItem("studymate_subjects", JSON.stringify(subjects));
   }
 
+  initAestheticClockAndGreeting();
   renderDashboardStats();
   renderTodaySchedule();
   renderUpcomingDeadlines();
@@ -32,21 +33,34 @@ function renderDashboardStats() {
   const tasks = JSON.parse(localStorage.getItem("studymate_tasks")) || [];
   const exams = JSON.parse(localStorage.getItem("studymate_exams")) || [];
 
-  // 1. Số môn học
+  // 1. Số môn học & Tổng số tín chỉ
   const subjectsCountElem = document.getElementById("statSubjectsCount");
+  const subjectsSubElem = document.getElementById("statSubjectsSub");
   if (subjectsCountElem) subjectsCountElem.textContent = subjects.length;
+  if (subjectsSubElem) {
+    const totalCredits = subjects.reduce((sum, s) => sum + (parseInt(s.credits) || 3), 0);
+    subjectsSubElem.textContent = `${totalCredits} tín chỉ kỳ này`;
+  }
 
   // 2. Nhiệm vụ chưa hoàn thành
   const pendingTasks = tasks.filter(t => t.status !== "completed");
   const pendingTasksElem = document.getElementById("statPendingTasks");
+  const pendingTasksSubElem = document.getElementById("statPendingTasksSub");
   if (pendingTasksElem) pendingTasksElem.textContent = pendingTasks.length;
+  if (pendingTasksSubElem) {
+    pendingTasksSubElem.textContent = pendingTasks.length === 0 ? "Đang kiểm soát tốt" : "Cần ưu tiên hoàn thành";
+  }
 
   // 3. Tiến độ trung bình
   const completedTasks = tasks.filter(t => t.status === "completed");
   const progressPercent = tasks.length > 0 ? Math.round((completedTasks.length / tasks.length) * 100) : 0;
   const progressElem = document.getElementById("statAvgProgress");
+  const progressSubElem = document.getElementById("statProgressSub");
   const progressFill = document.getElementById("statProgressFill");
   if (progressElem) progressElem.textContent = `${progressPercent}%`;
+  if (progressSubElem) {
+    progressSubElem.textContent = tasks.length > 0 ? `${completedTasks.length}/${tasks.length} task đã làm` : "Tự động tính từ Task";
+  }
   if (progressFill) progressFill.style.width = `${progressPercent}%`;
 
   // 4. Kỳ thi sắp tới (Tính toán thời gian đến ngày thi dựa trên nhập tay của người dùng)
@@ -105,15 +119,23 @@ function renderTodaySchedule() {
   }
 
   container.innerHTML = displayClasses.map(c => `
-    <div style="display: flex; align-items: center; justify-content: space-between; padding: 0.9rem 1.15rem; border-radius: 12px; background: rgba(255,255,255,0.03); border: 1px solid var(--theme-border); transition: var(--transition);">
-      <div style="display: flex; gap: 0.85rem; align-items: center;">
-        <span class="badge badge-primary" style="font-size: 0.825rem; padding: 0.35rem 0.75rem; white-space: nowrap;">${c.time}</span>
-        <div>
-          <div style="font-weight: 600; color: var(--theme-text-primary); font-size: 0.975rem;">${c.subject}</div>
-          <div style="font-size: 0.825rem; color: var(--theme-text-muted); margin-top: 2px;">${c.room} • ${c.teacher}</div>
-        </div>
+    <div class="st-schedule-card">
+      <div class="st-schedule-card-top">
+        <span class="st-schedule-time">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          ${c.time}
+        </span>
+        <span class="badge ${c.status === 'Hôm nay' ? 'badge-safe' : 'badge-warning'}" style="font-size: 0.75rem; padding: 0.22rem 0.65rem; white-space: nowrap;">${c.status}</span>
       </div>
-      <span class="badge ${c.status === 'Hôm nay' ? 'badge-safe' : 'badge-warning'}" style="font-size: 0.8rem; padding: 0.3rem 0.7rem; white-space: nowrap;">${c.status}</span>
+      <div class="st-schedule-subject">${c.subject}</div>
+      <div class="st-schedule-meta">
+        <span class="st-meta-room">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>
+          ${c.room}
+        </span>
+        <span class="st-meta-sep">•</span>
+        <span>${c.teacher}</span>
+      </div>
     </div>
   `).join("");
 }
@@ -126,12 +148,36 @@ function renderUpcomingDeadlines() {
   const activeTasks = tasks.filter(t => t.status !== "completed");
 
   if (tasks.length === 0) {
-    container.innerHTML = `<div style="padding: 1.5rem; text-align: center; color: var(--theme-text-muted); font-size: 0.9rem;">Danh sách đang trống. Bạn chưa có nhiệm vụ hoặc deadline nào. Hãy thêm ở trang <a href="tasks.html" style="color: var(--theme-primary); text-decoration: underline;">Deadline</a>!</div>`;
+    container.innerHTML = `
+      <div class="st-empty-deadline-box">
+        <div class="st-empty-icon-glow">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+        </div>
+        <div class="st-empty-title">Không còn deadline tồn đọng</div>
+        <div class="st-empty-desc">Bạn đang kiểm soát rất tốt tiến độ học tập. Thư giãn hoặc lên kế hoạch trước cho tuần tới!</div>
+        <button type="button" onclick="openQuickTaskModal()" class="st-action-btn st-action-primary" style="margin-top: 1rem; font-size: 0.825rem; padding: 0.45rem 1.1rem;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+          + Thêm nhiệm vụ mới
+        </button>
+      </div>
+    `;
     return;
   }
 
   if (activeTasks.length === 0) {
-    container.innerHTML = `<div style="padding: 1.5rem; text-align: center; color: var(--theme-text-muted); font-size: 0.9rem;">Tuyệt vời! Bạn đã hoàn thành tất cả công việc và deadline.</div>`;
+    container.innerHTML = `
+      <div class="st-empty-deadline-box">
+        <div class="st-empty-icon-glow">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+        </div>
+        <div class="st-empty-title">Đã hoàn thành tất cả!</div>
+        <div class="st-empty-desc">Toàn bộ nhiệm vụ đã được giải quyết xong xuôi. Giữ vững phong độ này nhé!</div>
+        <button type="button" onclick="openQuickTaskModal()" class="st-action-btn st-action-primary" style="margin-top: 1rem; font-size: 0.825rem; padding: 0.45rem 1.1rem;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+          + Thêm deadline mới
+        </button>
+      </div>
+    `;
     return;
   }
 
@@ -153,13 +199,24 @@ function renderUpcomingDeadlines() {
       badgeText = `Sắp hạn (${Math.ceil(diffHours / 24)} ngày)`;
     }
 
+    const formattedDeadline = task.deadline ? task.deadline.replace("T", " ") : "";
+
     return `
-      <div style="display: flex; align-items: center; justify-content: space-between; padding: 0.9rem 1.15rem; border-radius: 12px; background: rgba(255,255,255,0.03); border: 1px solid var(--theme-border); transition: var(--transition);">
-        <div>
-          <div style="font-weight: 600; color: var(--theme-text-primary); font-size: 0.975rem;">${task.title}</div>
-          <div style="font-size: 0.825rem; color: var(--theme-text-muted); margin-top: 2px;">Môn: ${task.subjectId} • Hạn chót: ${task.deadline.replace("T", " ")}</div>
+      <div class="st-schedule-card" style="padding: 0.85rem 1.1rem;">
+        <div class="st-schedule-card-top">
+          <span style="font-size: 0.75rem; font-weight: 700; color: #a78bfa; background: rgba(139, 92, 246, 0.15); padding: 0.2rem 0.6rem; border-radius: 6px; border: 1px solid rgba(139, 92, 246, 0.3);">
+            ${task.subjectId || "CHUNG"}
+          </span>
+          <span class="badge ${badgeClass}" style="font-size: 0.75rem; padding: 0.22rem 0.65rem;">${badgeText}</span>
         </div>
-        <span class="badge ${badgeClass}" style="font-size: 0.8rem; padding: 0.3rem 0.7rem;">${badgeText}</span>
+        <div class="st-schedule-subject" style="font-size: 0.95rem;">${task.title}</div>
+        <div class="st-schedule-meta">
+          <span>Hạn: ${formattedDeadline}</span>
+          <button type="button" onclick="quickCompleteTask('${task.id}')" style="margin-left: auto; background: none; border: none; color: #10b981; font-size: 0.775rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 0.3rem;" title="Đánh dấu hoàn thành">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Xong
+          </button>
+        </div>
       </div>
     `;
   }).join("");
@@ -172,9 +229,24 @@ function renderDashboardProgress() {
   const subjects = JSON.parse(localStorage.getItem("studymate_subjects")) || [];
   const tasks = JSON.parse(localStorage.getItem("studymate_tasks")) || [];
 
-  if (subjects.length === 0) return;
+  if (subjects.length === 0) {
+    container.innerHTML = `
+      <div style="padding: 1.5rem; text-align: center; color: var(--theme-text-muted); font-size: 0.85rem;">
+        Chưa có môn học nào để tính tiến độ.
+      </div>
+    `;
+    return;
+  }
 
-  const colors = ["#a78bfa", "#60a5fa", "#f59e0b", "#10b981", "#ec4899"];
+  const gradientFills = [
+    "linear-gradient(90deg, #6366f1 0%, #a855f7 100%)",
+    "linear-gradient(90deg, #3b82f6 0%, #06b6d4 100%)",
+    "linear-gradient(90deg, #10b981 0%, #14b8a6 100%)",
+    "linear-gradient(90deg, #f59e0b 0%, #ef4444 100%)",
+    "linear-gradient(90deg, #ec4899 0%, #8b5cf6 100%)"
+  ];
+
+  const badgeColors = ["#a78bfa", "#60a5fa", "#34d399", "#fbbf24", "#f472b6"];
 
   container.innerHTML = subjects.slice(0, 3).map((sub, idx) => {
     const subTasks = tasks.filter(t => t.subjectId === sub.id);
@@ -190,16 +262,20 @@ function renderDashboardProgress() {
       ? `${doneTasks.length}/${subTasks.length} việc` 
       : `${Math.round(percent / 10)}/10 việc`;
 
-    const color = colors[idx % colors.length];
+    const gradient = gradientFills[idx % gradientFills.length];
+    const badgeColor = badgeColors[idx % badgeColors.length];
 
     return `
-      <div>
-        <div style="display: flex; justify-content: space-between; font-size: 0.9rem; margin-bottom: 0.4rem;">
-          <span>${sub.id} - ${sub.name}</span>
-          <strong style="color: ${color};">${percent}% (${taskCountStr})</strong>
+      <div class="st-progress-item">
+        <div class="st-progress-item-top">
+          <div style="display: flex; align-items: center; gap: 0.5rem;">
+            <span class="st-subject-id-badge">${sub.id}</span>
+            <span class="st-progress-subject-name">${sub.name}</span>
+          </div>
+          <strong style="color: ${badgeColor}; font-size: 0.85rem;">${percent}% <span style="font-weight: 500; opacity: 0.75; font-size: 0.775rem;">(${taskCountStr})</span></strong>
         </div>
-        <div class="progress-bar-container">
-          <div class="progress-bar-fill" style="width: ${percent}%; background: ${color};"></div>
+        <div class="st-progress-track">
+          <div class="st-progress-fill-gradient" style="width: ${percent}%; background: ${gradient};"></div>
         </div>
       </div>
     `;
@@ -647,6 +723,189 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
+
+  const taskModal = document.getElementById("quickTaskModal");
+  if (taskModal) {
+    taskModal.addEventListener("click", function(e) {
+      if (e.target === this) {
+        closeQuickTaskModal();
+      }
+    });
+  }
 });
+
+// =========================================================================
+// AESTHETIC CLOCK & DYNAMIC GREETING ENGINE
+// =========================================================================
+
+function initAestheticClockAndGreeting() {
+  const clockElem = document.getElementById("liveHeroClock");
+  const greetingPrefixElem = document.getElementById("heroGreetingPrefix");
+  const greetingNameElem = document.getElementById("heroGreetingName");
+  const currentDateElem = document.getElementById("heroCurrentDate");
+  const quoteElem = document.getElementById("heroQuote");
+
+  // Get user name
+  let user = null;
+  try {
+    user = JSON.parse(localStorage.getItem("studymate_user"));
+  } catch(e) {}
+  const userName = user && user.name ? user.name : "Sinh viên";
+  if (greetingNameElem) greetingNameElem.textContent = userName;
+
+  const quotes = [
+    "Tập trung làm chủ từng tiết học hôm nay để kiến tạo thành công ngày mai.",
+    "Bắt đầu từ những nhiệm vụ nhỏ nhất, từng bước chinh phục mục tiêu lớn.",
+    "Kỷ luật là cầu nối giữa mục tiêu và thành tựu học tập xuất sắc.",
+    "Duy trì thói quen học tập đều đặn mỗi ngày là bí quyết của điểm A.",
+    "Hoàn thành deadline sớm hôm nay, thảnh thơi trọn vẹn ngày mai."
+  ];
+  
+  if (quoteElem) {
+    const quoteIndex = new Date().getDate() % quotes.length;
+    quoteElem.textContent = `"${quotes[quoteIndex]}"`;
+  }
+
+  function tick() {
+    const now = new Date();
+    const hours = now.getHours();
+    const mins = String(now.getMinutes()).padStart(2, "0");
+    const secs = String(now.getSeconds()).padStart(2, "0");
+    const formattedHours = String(hours).padStart(2, "0");
+
+    if (clockElem) {
+      clockElem.textContent = `${formattedHours}:${mins}:${secs}`;
+    }
+
+    if (greetingPrefixElem) {
+      if (hours >= 5 && hours < 12) {
+        greetingPrefixElem.textContent = "Chào buổi sáng, ";
+      } else if (hours >= 12 && hours < 18) {
+        greetingPrefixElem.textContent = "Chào buổi chiều, ";
+      } else if (hours >= 18 && hours < 23) {
+        greetingPrefixElem.textContent = "Chào buổi tối, ";
+      } else {
+        greetingPrefixElem.textContent = "Cú đêm chăm chỉ, ";
+      }
+    }
+
+    if (currentDateElem) {
+      const days = ["Chủ Nhật", "Thứ Hai", "Thứ Ba", "Thứ Tư", "Thứ Năm", "Thứ Sáu", "Thứ Bảy"];
+      const dayName = days[now.getDay()];
+      const day = String(now.getDate()).padStart(2, "0");
+      const month = String(now.getMonth() + 1).padStart(2, "0");
+      const year = now.getFullYear();
+      currentDateElem.textContent = `${dayName}, ${day}/${month}/${year}`;
+    }
+  }
+
+  tick();
+  setInterval(tick, 1000);
+}
+
+function quickCompleteTask(taskId) {
+  let tasks = JSON.parse(localStorage.getItem("studymate_tasks")) || [];
+  const idx = tasks.findIndex(t => String(t.id) === String(taskId));
+  if (idx !== -1) {
+    tasks[idx].status = "completed";
+    localStorage.setItem("studymate_tasks", JSON.stringify(tasks));
+    if (typeof showToast === "function") {
+      showToast(`Đã hoàn thành nhiệm vụ "${tasks[idx].title}"!`, "success");
+    }
+    renderDashboardStats();
+    renderUpcomingDeadlines();
+    renderDashboardProgress();
+  }
+}
+
+// =========================================================================
+// QUICK TASK / DEADLINE MODAL
+// =========================================================================
+
+function openQuickTaskModal() {
+  const modal = document.getElementById("quickTaskModal");
+  if (!modal) return;
+
+  const select = document.getElementById("quickTaskSubject");
+  if (select) {
+    const subjects = JSON.parse(localStorage.getItem("studymate_subjects")) || [];
+    let html = `<option value="">-- Chọn môn học --</option>`;
+    subjects.forEach(s => {
+      html += `<option value="${s.id}">${s.id} - ${s.name}</option>`;
+    });
+    html += `<option value="CHUNG">Môn khác / Việc chung</option>`;
+    select.innerHTML = html;
+  }
+
+  // Pre-fill tomorrow 23:59
+  const tomorrow = new Date();
+  tomorrow.setDate(tomorrow.getDate() + 1);
+  const tomorrowDate = tomorrow.toISOString().split("T")[0];
+  const dateInput = document.getElementById("quickTaskDeadline");
+  if (dateInput) {
+    dateInput.value = `${tomorrowDate}T23:59`;
+  }
+
+  modal.classList.add("active");
+}
+
+function closeQuickTaskModal() {
+  const modal = document.getElementById("quickTaskModal");
+  if (modal) modal.classList.remove("active");
+}
+
+function handleQuickTaskSubmit(event) {
+  if (event) event.preventDefault();
+
+  const titleInput = document.getElementById("quickTaskTitle");
+  const subjectInput = document.getElementById("quickTaskSubject");
+  const deadlineInput = document.getElementById("quickTaskDeadline");
+  const priorityInput = document.getElementById("quickTaskPriority");
+
+  const title = titleInput ? titleInput.value.trim() : "";
+  const subjectId = subjectInput ? subjectInput.value : "CHUNG";
+  const deadline = deadlineInput ? deadlineInput.value : "";
+  const priority = priorityInput ? priorityInput.value : "medium";
+
+  if (!title) {
+    alert("Vui lòng nhập tên nhiệm vụ hoặc deadline!");
+    if (titleInput) titleInput.focus();
+    return;
+  }
+
+  if (!deadline) {
+    alert("Vui lòng chọn thời hạn hoàn thành!");
+    return;
+  }
+
+  let tasks = JSON.parse(localStorage.getItem("studymate_tasks")) || [];
+  const newTask = {
+    id: "task-" + Date.now(),
+    title: title,
+    subjectId: subjectId,
+    deadline: deadline,
+    priority: priority,
+    status: "pending",
+    progress: 0,
+    createdAt: new Date().toISOString()
+  };
+
+  tasks.push(newTask);
+  localStorage.setItem("studymate_tasks", JSON.stringify(tasks));
+
+  if (titleInput) titleInput.value = "";
+  closeQuickTaskModal();
+
+  renderDashboardStats();
+  renderUpcomingDeadlines();
+  renderDashboardProgress();
+
+  if (typeof showToast === "function") {
+    showToast(`Đã thêm deadline: "${title}"`, "success");
+  } else {
+    alert(`Đã thêm deadline: "${title}"`);
+  }
+}
+
 
 

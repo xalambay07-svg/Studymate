@@ -801,6 +801,23 @@
 
       <!-- Right Utilities (Clean, icon-free) -->
       <div class="st-nav-actions">
+        <button id="ambientSoundBtn" class="st-btn-icon" title="Bật âm thanh mưa thư giãn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 16.58A5 5 0 0 0 18 7h-1.26A8 8 0 1 0 4 15.25"></path><line x1="8" y1="19" x2="8" y2="21"></line><line x1="8" y1="13" x2="8" y2="15"></line><line x1="16" y1="19" x2="16" y2="21"></line><line x1="16" y1="13" x2="16" y2="15"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="12" y1="15" x2="12" y2="17"></line></svg>
+        </button>
+        <button id="themePickerBtn" class="st-btn-icon" title="Đổi màu sắc giao diện">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a7 7 0 0 0 0 14v6a10 10 0 0 0 0-20z"></path></svg>
+        </button>
+
+        <div id="themeDropdown" class="theme-dropdown">
+          <div style="font-size: 0.75rem; color: var(--theme-text-muted); text-transform: uppercase; margin-bottom: 0.5rem; font-weight: 600;">Chọn bảng màu</div>
+          <div class="theme-option" data-theme="cosmic"><span class="theme-dot" style="background: #8b5cf6;"></span> Cosmic Purple</div>
+          <div class="theme-option" data-theme="sepia"><span class="theme-dot" style="background: #D2691E;"></span> Warm Sepia</div>
+          <div class="theme-option" data-theme="soft-gray"><span class="theme-dot" style="background: #a855f7;"></span> Soft Gray</div>
+          <div class="theme-option" data-theme="ocean"><span class="theme-dot" style="background: #06b6d4;"></span> Ocean Night</div>
+          <div class="theme-option" data-theme="forest"><span class="theme-dot" style="background: #22c55e;"></span> Forest Green</div>
+          <div class="theme-option" data-theme="pastel"><span class="theme-dot" style="background: #faf5ef; border: 1px solid #ccc;"></span> Pastel Cream</div>
+        </div>
+
         <span id="userNameBadge" style="font-size: 0.925rem; font-weight: 600; color: var(--theme-text-secondary); background: rgba(255,255,255,0.08); padding: 0.45rem 1rem; border-radius: 9999px; border: 1px solid var(--theme-border);">
           <span id="displayUserName">Sinh viên</span>
         </span>
@@ -836,31 +853,72 @@
 
     <!-- Workspace Container (Elevated, Perfectly Centered, No Sagging) -->
     <main class="st-main-container">
+
+      <!-- Aesthetic Hero Banner (Greeting, Real-time Clock & Quick Actions) -->
+      <header class="st-hero-header">
+        <div class="st-hero-left">
+          <div class="st-greeting-badge">
+            <span class="st-pulse-dot"></span>
+            <span id="heroCurrentDate">Chủ Nhật, 13/09/2026</span>
+            <span class="st-badge-divider">•</span>
+            <span id="heroDayStatus">Kỳ học 2026 - 2027</span>
+          </div>
+          <h1 class="st-hero-title">
+            <span id="heroGreetingPrefix">Chào buổi tối, </span>
+            <span class="st-gradient-text" id="heroGreetingName">Sinh viên</span>!
+          </h1>
+          <p class="st-hero-quote" id="heroQuote">
+            "Tập trung làm chủ từng tiết học hôm nay để kiến tạo thành công ngày mai."
+          </p>
+        </div>
+        <div class="st-hero-right">
+          <div class="st-clock-widget">
+            <div class="st-clock-time" id="liveHeroClock">00:00:00</div>
+            <div class="st-clock-caption">GIỜ HIỆN TẠI</div>
+          </div>
+          <div class="st-hero-quick-actions">
+            <button type="button" onclick="openQuickTaskModal()" class="st-action-btn st-action-primary" title="Thêm nhanh nhiệm vụ hoặc deadline">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+              + Deadline
+            </button>
+            <a href="schedule.html" class="st-action-btn st-action-secondary" title="Xem thời khóa biểu tuần">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+              Xem TKB
+            </a>
+          </div>
+        </div>
+      </header>
       
-      <!-- 4 Stats Boxes (Clean Typographic Metric Cards - No Icons) -->
+      <!-- 4 Stats Boxes (Clean Typographic Metric Cards - Glow Accents) -->
       <div class="st-stats-grid">
-        <div class="st-stat-box">
+        <div class="st-stat-box stat-indigo">
           <div class="st-stat-value" id="statSubjectsCount">4</div>
           <div class="st-stat-label">Môn học học kỳ</div>
+          <div class="st-stat-sub" id="statSubjectsSub">15 tín chỉ kỳ này</div>
         </div>
 
-        <div class="st-stat-box">
-          <div class="st-stat-value" id="statPendingTasks">3</div>
+        <div class="st-stat-box stat-amber">
+          <div class="st-stat-value" id="statPendingTasks">0</div>
           <div class="st-stat-label">Deadline sắp đến</div>
+          <div class="st-stat-sub" id="statPendingTasksSub">Đang kiểm soát tốt</div>
         </div>
 
-        <div class="st-stat-box">
-          <div class="st-stat-value" id="statAvgProgress">70%</div>
+        <div class="st-stat-box stat-emerald">
+          <div class="st-stat-value" id="statAvgProgress">0%</div>
           <div class="st-stat-label">Tiến độ hoàn thành</div>
+          <div class="st-stat-mini-progress">
+            <div class="st-stat-mini-fill" id="statProgressFill" style="width: 0%;"></div>
+          </div>
+          <div class="st-stat-sub" id="statProgressSub" style="margin-top: 0.35rem;">Tự động tính từ Task</div>
         </div>
 
-        <div class="st-stat-box st-stat-box-interactive" id="statExamsCard" onclick="openExamModal()" style="cursor: pointer;" title="Bấm để nhập hoặc sửa ngày thi">
+        <div class="st-stat-box stat-purple st-stat-box-interactive" id="statExamsCard" onclick="openExamModal()" style="cursor: pointer;" title="Bấm để nhập hoặc sửa ngày thi">
           <div style="display: flex; justify-content: space-between; align-items: flex-start;">
             <div class="st-stat-value" id="statExamsCount">Chưa đặt</div>
-            <span class="badge" id="statExamBadge" style="font-size: 0.725rem; padding: 0.2rem 0.55rem; background: rgba(139, 92, 246, 0.15); color: #c4b5fd; border: 1px solid rgba(139, 92, 246, 0.3);">+ Nhập ngày</span>
+            <span class="badge" id="statExamBadge" style="font-size: 0.725rem; padding: 0.2rem 0.55rem; background: rgba(139, 92, 246, 0.2); color: #c4b5fd; border: 1px solid rgba(139, 92, 246, 0.4);">+ Nhập ngày</span>
           </div>
           <div class="st-stat-label">Kỳ thi gần nhất</div>
-          <div id="statExamDetail" style="font-size: 0.78rem; color: var(--theme-text-muted); margin-top: 0.2rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+          <div id="statExamDetail" class="st-stat-sub" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
             Nhấn để nhập ngày thi
           </div>
         </div>
@@ -1093,6 +1151,59 @@
         </div>
       </div>
 
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- QUICK TASK / DEADLINE MODAL                                               -->
+  <!-- ========================================================================= -->
+  <div id="quickTaskModal" class="spa-modal-overlay">
+    <div class="spa-modal-card" style="max-width: 480px;">
+      <button class="spa-modal-close" onclick="closeQuickTaskModal()" title="Đóng">&times;</button>
+      
+      <div style="display: flex; align-items: center; gap: 0.85rem; margin-bottom: 1.25rem;">
+        <div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(124, 58, 237, 0.2); border: 1px solid rgba(167, 139, 250, 0.35); display: flex; align-items: center; justify-content: center; color: #a78bfa; flex-shrink: 0;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
+        </div>
+        <div>
+          <h3 style="font-size: 1.25rem; font-weight: 800; color: #ffffff; margin: 0;">Thêm nhiệm vụ / Deadline</h3>
+          <p style="font-size: 0.8rem; color: #94a3b8; margin: 0;">Lên lịch hoàn thành bài tập, đồ án hoặc ôn thi</p>
+        </div>
+      </div>
+
+      <form id="quickTaskForm" onsubmit="handleQuickTaskSubmit(event)">
+        <div style="margin-bottom: 0.85rem;">
+          <label style="display: block; font-size: 0.8rem; font-weight: 600; color: #cbd5e1; margin-bottom: 0.35rem;">Tên nhiệm vụ / Deadline *</label>
+          <input type="text" id="quickTaskTitle" required placeholder="Ví dụ: Nộp bài tập tuần 3, Bài tập lớn..." style="width: 100%; padding: 0.65rem 0.85rem; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.15); background: #1e293b; color: #ffffff; font-size: 0.875rem;">
+        </div>
+
+        <div style="margin-bottom: 0.85rem;">
+          <label style="display: block; font-size: 0.8rem; font-weight: 600; color: #cbd5e1; margin-bottom: 0.35rem;">Thuộc môn học</label>
+          <select id="quickTaskSubject" style="width: 100%; padding: 0.65rem 0.85rem; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.15); background: #1e293b; color: #ffffff; font-size: 0.875rem;">
+            <!-- Populated dynamically -->
+          </select>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 1.25rem;">
+          <div>
+            <label style="display: block; font-size: 0.8rem; font-weight: 600; color: #cbd5e1; margin-bottom: 0.35rem;">Hạn chót *</label>
+            <input type="datetime-local" id="quickTaskDeadline" required style="width: 100%; padding: 0.65rem 0.85rem; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.15); background: #1e293b; color: #ffffff; font-size: 0.825rem;">
+          </div>
+          <div>
+            <label style="display: block; font-size: 0.8rem; font-weight: 600; color: #cbd5e1; margin-bottom: 0.35rem;">Mức độ ưu tiên</label>
+            <select id="quickTaskPriority" style="width: 100%; padding: 0.65rem 0.85rem; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.15); background: #1e293b; color: #ffffff; font-size: 0.875rem;">
+              <option value="high">Cao (Gấp)</option>
+              <option value="medium" selected>Bình thường</option>
+              <option value="low">Thấp</option>
+            </select>
+          </div>
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 0.75rem;">
+          <button type="button" onclick="closeQuickTaskModal()" style="padding: 0.65rem 1.2rem; border-radius: 8px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.15); color: #cbd5e1; font-weight: 600; cursor: pointer; font-size: 0.875rem;">Hủy</button>
+          <button type="submit" style="padding: 0.65rem 1.5rem; border-radius: 8px; background: linear-gradient(135deg, #7c3aed 0%, #2563eb 100%); border: none; color: #ffffff; font-weight: 700; cursor: pointer; font-size: 0.875rem; box-shadow: 0 4px 12px rgba(124, 58, 237, 0.4);">+ Lưu deadline</button>
+        </div>
+      </form>
     </div>
   </div>
 
