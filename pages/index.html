@@ -713,146 +713,98 @@
   <!-- ========================================================================= -->
   <div id="workspaceView" class="spa-view" style="display: none;">
     
-    <!-- Top Navbar (Y hệt Ảnh 1) -->
+    <!-- Top Navbar -->
     <nav class="st-navbar">
       <div style="display: flex; align-items: center; gap: 0.75rem;">
-        <a href="javascript:void(0)" onclick="switchToLanding()" class="st-logo" style="font-weight: 500;" title="Bấm để về trang giới thiệu">
-          <span style="display: inline-block; width: 14px; height: 14px; background: #ffffff; border-radius: 3px; margin-right: 4px;"></span>
-          <span>Studies<span style="font-weight: 700;">Mate</span></span>
+        <a href="javascript:void(0)" onclick="switchToLanding()" class="st-logo" title="Bấm để về trang giới thiệu">
+          Studies<span style="color: var(--theme-primary); font-weight: 700;">Mate</span>
         </a>
       </div>
 
-      <!-- Center Navigation Pills (Ảnh 1) -->
+      <!-- Center Navigation Pills (No icons, larger readable font) -->
       <div class="st-nav-links">
-        <button type="button" onclick="switchToLanding()" class="st-pill-link" style="background: rgba(255,255,255,0.06); border: 1px solid var(--theme-border); cursor: pointer; color: var(--theme-text-primary);" title="Về trang giới thiệu Athenify">
-          📌 Giới thiệu
+        <button type="button" onclick="switchToLanding()" class="st-pill-link" style="background: rgba(255,255,255,0.06); border: 1px solid var(--theme-border); cursor: pointer; color: var(--theme-text-primary);" title="Về trang giới thiệu">
+          Giới thiệu
         </button>
-        <a href="#dashboard" class="st-pill-link active" style="background: rgba(139, 92, 246, 0.25); border: 1px solid rgba(139, 92, 246, 0.4);">📊 Dashboard</a>
-        <a href="schedule.html" class="st-pill-link">📅 Lịch học</a>
-        <a href="tasks.html" class="st-pill-link">✅ Deadline</a>
-        <a href="import-schedule.html" class="st-pill-link">📸 OCR TKB</a>
-        <a href="progress.html" class="st-pill-link">📈 Tiến độ</a>
+        <a href="#dashboard" class="st-pill-link active">Dashboard</a>
+        <a href="schedule.html" class="st-pill-link">Lịch học</a>
+        <a href="tasks.html" class="st-pill-link">Deadline</a>
+        <a href="import-schedule.html" class="st-pill-link">OCR TKB</a>
+        <a href="progress.html" class="st-pill-link">Tiến độ</a>
       </div>
 
-      <!-- Right Utilities (Ảnh 1) -->
+      <!-- Right Utilities (Clean, icon-free) -->
       <div class="st-nav-actions">
-        <button id="ambientSoundBtn" class="st-btn-icon" title="Âm thanh mưa thư giãn">🌧️</button>
-        <button id="themePickerBtn" class="st-btn-icon" title="Đổi Theme">🎨</button>
-
-        <!-- Theme Picker Dropdown -->
-        <div id="themeDropdown" class="theme-dropdown">
-          <div style="font-size: 0.75rem; color: var(--theme-text-muted); text-transform: uppercase; margin-bottom: 0.5rem; font-weight: 600;">Chọn bảng màu</div>
-          <div class="theme-option" data-theme="cosmic"><span class="theme-dot" style="background: #8b5cf6;"></span> Cosmic Purple</div>
-          <div class="theme-option" data-theme="sepia"><span class="theme-dot" style="background: #D2691E;"></span> Warm Sepia</div>
-          <div class="theme-option" data-theme="soft-gray"><span class="theme-dot" style="background: #a855f7;"></span> Soft Gray</div>
-          <div class="theme-option" data-theme="ocean"><span class="theme-dot" style="background: #06b6d4;"></span> Ocean Night</div>
-          <div class="theme-option" data-theme="forest"><span class="theme-dot" style="background: #22c55e;"></span> Forest Green</div>
-          <div class="theme-option" data-theme="pastel"><span class="theme-dot" style="background: #faf5ef; border: 1px solid #ccc;"></span> Pastel Cream</div>
-        </div>
-
-        <span id="userNameBadge" style="font-size: 0.8rem; color: var(--theme-text-secondary); background: rgba(255,255,255,0.08); padding: 0.35rem 0.75rem; border-radius: 9999px; border: 1px solid var(--theme-border);">
-          👤 <span id="displayUserName">Minh Đức</span>
+        <span id="userNameBadge" style="font-size: 0.925rem; font-weight: 600; color: var(--theme-text-secondary); background: rgba(255,255,255,0.08); padding: 0.45rem 1rem; border-radius: 9999px; border: 1px solid var(--theme-border);">
+          <span id="displayUserName">Minh Đức</span>
         </span>
-        <button type="button" onclick="switchToOnboarding()" class="st-pill-btn" style="padding: 0.35rem 0.85rem; font-size: 0.8rem; background: rgba(37,99,235,0.2); border: 1px solid rgba(96,165,250,0.4); cursor: pointer; color: #93c5fd;" title="Thiết lập môn học & Thời khóa biểu">
-          ⚙️ Cài đặt môn & TKB
+        <button type="button" onclick="switchToOnboarding()" class="st-pill-btn" style="padding: 0.45rem 1.1rem; font-size: 0.9rem; background: rgba(37,99,235,0.22); border: 1px solid rgba(96,165,250,0.45); cursor: pointer; color: #93c5fd;" title="Thiết lập môn học & Thời khóa biểu">
+          Cài đặt môn & TKB
         </button>
-        <button type="button" onclick="switchToLanding()" class="st-pill-btn" style="padding: 0.35rem 0.85rem; font-size: 0.8rem; background: none; border: 1px solid var(--theme-border); cursor: pointer; color: var(--theme-text-secondary);" title="Về trang giới thiệu">
-          🚪 Thoát
+        <button type="button" onclick="switchToLanding()" class="st-pill-btn" style="padding: 0.45rem 1rem; font-size: 0.9rem; background: none; border: 1px solid var(--theme-border); cursor: pointer; color: var(--theme-text-secondary);" title="Về trang giới thiệu">
+          Thoát
         </button>
 
         <button class="st-mobile-btn">☰</button>
       </div>
     </nav>
 
-    <!-- Mobile Drawer -->
+    <!-- Mobile Drawer (No Icons) -->
     <div class="st-drawer-overlay"></div>
     <div class="st-mobile-drawer">
       <button type="button" onclick="switchToLanding()" class="st-pill-link" style="text-align: left; background: none; border: none; cursor: pointer; color: inherit; width: 100%;">
-        📌 Giới thiệu (Landing Page)
+        Giới thiệu (Landing Page)
       </button>
-      <a href="#dashboard" class="st-pill-link active">📊 Dashboard sinh viên</a>
-      <a href="schedule.html" class="st-pill-link">📅 Lịch học / TKB</a>
-      <a href="tasks.html" class="st-pill-link">✅ Nhiệm vụ & Deadline</a>
-      <a href="import-schedule.html" class="st-pill-link">📸 Quét ảnh TKB (AI/OCR)</a>
-      <a href="subjects.html" class="st-pill-link">📖 Danh mục môn học</a>
-      <a href="exams.html" class="st-pill-link">🎯 Kỳ thi</a>
-      <a href="progress.html" class="st-pill-link">📈 Tiến độ</a>
-      <a href="profile.html" class="st-pill-link">👤 Hồ sơ cá nhân</a>
+      <a href="#dashboard" class="st-pill-link active">Dashboard sinh viên</a>
+      <a href="schedule.html" class="st-pill-link">Lịch học / TKB</a>
+      <a href="tasks.html" class="st-pill-link">Nhiệm vụ & Deadline</a>
+      <a href="import-schedule.html" class="st-pill-link">Quét ảnh TKB (AI/OCR)</a>
+      <button type="button" onclick="switchToOnboarding()" class="st-pill-link" style="text-align: left; background: none; border: none; cursor: pointer; color: #93c5fd; width: 100%;">
+        Cài đặt môn học & Lịch học
+      </button>
+      <a href="subjects.html" class="st-pill-link">Danh mục môn học</a>
+      <a href="exams.html" class="st-pill-link">Kỳ thi</a>
+      <a href="progress.html" class="st-pill-link">Tiến độ</a>
+      <a href="profile.html" class="st-pill-link">Hồ sơ cá nhân</a>
       <button type="button" onclick="switchToLanding()" class="st-pill-link" style="margin-top: 1rem; border: 1px solid var(--theme-border); text-align: left; background: none; cursor: pointer; color: inherit; width: 100%;">
-        🚪 Thoát về trang chủ
+        Thoát về trang chủ
       </button>
     </div>
 
-    <!-- Workspace Container (Y hệt Ảnh 1) -->
+    <!-- Workspace Container (Elevated, Perfectly Centered, No Sagging) -->
     <main class="st-main-container">
       
-      <!-- Time, Date & Quote (Ảnh 1) -->
-      <div class="st-quote-box">
-        <div id="liveTime" style="font-size: 2.75rem; font-weight: 300; letter-spacing: 0.02em; color: var(--theme-text-primary); margin-bottom: 0.15rem;">17:55</div>
-        <div id="liveDate" style="font-size: 0.85rem; color: var(--theme-text-muted); margin-bottom: 1.25rem;">Chủ Nhật, 13 tháng 9</div>
-        <p class="st-quote-text">“The secret of getting ahead is getting started.”</p>
-        <div class="st-quote-author">— MARK TWAIN</div>
-      </div>
-
-      <!-- Quick Action Pills (Ảnh 1) -->
-      <div class="st-action-bar">
-        <a href="import-schedule.html" class="st-pill-btn st-pill-btn-primary" style="background: linear-gradient(90deg, #8b5cf6, #7c3aed);">
-          📸 Quét TKB bằng ảnh (AI/OCR)
-        </a>
-        <a href="tasks.html" class="st-pill-btn">
-          ✅ Quản lý Deadline
-        </a>
-        <a href="schedule.html" class="st-pill-btn">
-          📅 Xem Thời khóa biểu
-        </a>
-        <button type="button" onclick="switchToLanding()" class="st-pill-btn" style="cursor: pointer;">
-          📌 Xem trang giới thiệu
-        </button>
-      </div>
-
-      <!-- 4 Stats Boxes (Ảnh 1) -->
+      <!-- 4 Stats Boxes (Clean Typographic Metric Cards - No Icons) -->
       <div class="st-stats-grid">
         <div class="st-stat-box">
-          <div class="st-stat-icon">📚</div>
-          <div>
-            <div class="st-stat-value" id="statSubjectsCount">4</div>
-            <div class="st-stat-label">MÔN HỌC HỌC KỲ</div>
-          </div>
+          <div class="st-stat-value" id="statSubjectsCount">4</div>
+          <div class="st-stat-label">Môn học học kỳ</div>
         </div>
 
         <div class="st-stat-box">
-          <div class="st-stat-icon" style="color: var(--status-warning);">⏳</div>
-          <div>
-            <div class="st-stat-value" id="statPendingTasks">3</div>
-            <div class="st-stat-label">DEADLINE SẮP ĐẾN</div>
-          </div>
+          <div class="st-stat-value" id="statPendingTasks">3</div>
+          <div class="st-stat-label">Deadline sắp đến</div>
         </div>
 
         <div class="st-stat-box">
-          <div class="st-stat-icon" style="color: var(--status-safe);">📈</div>
-          <div>
-            <div class="st-stat-value" id="statAvgProgress">70%</div>
-            <div class="st-stat-label">TIẾN ĐỘ HOÀN THÀNH</div>
-          </div>
+          <div class="st-stat-value" id="statAvgProgress">70%</div>
+          <div class="st-stat-label">Tiến độ hoàn thành</div>
         </div>
 
         <div class="st-stat-box">
-          <div class="st-stat-icon" style="color: #60a5fa;">🎯</div>
-          <div>
-            <div class="st-stat-value" id="statExamsCount">12 ngày</div>
-            <div class="st-stat-label">KỲ THI GẦN NHẤT</div>
-          </div>
+          <div class="st-stat-value" id="statExamsCount">12 ngày</div>
+          <div class="st-stat-label">Kỳ thi gần nhất</div>
         </div>
       </div>
 
-      <!-- 3 Core Columns (Ảnh 1) -->
+      <!-- 3 Core Columns (No Icons) -->
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; margin-bottom: 2.25rem;">
         
         <!-- Cột 1: Hôm nay cần làm gì? -->
         <div class="st-card">
           <div class="st-card-header">
-            <div class="st-card-title">📅 Hôm nay cần làm gì?</div>
-            <a href="schedule.html" style="font-size: 0.75rem; color: var(--theme-primary);">Xem tuần &rarr;</a>
+            <div class="st-card-title">Hôm nay cần làm gì?</div>
+            <a href="schedule.html" style="font-size: 0.85rem; font-weight: 600; color: var(--theme-primary); text-decoration: none;">Xem tuần &rarr;</a>
           </div>
           <div id="todayScheduleList" style="display: flex; flex-direction: column; gap: 0.75rem;">
             <!-- Rendered dynamically by js/dashboard.js -->
@@ -862,8 +814,8 @@
         <!-- Cột 2: Deadline nào sắp đến? -->
         <div class="st-card">
           <div class="st-card-header">
-            <div class="st-card-title">⏰ Deadline nào sắp đến?</div>
-            <a href="tasks.html" style="font-size: 0.75rem; color: var(--theme-primary);">Tất cả &rarr;</a>
+            <div class="st-card-title">Deadline nào sắp đến?</div>
+            <a href="tasks.html" style="font-size: 0.85rem; font-weight: 600; color: var(--theme-primary); text-decoration: none;">Tất cả &rarr;</a>
           </div>
           <div id="upcomingDeadlinesList" style="display: flex; flex-direction: column; gap: 0.75rem;">
             <!-- Rendered dynamically by js/dashboard.js -->
@@ -873,12 +825,12 @@
         <!-- Cột 3: Tiến độ học tập ra sao? -->
         <div class="st-card">
           <div class="st-card-header">
-            <div class="st-card-title">📈 Tiến độ học tập ra sao?</div>
-            <a href="progress.html" style="font-size: 0.75rem; color: var(--theme-primary);">Chi tiết &rarr;</a>
+            <div class="st-card-title">Tiến độ học tập ra sao?</div>
+            <a href="progress.html" style="font-size: 0.85rem; font-weight: 600; color: var(--theme-primary); text-decoration: none;">Chi tiết &rarr;</a>
           </div>
-          <div id="dashboardProgressContainer" style="display: flex; flex-direction: column; gap: 1rem;">
+          <div id="dashboardProgressContainer" style="display: flex; flex-direction: column; gap: 1.15rem;">
             <div>
-              <div style="display: flex; justify-content: space-between; font-size: 0.8125rem; margin-bottom: 0.35rem;">
+              <div style="display: flex; justify-content: space-between; font-size: 0.9rem; margin-bottom: 0.4rem;">
                 <span>CSE122 - Web cơ bản</span>
                 <strong style="color: #a78bfa;">80% (8/10 việc)</strong>
               </div>
@@ -888,7 +840,7 @@
             </div>
 
             <div>
-              <div style="display: flex; justify-content: space-between; font-size: 0.8125rem; margin-bottom: 0.35rem;">
+              <div style="display: flex; justify-content: space-between; font-size: 0.9rem; margin-bottom: 0.4rem;">
                 <span>CSE281 - Cấu trúc dữ liệu</span>
                 <strong style="color: #a78bfa;">50% (5/10 việc)</strong>
               </div>
@@ -898,7 +850,7 @@
             </div>
 
             <div>
-              <div style="display: flex; justify-content: space-between; font-size: 0.8125rem; margin-bottom: 0.35rem;">
+              <div style="display: flex; justify-content: space-between; font-size: 0.9rem; margin-bottom: 0.4rem;">
                 <span>MATH101 - Giải tích 1</span>
                 <strong style="color: #f59e0b;">30% (3/10 việc)</strong>
               </div>
@@ -911,21 +863,21 @@
 
       </div>
 
-      <!-- USP Spotlight Banner (Y hệt Ảnh 1) -->
+      <!-- USP Spotlight Banner (No Icons) -->
       <div class="st-card" style="border: 1px solid rgba(139, 92, 246, 0.4); background: linear-gradient(135deg, rgba(139, 92, 246, 0.15) 0%, rgba(15, 15, 35, 0.6) 100%);">
         <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.25rem;">
           <div>
-            <span class="badge badge-primary" style="margin-bottom: 0.4rem; font-size: 0.75rem;">✨ Tính năng nổi bật (USP)</span>
+            <span class="badge badge-primary" style="margin-bottom: 0.4rem; font-size: 0.8rem; font-weight: 600;">Tính năng nổi bật</span>
             <h2 style="font-size: 1.4rem; font-weight: 700; color: #ffffff; margin-bottom: 0.35rem;">
               Không bắt buộc nhập tay thời khóa biểu!
             </h2>
-            <p style="color: var(--theme-text-secondary); font-size: 0.85rem;">
+            <p style="color: var(--theme-text-secondary); font-size: 0.9rem;">
               Chụp ảnh màn hình lịch học từ cổng đào tạo trường, AI/OCR sẽ nhận diện thứ, giờ, phòng và tên môn.
             </p>
           </div>
           <div>
-            <a href="import-schedule.html" class="st-pill-btn st-pill-btn-primary" style="padding: 0.65rem 1.4rem; font-size: 0.85rem; background: #7c3aed;">
-              📸 Trải nghiệm quét ảnh TKB ngay &rarr;
+            <a href="import-schedule.html" class="st-pill-btn st-pill-btn-primary" style="padding: 0.65rem 1.4rem; font-size: 0.925rem; background: #7c3aed; text-decoration: none;">
+              Trải nghiệm quét ảnh TKB ngay &rarr;
             </a>
           </div>
         </div>

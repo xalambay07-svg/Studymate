@@ -84,15 +84,15 @@ function renderTodaySchedule() {
   }
 
   container.innerHTML = displayClasses.map(c => `
-    <div style="display: flex; align-items: center; justify-content: space-between; padding: 0.85rem 1rem; border-radius: 12px; background: rgba(255,255,255,0.03); border: 1px solid var(--theme-border); transition: var(--transition);">
+    <div style="display: flex; align-items: center; justify-content: space-between; padding: 0.9rem 1.15rem; border-radius: 12px; background: rgba(255,255,255,0.03); border: 1px solid var(--theme-border); transition: var(--transition);">
       <div style="display: flex; gap: 0.85rem; align-items: center;">
-        <span class="badge badge-primary" style="font-size: 0.8rem; padding: 0.3rem 0.6rem;">${c.time}</span>
+        <span class="badge badge-primary" style="font-size: 0.85rem; padding: 0.35rem 0.75rem;">${c.time}</span>
         <div>
-          <div style="font-weight: 600; color: var(--theme-text-primary); font-size: 0.9rem;">${c.subject}</div>
-          <div style="font-size: 0.75rem; color: var(--theme-text-muted);">🏛️ ${c.room} • 👨‍🏫 ${c.teacher}</div>
+          <div style="font-weight: 600; color: var(--theme-text-primary); font-size: 0.975rem;">${c.subject}</div>
+          <div style="font-size: 0.825rem; color: var(--theme-text-muted); margin-top: 2px;">${c.room} • ${c.teacher}</div>
         </div>
       </div>
-      <span class="badge ${c.status === 'Đang diễn ra' ? 'badge-safe' : 'badge-warning'}">${c.status}</span>
+      <span class="badge ${c.status === 'Đang diễn ra' ? 'badge-safe' : 'badge-warning'}" style="font-size: 0.8rem; padding: 0.3rem 0.7rem;">${c.status}</span>
     </div>
   `).join("");
 }
@@ -105,7 +105,7 @@ function renderUpcomingDeadlines() {
   const activeTasks = tasks.filter(t => t.status !== "completed");
 
   if (activeTasks.length === 0) {
-    container.innerHTML = `<div style="padding: 1.5rem; text-align: center; color: var(--theme-text-muted);">Tuyệt vời! Không có deadline nào chưa hoàn thành 🎉</div>`;
+    container.innerHTML = `<div style="padding: 1.5rem; text-align: center; color: var(--theme-text-muted); font-size: 0.9rem;">Tuyệt vời! Không có deadline nào chưa hoàn thành</div>`;
     return;
   }
 
@@ -128,12 +128,12 @@ function renderUpcomingDeadlines() {
     }
 
     return `
-      <div style="display: flex; align-items: center; justify-content: space-between; padding: 0.85rem 1rem; border-radius: 12px; background: rgba(255,255,255,0.03); border: 1px solid var(--theme-border); transition: var(--transition);">
+      <div style="display: flex; align-items: center; justify-content: space-between; padding: 0.9rem 1.15rem; border-radius: 12px; background: rgba(255,255,255,0.03); border: 1px solid var(--theme-border); transition: var(--transition);">
         <div>
-          <div style="font-weight: 600; color: var(--theme-text-primary); font-size: 0.9rem;">${task.title}</div>
-          <div style="font-size: 0.75rem; color: var(--theme-text-muted);">Môn: ${task.subjectId} • Hạn chót: ${task.deadline.replace("T", " ")}</div>
+          <div style="font-weight: 600; color: var(--theme-text-primary); font-size: 0.975rem;">${task.title}</div>
+          <div style="font-size: 0.825rem; color: var(--theme-text-muted); margin-top: 2px;">Môn: ${task.subjectId} • Hạn chót: ${task.deadline.replace("T", " ")}</div>
         </div>
-        <span class="badge ${badgeClass}">${badgeText}</span>
+        <span class="badge ${badgeClass}" style="font-size: 0.8rem; padding: 0.3rem 0.7rem;">${badgeText}</span>
       </div>
     `;
   }).join("");
@@ -168,7 +168,7 @@ function renderDashboardProgress() {
 
     return `
       <div>
-        <div style="display: flex; justify-content: space-between; font-size: 0.8125rem; margin-bottom: 0.35rem;">
+        <div style="display: flex; justify-content: space-between; font-size: 0.9rem; margin-bottom: 0.4rem;">
           <span>${sub.id} - ${sub.name}</span>
           <strong style="color: ${color};">${percent}% (${taskCountStr})</strong>
         </div>
