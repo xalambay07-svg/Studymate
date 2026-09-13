@@ -4,6 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nhập Thời Khóa Biểu Thông Minh (OCR / AI) — StudyMate</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/responsive.css">
 </head>
@@ -58,51 +61,68 @@
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
       
       <!-- Method 1: Chụp ảnh OCR -->
-      <div class="st-card" style="border-color: var(--theme-primary);">
-        <div class="st-card-header">
-          <div class="st-card-title">Cách 1: Tải ảnh chụp TKB (OCR AI)</div>
+      <div class="st-card" style="border-color: var(--theme-primary); display: flex; flex-direction: column;">
+        <div class="st-card-header" style="margin-bottom: 0.75rem;">
+          <div class="st-card-title" style="font-size: 1.125rem; font-weight: 700; color: #f8fafc;">
+            <span style="display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; border-radius: 8px; background: rgba(139, 92, 246, 0.25); color: #c4b5fd; font-size: 0.85rem; font-weight: 700; margin-right: 8px;">1</span>
+            Cách 1: Tải ảnh chụp TKB (OCR AI)
+          </div>
         </div>
-        <p style="font-size: 0.8125rem; color: var(--theme-text-secondary); margin-bottom: 1rem;">
+        <p style="font-size: 0.875rem; color: #cbd5e1; margin-bottom: 1rem; line-height: 1.55;">
           Chụp ảnh TKB từ cổng đào tạo trường và thả vào khung bên dưới:
         </p>
         
-        <div id="ocrDropzone" style="border: 2px dashed var(--theme-border); background: var(--theme-card-active); border-radius: var(--radius); padding: 2.25rem 1.5rem; text-align: center; cursor: pointer; transition: var(--transition);">
-          <div style="font-weight: 600; font-size: 1rem; color: var(--theme-text-primary); margin-bottom: 0.25rem;">Bấm để tải ảnh hoặc kéo thả vào đây</div>
-          <div style="font-size: 0.75rem; color: var(--theme-text-muted); margin-top: 0.25rem;">Hỗ trợ JPG, PNG từ website sinhvien1.tlu.edu.vn</div>
+        <div id="ocrDropzone" style="border: 2px dashed rgba(139, 92, 246, 0.35); background: rgba(139, 92, 246, 0.08); border-radius: var(--radius); padding: 2.25rem 1.5rem; text-align: center; cursor: pointer; transition: var(--transition); flex: 1; display: flex; flex-direction: column; justify-content: center;">
+          <div style="font-weight: 600; font-size: 1.05rem; color: #f1f5f9; margin-bottom: 0.35rem;">Bấm để tải ảnh hoặc kéo thả vào đây</div>
+          <div style="font-size: 0.825rem; color: #94a3b8; margin-top: 0.25rem;">Hỗ trợ JPG, PNG từ website sinhvien1.tlu.edu.vn</div>
           <input type="file" id="ocrFileInput" accept="image/*" style="display: none;">
         </div>
 
         <div style="margin-top: 1rem; text-align: center;">
-          <button class="st-pill-btn" onclick="simulateOcrProcessing('anh-tkb-tlu.png')">
+          <button class="st-pill-btn" style="width: 100%; justify-content: center; font-size: 0.925rem; font-weight: 600; padding: 0.75rem;" onclick="simulateOcrProcessing('anh-tkb-tlu.png')">
             Dùng thử ảnh TKB mẫu TLU
           </button>
         </div>
       </div>
 
       <!-- Method 2: Dán văn bản Text -->
-      <div class="st-card">
-        <div class="st-card-header">
-          <div class="st-card-title">Cách 2: Dán nội dung text</div>
+      <div class="st-card" style="display: flex; flex-direction: column;">
+        <div class="st-card-header" style="margin-bottom: 0.75rem;">
+          <div class="st-card-title" style="font-size: 1.125rem; font-weight: 700; color: #f8fafc;">
+            <span style="display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; border-radius: 8px; background: rgba(59, 130, 246, 0.25); color: #93c5fd; font-size: 0.85rem; font-weight: 700; margin-right: 8px;">2</span>
+            Cách 2: Dán nội dung text
+          </div>
         </div>
-        <p style="font-size: 0.8125rem; color: var(--theme-text-secondary); margin-bottom: 0.75rem;">
+        <p style="font-size: 0.875rem; color: #cbd5e1; margin-bottom: 0.85rem; line-height: 1.55;">
           Dán nhanh danh sách môn học từ Zalo / Messenger:
         </p>
-        <textarea id="pasteTextSchedule" class="form-control" rows="5" placeholder="Thứ 2: Tiết 1-3 Lập trình hướng đối tượng 205-B5&#10;Thứ 3: Tiết 7-9 Cơ sở dữ liệu 401-C5"></textarea>
-        <button id="btnParseText" class="st-pill-btn" style="width: 100%; margin-top: 1rem; justify-content: center;">
+        <textarea id="pasteTextSchedule" class="form-control" rows="5" 
+          style="flex: 1; min-height: 135px; font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 0.95rem; font-weight: 500; line-height: 1.65; padding: 0.9rem 1.1rem; border-radius: 12px;"
+          placeholder="Thứ 2: Tiết 1-3 Lập trình hướng đối tượng 205-B5&#10;Thứ 3: Tiết 7-9 Cơ sở dữ liệu 401-C5&#10;Thứ 5: Tiết 4-6 Mạng máy tính 302-A2"></textarea>
+        <button id="btnParseText" class="st-pill-btn st-pill-btn-primary" style="width: 100%; margin-top: 1rem; justify-content: center; font-size: 0.925rem; font-weight: 600; padding: 0.75rem; box-shadow: 0 4px 14px rgba(139, 92, 246, 0.35);">
           Phân tích văn bản thành lịch
         </button>
       </div>
 
       <!-- Method 3: Nhập mã lớp -->
-      <div class="st-card">
-        <div class="st-card-header">
-          <div class="st-card-title">Cách 3: Nhập Mã Lớp học chung</div>
+      <div class="st-card" style="display: flex; flex-direction: column;">
+        <div class="st-card-header" style="margin-bottom: 0.75rem;">
+          <div class="st-card-title" style="font-size: 1.125rem; font-weight: 700; color: #f8fafc;">
+            <span style="display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; border-radius: 8px; background: rgba(16, 185, 129, 0.25); color: #6ee7b7; font-size: 0.85rem; font-weight: 700; margin-right: 8px;">3</span>
+            Cách 3: Nhập Mã Lớp học chung
+          </div>
         </div>
-        <p style="font-size: 0.8125rem; color: var(--theme-text-secondary); margin-bottom: 0.75rem;">
+        <p style="font-size: 0.875rem; color: #cbd5e1; margin-bottom: 0.85rem; line-height: 1.55;">
           Lớp trưởng có thể chia sẻ mã lớp để cả lớp tự đồng bộ TKB:
         </p>
-        <input type="text" class="form-control" placeholder="Mã lớp, ví dụ: 64CNTT1-2026" style="margin-bottom: 1rem;">
-        <button class="st-pill-btn" style="width: 100%; justify-content: center;" onclick="showToast('Đã đồng bộ lịch học của lớp 64CNTT1!', 'success')">
+        <div style="flex: 1; display: flex; flex-direction: column; justify-content: flex-start;">
+          <input type="text" class="form-control" placeholder="Mã lớp, ví dụ: 64CNTT1-2026" 
+            style="margin-bottom: 0.85rem; font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 0.95rem; font-weight: 500; padding: 0.85rem 1.1rem; border-radius: 12px;">
+          <div style="font-size: 0.825rem; color: #94a3b8; line-height: 1.5;">
+            💡 Mã lớp dùng để nhận thời khóa biểu và phòng học được đồng bộ tức thì từ cán bộ lớp.
+          </div>
+        </div>
+        <button class="st-pill-btn" style="width: 100%; margin-top: 1rem; justify-content: center; font-size: 0.925rem; font-weight: 600; padding: 0.75rem;" onclick="showToast('Đã đồng bộ lịch học của lớp 64CNTT1!', 'success')">
           Tham gia & Nhận lịch
         </button>
       </div>
