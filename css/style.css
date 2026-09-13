@@ -6,6 +6,7 @@
    ========================================================================== */
 
 :root {
+  color-scheme: dark;
   /* Default: Cosmic Purple Theme (StudyMate signature) */
   --theme-primary: #8b5cf6;
   --theme-secondary: #6366f1;
@@ -527,6 +528,98 @@ textarea.form-control {
   resize: vertical;
   line-height: 1.65;
   letter-spacing: 0.01em;
+}
+
+/* Select & Option Dropdowns Styling (High Contrast & Aesthetic) */
+select.form-control,
+select {
+  color-scheme: dark;
+  background-color: var(--theme-card-solid, #171533) !important;
+  color: var(--theme-text-primary, #ffffff) !important;
+  border: 1px solid var(--theme-border);
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23a78bfa' stroke-width='2.5'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1.15rem center;
+  background-size: 1.15rem;
+  padding-right: 2.85rem;
+}
+
+select.form-control:focus,
+select:focus {
+  border-color: #a78bfa;
+  box-shadow: 0 0 0 3px rgba(167, 139, 250, 0.25), inset 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+select option,
+option {
+  color-scheme: dark;
+  background-color: #171533 !important;
+  color: #ffffff !important;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 0.75rem 1rem;
+}
+
+select option:checked,
+select option:hover,
+select option:focus {
+  background-color: #8b5cf6 !important;
+  color: #ffffff !important;
+}
+
+/* Light theme pastel override for dropdowns */
+html[data-theme="pastel"] {
+  color-scheme: light;
+}
+
+html[data-theme="pastel"] select.form-control,
+html[data-theme="pastel"] select {
+  color-scheme: light;
+  background-color: #ffffff !important;
+  color: #1e293b !important;
+  border: 1px solid rgba(200, 180, 220, 0.4);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%237c3aed' stroke-width='2.5'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+}
+
+html[data-theme="pastel"] select option,
+html[data-theme="pastel"] option {
+  color-scheme: light;
+  background-color: #ffffff !important;
+  color: #1e293b !important;
+}
+
+html[data-theme="pastel"] select option:checked,
+html[data-theme="pastel"] select option:hover {
+  background-color: #7c3aed !important;
+  color: #ffffff !important;
+}
+
+/* Add Task Form Layout */
+.add-task-form {
+  display: grid;
+  grid-template-columns: minmax(200px, 1.8fr) minmax(260px, 2.2fr) minmax(190px, 1.4fr) minmax(160px, 1.2fr) auto;
+  gap: 1.15rem;
+  align-items: flex-end;
+}
+
+@media (max-width: 1100px) {
+  .add-task-form {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .add-task-form {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* Aesthetic Table */

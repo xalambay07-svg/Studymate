@@ -838,11 +838,11 @@ function openQuickTaskModal() {
   const select = document.getElementById("quickTaskSubject");
   if (select) {
     const subjects = JSON.parse(localStorage.getItem("studymate_subjects")) || [];
-    let html = `<option value="">-- Chọn môn học --</option>`;
+    let html = `<option value="" style="background-color: #171533; color: #ffffff;">-- Chọn môn học --</option>`;
     subjects.forEach(s => {
-      html += `<option value="${s.id}">${s.id} - ${s.name}</option>`;
+      html += `<option value="${s.id}" style="background-color: #171533; color: #ffffff;">${s.id} - ${s.name}</option>`;
     });
-    html += `<option value="CHUNG">Môn khác / Việc chung</option>`;
+    html += `<option value="CHUNG" style="background-color: #171533; color: #ffffff;">Môn khác / Việc chung</option>`;
     select.innerHTML = html;
   }
 

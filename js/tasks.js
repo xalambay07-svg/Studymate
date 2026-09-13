@@ -23,7 +23,7 @@ function initSubjectSelect() {
   ];
 
   select.innerHTML = subjects.map(s => `
-    <option value="${s.id}">${s.id} - ${s.name}</option>
+    <option value="${s.id}" style="background-color: #171533; color: #ffffff;">${s.id} - ${s.name}</option>
   `).join("");
 }
 
