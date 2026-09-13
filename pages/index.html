@@ -20,8 +20,7 @@
     <!-- Top Navbar (Ảnh 2) -->
     <nav class="athen-navbar">
       <a href="javascript:void(0)" onclick="switchToLanding()" class="athen-logo">
-        <span style="font-size: 1.6rem;">🦉</span>
-        <span>Study<span style="color: #2563eb;">Mate</span></span>
+        <span>Studies<span style="color: #2563eb;">Mate</span></span>
       </a>
 
       <!-- Middle Menu with Rich Dropdowns (Interactive Mega Menus) -->
@@ -33,52 +32,64 @@
             Tính năng <span class="athen-caret">▾</span>
           </button>
           <div class="athen-dropdown-menu w-features">
-            <div style="font-size: 0.725rem; font-weight: 700; text-transform: uppercase; color: #64748b; letter-spacing: 0.05em; margin-bottom: 0.75rem;">
-              ⚡ CÔNG CỤ HỌC TẬP THÔNG MINH
+            <div style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: #64748b; letter-spacing: 0.05em; margin-bottom: 0.75rem;">
+              CÔNG CỤ HỌC TẬP THÔNG MINH
             </div>
             <div class="athen-dropdown-grid-2">
-              <div class="athen-dropdown-item" onclick="switchToWorkspace()">
-                <div class="athen-dd-icon" style="background: #f5f3ff; color: #8b5cf6;">📊</div>
+              <div class="athen-dropdown-item" onclick="navigateToFeature('dashboard', '#dashboard', 'Dashboard học tập')">
+                <div class="athen-dd-icon" style="background: rgba(139, 92, 246, 0.15); color: #c084fc; border-color: rgba(139, 92, 246, 0.3);">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9"></rect><rect x="14" y="3" width="7" height="5"></rect><rect x="14" y="12" width="7" height="9"></rect><rect x="3" y="16" width="7" height="5"></rect></svg>
+                </div>
                 <div class="athen-dd-content">
                   <div class="athen-dd-title">Dashboard học tập <span class="athen-dd-badge badge-hot">Hot</span></div>
                   <div class="athen-dd-desc">Đồng hồ lớn, danh ngôn động lực và thống kê ngày học.</div>
                 </div>
               </div>
 
-              <div class="athen-dropdown-item" onclick="window.location.href='tasks.html'">
-                <div class="athen-dd-icon" style="background: #fffbeb; color: #f59e0b;">⏰</div>
+              <div class="athen-dropdown-item" onclick="navigateToFeature('tasks', 'tasks.html', 'Quản lý Deadline & Nhiệm vụ')">
+                <div class="athen-dd-icon" style="background: rgba(245, 158, 11, 0.15); color: #fbbf24; border-color: rgba(245, 158, 11, 0.3);">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                </div>
                 <div class="athen-dd-content">
                   <div class="athen-dd-title">Quản lý Deadline <span class="athen-dd-badge badge-hot">Gấp</span></div>
-                  <div class="athen-dd-desc">Phân màu 🟢🟡🔴, cảnh báo bài tập sắp đến hạn nộp.</div>
+                  <div class="athen-dd-desc">Phân loại hạn chót, cảnh báo bài tập sắp đến hạn nộp.</div>
                 </div>
               </div>
 
-              <div class="athen-dropdown-item" onclick="window.location.href='import-schedule.html'">
-                <div class="athen-dd-icon" style="background: #fdf4ff; color: #c026d3;">📸</div>
+              <div class="athen-dropdown-item" onclick="navigateToFeature('ocr', 'import-schedule.html', 'Quét TKB AI/OCR')">
+                <div class="athen-dd-icon" style="background: rgba(192, 38, 211, 0.15); color: #e879f9; border-color: rgba(192, 38, 211, 0.3);">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+                </div>
                 <div class="athen-dd-content">
                   <div class="athen-dd-title">Quét TKB AI/OCR <span class="athen-dd-badge badge-usp">USP</span></div>
                   <div class="athen-dd-desc">Chụp ảnh lịch trường tự động bóc tách tiết & phòng.</div>
                 </div>
               </div>
 
-              <div class="athen-dropdown-item" onclick="window.location.href='schedule.html'">
-                <div class="athen-dd-icon" style="background: #eff6ff; color: #2563eb;">📅</div>
+              <div class="athen-dropdown-item" onclick="navigateToFeature('schedule', 'schedule.html', 'Thời khóa biểu tuần')">
+                <div class="athen-dd-icon" style="background: rgba(37, 99, 235, 0.15); color: #60a5fa; border-color: rgba(37, 99, 235, 0.3);">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                </div>
                 <div class="athen-dd-content">
                   <div class="athen-dd-title">Thời khóa biểu tuần</div>
                   <div class="athen-dd-desc">Lịch học trực quan theo thứ, giảng viên và phòng học.</div>
                 </div>
               </div>
 
-              <div class="athen-dropdown-item" onclick="window.location.href='progress.html'">
-                <div class="athen-dd-icon" style="background: #f0fdf4; color: #10b981;">📈</div>
+              <div class="athen-dropdown-item" onclick="navigateToFeature('progress', 'progress.html', 'Đo lường tiến độ')">
+                <div class="athen-dd-icon" style="background: rgba(16, 185, 129, 0.15); color: #34d399; border-color: rgba(16, 185, 129, 0.3);">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+                </div>
                 <div class="athen-dd-content">
                   <div class="athen-dd-title">Đo lường tiến độ</div>
                   <div class="athen-dd-desc">Tự tính % môn học theo task hoàn thành, không nhập tay.</div>
                 </div>
               </div>
 
-              <div class="athen-dropdown-item" onclick="window.location.href='exams.html'">
-                <div class="athen-dd-icon" style="background: #fef2f2; color: #ef4444;">🎯</div>
+              <div class="athen-dropdown-item" onclick="navigateToFeature('exams', 'tasks.html', 'Đếm ngược kỳ thi')">
+                <div class="athen-dd-icon" style="background: rgba(239, 68, 68, 0.15); color: #f87171; border-color: rgba(239, 68, 68, 0.3);">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="m4.93 4.93 4.24 4.24"></path><path d="m14.83 9.17 4.24-4.24"></path><path d="m14.83 14.83 4.24 4.24"></path><path d="m9.17 14.83-4.24 4.24"></path><circle cx="12" cy="12" r="2"></circle></svg>
+                </div>
                 <div class="athen-dd-content">
                   <div class="athen-dd-title">Đếm ngược kỳ thi</div>
                   <div class="athen-dd-desc">Đếm lùi số ngày tới các bài thi giữa kỳ & cuối kỳ.</div>
@@ -87,7 +98,7 @@
             </div>
 
             <div class="athen-dropdown-footer">
-              <span>✨ Hoạt động mượt mà trong cùng 1 tab trình duyệt</span>
+              <span>Hoạt động mượt mà trong cùng 1 tab trình duyệt</span>
               <button type="button" onclick="openAuthModal('register')">Bắt đầu ngay &rarr;</button>
             </div>
           </div>
@@ -99,36 +110,44 @@
             Mục tiêu học tập <span class="athen-caret">▾</span>
           </button>
           <div class="athen-dropdown-menu w-goals">
-            <div style="font-size: 0.725rem; font-weight: 700; text-transform: uppercase; color: #64748b; letter-spacing: 0.05em; margin-bottom: 0.75rem;">
-              🎯 PHƯƠNG PHÁP HỌC HIỆU QUẢ
+            <div style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: #64748b; letter-spacing: 0.05em; margin-bottom: 0.75rem;">
+              PHƯƠNG PHÁP HỌC HIỆU QUẢ
             </div>
             <div class="athen-dropdown-list">
-              <div class="athen-dropdown-item" onclick="showFeatureDetail('momentum')">
-                <div class="athen-dd-icon" style="background: #fef3c7; color: #d97706;">🏆</div>
+              <div class="athen-dropdown-item" onclick="navigateToFeature('progress', 'progress.html', 'Xây dựng đà học tập (Momentum)')">
+                <div class="athen-dd-icon" style="background: rgba(245, 158, 11, 0.15); color: #fbbf24; border-color: rgba(245, 158, 11, 0.3);">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path><path d="M4 22h16"></path><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"></path><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"></path><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"></path></svg>
+                </div>
                 <div class="athen-dd-content">
                   <div class="athen-dd-title">Xây dựng đà học tập (Momentum)</div>
                   <div class="athen-dd-desc">Duy trì thói quen học tập đều đặn mỗi ngày, tránh bị "ngợp" trước kỳ thi.</div>
                 </div>
               </div>
 
-              <div class="athen-dropdown-item" onclick="showFeatureDetail('procrastination')">
-                <div class="athen-dd-icon" style="background: #ecfeff; color: #0891b2;">⚡</div>
+              <div class="athen-dropdown-item" onclick="navigateToFeature('tasks', 'tasks.html', 'Chống trì hoãn (Anti-procrastination)')">
+                <div class="athen-dd-icon" style="background: rgba(6, 182, 212, 0.15); color: #22d3ee; border-color: rgba(6, 182, 212, 0.3);">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                </div>
                 <div class="athen-dd-content">
                   <div class="athen-dd-title">Chống trì hoãn (Anti-procrastination)</div>
                   <div class="athen-dd-desc">Bẻ nhỏ bài tập lớn thành từng việc nhỏ 15-30 phút để giải quyết ngay.</div>
                 </div>
               </div>
 
-              <div class="athen-dropdown-item" onclick="showFeatureDetail('spaced')">
-                <div class="athen-dd-icon" style="background: #f0fdf4; color: #16a34a;">📚</div>
+              <div class="athen-dropdown-item" onclick="navigateToFeature('schedule', 'schedule.html', 'Ôn thi ngắt quãng (Spaced Repetition)')">
+                <div class="athen-dd-icon" style="background: rgba(16, 185, 129, 0.15); color: #34d399; border-color: rgba(16, 185, 129, 0.3);">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"></path><path d="M6 6h10"></path><path d="M6 10h10"></path></svg>
+                </div>
                 <div class="athen-dd-content">
                   <div class="athen-dd-title">Ôn thi ngắt quãng (Spaced Repetition)</div>
                   <div class="athen-dd-desc">Lên lịch ôn tập cách nhật khoa học để ghi nhớ kiến thức lâu dài.</div>
                 </div>
               </div>
 
-              <div class="athen-dropdown-item" onclick="showFeatureDetail('badges')">
-                <div class="athen-dd-icon" style="background: #f5f3ff; color: #7c3aed;">🏅</div>
+              <div class="athen-dropdown-item" onclick="navigateToFeature('progress', 'progress.html', 'Hệ thống huy hiệu thành tích')">
+                <div class="athen-dd-icon" style="background: rgba(139, 92, 246, 0.15); color: #c084fc; border-color: rgba(139, 92, 246, 0.3);">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"></circle><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"></path></svg>
+                </div>
                 <div class="athen-dd-content">
                   <div class="athen-dd-title">Hệ thống huy hiệu thành tích</div>
                   <div class="athen-dd-desc">Mở khóa huy hiệu xuất sắc khi nộp bài trước hạn và hoàn thành kỳ thi.</div>
@@ -138,7 +157,7 @@
 
             <div class="athen-dropdown-footer">
               <span>Được thiết kế riêng cho sinh viên đại học</span>
-              <button type="button" onclick="showFeatureDetail('momentum')">Xem chi tiết &rarr;</button>
+              <button type="button" onclick="navigateToFeature('progress', 'progress.html', 'Mục tiêu học tập & Thống kê')">Khám phá mục tiêu &rarr;</button>
             </div>
           </div>
         </div>
@@ -149,46 +168,54 @@
             Quét TKB AI/OCR <span class="athen-caret">▾</span>
           </button>
           <div class="athen-dropdown-menu w-ocr">
-            <div style="font-size: 0.725rem; font-weight: 700; text-transform: uppercase; color: #64748b; letter-spacing: 0.05em; margin-bottom: 0.75rem;">
-              📸 TÍNH NĂNG ĐẶC TRƯNG (USP)
+            <div style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: #64748b; letter-spacing: 0.05em; margin-bottom: 0.75rem;">
+              TÍNH NĂNG ĐẶC TRƯNG (USP)
             </div>
             <div class="athen-dropdown-list">
-              <div class="athen-dropdown-item" onclick="window.location.href='import-schedule.html'">
-                <div class="athen-dd-icon" style="background: #eff6ff; color: #2563eb;">📸</div>
+              <div class="athen-dropdown-item" onclick="navigateToFeature('ocr', 'import-schedule.html', 'Quét ảnh chụp TKB trường')">
+                <div class="athen-dd-icon" style="background: rgba(37, 99, 235, 0.15); color: #60a5fa; border-color: rgba(37, 99, 235, 0.3);">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+                </div>
                 <div class="athen-dd-content">
                   <div class="athen-dd-title">Quét ảnh chụp TKB trường <span class="athen-dd-badge badge-usp">USP</span></div>
                   <div class="athen-dd-desc">Chỉ cần tải ảnh chụp màn hình lịch trường, không cần nhập tay từng môn.</div>
                 </div>
               </div>
 
-              <div class="athen-dropdown-item" onclick="window.location.href='import-schedule.html'">
-                <div class="athen-dd-icon" style="background: #fdf4ff; color: #c026d3;">🤖</div>
+              <div class="athen-dropdown-item" onclick="navigateToFeature('ocr', 'import-schedule.html', 'Bóc tách tự động bằng OCR')">
+                <div class="athen-dd-icon" style="background: rgba(192, 38, 211, 0.15); color: #e879f9; border-color: rgba(192, 38, 211, 0.3);">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8V4H8"></path><rect width="16" height="12" x="4" y="8" rx="2"></rect><path d="M2 14h2"></path><path d="M20 14h2"></path><path d="M15 13v2"></path><path d="M9 13v2"></path></svg>
+                </div>
                 <div class="athen-dd-content">
                   <div class="athen-dd-title">Bóc tách tự động bằng OCR</div>
                   <div class="athen-dd-desc">Tự động nhận diện Tên môn học, Thứ, Tiết bắt đầu, Số tiết và Phòng học.</div>
                 </div>
               </div>
 
-              <div class="athen-dropdown-item" onclick="window.location.href='import-schedule.html'">
-                <div class="athen-dd-icon" style="background: #fffbeb; color: #d97706;">✏️</div>
+              <div class="athen-dropdown-item" onclick="navigateToFeature('ocr', 'import-schedule.html', 'Kiểm tra & Hiệu chỉnh trực tiếp')">
+                <div class="athen-dd-icon" style="background: rgba(245, 158, 11, 0.15); color: #fbbf24; border-color: rgba(245, 158, 11, 0.3);">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"></path></svg>
+                </div>
                 <div class="athen-dd-content">
                   <div class="athen-dd-title">Kiểm tra & Hiệu chỉnh trực tiếp</div>
                   <div class="athen-dd-desc">Dễ dàng sửa thông tin môn học trước khi lưu vào thời khóa biểu chính thức.</div>
                 </div>
               </div>
 
-              <div class="athen-dropdown-item" onclick="window.location.href='import-schedule.html'">
-                <div class="athen-dd-icon" style="background: #f0fdf4; color: #16a34a;">📥</div>
+              <div class="athen-dropdown-item" onclick="navigateToFeature('ocr', 'import-schedule.html', 'Nạp mẫu TKB ĐH Thủy Lợi (TLU)')">
+                <div class="athen-dd-icon" style="background: rgba(16, 185, 129, 0.15); color: #34d399; border-color: rgba(16, 185, 129, 0.3);">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                </div>
                 <div class="athen-dd-content">
                   <div class="athen-dd-title">Nạp mẫu TKB ĐH Thủy Lợi (TLU)</div>
-                  <div class="athen-dd-desc">Bấm 1 chạm nạp sẵn lịch học mẫu môn CSE122, Toán, Cấu trúc dữ liệu.</div>
+                  <div class="athen-dd-desc">Nạp lịch học mẫu 5 môn học CSE201, CSE122, CSE220, CSE301, CSE302.</div>
                 </div>
               </div>
             </div>
 
             <div class="athen-dropdown-footer">
               <span>Hỗ trợ ảnh PNG, JPG, JPEG</span>
-              <a href="import-schedule.html">Mở trang quét TKB &rarr;</a>
+              <button type="button" onclick="navigateToFeature('ocr', 'import-schedule.html', 'Quét TKB AI/OCR')">Mở trang quét TKB &rarr;</button>
             </div>
           </div>
         </div>
@@ -199,12 +226,14 @@
             Về StudyMate <span class="athen-caret">▾</span>
           </button>
           <div class="athen-dropdown-menu w-about">
-            <div style="font-size: 0.725rem; font-weight: 700; text-transform: uppercase; color: #64748b; letter-spacing: 0.05em; margin-bottom: 0.75rem;">
-              🦉 THÔNG TIN DỰ ÁN
+            <div style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: #64748b; letter-spacing: 0.05em; margin-bottom: 0.75rem;">
+              THÔNG TIN DỰ ÁN
             </div>
             <div class="athen-dropdown-list">
               <div class="athen-dropdown-item" onclick="showFeatureDetail('story')">
-                <div class="athen-dd-icon" style="background: #eff6ff; color: #2563eb;">🦉</div>
+                <div class="athen-dd-icon" style="background: rgba(37, 99, 235, 0.15); color: #60a5fa; border-color: rgba(37, 99, 235, 0.3);">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+                </div>
                 <div class="athen-dd-content">
                   <div class="athen-dd-title">Câu chuyện & Sứ mệnh</div>
                   <div class="athen-dd-desc">Tạo ra ứng dụng học tập thẩm mỹ, thiết thực cho sinh viên Việt Nam.</div>
@@ -212,7 +241,9 @@
               </div>
 
               <div class="athen-dropdown-item" onclick="showFeatureDetail('cse122')">
-                <div class="athen-dd-icon" style="background: #f5f3ff; color: #7c3aed;">🎓</div>
+                <div class="athen-dd-icon" style="background: rgba(139, 92, 246, 0.15); color: #c084fc; border-color: rgba(139, 92, 246, 0.3);">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
+                </div>
                 <div class="athen-dd-content">
                   <div class="athen-dd-title">Đề tài CSE122 (Lập trình Web)</div>
                   <div class="athen-dd-desc">Bài tập lớn học phần Lập trình Web - Trường Đại học Thủy Lợi (TLU).</div>
@@ -220,7 +251,9 @@
               </div>
 
               <div class="athen-dropdown-item" onclick="showFeatureDetail('privacy')">
-                <div class="athen-dd-icon" style="background: #f0fdf4; color: #16a34a;">🛡️</div>
+                <div class="athen-dd-icon" style="background: rgba(16, 185, 129, 0.15); color: #34d399; border-color: rgba(16, 185, 129, 0.3);">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                </div>
                 <div class="athen-dd-content">
                   <div class="athen-dd-title">Bảo mật dữ liệu (Local-first)</div>
                   <div class="athen-dd-desc">Dữ liệu lưu an toàn trong trình duyệt của bạn, không thu thập thông tin cá nhân.</div>
@@ -228,7 +261,9 @@
               </div>
 
               <div class="athen-dropdown-item" onclick="showFeatureDetail('team')">
-                <div class="athen-dd-icon" style="background: #fffbeb; color: #d97706;">👥</div>
+                <div class="athen-dd-icon" style="background: rgba(245, 158, 11, 0.15); color: #fbbf24; border-color: rgba(245, 158, 11, 0.3);">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                </div>
                 <div class="athen-dd-content">
                   <div class="athen-dd-title">Nhóm sinh viên phát triển</div>
                   <div class="athen-dd-desc">Khoa Công nghệ Thông tin - Trường Đại học Thủy Lợi.</div>
@@ -245,11 +280,10 @@
 
       </div>
 
-      <!-- Right Actions -->
-      <div style="display: flex; align-items: center; gap: 0.85rem;">
-        <span style="cursor: pointer; font-size: 1.1rem;" title="Ngôn ngữ: Tiếng Việt">🌐</span>
-        <button type="button" onclick="openAuthModal('login')" class="athen-nav-item" style="background: none; border: none; font-weight: 600; cursor: pointer;">Đăng nhập</button>
-        <button type="button" onclick="openAuthModal('register')" class="athen-btn-dark" style="border: none; cursor: pointer;">Tạo tài khoản</button>
+      <!-- Right Actions (Được quản lý động theo trạng thái đăng nhập) -->
+      <div id="navAuthActions" style="display: flex; align-items: center; gap: 0.85rem;">
+        <button type="button" onclick="openAuthModal('login')" class="athen-nav-item" style="background: none; border: none; font-weight: 600; cursor: pointer; color: #cbd5e1; font-size: 0.9rem;">Đăng nhập</button>
+        <button type="button" onclick="openAuthModal('register')" class="athen-btn-dark" style="border: none; cursor: pointer; padding: 0.5rem 1.15rem; font-size: 0.875rem;">Tạo tài khoản</button>
       </div>
     </nav>
 
@@ -259,11 +293,8 @@
       <!-- Left Column: Copy & Value Props -->
       <div>
         <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem;">
-          <div style="width: 50px; height: 50px; border-radius: 14px; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.18); display: flex; align-items: center; justify-content: center; font-size: 1.8rem; box-shadow: 0 8px 24px rgba(0,0,0,0.4), inset 0 1px 1.5px rgba(255,255,255,0.25);">
-            🦉
-          </div>
           <span class="athen-tag-badge">
-            ★ NỀN TẢNG QUẢN LÝ HỌC TẬP & DEADLINE CHO SINH VIÊN
+            NỀN TẢNG QUẢN LÝ HỌC TẬP & DEADLINE CHO SINH VIÊN
           </span>
         </div>
 
@@ -281,32 +312,40 @@
 
         <!-- 4 Features Grid (Ảnh 2) -->
         <div class="athen-features-grid">
-          <div class="athen-feature-item">
-            <div class="athen-feature-icon" style="background: rgba(37, 99, 235, 0.18); color: #60a5fa; border: 1px solid rgba(96, 165, 250, 0.35);">🏆</div>
+          <div class="athen-feature-item" onclick="navigateToFeature('progress', 'progress.html', 'Tạo động lực & Đo lường tiến độ')" style="cursor: pointer;" title="Bấm để trải nghiệm tính năng">
+            <div class="athen-feature-icon" style="background: rgba(37, 99, 235, 0.18); color: #60a5fa; border: 1px solid rgba(96, 165, 250, 0.35);">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path><path d="M4 22h16"></path><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"></path><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"></path><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"></path></svg>
+            </div>
             <div>
               <div class="athen-feature-name">Tạo động lực (Motivating)</div>
               <div class="athen-feature-desc">Huy hiệu, tự tính % tiến độ môn học</div>
             </div>
           </div>
 
-          <div class="athen-feature-item">
-            <div class="athen-feature-icon" style="background: rgba(6, 182, 212, 0.18); color: #22d3ee; border: 1px solid rgba(34, 211, 238, 0.35);">📈</div>
+          <div class="athen-feature-item" onclick="navigateToFeature('dashboard', '#dashboard', 'Thống kê học tập')" style="cursor: pointer;" title="Bấm để trải nghiệm tính năng">
+            <div class="athen-feature-icon" style="background: rgba(6, 182, 212, 0.18); color: #22d3ee; border: 1px solid rgba(34, 211, 238, 0.35);">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+            </div>
             <div>
               <div class="athen-feature-name">Thống kê (Statistics)</div>
               <div class="athen-feature-desc">Biểu đồ trực quan, phân loại mức độ gấp</div>
             </div>
           </div>
 
-          <div class="athen-feature-item">
-            <div class="athen-feature-icon" style="background: rgba(139, 92, 246, 0.18); color: #c084fc; border: 1px solid rgba(192, 132, 252, 0.35);">📸</div>
+          <div class="athen-feature-item" onclick="navigateToFeature('ocr', 'import-schedule.html', 'Quét TKB AI/OCR')" style="cursor: pointer;" title="Bấm để trải nghiệm tính năng">
+            <div class="athen-feature-icon" style="background: rgba(139, 92, 246, 0.18); color: #c084fc; border: 1px solid rgba(192, 132, 252, 0.35);">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+            </div>
             <div>
               <div class="athen-feature-name">Quét TKB AI/OCR (Smart Schedule)</div>
               <div class="athen-feature-desc">Chụp ảnh lịch trường tự động bóc tách</div>
             </div>
           </div>
 
-          <div class="athen-feature-item">
-            <div class="athen-feature-icon" style="background: rgba(16, 185, 129, 0.18); color: #34d399; border: 1px solid rgba(52, 211, 153, 0.35);">☁️</div>
+          <div class="athen-feature-item" onclick="navigateToFeature('schedule', 'schedule.html', 'Đồng bộ thời khóa biểu')" style="cursor: pointer;" title="Bấm để trải nghiệm tính năng">
+            <div class="athen-feature-icon" style="background: rgba(16, 185, 129, 0.18); color: #34d399; border: 1px solid rgba(52, 211, 153, 0.35);">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"></path></svg>
+            </div>
             <div>
               <div class="athen-feature-name">Đồng bộ đám mây (Cloud powered)</div>
               <div class="athen-feature-desc">Chia sẻ TKB và deadline theo mã lớp</div>
@@ -321,7 +360,7 @@
           </button>
         </div>
         <div class="athen-micro-copy" style="margin-top: 0.75rem;">
-          ✓ Hoàn toàn miễn phí • Không cần thẻ tín dụng • Tương thích mọi thiết bị
+          Hoàn toàn miễn phí • Không cần thẻ tín dụng • Tương thích mọi thiết bị
         </div>
       </div>
 
@@ -331,13 +370,13 @@
         <!-- Laurel Wreath #1 Study App Badge -->
         <div class="athen-rating-badge">
           <div style="font-size: 1.15rem; font-weight: 800; color: #ffffff; letter-spacing: -0.01em;">
-            🌿 #1 Study Tracker App 🌿
+            #1 Study Tracker App
           </div>
           <div class="stars">★★★★★</div>
         </div>
 
         <!-- Laptop Mockup Frame (Bấm trực tiếp để chuyển vào giao diện Ảnh 1) -->
-        <div class="athen-mockup-laptop" onclick="switchToWorkspace()" style="cursor: pointer;" title="Bấm vào để vào ngay không gian học tập StudyMate">
+        <div class="athen-mockup-laptop" onclick="navigateToFeature('dashboard', '#dashboard', 'Không gian học tập StudyMate')" style="cursor: pointer;" title="Bấm vào để vào ngay không gian học tập StudyMate">
           <div style="display: flex; align-items: center; gap: 6px; padding: 4px 8px 10px;">
             <span style="width: 10px; height: 10px; border-radius: 50%; background: #ef4444; display: inline-block;"></span>
             <span style="width: 10px; height: 10px; border-radius: 50%; background: #f59e0b; display: inline-block;"></span>
@@ -399,7 +438,7 @@
         </div>
 
         <!-- Phone Mockup Floating -->
-        <div class="athen-mockup-phone" onclick="switchToWorkspace()" style="cursor: pointer;">
+        <div class="athen-mockup-phone" onclick="navigateToFeature('dashboard', '#dashboard', 'Ứng dụng di động StudyMate')" style="cursor: pointer;" title="Mở không gian học tập StudyMate">
           <div style="text-align: center; font-size: 0.65rem; color: rgba(255,255,255,0.5); padding: 4px;">
             ● 9:41 AM
           </div>
@@ -485,35 +524,38 @@
           <span>Studies<span style="font-weight: 700;">Mate</span></span>
         </div>
         <span style="font-size: 0.75rem; background: rgba(37, 99, 235, 0.2); color: #93c5fd; padding: 2px 8px; border-radius: 9999px; border: 1px solid rgba(96, 165, 250, 0.3);">
-          ⚡ Thiết lập ban đầu
+          Thiết lập ban đầu
         </span>
       </div>
 
-      <div>
+      <div style="display: flex; align-items: center; gap: 0.75rem;">
         <button type="button" onclick="skipOnboarding()" style="background: none; border: none; color: #94a3b8; font-size: 0.85rem; cursor: pointer; text-decoration: underline;" title="Bỏ qua và dùng dữ liệu môn học mẫu">
           Bỏ qua & dùng dữ liệu mẫu &rarr;
+        </button>
+        <button type="button" onclick="handleLogout()" class="st-pill-btn" style="padding: 0.35rem 0.85rem; font-size: 0.825rem; background: none; border: 1px solid rgba(239,68,68,0.35); color: #f87171; cursor: pointer;">
+          Đăng xuất
         </button>
       </div>
     </nav>
 
     <div class="onboarding-wrapper" style="margin-top: 5rem;">
       <div class="onboarding-header">
-        <h1>Chào mừng bạn đến với StudyMate! 🎉</h1>
+        <h1>Chào mừng bạn đến với StudyMate!</h1>
         <p>Hãy dành 1 phút để thiết lập môn học & lịch học của bạn trong học kỳ này trước khi vào Dashboard nhé.</p>
       </div>
 
       <!-- Step Indicators -->
       <div class="onboarding-steps">
         <div id="stepIndicator1" class="onboarding-step-pill active">
-          <span>📚 Bước 1: Môn học học kỳ</span>
+          <span>Bước 1: Môn học học kỳ</span>
         </div>
         <div style="color: #64748b;">&rarr;</div>
         <div id="stepIndicator2" class="onboarding-step-pill">
-          <span>📅 Bước 2: Thời khóa biểu</span>
+          <span>Bước 2: Thời khóa biểu</span>
         </div>
         <div style="color: #64748b;">&rarr;</div>
         <div id="stepIndicator3" class="onboarding-step-pill">
-          <span>✨ Bước 3: Vào Dashboard</span>
+          <span>Bước 3: Vào Dashboard</span>
         </div>
       </div>
 
@@ -768,6 +810,9 @@
         <button type="button" onclick="switchToOnboarding()" class="st-pill-btn" style="padding: 0.45rem 1.1rem; font-size: 0.9rem; background: rgba(37,99,235,0.22); border: 1px solid rgba(96,165,250,0.45); cursor: pointer; color: #93c5fd;" title="Thiết lập môn học & Thời khóa biểu">
           Cài đặt môn & TKB
         </button>
+        <button type="button" onclick="handleLogout()" class="st-pill-btn" style="padding: 0.45rem 0.9rem; font-size: 0.85rem; background: none; border: 1px solid rgba(239,68,68,0.35); color: #f87171; cursor: pointer;">
+          Đăng xuất
+        </button>
         <button type="button" onclick="switchToLanding()" class="st-pill-btn" style="padding: 0.45rem 1rem; font-size: 0.9rem; background: none; border: 1px solid var(--theme-border); cursor: pointer; color: var(--theme-text-secondary);" title="Về trang giới thiệu">
           Thoát
         </button>
@@ -793,7 +838,10 @@
       <a href="exams.html" class="st-pill-link">Kỳ thi</a>
       <a href="progress.html" class="st-pill-link">Tiến độ</a>
       <a href="profile.html" class="st-pill-link">Hồ sơ cá nhân</a>
-      <button type="button" onclick="switchToLanding()" class="st-pill-link" style="margin-top: 1rem; border: 1px solid var(--theme-border); text-align: left; background: none; cursor: pointer; color: inherit; width: 100%;">
+      <button type="button" onclick="handleLogout()" class="st-pill-link" style="margin-top: 1rem; border: 1px solid rgba(239,68,68,0.3); text-align: left; background: none; cursor: pointer; color: #f87171; width: 100%;">
+        Đăng xuất
+      </button>
+      <button type="button" onclick="switchToLanding()" class="st-pill-link" style="border: 1px solid var(--theme-border); text-align: left; background: none; cursor: pointer; color: inherit; width: 100%;">
         Thoát về trang chủ
       </button>
     </div>
@@ -922,13 +970,18 @@
     <div class="spa-modal-card">
       <button class="spa-modal-close" onclick="closeAuthModal()" title="Đóng">&times;</button>
       
-      <div style="display: flex; align-items: center; gap: 0.65rem; margin-bottom: 1.25rem;">
-        <span style="font-size: 1.75rem;">🦉</span>
+      <div style="display: flex; align-items: center; gap: 0.85rem; margin-bottom: 1.25rem;">
+        <div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(37,99,235,0.2); border: 1px solid rgba(96,165,250,0.35); display: flex; align-items: center; justify-content: center; color: #60a5fa;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+        </div>
         <div>
           <h3 id="modalTitle" style="font-size: 1.25rem; font-weight: 800; color: #ffffff; margin: 0;">Tạo tài khoản StudyMate</h3>
           <p id="modalSubtitle" style="font-size: 0.8rem; color: #94a3b8; margin: 0;">Trải nghiệm không gian học tập thẩm mỹ dành cho sinh viên</p>
         </div>
       </div>
+
+      <!-- Notice Banner when login is required for a feature -->
+      <div id="authRequiredNotice" class="auth-required-banner" style="display: none;"></div>
 
       <!-- Mode Switch Tabs -->
       <div style="display: flex; border-bottom: 1px solid rgba(255, 255, 255, 0.12); margin-bottom: 1.25rem;">
@@ -1003,11 +1056,57 @@
 
     // Current auth modal mode: 'register' or 'login'
     let currentAuthMode = 'register';
+    let pendingAuthContext = null;
 
-    function openAuthModal(mode) {
+    // Global Feature Navigator with Login Check
+    function navigateToFeature(featureKey, targetUrl, featureName) {
+      closeAllAthenDropdowns();
+      
+      const user = JSON.parse(localStorage.getItem('studymate_user') || 'null');
+      const isLoggedIn = user && (user.name || user.email);
+
+      if (!isLoggedIn) {
+        // Not logged in -> Show login modal with required notice
+        openAuthModal('login', {
+          featureName: featureName || 'Tính năng này',
+          targetUrl: targetUrl,
+          featureKey: featureKey
+        });
+        return;
+      }
+
+      // Logged in -> Proceed directly
+      if (featureKey === 'dashboard' || targetUrl === '#dashboard') {
+        switchToWorkspace(user.name);
+      } else if (targetUrl) {
+        window.location.href = targetUrl;
+      }
+    }
+
+    function openAuthModal(mode, context) {
       currentAuthMode = mode || 'register';
+      pendingAuthContext = context || null;
+
       const modal = document.getElementById('authModal');
       modal.classList.add('active');
+
+      const noticeElem = document.getElementById('authRequiredNotice');
+      if (noticeElem) {
+        if (context && context.featureName) {
+          noticeElem.style.display = 'block';
+          noticeElem.innerHTML = `
+            <div class="auth-required-title">
+              <span>Yêu cầu đăng nhập tài khoản</span>
+            </div>
+            <div class="auth-required-desc">
+              Bạn cần đăng nhập tài khoản để sử dụng tính năng <strong>${context.featureName}</strong>. Nếu là sinh viên mới, hãy chọn tab <strong>Tạo tài khoản</strong>!
+            </div>
+          `;
+        } else {
+          noticeElem.style.display = 'none';
+        }
+      }
+
       setAuthMode(currentAuthMode);
     }
 
@@ -1070,20 +1169,68 @@
       // Save session
       localStorage.setItem('studymate_user', JSON.stringify({ name: userName, email: emailInput.value }));
       closeAuthModal();
+      updateNavbarAuthUI();
 
       const hasOnboarded = localStorage.getItem('studymate_onboarded') === 'true';
+      const redirectTarget = pendingAuthContext ? pendingAuthContext.targetUrl : null;
+      pendingAuthContext = null;
 
       // If user registered new account OR has never completed onboarding -> show Onboarding Wizard
       if (currentAuthMode === 'register' || !hasOnboarded) {
         switchToOnboarding(userName);
       } else {
-        // Returning user who already completed onboarding -> jump straight to Dashboard
-        switchToWorkspace(userName);
+        // Returning user who already completed onboarding
+        if (redirectTarget && redirectTarget !== '#dashboard') {
+          window.location.href = redirectTarget;
+        } else {
+          switchToWorkspace(userName);
+        }
       }
+    }
+
+    function updateNavbarAuthUI() {
+      const container = document.getElementById('navAuthActions');
+      if (!container) return;
+
+      const user = JSON.parse(localStorage.getItem('studymate_user') || 'null');
+      const isLoggedIn = user && (user.name || user.email);
+
+      if (isLoggedIn) {
+        const displayName = user.name || 'Nguyễn Gia Huy';
+        container.innerHTML = `
+          <span style="font-size: 0.9rem; font-weight: 600; color: #cbd5e1; background: rgba(255,255,255,0.08); padding: 0.45rem 1rem; border-radius: 9999px; border: 1px solid rgba(255,255,255,0.15);">${displayName}</span>
+          <button type="button" onclick="switchToWorkspace('${displayName}')" class="athen-btn-dark" style="border: none; cursor: pointer; padding: 0.5rem 1.1rem; font-size: 0.875rem;">Không gian học &rarr;</button>
+          <button type="button" onclick="handleLogout()" class="athen-nav-item" style="background: none; border: 1px solid rgba(239,68,68,0.3); color: #f87171; border-radius: 9999px; padding: 0.45rem 0.9rem; font-weight: 600; cursor: pointer; font-size: 0.85rem;">Đăng xuất</button>
+        `;
+      } else {
+        container.innerHTML = `
+          <button type="button" onclick="openAuthModal('login')" class="athen-nav-item" style="background: none; border: none; font-weight: 600; cursor: pointer; color: #cbd5e1; font-size: 0.9rem;">Đăng nhập</button>
+          <button type="button" onclick="openAuthModal('register')" class="athen-btn-dark" style="border: none; cursor: pointer; padding: 0.5rem 1.15rem; font-size: 0.875rem;">Tạo tài khoản</button>
+        `;
+      }
+    }
+
+    function handleLogout() {
+      localStorage.removeItem('studymate_user');
+      updateNavbarAuthUI();
+      if (typeof showToast === 'function') {
+        showToast('Đã đăng xuất tài khoản thành công!', 'info');
+      }
+      switchToLanding();
     }
 
     // Switch view to Onboarding Wizard (Bước 1: Môn học, Bước 2: Lịch học)
     function switchToOnboarding(name) {
+      const user = JSON.parse(localStorage.getItem('studymate_user') || 'null');
+      if (!user || (!user.name && !user.email)) {
+        openAuthModal('login', {
+          featureName: 'Cài đặt môn học & Thời khóa biểu',
+          targetUrl: '#onboarding',
+          featureKey: 'onboarding'
+        });
+        return;
+      }
+
       closeAuthModal();
 
       const landing = document.getElementById('landingView');
@@ -1421,6 +1568,16 @@
 
     // Switch view to Workspace (Image 1) in the exact SAME TAB
     function switchToWorkspace(name) {
+      const user = JSON.parse(localStorage.getItem('studymate_user') || 'null');
+      if (!user || (!user.name && !user.email)) {
+        openAuthModal('login', {
+          featureName: 'Không gian học tập StudyMate',
+          targetUrl: '#dashboard',
+          featureKey: 'dashboard'
+        });
+        return;
+      }
+
       closeAuthModal();
 
       const landing = document.getElementById('landingView');
@@ -1488,9 +1645,45 @@
 
     // Handle initial state on page load
     document.addEventListener('DOMContentLoaded', function() {
+      updateNavbarAuthUI();
+
+      // Check if URL specifies auth required from subpages
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.get('auth') === 'required') {
+        const target = urlParams.get('target') || '';
+        const featureName = urlParams.get('name') || 'Tính năng yêu cầu';
+        openAuthModal('login', {
+          featureName: featureName,
+          targetUrl: target,
+          featureKey: ''
+        });
+        switchToLanding();
+        return;
+      }
+
       if (window.location.hash === '#dashboard') {
+        const user = JSON.parse(localStorage.getItem('studymate_user') || 'null');
+        if (!user || (!user.name && !user.email)) {
+          openAuthModal('login', {
+            featureName: 'Dashboard học tập',
+            targetUrl: '#dashboard',
+            featureKey: 'dashboard'
+          });
+          switchToLanding();
+          return;
+        }
         switchToWorkspace();
       } else if (window.location.hash === '#onboarding') {
+        const user = JSON.parse(localStorage.getItem('studymate_user') || 'null');
+        if (!user || (!user.name && !user.email)) {
+          openAuthModal('login', {
+            featureName: 'Cài đặt môn học & Thời khóa biểu',
+            targetUrl: '#onboarding',
+            featureKey: 'onboarding'
+          });
+          switchToLanding();
+          return;
+        }
         switchToOnboarding();
       } else {
         switchToLanding();
@@ -1553,7 +1746,9 @@
           '<strong>Tự động đo lường:</strong> Hệ thống StudyMate ghi nhận tiến độ và trao huy hiệu khen thưởng.'
         ],
         ctaText: 'Bắt đầu tạo đà học tập ngay →',
-        ctaAction: 'switchToWorkspace()'
+        ctaAction: 'switchToWorkspace()',
+        featureKey: "dashboard",
+        targetUrl: "#dashboard"
       },
       procrastination: {
         icon: '⚡',
@@ -1564,11 +1759,13 @@
         desc: 'Nhiều sinh viên trì hoãn bài tập lớn vì cảm thấy nhiệm vụ quá đồ sộ. StudyMate áp dụng phương pháp vi mô hóa.',
         points: [
           '<strong>Quy tắc 2 phút & chia nhỏ:</strong> Tách một bài tập lớn 10 trang thành 5 nhiệm vụ nhỏ 2 trang.',
-          '<strong>Màu sắc cảnh báo gấp:</strong> Deadline hôm nay được gắn thẻ đỏ 🔴 và đưa lên vị trí ưu tiên số 1.',
+          '<strong>Cảnh báo hạn chót gấp:</strong> Deadline hôm nay được gắn thẻ Hạn hôm nay và đưa lên vị trí ưu tiên số 1.',
           '<strong>Tập trung từng việc:</strong> Không cần làm hết cùng lúc, chỉ cần tích chọn 1 task để thấy thanh tiến độ nhảy lên.'
         ],
         ctaText: 'Xem danh sách Deadline mẫu →',
-        ctaAction: "window.location.href='tasks.html'"
+        ctaAction: "window.location.href='tasks.html'",
+        featureKey: "tasks",
+        targetUrl: "tasks.html"
       },
       spaced: {
         icon: '📚',
@@ -1583,7 +1780,9 @@
           '<strong>Không học dồn (Cramming):</strong> Giữ gìn sức khỏe tinh thần và phong độ đỉnh cao khi thi.'
         ],
         ctaText: 'Xem lịch thi & đếm ngược →',
-        ctaAction: "window.location.href='exams.html'"
+        ctaAction: "window.location.href='exams.html'",
+        featureKey: "exams",
+        targetUrl: "tasks.html"
       },
       badges: {
         icon: '🏅',
@@ -1593,12 +1792,14 @@
         title: 'Huy hiệu thành tích sinh viên',
         desc: 'Tạo động lực thông qua cơ chế Gamification hóa trải nghiệm học tập đại học.',
         points: [
-          '<strong>🦉 Cú đêm thông thái:</strong> Hoàn thành môn học đầu tiên đạt 100% tiến độ.',
-          '<strong>⚡ Vua tốc độ Deadline:</strong> Nộp bài tập trước hạn ít nhất 48 tiếng.',
-          '<strong>🎯 Thần đèn ôn thi:</strong> Thiết lập lịch ôn tập đầy đủ trước kỳ thi 2 tuần.'
+          '<strong>Cú đêm thông thái:</strong> Hoàn thành môn học đầu tiên đạt 100% tiến độ.',
+          '<strong>Vua tốc độ Deadline:</strong> Nộp bài tập trước hạn ít nhất 48 tiếng.',
+          '<strong>Thần đèn ôn thi:</strong> Thiết lập lịch ôn tập đầy đủ trước kỳ thi 2 tuần.'
         ],
         ctaText: 'Khám phá tiến độ môn học →',
-        ctaAction: "window.location.href='progress.html'"
+        ctaAction: "window.location.href='progress.html'",
+        featureKey: "progress",
+        targetUrl: "progress.html"
       },
       story: {
         icon: '🦉',
@@ -1613,7 +1814,9 @@
           '<strong>Giao diện tối tập trung:</strong> Được tinh chỉnh tỉ mỉ giúp học tập ban đêm êm dịu, không mỏi mắt.'
         ],
         ctaText: 'Trải nghiệm không gian học ngay →',
-        ctaAction: 'switchToWorkspace()'
+        ctaAction: 'switchToWorkspace()',
+        featureKey: "dashboard",
+        targetUrl: "#dashboard"
       },
       cse122: {
         icon: '🎓',
@@ -1628,7 +1831,9 @@
           '<strong>Mã nguồn chuẩn chỉ:</strong> Tổ chức thư mục MVC tinh gọn (css, js, pages, assets, docs) có tài liệu thiết kế đầy đủ.'
         ],
         ctaText: 'Mở Dashboard học tập sinh viên →',
-        ctaAction: 'switchToWorkspace()'
+        ctaAction: 'switchToWorkspace()',
+        featureKey: "dashboard",
+        targetUrl: "#dashboard"
       },
       privacy: {
         icon: '🛡️',
@@ -1643,7 +1848,9 @@
           '<strong>Sử dụng Offline:</strong> Có thể mở xem lại lịch học ngay cả khi mất mạng wifi trên giảng đường.'
         ],
         ctaText: 'Đã hiểu & Vào học tập →',
-        ctaAction: 'switchToWorkspace()'
+        ctaAction: 'switchToWorkspace()',
+        featureKey: "dashboard",
+        targetUrl: "#dashboard"
       },
       team: {
         icon: '👥',
@@ -1658,7 +1865,9 @@
           '<strong>Mục tiêu:</strong> Mang đến giải pháp công nghệ trực quan, dễ dùng nhất cho bạn bè cùng khóa.'
         ],
         ctaText: 'Mở không gian học tập StudyMate →',
-        ctaAction: 'switchToWorkspace()'
+        ctaAction: 'switchToWorkspace()',
+        featureKey: "dashboard",
+        targetUrl: "#dashboard"
       }
     };
 
@@ -1667,11 +1876,15 @@
       const data = featureData[key] || featureData.momentum;
       const modal = document.getElementById('featureDetailModal');
       
-      document.getElementById('fdIcon').textContent = data.icon;
       const badgeElem = document.getElementById('fdBadge');
       badgeElem.textContent = data.badge;
       badgeElem.style.background = data.badgeBg;
       badgeElem.style.color = data.badgeColor;
+
+      const fdIcon = document.getElementById('fdIcon');
+      if (fdIcon) {
+        fdIcon.innerHTML = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="${data.badgeColor || '#60a5fa'}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>`;
+      }
 
       document.getElementById('fdTitle').textContent = data.title;
       document.getElementById('fdDesc').textContent = data.desc;
@@ -1686,7 +1899,10 @@
 
       const ctaBtn = document.getElementById('fdCtaBtn');
       ctaBtn.textContent = data.ctaText;
-      ctaBtn.setAttribute('onclick', `${data.ctaAction}; closeFeatureDetail();`);
+      ctaBtn.onclick = function() {
+        closeFeatureDetail();
+        navigateToFeature(data.featureKey || 'dashboard', data.targetUrl || '#dashboard', data.title);
+      };
 
       modal.classList.add('active');
     }
@@ -1712,8 +1928,8 @@
       <button class="spa-modal-close" onclick="closeFeatureDetail()" title="Đóng">&times;</button>
       
       <div style="display: flex; align-items: center; gap: 0.85rem; margin-bottom: 1.25rem;">
-        <div id="fdIcon" style="width: 52px; height: 52px; border-radius: 14px; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.18); display: flex; align-items: center; justify-content: center; font-size: 1.85rem; flex-shrink: 0; box-shadow: 0 4px 15px rgba(0,0,0,0.3), inset 0 1px 1px rgba(255, 255, 255, 0.2);">
-          🏆
+        <div id="fdIcon" style="width: 52px; height: 52px; border-radius: 14px; background: rgba(37, 99, 235, 0.15); border: 1px solid rgba(96, 165, 250, 0.3); display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 4px 15px rgba(0,0,0,0.3), inset 0 1px 1px rgba(255, 255, 255, 0.2);">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
         </div>
         <div>
           <span id="fdBadge" style="display: inline-block; font-size: 0.65rem; font-weight: 800; text-transform: uppercase; padding: 2px 8px; border-radius: 9999px; margin-bottom: 0.25rem; letter-spacing: 0.05em;">

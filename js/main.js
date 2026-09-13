@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initMobileMenu();
   initSampleData();
   updateUserHeader();
+  checkPageAuth();
 });
 
 // 1. Quản lý Sidebar trên Mobile
@@ -34,7 +35,7 @@ function initMobileMenu() {
   }
 }
 
-// 2. Hiển thị thông báo Toast
+// 2. Hiển thị thông báo Toast (Thiết kế tối giản, không dùng emoji)
 function showToast(message, type = "info") {
   let toast = document.querySelector(".toast");
   if (!toast) {
@@ -43,12 +44,12 @@ function showToast(message, type = "info") {
     document.body.appendChild(toast);
   }
 
-  let icon = "🔔";
-  if (type === "success") icon = "✅";
-  if (type === "warning") icon = "⚠️";
-  if (type === "danger") icon = "❌";
+  let badgeText = "Thông báo";
+  if (type === "success") badgeText = "Thành công";
+  if (type === "warning") badgeText = "Chú ý";
+  if (type === "danger") badgeText = "Cảnh báo";
 
-  toast.innerHTML = `<span>${icon}</span> <span>${message}</span>`;
+  toast.innerHTML = `<span style="font-size: 0.725rem; font-weight: 700; text-transform: uppercase; padding: 2px 6px; border-radius: 4px; background: rgba(255,255,255,0.15); margin-right: 6px;">${badgeText}</span><span>${message}</span>`;
   toast.classList.add("show");
 
   setTimeout(() => {
@@ -56,7 +57,41 @@ function showToast(message, type = "info") {
   }, 3500);
 }
 
-// 3. Khởi tạo dữ liệu mẫu LocalStorage (nếu chưa có)
+// 3. Quản lý phiên đăng nhập người dùng (Authentication Gatekeeper)
+function isUserLoggedIn() {
+  const user = JSON.parse(localStorage.getItem("studymate_user") || "null");
+  return !!(user && (user.name || user.email));
+}
+
+function getCurrentUser() {
+  return JSON.parse(localStorage.getItem("studymate_user") || "null");
+}
+
+function logoutUser() {
+  localStorage.removeItem("studymate_user");
+  window.location.href = "index.html";
+}
+
+// Kiểm tra quyền truy cập các trang thành phần
+function checkPageAuth() {
+  const currentPath = window.location.pathname.toLowerCase();
+  const protectedPages = [
+    { file: "tasks.html", name: "Quản lý Deadline & Nhiệm vụ" },
+    { file: "schedule.html", name: "Thời khóa biểu sinh viên" },
+    { file: "progress.html", name: "Đo lường tiến độ học tập" },
+    { file: "import-schedule.html", name: "Quét TKB bằng AI/OCR" },
+    { file: "exams.html", name: "Đếm ngược kỳ thi" },
+    { file: "subjects.html", name: "Quản lý Môn học" }
+  ];
+
+  const matched = protectedPages.find(p => currentPath.endsWith(p.file));
+  if (matched && !isUserLoggedIn()) {
+    // Chưa đăng nhập -> Chuyển về index.html và tự động mở form đăng nhập kèm thông báo
+    window.location.href = `index.html?auth=required&target=${encodeURIComponent(matched.file)}&name=${encodeURIComponent(matched.name)}`;
+  }
+}
+
+// 4. Khởi tạo dữ liệu mẫu LocalStorage (nếu chưa có)
 function initSampleData() {
   if (!localStorage.getItem("studymate_subjects") || JSON.parse(localStorage.getItem("studymate_subjects")).some(s => s.id === "ENG201")) {
     const defaultSubjects = [
@@ -87,17 +122,22 @@ function initSampleData() {
   }
 }
 
-// 4. Cập nhật thông tin User trên Header
+// 5. Cập nhật thông tin User trên Header
 function updateUserHeader() {
-  const currentUser = JSON.parse(localStorage.getItem("studymate_user")) || {
-    name: "Nguyễn Văn Sinh Viên",
-    role: "Sinh viên K65 - CNTT",
-    email: "student@studymate.edu.vn"
+  const currentUser = getCurrentUser() || {
+    name: "Nguyễn Gia Huy",
+    role: "Sinh viên CNTT - ĐH Thủy Lợi",
+    email: "giahuy@tlu.edu.vn"
   };
 
   const nameElem = document.querySelector(".user-name");
   const roleElem = document.querySelector(".user-role");
   if (nameElem) nameElem.textContent = currentUser.name;
   if (roleElem) roleElem.textContent = currentUser.role;
+
+  // Cập nhật các badge tên người dùng tĩnh
+  document.querySelectorAll(".st-user-display").forEach(el => {
+    el.textContent = currentUser.name;
+  });
 }
 
