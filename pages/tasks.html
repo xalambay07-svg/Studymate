@@ -29,7 +29,7 @@
     <!-- Right Utilities -->
     <div class="st-nav-actions">
       <a href="index.html#onboarding" class="st-pill-btn" style="padding: 0.45rem 1.1rem; font-size: 0.9rem; background: rgba(37,99,235,0.22); border: 1px solid rgba(96,165,250,0.45); color: #93c5fd; text-decoration: none;">Cài đặt môn & TKB</a>
-      <a href="index.html" class="st-pill-btn" style="padding: 0.45rem 1rem; font-size: 0.9rem; background: none; border: 1px solid var(--theme-border); color: var(--theme-text-secondary); text-decoration: none;">Thoát</a>
+      <span style="font-size: 0.925rem; font-weight: 600; color: var(--theme-text-secondary); background: rgba(255,255,255,0.08); padding: 0.45rem 1rem; border-radius: 9999px; border: 1px solid var(--theme-border);">Nguyễn Gia Huy</span>
       <button class="st-mobile-btn">☰</button>
     </div>
   </nav>
@@ -37,14 +37,12 @@
   <!-- Mobile Drawer -->
   <div class="st-drawer-overlay"></div>
   <div class="st-mobile-drawer">
-    <a href="dashboard.html" class="st-pill-link">📊 Dashboard</a>
-    <a href="schedule.html" class="st-pill-link">📅 Lịch học / TKB</a>
-    <a href="tasks.html" class="st-pill-link active">✅ Nhiệm vụ & Deadline</a>
-    <a href="import-schedule.html" class="st-pill-link">📸 Nhập TKB (OCR / AI)</a>
-    <a href="subjects.html" class="st-pill-link">📖 Môn học</a>
-    <a href="exams.html" class="st-pill-link">🎯 Kỳ thi</a>
-    <a href="progress.html" class="st-pill-link">📈 Báo cáo tiến độ</a>
-    <a href="index.html" class="st-pill-link" style="margin-top: 1rem; border: 1px solid var(--theme-border);">🚪 Trang chủ</a>
+    <a href="index.html#dashboard" class="st-pill-link">Dashboard</a>
+    <a href="schedule.html" class="st-pill-link">Lịch học</a>
+    <a href="tasks.html" class="st-pill-link active">Deadline</a>
+    <a href="import-schedule.html" class="st-pill-link">OCR TKB</a>
+    <a href="progress.html" class="st-pill-link">Tiến độ</a>
+    <a href="index.html" class="st-pill-link" style="margin-top: 1rem; border: 1px solid var(--theme-border);">Trang chủ</a>
   </div>
 
   <main class="st-main-container">
@@ -68,10 +66,11 @@
         <div>
           <label style="font-size: 0.75rem; color: var(--theme-text-muted); display: block; margin-bottom: 0.35rem; text-transform: uppercase;">Môn học</label>
           <select id="taskSubject" class="form-control">
+            <option value="CSE201">CSE201 - Lập trình hướng đối tượng</option>
             <option value="CSE122">CSE122 - Web cơ bản</option>
-            <option value="CSE281">CSE281 - Cấu trúc dữ liệu</option>
-            <option value="MATH101">MATH101 - Giải tích 1</option>
-            <option value="ENG201">ENG201 - Tiếng Anh CN</option>
+            <option value="CSE220">CSE220 - Cơ sở dữ liệu</option>
+            <option value="CSE301">CSE301 - Hệ điều hành</option>
+            <option value="CSE302">CSE302 - Mạng máy tính</option>
           </select>
         </div>
         <div>
@@ -95,12 +94,12 @@
     <!-- Table danh sách nhiệm vụ (Glass Card) -->
     <div class="st-card">
       <div class="st-card-header">
-        <div class="st-card-title">📋 Danh sách công việc đang theo dõi</div>
+        <div class="st-card-title">Danh sách công việc đang theo dõi</div>
         <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-          <span class="badge badge-safe">🟢 Còn nhiều</span>
-          <span class="badge badge-warning">🟡 Sắp hạn</span>
-          <span class="badge badge-danger">🔴 Hạn hôm nay</span>
-          <span class="badge badge-overdue">⚫ Quá hạn</span>
+          <span class="badge badge-safe">Còn nhiều</span>
+          <span class="badge badge-warning">Sắp hạn</span>
+          <span class="badge badge-danger">Hạn hôm nay</span>
+          <span class="badge badge-overdue">Quá hạn</span>
         </div>
       </div>
 

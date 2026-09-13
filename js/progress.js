@@ -1,4 +1,4 @@
-﻿/**
+/**
  * STUDYMATE - PROGRESS SCRIPT (Aesthetic Glass)
  * Tự động tính toán tiến độ học tập: Tiến độ (%) = (Nhiệm vụ đã hoàn thành / Tổng số nhiệm vụ của môn) * 100
  */
@@ -34,7 +34,7 @@ function renderProgressOverview() {
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; flex-wrap: wrap; gap: 0.5rem;">
           <div>
             <h4 style="font-size: 1.05rem; font-weight: 600; color: var(--theme-text-primary);">${sub.name} (${sub.id})</h4>
-            <p style="color: var(--theme-text-muted); font-size: 0.8125rem;">👨‍🏫 ${sub.teacher} • ${sub.credits} tín chỉ</p>
+            <p style="color: var(--theme-text-muted); font-size: 0.8125rem;">${sub.teacher} • ${sub.credits} tín chỉ</p>
           </div>
           <div style="text-align: right;">
             <span class="badge ${badgeStatus}">${percent}% Hoàn thành</span>

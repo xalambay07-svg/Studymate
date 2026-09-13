@@ -1,4 +1,4 @@
-﻿/**
+/**
  * STUDYMATE - MAIN JAVASCRIPT
  * Xử lý giao diện dùng chung: Sidebar mobile, Toast thông báo, Khởi tạo dữ liệu mẫu
  */
@@ -58,25 +58,23 @@ function showToast(message, type = "info") {
 
 // 3. Khởi tạo dữ liệu mẫu LocalStorage (nếu chưa có)
 function initSampleData() {
-  if (!localStorage.getItem("studymate_subjects")) {
+  if (!localStorage.getItem("studymate_subjects") || JSON.parse(localStorage.getItem("studymate_subjects")).some(s => s.id === "ENG201")) {
     const defaultSubjects = [
-      { id: "CSE122", name: "Phát triển ứng dụng web cơ bản", credits: 3, teacher: "ThS. Nguyễn Văn A", room: "A203" },
-      { id: "CSE281", name: "Cấu trúc dữ liệu và giải thuật", credits: 4, teacher: "TS. Trần Thị B", room: "B102" },
-      { id: "MATH101", name: "Giải tích 1", credits: 3, teacher: "PGS. Lê Văn C", room: "C301" },
-      { id: "ENG201", name: "Tiếng Anh chuyên ngành", credits: 2, teacher: "ThS. Phạm Thị D", room: "D405" }
+      { id: "CSE201", name: "Lập trình hướng đối tượng", credits: 3, teacher: "Khoa CNTT", room: "205-B5 / 211-B5" },
+      { id: "CSE122", name: "Phát triển ứng dụng web cơ bản", credits: 3, teacher: "Khoa CNTT", room: "205-B5 / 211-B5" },
+      { id: "CSE220", name: "Cơ sở dữ liệu", credits: 3, teacher: "Khoa CNTT", room: "401-C5 / 310-B5" },
+      { id: "CSE301", name: "Hệ điều hành", credits: 3, teacher: "Khoa CNTT", room: "309-B5" },
+      { id: "CSE302", name: "Mạng máy tính", credits: 3, teacher: "Khoa CNTT", room: "309-B5" }
     ];
     localStorage.setItem("studymate_subjects", JSON.stringify(defaultSubjects));
   }
 
-  if (!localStorage.getItem("studymate_tasks")) {
-    const defaultTasks = [
-      { id: 1, title: "Báo cáo BTL Website StudyMate", subjectId: "CSE122", deadline: "2026-09-20T23:59", priority: "high", status: "in-progress" },
-      { id: 2, title: "Bài tập Linked List & Stack", subjectId: "CSE281", deadline: "2026-09-15T23:59", priority: "medium", status: "pending" },
-      { id: 3, title: "Ôn tập tích phân & chuỗi số", subjectId: "MATH101", deadline: "2026-09-14T17:00", priority: "urgent", status: "pending" },
-      { id: 4, title: "Dịch bài đọc Unit 3 AI Ethics", subjectId: "ENG201", deadline: "2026-09-18T20:00", priority: "low", status: "completed" },
-      { id: 5, title: "Thiết kế wireframe Figma CSE122", subjectId: "CSE122", deadline: "2026-09-10T23:59", priority: "high", status: "completed" }
-    ];
-    localStorage.setItem("studymate_tasks", JSON.stringify(defaultTasks));
+  // Do not seed dummy tasks - keep empty for new user until user adds tasks
+  const existingTasks = JSON.parse(localStorage.getItem("studymate_tasks")) || [];
+  if (existingTasks.some(t => t.title === "Báo cáo BTL Website StudyMate" || t.title === "Bài tập Linked List & Stack" || t.title === "Ôn tập tích phân & chuỗi số")) {
+    localStorage.setItem("studymate_tasks", JSON.stringify([]));
+  } else if (!localStorage.getItem("studymate_tasks")) {
+    localStorage.setItem("studymate_tasks", JSON.stringify([]));
   }
 
   if (!localStorage.getItem("studymate_exams")) {

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="vi" data-theme="cosmic">
 <head>
   <meta charset="UTF-8">
@@ -9,69 +9,56 @@
 </head>
 <body>
 
+  <!-- StudyMate Frosted Navbar -->
   <nav class="st-navbar">
     <div style="display: flex; align-items: center; gap: 1rem;">
       <a href="index.html" class="st-logo">
-        <div class="st-logo-icon">📖</div>
-        <span>Studies<span class="accent-word">Mate</span></span>
+        Studies<span class="accent-word">Mate</span>
       </a>
     </div>
 
     <div class="st-nav-links">
-      <a href="dashboard.html" class="st-pill-link">📊 Dashboard</a>
-      <a href="schedule.html" class="st-pill-link">📅 Lịch học</a>
-      <a href="tasks.html" class="st-pill-link">✅ Deadline</a>
-      <a href="subjects.html" class="st-pill-link">📖 Môn học</a>
-      <a href="exams.html" class="st-pill-link">🎯 Kỳ thi</a>
-      <a href="import-schedule.html" class="st-pill-link">📸 OCR TKB</a>
-      <a href="progress.html" class="st-pill-link active">📈 Tiến độ</a>
+      <a href="index.html#dashboard" class="st-pill-link">Dashboard</a>
+      <a href="schedule.html" class="st-pill-link">Lịch học</a>
+      <a href="tasks.html" class="st-pill-link">Deadline</a>
+      <a href="import-schedule.html" class="st-pill-link">OCR TKB</a>
+      <a href="progress.html" class="st-pill-link active">Tiến độ</a>
     </div>
 
+    <!-- Right Utilities -->
     <div class="st-nav-actions">
-      <button id="ambientSoundBtn" class="st-btn-icon" title="Bật âm thanh mưa thư giãn">🌧️</button>
-      <button id="themePickerBtn" class="st-btn-icon" title="Đổi Theme">🎨</button>
-
-      <div id="themeDropdown" class="theme-dropdown">
-        <div style="font-size: 0.75rem; color: var(--theme-text-muted); text-transform: uppercase; margin-bottom: 0.5rem; font-weight: 600;">Chọn bảng màu</div>
-        <div class="theme-option" data-theme="cosmic"><span class="theme-dot" style="background: #8b5cf6;"></span> Cosmic Purple</div>
-        <div class="theme-option" data-theme="sepia"><span class="theme-dot" style="background: #D2691E;"></span> Warm Sepia</div>
-        <div class="theme-option" data-theme="soft-gray"><span class="theme-dot" style="background: #a855f7;"></span> Soft Gray</div>
-        <div class="theme-option" data-theme="ocean"><span class="theme-dot" style="background: #06b6d4;"></span> Ocean Night</div>
-        <div class="theme-option" data-theme="forest"><span class="theme-dot" style="background: #22c55e;"></span> Forest Green</div>
-        <div class="theme-option" data-theme="pastel"><span class="theme-dot" style="background: #faf5ef; border: 1px solid #ccc;"></span> Pastel Cream</div>
-      </div>
-
-      <a href="profile.html" class="st-pill-btn" style="padding: 0.4rem 0.8rem;">👤 Minh Đức</a>
+      <a href="index.html#onboarding" class="st-pill-btn" style="padding: 0.45rem 1.1rem; font-size: 0.9rem; background: rgba(37,99,235,0.22); border: 1px solid rgba(96,165,250,0.45); color: #93c5fd; text-decoration: none;">Cài đặt môn & TKB</a>
+      <span style="font-size: 0.925rem; font-weight: 600; color: var(--theme-text-secondary); background: rgba(255,255,255,0.08); padding: 0.45rem 1rem; border-radius: 9999px; border: 1px solid var(--theme-border);">Nguyễn Gia Huy</span>
       <button class="st-mobile-btn">☰</button>
     </div>
   </nav>
 
+  <!-- Mobile Drawer -->
   <div class="st-drawer-overlay"></div>
   <div class="st-mobile-drawer">
-    <a href="dashboard.html" class="st-pill-link">📊 Dashboard</a>
-    <a href="schedule.html" class="st-pill-link">📅 Lịch học</a>
-    <a href="tasks.html" class="st-pill-link">✅ Deadline</a>
-    <a href="subjects.html" class="st-pill-link">📖 Môn học</a>
-    <a href="exams.html" class="st-pill-link">🎯 Kỳ thi</a>
-    <a href="import-schedule.html" class="st-pill-link">📸 OCR TKB</a>
-    <a href="progress.html" class="st-pill-link active">📈 Tiến độ</a>
+    <a href="index.html#dashboard" class="st-pill-link">Dashboard</a>
+    <a href="schedule.html" class="st-pill-link">Lịch học</a>
+    <a href="tasks.html" class="st-pill-link">Deadline</a>
+    <a href="import-schedule.html" class="st-pill-link">OCR TKB</a>
+    <a href="progress.html" class="st-pill-link active">Tiến độ</a>
+    <a href="index.html" class="st-pill-link" style="margin-top: 1rem; border: 1px solid var(--theme-border);">Trang chủ</a>
   </div>
 
   <main class="st-main-container">
     <div style="margin-bottom: 2rem;">
-      <h1 style="font-size: 1.75rem; font-weight: 600; color: var(--theme-text-primary);">Tiến độ học tập tự động 📈</h1>
+      <h1 style="font-size: 1.75rem; font-weight: 600; color: var(--theme-text-primary);">Tiến độ học tập tự động</h1>
       <p style="font-size: 0.875rem; color: var(--theme-text-secondary); margin-top: 0.25rem;">
-        Công thức tự động: <code>Tiến độ = (Số task hoàn thành / Tổng số task môn) * 100%</code>. Không cần nhập tay % thủ công!
+        Công thức tự động: <code>Tiến độ = (Số nhiệm vụ hoàn thành / Tổng số nhiệm vụ của môn) * 100%</code>.
       </p>
     </div>
 
     <!-- Info Glass Box -->
     <div class="st-card" style="margin-bottom: 1.5rem; border-left: 3px solid var(--theme-primary); background: linear-gradient(135deg, var(--theme-card-active) 0%, var(--theme-card) 100%);">
       <h4 style="color: var(--theme-text-primary); font-size: 0.95rem; margin-bottom: 0.25rem;">
-        💡 Cơ chế tính tiến độ tự động
+        Cơ chế tính tiến độ tự động
       </h4>
       <p style="font-size: 0.8125rem; color: var(--theme-text-secondary); line-height: 1.5;">
-        Khi bạn hoàn thành thêm bất kỳ bài tập nào trên trang <strong>Nhiệm vụ & Deadline</strong>, phần trăm tiến độ của môn học tương ứng sẽ tự động tăng ngay lập tức.
+        Khi bạn hoàn thành thêm bất kỳ bài tập nào trên trang <strong>Nhiệm vụ & Deadline</strong>, phần trăm tiến độ của môn học tương ứng sẽ tự động cập nhật ngay lập tức.
       </p>
     </div>
 

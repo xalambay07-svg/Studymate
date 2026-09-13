@@ -43,7 +43,7 @@ function renderDashboardStats() {
 
   // 3. Tiến độ trung bình
   const completedTasks = tasks.filter(t => t.status === "completed");
-  const progressPercent = tasks.length > 0 ? Math.round((completedTasks.length / tasks.length) * 100) : 70;
+  const progressPercent = tasks.length > 0 ? Math.round((completedTasks.length / tasks.length) * 100) : 0;
   const progressElem = document.getElementById("statAvgProgress");
   const progressFill = document.getElementById("statProgressFill");
   if (progressElem) progressElem.textContent = `${progressPercent}%`;
@@ -126,8 +126,13 @@ function renderUpcomingDeadlines() {
   const tasks = JSON.parse(localStorage.getItem("studymate_tasks")) || [];
   const activeTasks = tasks.filter(t => t.status !== "completed");
 
+  if (tasks.length === 0) {
+    container.innerHTML = `<div style="padding: 1.5rem; text-align: center; color: var(--theme-text-muted); font-size: 0.9rem;">Danh sách đang trống. Bạn chưa có nhiệm vụ hoặc deadline nào. Hãy thêm ở trang <a href="tasks.html" style="color: var(--theme-primary); text-decoration: underline;">Deadline</a>!</div>`;
+    return;
+  }
+
   if (activeTasks.length === 0) {
-    container.innerHTML = `<div style="padding: 1.5rem; text-align: center; color: var(--theme-text-muted); font-size: 0.9rem;">Tuyệt vời! Không có deadline nào chưa hoàn thành</div>`;
+    container.innerHTML = `<div style="padding: 1.5rem; text-align: center; color: var(--theme-text-muted); font-size: 0.9rem;">Tuyệt vời! Bạn đã hoàn thành tất cả công việc và deadline.</div>`;
     return;
   }
 
