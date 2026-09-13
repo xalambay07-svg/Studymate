@@ -473,6 +473,242 @@
 
 
   <!-- ========================================================================= -->
+  <!-- ONBOARDING VIEW: THIẾT LẬP MÔN HỌC & LỊCH HỌC KHI ĐĂNG NHẬP LẦN ĐẦU      -->
+  <!-- ========================================================================= -->
+  <div id="onboardingView" class="spa-view" style="display: none;">
+    
+    <!-- Top Minimal Navbar for Onboarding -->
+    <nav class="st-navbar">
+      <div style="display: flex; align-items: center; gap: 0.75rem;">
+        <div class="st-logo" style="font-weight: 500;">
+          <span style="display: inline-block; width: 14px; height: 14px; background: #ffffff; border-radius: 3px; margin-right: 4px;"></span>
+          <span>Studies<span style="font-weight: 700;">Mate</span></span>
+        </div>
+        <span style="font-size: 0.75rem; background: rgba(37, 99, 235, 0.2); color: #93c5fd; padding: 2px 8px; border-radius: 9999px; border: 1px solid rgba(96, 165, 250, 0.3);">
+          ⚡ Thiết lập ban đầu
+        </span>
+      </div>
+
+      <div>
+        <button type="button" onclick="skipOnboarding()" style="background: none; border: none; color: #94a3b8; font-size: 0.85rem; cursor: pointer; text-decoration: underline;" title="Bỏ qua và dùng dữ liệu môn học mẫu">
+          Bỏ qua & dùng dữ liệu mẫu &rarr;
+        </button>
+      </div>
+    </nav>
+
+    <div class="onboarding-wrapper" style="margin-top: 5rem;">
+      <div class="onboarding-header">
+        <h1>Chào mừng bạn đến với StudyMate! 🎉</h1>
+        <p>Hãy dành 1 phút để thiết lập môn học & lịch học của bạn trong học kỳ này trước khi vào Dashboard nhé.</p>
+      </div>
+
+      <!-- Step Indicators -->
+      <div class="onboarding-steps">
+        <div id="stepIndicator1" class="onboarding-step-pill active">
+          <span>📚 Bước 1: Môn học học kỳ</span>
+        </div>
+        <div style="color: #64748b;">&rarr;</div>
+        <div id="stepIndicator2" class="onboarding-step-pill">
+          <span>📅 Bước 2: Thời khóa biểu</span>
+        </div>
+        <div style="color: #64748b;">&rarr;</div>
+        <div id="stepIndicator3" class="onboarding-step-pill">
+          <span>✨ Bước 3: Vào Dashboard</span>
+        </div>
+      </div>
+
+      <!-- STEP 1: THÊM MÔN HỌC -->
+      <div id="onboardingStep1" class="onboarding-card">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem;">
+          <div>
+            <h2 style="font-size: 1.3rem; font-weight: 700; color: #ffffff; margin: 0 0 0.25rem 0;">1. Thêm các môn học bạn đăng ký</h2>
+            <p style="font-size: 0.825rem; color: #94a3b8; margin: 0;">Nhập môn học hoặc bấm chọn nhanh các môn gợi ý bên dưới.</p>
+          </div>
+          <span style="font-size: 0.85rem; font-weight: 700; color: #60a5fa; background: rgba(37,99,235,0.15); padding: 4px 10px; border-radius: 9999px;" id="onboardingSubjectCount">
+            Đã có: 0 môn
+          </span>
+        </div>
+
+        <!-- Quick Add Chips -->
+        <div style="margin-bottom: 1.25rem;">
+          <div style="font-size: 0.75rem; color: #cbd5e1; font-weight: 600; margin-bottom: 0.5rem;">💡 Gợi ý thêm nhanh 1-Click (ĐH Thủy Lợi):</div>
+          <div class="quick-add-container">
+            <button type="button" class="quick-add-chip" onclick="addQuickSubject('CSE122', 'Phát triển ứng dụng web cơ bản', 3, 'A203', 'ThS. Nguyễn Văn A')">
+              + Web cơ bản (CSE122)
+            </button>
+            <button type="button" class="quick-add-chip" onclick="addQuickSubject('CSE281', 'Cấu trúc dữ liệu và giải thuật', 4, 'B102', 'TS. Trần Thị B')">
+              + Cấu trúc dữ liệu (CSE281)
+            </button>
+            <button type="button" class="quick-add-chip" onclick="addQuickSubject('MATH101', 'Giải tích 1', 3, 'C301', 'PGS. Lê Văn C')">
+              + Giải tích 1 (MATH101)
+            </button>
+            <button type="button" class="quick-add-chip" onclick="addQuickSubject('ENG201', 'Tiếng Anh chuyên ngành', 2, 'D405', 'ThS. Phạm Thị D')">
+              + Tiếng Anh (ENG201)
+            </button>
+            <button type="button" class="quick-add-chip" onclick="addQuickSubject('CSE220', 'Cơ sở dữ liệu', 3, 'A302', 'TS. Vũ Minh E')">
+              + Cơ sở dữ liệu (CSE220)
+            </button>
+          </div>
+        </div>
+
+        <!-- Subject Input Form -->
+        <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 14px; padding: 1.25rem; margin-bottom: 1.5rem;">
+          <div style="font-size: 0.8rem; color: #cbd5e1; font-weight: 700; margin-bottom: 0.75rem;">Hoặc nhập môn học tùy chọn của bạn:</div>
+          <div style="display: grid; grid-template-columns: 1fr 2fr 1fr; gap: 0.75rem; margin-bottom: 0.75rem;">
+            <div>
+              <label style="display: block; font-size: 0.725rem; color: #94a3b8; margin-bottom: 0.25rem;">Mã môn</label>
+              <input type="text" id="obSubId" placeholder="VD: CSE122" class="form-control" style="background: rgba(255,255,255,0.06); color: #fff; border: 1px solid rgba(255,255,255,0.15);">
+            </div>
+            <div>
+              <label style="display: block; font-size: 0.725rem; color: #94a3b8; margin-bottom: 0.25rem;">Tên môn học</label>
+              <input type="text" id="obSubName" placeholder="VD: Lập trình Web" class="form-control" style="background: rgba(255,255,255,0.06); color: #fff; border: 1px solid rgba(255,255,255,0.15);">
+            </div>
+            <div>
+              <label style="display: block; font-size: 0.725rem; color: #94a3b8; margin-bottom: 0.25rem;">Số tín chỉ</label>
+              <input type="number" id="obSubCredits" placeholder="3" min="1" max="10" value="3" class="form-control" style="background: rgba(255,255,255,0.06); color: #fff; border: 1px solid rgba(255,255,255,0.15);">
+            </div>
+          </div>
+          <div style="display: grid; grid-template-columns: 1.5fr 1fr auto; gap: 0.75rem; align-items: flex-end;">
+            <div>
+              <label style="display: block; font-size: 0.725rem; color: #94a3b8; margin-bottom: 0.25rem;">Giảng viên phụ trách</label>
+              <input type="text" id="obSubTeacher" placeholder="VD: ThS. Nguyễn Văn A" class="form-control" style="background: rgba(255,255,255,0.06); color: #fff; border: 1px solid rgba(255,255,255,0.15);">
+            </div>
+            <div>
+              <label style="display: block; font-size: 0.725rem; color: #94a3b8; margin-bottom: 0.25rem;">Phòng học</label>
+              <input type="text" id="obSubRoom" placeholder="VD: A203" class="form-control" style="background: rgba(255,255,255,0.06); color: #fff; border: 1px solid rgba(255,255,255,0.15);">
+            </div>
+            <button type="button" onclick="addCustomSubject()" style="padding: 0.65rem 1.25rem; border-radius: 8px; background: #2563eb; color: #fff; font-weight: 700; font-size: 0.85rem; border: none; cursor: pointer; white-space: nowrap; transition: background 0.2s;">
+              + Thêm môn
+            </button>
+          </div>
+        </div>
+
+        <!-- Live Added Subjects List -->
+        <div style="margin-bottom: 1.5rem;">
+          <div style="font-size: 0.8rem; font-weight: 700; color: #cbd5e1; margin-bottom: 0.6rem;">Danh sách môn học kỳ này của bạn:</div>
+          <div id="onboardingSubjectList">
+            <!-- Rendered dynamically -->
+          </div>
+        </div>
+
+        <!-- Step 1 Navigation Button -->
+        <div style="display: flex; justify-content: flex-end; align-items: center; gap: 1rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.25rem;">
+          <button type="button" onclick="skipOnboarding()" style="background: none; border: none; color: #94a3b8; font-size: 0.85rem; cursor: pointer;">
+            Bỏ qua bước này
+          </button>
+          <button type="button" id="btnNextToStep2" onclick="goToOnboardingStep(2)" style="padding: 0.75rem 1.75rem; border-radius: 10px; background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%); color: #ffffff; font-weight: 700; font-size: 0.95rem; border: none; cursor: pointer; transition: all 0.2s; box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);">
+            Tiếp tục: Thêm Lịch học &rarr;
+          </button>
+        </div>
+      </div>
+
+      <!-- STEP 2: THÊM THỜI KHÓA BIỂU / LỊCH HỌC -->
+      <div id="onboardingStep2" class="onboarding-card" style="display: none;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem;">
+          <div>
+            <h2 style="font-size: 1.3rem; font-weight: 700; color: #ffffff; margin: 0 0 0.25rem 0;">2. Thiết lập thời khóa biểu & lịch học</h2>
+            <p style="font-size: 0.825rem; color: #94a3b8; margin: 0;">Gán lịch học trong tuần hoặc sử dụng tính năng thông minh Quét ảnh TKB.</p>
+          </div>
+          <span style="font-size: 0.85rem; font-weight: 700; color: #a78bfa; background: rgba(139,92,246,0.15); padding: 4px 10px; border-radius: 9999px;" id="onboardingScheduleCount">
+            Đã có: 0 ca học
+          </span>
+        </div>
+
+        <!-- Mode Toggle Tabs -->
+        <div style="display: flex; gap: 0.5rem; margin-bottom: 1.25rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.75rem;">
+          <button type="button" id="tabScheduleManual" onclick="setScheduleTab('manual')" style="padding: 0.5rem 1rem; border-radius: 8px; background: rgba(37, 99, 235, 0.2); border: 1px solid rgba(96, 165, 250, 0.4); color: #93c5fd; font-weight: 600; font-size: 0.825rem; cursor: pointer;">
+            ✍️ Gán lịch học theo môn
+          </button>
+          <button type="button" id="tabScheduleOCR" onclick="setScheduleTab('ocr')" style="padding: 0.5rem 1rem; border-radius: 8px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.12); color: #94a3b8; font-weight: 600; font-size: 0.825rem; cursor: pointer;">
+            📸 Quét ảnh chụp TKB (AI/OCR)
+          </button>
+        </div>
+
+        <!-- Tab 1 Content: Manual Schedule Assignment -->
+        <div id="tabScheduleManualContent">
+          <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 14px; padding: 1.25rem; margin-bottom: 1.5rem;">
+            <div style="display: grid; grid-template-columns: 1.8fr 1.2fr 1.5fr auto; gap: 0.75rem; align-items: flex-end;">
+              <div>
+                <label style="display: block; font-size: 0.725rem; color: #94a3b8; margin-bottom: 0.25rem;">Chọn môn học</label>
+                <select id="obSchedSubject" class="form-control" style="background: #1e293b; color: #fff; border: 1px solid rgba(255,255,255,0.15);">
+                  <!-- Filled dynamically from subjects -->
+                </select>
+              </div>
+              <div>
+                <label style="display: block; font-size: 0.725rem; color: #94a3b8; margin-bottom: 0.25rem;">Thứ trong tuần</label>
+                <select id="obSchedDay" class="form-control" style="background: #1e293b; color: #fff; border: 1px solid rgba(255,255,255,0.15);">
+                  <option value="Thứ Hai">Thứ Hai</option>
+                  <option value="Thứ Ba">Thứ Ba</option>
+                  <option value="Thứ Tư">Thứ Tư</option>
+                  <option value="Thứ Năm">Thứ Năm</option>
+                  <option value="Thứ Sáu">Thứ Sáu</option>
+                  <option value="Thứ Bảy">Thứ Bảy</option>
+                  <option value="Chủ Nhật">Chủ Nhật</option>
+                </select>
+              </div>
+              <div>
+                <label style="display: block; font-size: 0.725rem; color: #94a3b8; margin-bottom: 0.25rem;">Ca học (Giờ lên lớp)</label>
+                <select id="obSchedTime" class="form-control" style="background: #1e293b; color: #fff; border: 1px solid rgba(255,255,255,0.15);">
+                  <option value="07:00 - 09:00">Ca 1: 07:00 - 09:00</option>
+                  <option value="09:15 - 11:30">Ca 2: 09:15 - 11:30</option>
+                  <option value="13:00 - 15:00">Ca 3: 13:00 - 15:00</option>
+                  <option value="15:15 - 17:30">Ca 4: 15:15 - 17:30</option>
+                  <option value="18:00 - 20:30">Ca tối: 18:00 - 20:30</option>
+                </select>
+              </div>
+              <button type="button" onclick="addScheduleSlotFromForm()" style="padding: 0.65rem 1.25rem; border-radius: 8px; background: #7c3aed; color: #fff; font-weight: 700; font-size: 0.85rem; border: none; cursor: pointer; white-space: nowrap; transition: background 0.2s;">
+                + Gán vào TKB
+              </button>
+            </div>
+          </div>
+
+          <!-- Schedule Slots List -->
+          <div style="margin-bottom: 1.5rem;">
+            <div style="font-size: 0.8rem; font-weight: 700; color: #cbd5e1; margin-bottom: 0.6rem;">Các ca học đã thiết lập:</div>
+            <div id="onboardingScheduleList">
+              <!-- Rendered dynamically -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 2 Content: Smart OCR Schedule Upload -->
+        <div id="tabScheduleOCRContent" style="display: none; margin-bottom: 1.5rem;">
+          <div class="ocr-upload-zone" onclick="simulateOCROnboarding()">
+            <div style="font-size: 2.2rem; margin-bottom: 0.5rem;">📸</div>
+            <div style="font-weight: 700; font-size: 1rem; color: #ffffff; margin-bottom: 0.25rem;">
+              Kéo thả hoặc bấm để tải ảnh chụp Thời khóa biểu trường
+            </div>
+            <p style="font-size: 0.8rem; color: #94a3b8; margin-bottom: 0.75rem;">
+              AI/OCR sẽ tự động nhận diện thứ, giờ, phòng và tên môn học để xếp vào lịch học cho bạn.
+            </p>
+            <button type="button" style="padding: 0.45rem 1rem; border-radius: 8px; background: #7c3aed; color: #fff; font-size: 0.8rem; font-weight: 600; border: none; cursor: pointer;">
+              ⚡ Bấm để thử nhận diện ảnh mẫu TLU (Demo)
+            </button>
+          </div>
+        </div>
+
+        <!-- Step 2 Navigation Buttons -->
+        <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.25rem;">
+          <button type="button" onclick="goToOnboardingStep(1)" style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.15); color: #cbd5e1; padding: 0.75rem 1.25rem; border-radius: 10px; font-size: 0.9rem; font-weight: 600; cursor: pointer;">
+            &larr; Quay lại Môn học
+          </button>
+          <div style="display: flex; gap: 0.85rem; align-items: center;">
+            <button type="button" onclick="skipOnboarding()" style="background: none; border: none; color: #94a3b8; font-size: 0.85rem; cursor: pointer;">
+              Dùng lịch mặc định
+            </button>
+            <button type="button" onclick="completeOnboarding()" style="padding: 0.75rem 1.75rem; border-radius: 10px; background: linear-gradient(135deg, #10b981 0%, #2563eb 100%); color: #ffffff; font-weight: 700; font-size: 0.95rem; border: none; cursor: pointer; transition: all 0.2s; box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);">
+              🎉 Hoàn tất & Vào không gian học tập &rarr;
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- ========================================================================= -->
   <!-- VIEW 2: KHÔNG GIAN HỌC TẬP THẨM MỸ TỐI TẬP TRUNG (ẢNH 1)                  -->
   <!-- ========================================================================= -->
   <div id="workspaceView" class="spa-view" style="display: none;">
@@ -517,6 +753,9 @@
         <span id="userNameBadge" style="font-size: 0.8rem; color: var(--theme-text-secondary); background: rgba(255,255,255,0.08); padding: 0.35rem 0.75rem; border-radius: 9999px; border: 1px solid var(--theme-border);">
           👤 <span id="displayUserName">Minh Đức</span>
         </span>
+        <button type="button" onclick="switchToOnboarding()" class="st-pill-btn" style="padding: 0.35rem 0.85rem; font-size: 0.8rem; background: rgba(37,99,235,0.2); border: 1px solid rgba(96,165,250,0.4); cursor: pointer; color: #93c5fd;" title="Thiết lập môn học & Thời khóa biểu">
+          ⚙️ Cài đặt môn & TKB
+        </button>
         <button type="button" onclick="switchToLanding()" class="st-pill-btn" style="padding: 0.35rem 0.85rem; font-size: 0.8rem; background: none; border: 1px solid var(--theme-border); cursor: pointer; color: var(--theme-text-secondary);" title="Về trang giới thiệu">
           🚪 Thoát
         </button>
@@ -637,7 +876,7 @@
             <div class="st-card-title">📈 Tiến độ học tập ra sao?</div>
             <a href="progress.html" style="font-size: 0.75rem; color: var(--theme-primary);">Chi tiết &rarr;</a>
           </div>
-          <div style="display: flex; flex-direction: column; gap: 1rem;">
+          <div id="dashboardProgressContainer" style="display: flex; flex-direction: column; gap: 1rem;">
             <div>
               <div style="display: flex; justify-content: space-between; font-size: 0.8125rem; margin-bottom: 0.35rem;">
                 <span>CSE122 - Web cơ bản</span>
@@ -755,6 +994,26 @@
   <script src="../js/dashboard.js"></script>
 
   <script>
+    // Default sample data
+    const defaultSampleSubjects = [
+      { id: "CSE122", name: "Phát triển ứng dụng web cơ bản", credits: 3, room: "A203", teacher: "ThS. Nguyễn Văn A" },
+      { id: "CSE281", name: "Cấu trúc dữ liệu và giải thuật", credits: 4, room: "B102", teacher: "TS. Trần Thị B" },
+      { id: "MATH101", name: "Giải tích 1", credits: 3, room: "C301", teacher: "PGS. Lê Văn C" },
+      { id: "ENG201", name: "Tiếng Anh chuyên ngành", credits: 2, room: "D405", teacher: "ThS. Phạm Thị D" }
+    ];
+
+    const defaultSampleSchedule = [
+      { subjectId: "CSE122", subjectName: "Phát triển ứng dụng web cơ bản (CSE122)", day: "Thứ Hai", time: "07:00 - 09:00", room: "Phòng A203", teacher: "ThS. Nguyễn Văn A", status: "Đang diễn ra" },
+      { subjectId: "CSE281", subjectName: "Cấu trúc dữ liệu và giải thuật (CSE281)", day: "Thứ Hai", time: "09:15 - 11:30", room: "Phòng B102", teacher: "TS. Trần Thị B", status: "Sắp tới" },
+      { subjectId: "MATH101", subjectName: "Giải tích 1 (MATH101)", day: "Thứ Tư", time: "07:00 - 09:00", room: "Phòng C301", teacher: "PGS. Lê Văn C", status: "Sắp tới" },
+      { subjectId: "ENG201", subjectName: "Tiếng Anh chuyên ngành (ENG201)", day: "Thứ Sáu", time: "13:00 - 15:00", room: "Phòng D405", teacher: "ThS. Phạm Thị D", status: "Sắp tới" }
+    ];
+
+    // Onboarding Wizard Working State
+    let obSubjects = [];
+    let obSchedule = [];
+    let currentOnboardingStep = 1;
+
     // Current auth modal mode: 'register' or 'login'
     let currentAuthMode = 'register';
 
@@ -798,7 +1057,7 @@
         nameGroup.style.display = 'block';
         modalTitle.textContent = 'Tạo tài khoản StudyMate';
         modalSubtitle.textContent = 'Trải nghiệm không gian học tập thẩm mỹ dành cho sinh viên';
-        authSubmitBtn.textContent = 'Tạo tài khoản & Vào Dashboard →';
+        authSubmitBtn.textContent = 'Tạo tài khoản & Thiết lập môn học →';
       } else {
         tabLogin.style.borderBottom = '2px solid #60a5fa';
         tabLogin.style.color = '#60a5fa';
@@ -811,7 +1070,7 @@
         nameGroup.style.display = 'none';
         modalTitle.textContent = 'Đăng nhập StudyMate';
         modalSubtitle.textContent = 'Chào mừng bạn quay lại với không gian học tập';
-        authSubmitBtn.textContent = 'Đăng nhập & Vào Dashboard →';
+        authSubmitBtn.textContent = 'Đăng nhập & Tiếp tục →';
       }
     }
 
@@ -824,7 +1083,332 @@
       // Save session
       localStorage.setItem('studymate_user', JSON.stringify({ name: userName, email: emailInput.value }));
       closeAuthModal();
-      switchToWorkspace(userName);
+
+      const hasOnboarded = localStorage.getItem('studymate_onboarded') === 'true';
+
+      // If user registered new account OR has never completed onboarding -> show Onboarding Wizard
+      if (currentAuthMode === 'register' || !hasOnboarded) {
+        switchToOnboarding(userName);
+      } else {
+        // Returning user who already completed onboarding -> jump straight to Dashboard
+        switchToWorkspace(userName);
+      }
+    }
+
+    // Switch view to Onboarding Wizard (Bước 1: Môn học, Bước 2: Lịch học)
+    function switchToOnboarding(name) {
+      closeAuthModal();
+
+      const landing = document.getElementById('landingView');
+      const workspace = document.getElementById('workspaceView');
+      const onboarding = document.getElementById('onboardingView');
+
+      if (landing) landing.style.display = 'none';
+      if (workspace) workspace.style.display = 'none';
+      if (onboarding) onboarding.style.display = 'block';
+
+      document.body.classList.remove('athenify-body');
+      document.documentElement.setAttribute('data-theme', 'cosmic');
+
+      // Update URL hash
+      if (window.location.hash !== '#onboarding') {
+        history.pushState(null, '', '#onboarding');
+      }
+
+      // Initialize onboarding data from localStorage if existing, or start empty
+      const savedSubs = JSON.parse(localStorage.getItem('studymate_subjects')) || [];
+      const savedSched = JSON.parse(localStorage.getItem('studymate_schedule')) || [];
+      
+      obSubjects = savedSubs.length > 0 ? [...savedSubs] : [];
+      obSchedule = savedSched.length > 0 ? [...savedSched] : [];
+
+      goToOnboardingStep(1);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Navigate between Onboarding Steps (1: Môn học, 2: Lịch học)
+    function goToOnboardingStep(step) {
+      currentOnboardingStep = step;
+      const step1Card = document.getElementById('onboardingStep1');
+      const step2Card = document.getElementById('onboardingStep2');
+      const pill1 = document.getElementById('stepIndicator1');
+      const pill2 = document.getElementById('stepIndicator2');
+
+      if (step === 1) {
+        if (step1Card) step1Card.style.display = 'block';
+        if (step2Card) step2Card.style.display = 'none';
+        if (pill1) { pill1.className = 'onboarding-step-pill active'; }
+        if (pill2) { pill2.className = 'onboarding-step-pill'; }
+        renderOnboardingSubjects();
+      } else if (step === 2) {
+        // If user hasn't added any subjects, provide quick default subjects so they aren't blocked
+        if (obSubjects.length === 0) {
+          addQuickSubject('CSE122', 'Phát triển ứng dụng web cơ bản', 3, 'A203', 'ThS. Nguyễn Văn A');
+          addQuickSubject('CSE281', 'Cấu trúc dữ liệu và giải thuật', 4, 'B102', 'TS. Trần Thị B');
+        }
+
+        if (step1Card) step1Card.style.display = 'none';
+        if (step2Card) step2Card.style.display = 'block';
+        if (pill1) { pill1.className = 'onboarding-step-pill completed'; }
+        if (pill2) { pill2.className = 'onboarding-step-pill active'; }
+        
+        populateScheduleSubjectDropdown();
+        renderOnboardingSchedule();
+      }
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // --- STEP 1 LOGIC: SUBJECTS ---
+    function addQuickSubject(id, name, credits, room, teacher) {
+      if (obSubjects.some(s => s.id === id)) {
+        alert(`Môn ${id} (${name}) đã có trong danh sách!`);
+        return;
+      }
+      obSubjects.push({ id, name, credits, room: room || 'A203', teacher: teacher || 'Giảng viên TLU' });
+      renderOnboardingSubjects();
+    }
+
+    function addCustomSubject() {
+      const idInput = document.getElementById('obSubId');
+      const nameInput = document.getElementById('obSubName');
+      const creditsInput = document.getElementById('obSubCredits');
+      const teacherInput = document.getElementById('obSubTeacher');
+      const roomInput = document.getElementById('obSubRoom');
+
+      const id = idInput ? idInput.value.trim().toUpperCase() : '';
+      const name = nameInput ? nameInput.value.trim() : '';
+      const credits = creditsInput ? parseInt(creditsInput.value) || 3 : 3;
+      const teacher = teacherInput ? teacherInput.value.trim() || 'Giảng viên' : 'Giảng viên';
+      const room = roomInput ? roomInput.value.trim() || 'A203' : 'A203';
+
+      if (!id || !name) {
+        alert('Vui lòng nhập cả Mã môn và Tên môn học!');
+        return;
+      }
+
+      if (obSubjects.some(s => s.id === id)) {
+        alert(`Mã môn ${id} đã tồn tại trong danh sách!`);
+        return;
+      }
+
+      obSubjects.push({ id, name, credits, teacher, room });
+      idInput.value = '';
+      nameInput.value = '';
+      if (teacherInput) teacherInput.value = '';
+      if (roomInput) roomInput.value = '';
+
+      renderOnboardingSubjects();
+    }
+
+    function removeOnboardingSubject(idx) {
+      const removed = obSubjects.splice(idx, 1)[0];
+      if (removed) {
+        obSchedule = obSchedule.filter(s => s.subjectId !== removed.id);
+      }
+      renderOnboardingSubjects();
+      populateScheduleSubjectDropdown();
+    }
+
+    function renderOnboardingSubjects() {
+      const countElem = document.getElementById('onboardingSubjectCount');
+      if (countElem) countElem.textContent = `Đã có: ${obSubjects.length} môn`;
+
+      const listElem = document.getElementById('onboardingSubjectList');
+      if (!listElem) return;
+
+      if (obSubjects.length === 0) {
+        listElem.innerHTML = `
+          <div style="padding: 1.5rem; text-align: center; color: #94a3b8; border: 1px dashed rgba(255,255,255,0.15); border-radius: 12px; font-size: 0.85rem;">
+            Chưa có môn học nào được thêm. Hãy bấm các môn gợi ý bên trên hoặc nhập môn mới nhé!
+          </div>
+        `;
+        return;
+      }
+
+      listElem.innerHTML = obSubjects.map((sub, idx) => `
+        <div class="subject-item-card">
+          <div style="display: flex; align-items: center; gap: 0.85rem;">
+            <span style="font-size: 0.75rem; font-weight: 700; background: rgba(37,99,235,0.25); color: #93c5fd; border: 1px solid rgba(96,165,250,0.4); padding: 4px 8px; border-radius: 6px;">
+              ${sub.id}
+            </span>
+            <div>
+              <div style="font-weight: 700; font-size: 0.925rem; color: #ffffff;">${sub.name}</div>
+              <div style="font-size: 0.75rem; color: #94a3b8;">
+                ${sub.credits} tín chỉ • 🏛️ ${sub.room} • 👨‍🏫 ${sub.teacher}
+              </div>
+            </div>
+          </div>
+          <button type="button" onclick="removeOnboardingSubject(${idx})" style="background: rgba(239,68,68,0.15); border: 1px solid rgba(239,68,68,0.3); color: #fca5a5; padding: 4px 10px; border-radius: 6px; font-size: 0.75rem; cursor: pointer; transition: all 0.2s;">
+            ✕ Xóa
+          </button>
+        </div>
+      `).join('');
+    }
+
+    // --- STEP 2 LOGIC: SCHEDULE ---
+    function setScheduleTab(tab) {
+      const tabManual = document.getElementById('tabScheduleManual');
+      const tabOCR = document.getElementById('tabScheduleOCR');
+      const manualContent = document.getElementById('tabScheduleManualContent');
+      const ocrContent = document.getElementById('tabScheduleOCRContent');
+
+      if (tab === 'manual') {
+        if (manualContent) manualContent.style.display = 'block';
+        if (ocrContent) ocrContent.style.display = 'none';
+        if (tabManual) {
+          tabManual.style.background = 'rgba(37, 99, 235, 0.2)';
+          tabManual.style.borderColor = 'rgba(96, 165, 250, 0.4)';
+          tabManual.style.color = '#93c5fd';
+        }
+        if (tabOCR) {
+          tabOCR.style.background = 'rgba(255,255,255,0.04)';
+          tabOCR.style.borderColor = 'rgba(255,255,255,0.12)';
+          tabOCR.style.color = '#94a3b8';
+        }
+      } else {
+        if (manualContent) manualContent.style.display = 'none';
+        if (ocrContent) ocrContent.style.display = 'block';
+        if (tabOCR) {
+          tabOCR.style.background = 'rgba(139, 92, 246, 0.25)';
+          tabOCR.style.borderColor = 'rgba(167, 139, 250, 0.5)';
+          tabOCR.style.color = '#c4b5fd';
+        }
+        if (tabManual) {
+          tabManual.style.background = 'rgba(255,255,255,0.04)';
+          tabManual.style.borderColor = 'rgba(255,255,255,0.12)';
+          tabManual.style.color = '#94a3b8';
+        }
+      }
+    }
+
+    function populateScheduleSubjectDropdown() {
+      const selectElem = document.getElementById('obSchedSubject');
+      if (!selectElem) return;
+
+      if (obSubjects.length === 0) {
+        selectElem.innerHTML = `<option value="">(Chưa có môn học - hãy thêm ở Bước 1)</option>`;
+        return;
+      }
+
+      selectElem.innerHTML = obSubjects.map(s => `
+        <option value="${s.id}">${s.id} - ${s.name}</option>
+      `).join('');
+    }
+
+    function addScheduleSlotFromForm() {
+      const selectElem = document.getElementById('obSchedSubject');
+      const dayElem = document.getElementById('obSchedDay');
+      const timeElem = document.getElementById('obSchedTime');
+
+      if (!selectElem || !selectElem.value) {
+        alert('Vui lòng chọn môn học!');
+        return;
+      }
+
+      const subId = selectElem.value;
+      const day = dayElem.value;
+      const time = timeElem.value;
+      const subject = obSubjects.find(s => s.id === subId) || { id: subId, name: subId, room: 'A203', teacher: 'Giảng viên' };
+
+      obSchedule.push({
+        subjectId: subject.id,
+        subjectName: `${subject.name} (${subject.id})`,
+        day: day,
+        time: time,
+        room: `Phòng ${subject.room}`,
+        teacher: subject.teacher,
+        status: 'Sắp tới'
+      });
+
+      renderOnboardingSchedule();
+    }
+
+    function removeOnboardingSchedule(idx) {
+      obSchedule.splice(idx, 1);
+      renderOnboardingSchedule();
+    }
+
+    function renderOnboardingSchedule() {
+      const countElem = document.getElementById('onboardingScheduleCount');
+      if (countElem) countElem.textContent = `Đã có: ${obSchedule.length} ca học`;
+
+      const listElem = document.getElementById('onboardingScheduleList');
+      if (!listElem) return;
+
+      if (obSchedule.length === 0) {
+        listElem.innerHTML = `
+          <div style="padding: 1.5rem; text-align: center; color: #94a3b8; border: 1px dashed rgba(255,255,255,0.15); border-radius: 12px; font-size: 0.85rem;">
+            Chưa có ca học nào trong tuần. Hãy chọn môn & ca học rồi bấm <strong>+ Gán vào TKB</strong> hoặc dùng tính năng quét ảnh!
+          </div>
+        `;
+        return;
+      }
+
+      listElem.innerHTML = obSchedule.map((slot, idx) => `
+        <div style="display: flex; align-items: center; justify-content: space-between; padding: 0.75rem 1rem; border-radius: 10px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); margin-bottom: 0.5rem;">
+          <div style="display: flex; align-items: center; gap: 0.75rem;">
+            <span style="font-size: 0.75rem; font-weight: 700; background: rgba(139,92,246,0.25); color: #c4b5fd; padding: 3px 8px; border-radius: 6px;">
+              ${slot.day}
+            </span>
+            <span style="font-size: 0.75rem; background: rgba(37,99,235,0.2); color: #93c5fd; padding: 3px 8px; border-radius: 6px;">
+              ${slot.time}
+            </span>
+            <div>
+              <div style="font-size: 0.85rem; font-weight: 600; color: #ffffff;">${slot.subjectName || slot.subjectId}</div>
+              <div style="font-size: 0.725rem; color: #94a3b8;">${slot.room} • ${slot.teacher}</div>
+            </div>
+          </div>
+          <button type="button" onclick="removeOnboardingSchedule(${idx})" style="background: none; border: none; color: #ef4444; font-size: 0.85rem; cursor: pointer; padding: 4px 8px;" title="Xóa ca học này">
+            🗑️
+          </button>
+        </div>
+      `).join('');
+    }
+
+    // Simulate OCR Timetable Recognition
+    function simulateOCROnboarding() {
+      // Add default subjects if not added
+      defaultSampleSubjects.forEach(sub => {
+        if (!obSubjects.some(s => s.id === sub.id)) {
+          obSubjects.push(sub);
+        }
+      });
+      renderOnboardingSubjects();
+      populateScheduleSubjectDropdown();
+
+      // Set schedule slots
+      obSchedule = [
+        { subjectId: "CSE122", subjectName: "Phát triển ứng dụng web cơ bản (CSE122)", day: "Thứ Hai", time: "07:00 - 09:00", room: "Phòng A203", teacher: "ThS. Nguyễn Văn A", status: "Đang diễn ra" },
+        { subjectId: "CSE281", subjectName: "Cấu trúc dữ liệu và giải thuật (CSE281)", day: "Thứ Hai", time: "09:15 - 11:30", room: "Phòng B102", teacher: "TS. Trần Thị B", status: "Sắp tới" },
+        { subjectId: "MATH101", subjectName: "Giải tích 1 (MATH101)", day: "Thứ Tư", time: "07:00 - 09:00", room: "Phòng C301", teacher: "PGS. Lê Văn C", status: "Sắp tới" },
+        { subjectId: "ENG201", subjectName: "Tiếng Anh chuyên ngành (ENG201)", day: "Thứ Sáu", time: "13:00 - 15:00", room: "Phòng D405", teacher: "ThS. Phạm Thị D", status: "Sắp tới" }
+      ];
+
+      setScheduleTab('manual');
+      renderOnboardingSchedule();
+      alert('✨ AI/OCR đã nhận diện thành công 4 môn học & 4 ca học từ ảnh chụp Thời khóa biểu Thủy Lợi!');
+    }
+
+    // Complete Onboarding & Enter Workspace
+    function completeOnboarding() {
+      const finalSubjects = obSubjects.length > 0 ? obSubjects : defaultSampleSubjects;
+      const finalSchedule = obSchedule.length > 0 ? obSchedule : defaultSampleSchedule;
+
+      localStorage.setItem('studymate_subjects', JSON.stringify(finalSubjects));
+      localStorage.setItem('studymate_schedule', JSON.stringify(finalSchedule));
+      localStorage.setItem('studymate_onboarded', 'true');
+
+      switchToWorkspace();
+    }
+
+    // Skip Onboarding with Sample Data
+    function skipOnboarding() {
+      localStorage.setItem('studymate_subjects', JSON.stringify(defaultSampleSubjects));
+      localStorage.setItem('studymate_schedule', JSON.stringify(defaultSampleSchedule));
+      localStorage.setItem('studymate_onboarded', 'true');
+
+      switchToWorkspace();
     }
 
     // Switch view to Workspace (Image 1) in the exact SAME TAB
@@ -833,9 +1417,11 @@
 
       const landing = document.getElementById('landingView');
       const workspace = document.getElementById('workspaceView');
+      const onboarding = document.getElementById('onboardingView');
       
-      landing.style.display = 'none';
-      workspace.style.display = 'block';
+      if (landing) landing.style.display = 'none';
+      if (onboarding) onboarding.style.display = 'none';
+      if (workspace) workspace.style.display = 'block';
 
       // Update body styles for Dark Aesthetic theme
       document.body.classList.remove('athenify-body');
@@ -854,20 +1440,22 @@
         history.pushState(null, '', '#dashboard');
       }
 
-      // Re-trigger clock and dashboard refresh if functions exist
+      // Re-trigger clock and dashboard refresh
       if (typeof updateClock === 'function') updateClock();
       if (typeof loadDashboardData === 'function') loadDashboardData();
 
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // Switch view to Landing Page (Image 2) in the exact SAME TAB
+    // Switch view to Landing Page in the exact SAME TAB
     function switchToLanding() {
       const landing = document.getElementById('landingView');
       const workspace = document.getElementById('workspaceView');
+      const onboarding = document.getElementById('onboardingView');
 
-      workspace.style.display = 'none';
-      landing.style.display = 'block';
+      if (workspace) workspace.style.display = 'none';
+      if (onboarding) onboarding.style.display = 'none';
+      if (landing) landing.style.display = 'block';
 
       // Reset body class to Athenify light theme
       document.body.classList.add('athenify-body');
@@ -883,6 +1471,8 @@
     window.addEventListener('hashchange', function() {
       if (window.location.hash === '#dashboard') {
         switchToWorkspace();
+      } else if (window.location.hash === '#onboarding') {
+        switchToOnboarding();
       } else {
         switchToLanding();
       }
@@ -892,6 +1482,8 @@
     document.addEventListener('DOMContentLoaded', function() {
       if (window.location.hash === '#dashboard') {
         switchToWorkspace();
+      } else if (window.location.hash === '#onboarding') {
+        switchToOnboarding();
       } else {
         switchToLanding();
       }
