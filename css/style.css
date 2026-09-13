@@ -12,14 +12,14 @@
   --theme-secondary: #6366f1;
   --theme-accent: #3b82f6;
   --theme-background: #0f0f23;
-  --theme-card: rgba(139, 92, 246, 0.06);
-  --theme-card-hover: rgba(139, 92, 246, 0.12);
-  --theme-border: rgba(99, 102, 241, 0.18);
-  --theme-text-primary: #ede9fe;
-  --theme-text-secondary: rgba(237, 233, 254, 0.7);
-  --theme-text-muted: rgba(237, 233, 254, 0.4);
-  --theme-navbar-bg: rgba(15, 15, 35, 0.75);
-  --theme-card-active: rgba(139, 92, 246, 0.18);
+  --theme-card: rgba(139, 92, 246, 0.07);
+  --theme-card-hover: rgba(139, 92, 246, 0.15);
+  --theme-border: rgba(139, 92, 246, 0.28);
+  --theme-text-primary: #ffffff;
+  --theme-text-secondary: #e2e8f0;
+  --theme-text-muted: #94a3b8;
+  --theme-navbar-bg: rgba(15, 15, 35, 0.88);
+  --theme-card-active: rgba(139, 92, 246, 0.22);
   --theme-card-solid: #171533;
 
   /* Deadline status colors */
@@ -29,8 +29,8 @@
   --status-warning-bg: rgba(245, 158, 11, 0.15);
   --status-danger: #ef4444;
   --status-danger-bg: rgba(239, 68, 68, 0.15);
-  --status-overdue: #64748b;
-  --status-overdue-bg: rgba(100, 116, 139, 0.2);
+  --status-overdue: #94a3b8;
+  --status-overdue-bg: rgba(148, 163, 184, 0.2);
 
   /* Radius & Shadows */
   --radius-sm: 8px;
@@ -41,92 +41,169 @@
 }
 
 /* ==========================================================================
-   THEME PALETTES (StudyMate THEMES)
+   THEME PALETTES (StudyMate THEMES - OPTIMIZED CONTRAST & LEGIBILITY)
    ========================================================================== */
 
 /* 1. Sepia / Warm Coffee */
 html[data-theme="sepia"] {
-  --theme-primary: #D2691E;
-  --theme-secondary: #A0522D;
-  --theme-accent: #D2691E;
-  --theme-background: #2C2416;
-  --theme-card: rgba(210, 105, 30, 0.08);
-  --theme-card-hover: rgba(210, 105, 30, 0.14);
-  --theme-border: rgba(210, 105, 30, 0.22);
-  --theme-text-primary: #F5DEB3;
-  --theme-text-secondary: rgba(245, 222, 179, 0.75);
-  --theme-text-muted: rgba(245, 222, 179, 0.45);
-  --theme-navbar-bg: rgba(44, 36, 22, 0.85);
-  --theme-card-active: rgba(210, 105, 30, 0.2);
-  --theme-card-solid: #382c1b;
+  --theme-primary: #f59e0b;
+  --theme-secondary: #d97706;
+  --theme-accent: #fbbf24;
+  --theme-background: #1c150c;
+  --theme-card: rgba(245, 158, 11, 0.08);
+  --theme-card-hover: rgba(245, 158, 11, 0.16);
+  --theme-border: rgba(245, 158, 11, 0.32);
+  --theme-text-primary: #fffbeb;
+  --theme-text-secondary: #fde68a;
+  --theme-text-muted: #fcd34d;
+  --theme-navbar-bg: rgba(28, 21, 12, 0.92);
+  --theme-card-active: rgba(245, 158, 11, 0.25);
+  --theme-card-solid: #2d2113;
 }
 
 /* 2. Soft Gray / Modern Minimal */
 html[data-theme="soft-gray"] {
-  --theme-primary: #A855F7;
-  --theme-secondary: #EC4899;
-  --theme-accent: #8B5CF6;
-  --theme-background: #18181b;
-  --theme-card: rgba(255, 255, 255, 0.04);
-  --theme-card-hover: rgba(255, 255, 255, 0.08);
-  --theme-border: rgba(255, 255, 255, 0.12);
-  --theme-text-primary: #f4f4f5;
-  --theme-text-secondary: rgba(244, 244, 245, 0.7);
-  --theme-text-muted: rgba(244, 244, 245, 0.4);
-  --theme-navbar-bg: rgba(24, 24, 27, 0.85);
-  --theme-card-active: rgba(255, 255, 255, 0.1);
-  --theme-card-solid: #27272a;
+  --theme-primary: #c084fc;
+  --theme-secondary: #f472b6;
+  --theme-accent: #a855f7;
+  --theme-background: #121215;
+  --theme-card: rgba(255, 255, 255, 0.05);
+  --theme-card-hover: rgba(255, 255, 255, 0.1);
+  --theme-border: rgba(255, 255, 255, 0.22);
+  --theme-text-primary: #ffffff;
+  --theme-text-secondary: #e4e4e7;
+  --theme-text-muted: #a1a1aa;
+  --theme-navbar-bg: rgba(18, 18, 21, 0.92);
+  --theme-card-active: rgba(255, 255, 255, 0.14);
+  --theme-card-solid: #202024;
 }
 
 /* 3. Ocean Night */
 html[data-theme="ocean"] {
-  --theme-primary: #06b6d4;
-  --theme-secondary: #0891b2;
-  --theme-accent: #0284c7;
-  --theme-background: #082f49;
+  --theme-primary: #22d3ee;
+  --theme-secondary: #06b6d4;
+  --theme-accent: #38bdf8;
+  --theme-background: #041d30;
   --theme-card: rgba(6, 182, 212, 0.08);
-  --theme-card-hover: rgba(6, 182, 212, 0.14);
-  --theme-border: rgba(6, 182, 212, 0.2);
-  --theme-text-primary: #cffafe;
-  --theme-text-secondary: rgba(207, 250, 254, 0.75);
-  --theme-text-muted: rgba(207, 250, 254, 0.45);
-  --theme-navbar-bg: rgba(8, 47, 73, 0.85);
-  --theme-card-active: rgba(6, 182, 212, 0.2);
-  --theme-card-solid: #0c4a6e;
+  --theme-card-hover: rgba(6, 182, 212, 0.16);
+  --theme-border: rgba(34, 211, 238, 0.32);
+  --theme-text-primary: #ffffff;
+  --theme-text-secondary: #e0f2fe;
+  --theme-text-muted: #7dd3fc;
+  --theme-navbar-bg: rgba(4, 29, 48, 0.92);
+  --theme-card-active: rgba(6, 182, 212, 0.22);
+  --theme-card-solid: #062b46;
 }
 
 /* 4. Forest Green */
 html[data-theme="forest"] {
-  --theme-primary: #22c55e;
-  --theme-secondary: #16a34a;
-  --theme-accent: #10b981;
-  --theme-background: #0f291e;
+  --theme-primary: #4ade80;
+  --theme-secondary: #22c55e;
+  --theme-accent: #34d399;
+  --theme-background: #0a1f16;
   --theme-card: rgba(34, 197, 94, 0.08);
-  --theme-card-hover: rgba(34, 197, 94, 0.14);
-  --theme-border: rgba(34, 197, 94, 0.2);
-  --theme-text-primary: #dcfce7;
-  --theme-text-secondary: rgba(220, 252, 231, 0.75);
-  --theme-text-muted: rgba(220, 252, 231, 0.45);
-  --theme-navbar-bg: rgba(15, 41, 30, 0.85);
-  --theme-card-active: rgba(34, 197, 94, 0.2);
-  --theme-card-solid: #14532d;
+  --theme-card-hover: rgba(34, 197, 94, 0.16);
+  --theme-border: rgba(74, 222, 128, 0.32);
+  --theme-text-primary: #ffffff;
+  --theme-text-secondary: #dcfce7;
+  --theme-text-muted: #86efac;
+  --theme-navbar-bg: rgba(10, 31, 22, 0.92);
+  --theme-card-active: rgba(34, 197, 94, 0.22);
+  --theme-card-solid: #103324;
 }
 
 /* 5. Pastel Cream (Light Aesthetic) */
 html[data-theme="pastel"] {
-  --theme-primary: #7c3aed;
-  --theme-secondary: #db2777;
-  --theme-accent: #2563eb;
-  --theme-background: #faf5ef;
-  --theme-card: rgba(255, 255, 255, 0.85);
-  --theme-card-hover: rgba(255, 255, 255, 0.95);
-  --theme-border: rgba(200, 180, 220, 0.35);
-  --theme-text-primary: #2e263d;
-  --theme-text-secondary: rgba(46, 38, 61, 0.75);
-  --theme-text-muted: rgba(46, 38, 61, 0.45);
-  --theme-navbar-bg: rgba(250, 245, 239, 0.9);
-  --theme-card-active: rgba(124, 58, 237, 0.12);
+  --theme-primary: #6d28d9;
+  --theme-secondary: #be185d;
+  --theme-accent: #1d4ed8;
+  --theme-background: #faf8f5;
+  --theme-card: #ffffff;
+  --theme-card-hover: #ffffff;
+  --theme-border: rgba(148, 163, 184, 0.4);
+  --theme-text-primary: #0f172a;
+  --theme-text-secondary: #334155;
+  --theme-text-muted: #64748b;
+  --theme-navbar-bg: rgba(255, 255, 255, 0.94);
+  --theme-card-active: rgba(109, 40, 217, 0.08);
   --theme-card-solid: #ffffff;
+}
+
+/* 6. Midnight Blue (Nền Đen Tuyệt Đối - Viền Xanh Dương Dạ Quang) */
+html[data-theme="midnight-blue"] {
+  --theme-primary: #3b82f6;
+  --theme-secondary: #2563eb;
+  --theme-accent: #60a5fa;
+  --theme-background: #000000;
+  --theme-card: rgba(8, 14, 28, 0.92);
+  --theme-card-hover: rgba(37, 99, 235, 0.18);
+  --theme-border: rgba(59, 130, 246, 0.55);
+  --theme-text-primary: #ffffff;
+  --theme-text-secondary: #bfdbfe;
+  --theme-text-muted: #60a5fa;
+  --theme-navbar-bg: rgba(0, 0, 0, 0.94);
+  --theme-card-active: rgba(59, 130, 246, 0.28);
+  --theme-card-solid: #060b17;
+}
+
+html[data-theme="midnight-blue"] .st-card,
+html[data-theme="midnight-blue"] .st-hero-header,
+html[data-theme="midnight-blue"] .st-stat-card,
+html[data-theme="midnight-blue"] .st-stat-box,
+html[data-theme="midnight-blue"] .st-schedule-card {
+  border: 1px solid rgba(59, 130, 246, 0.55) !important;
+  box-shadow: 0 4px 25px rgba(37, 99, 235, 0.15), inset 0 1px 0 rgba(147, 197, 253, 0.2) !important;
+}
+
+html[data-theme="midnight-blue"] .st-card:hover,
+html[data-theme="midnight-blue"] .st-stat-box:hover,
+html[data-theme="midnight-blue"] .st-schedule-card:hover {
+  border-color: #60a5fa !important;
+  box-shadow: 0 8px 30px rgba(59, 130, 246, 0.3), inset 0 1px 1px rgba(191, 219, 254, 0.3) !important;
+}
+
+html[data-theme="midnight-blue"] .st-navbar {
+  border-bottom: 1px solid rgba(59, 130, 246, 0.5) !important;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.95), 0 1px 15px rgba(37, 99, 235, 0.2) !important;
+}
+
+html[data-theme="midnight-blue"] .st-pill-link.active {
+  background: rgba(37, 99, 235, 0.3) !important;
+  border: 1px solid #3b82f6 !important;
+  color: #ffffff !important;
+  box-shadow: 0 0 15px rgba(59, 130, 246, 0.4) !important;
+}
+
+html[data-theme="midnight-blue"] .st-pill-btn-primary {
+  background: linear-gradient(135deg, #1d4ed8 0%, #3b82f6 100%) !important;
+  border-color: #3b82f6 !important;
+  box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4) !important;
+}
+
+html[data-theme="midnight-blue"] select.form-control,
+html[data-theme="midnight-blue"] select {
+  background-color: #060b17 !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(59, 130, 246, 0.55) !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2360a5fa' stroke-width='2.5'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E") !important;
+}
+
+html[data-theme="midnight-blue"] select option,
+html[data-theme="midnight-blue"] option {
+  background-color: #060b17 !important;
+  color: #ffffff !important;
+}
+
+html[data-theme="midnight-blue"] select option:checked,
+html[data-theme="midnight-blue"] select option:hover {
+  background-color: #2563eb !important;
+  color: #ffffff !important;
+}
+
+html[data-theme="midnight-blue"] .theme-dropdown {
+  background: #060b17 !important;
+  border: 1px solid rgba(59, 130, 246, 0.55) !important;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.9), 0 0 20px rgba(37, 99, 235, 0.25) !important;
 }
 
 /* Base Styles */
@@ -517,9 +594,9 @@ a:hover {
 }
 
 .form-control:focus {
-  border-color: #8b5cf6;
+  border-color: var(--theme-primary);
   background: rgba(255, 255, 255, 0.08);
-  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.25), inset 0 1px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 0 3px var(--theme-card-active), inset 0 1px 2px rgba(0, 0, 0, 0.2);
   color: #ffffff;
 }
 
@@ -688,9 +765,9 @@ html[data-theme="pastel"] select option:hover {
   background: var(--theme-card-solid);
   border: 1px solid var(--theme-border);
   border-radius: var(--radius);
-  padding: 1rem;
-  width: 240px;
-  box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+  padding: 0.85rem;
+  width: 255px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.7), 0 0 15px rgba(0,0,0,0.5);
   z-index: 150;
   display: none;
   backdrop-filter: blur(20px);
@@ -703,24 +780,37 @@ html[data-theme="pastel"] select option:hover {
 .theme-option {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  padding: 0.5rem 0.75rem;
+  gap: 0.85rem;
+  padding: 0.6rem 0.85rem;
   border-radius: var(--radius-sm);
-  color: var(--theme-text-secondary);
-  font-size: 0.8125rem;
+  color: var(--theme-text-primary);
+  font-size: 0.875rem;
+  font-weight: 600;
   cursor: pointer;
   transition: var(--transition);
+  border: 1px solid transparent;
+  margin-bottom: 2px;
 }
 
-.theme-option:hover, .theme-option.active {
+.theme-option:hover {
+  background: var(--theme-card-hover);
+  color: #ffffff;
+  border-color: var(--theme-border);
+}
+
+.theme-option.active {
   background: var(--theme-card-active);
-  color: var(--theme-text-primary);
+  color: var(--theme-primary);
+  border-color: var(--theme-primary);
+  font-weight: 700;
 }
 
 .theme-dot {
-  width: 14px;
-  height: 14px;
+  width: 15px;
+  height: 15px;
   border-radius: 50%;
+  flex-shrink: 0;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
 }
 
 /* ==========================================================================
