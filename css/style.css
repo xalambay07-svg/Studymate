@@ -345,20 +345,23 @@ a:hover {
   background: var(--theme-primary);
 }
 
-/* Glassmorphism Cards */
+/* Liquid Glass Cards */
 .st-card {
   background: var(--theme-card);
   border: 1px solid var(--theme-border);
   border-radius: var(--radius);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(24px) saturate(190%);
+  -webkit-backdrop-filter: blur(24px) saturate(190%);
   padding: 1.5rem;
-  transition: var(--transition);
+  box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.08);
+  transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .st-card:hover {
   background: var(--theme-card-hover);
-  border-color: rgba(255, 255, 255, 0.2);
+  border-color: rgba(139, 92, 246, 0.35);
+  box-shadow: 0 20px 45px -10px rgba(139, 92, 246, 0.18), inset 0 1px 1.5px rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
 }
 
 .st-card-header {
@@ -389,16 +392,21 @@ a:hover {
   background: var(--theme-card);
   border: 1px solid var(--theme-border);
   border-radius: var(--radius);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   padding: 1.25rem;
   display: flex;
   align-items: center;
   gap: 1rem;
-  transition: var(--transition);
+  box-shadow: 0 10px 25px -8px rgba(0, 0, 0, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.08);
+  transition: all 0.32s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .st-stat-box:hover {
   background: var(--theme-card-hover);
-  transform: translateY(-2px);
+  border-color: rgba(139, 92, 246, 0.4);
+  box-shadow: 0 16px 32px -8px rgba(139, 92, 246, 0.22), inset 0 1px 1.5px rgba(255, 255, 255, 0.15);
+  transform: translateY(-3px) scale(1.015);
 }
 
 .st-stat-icon {
@@ -610,24 +618,97 @@ a:hover {
    ========================================================================== */
 
 .athenify-body {
-  background-color: #ffffff !important;
+  background-color: #f8fafc !important;
   color: #0f172a !important;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  overflow-x: hidden;
+  position: relative;
 }
 
-/* Light Navbar */
+/* ========================================================================= */
+/* LIQUID GLASS AMBIENT BACKGROUND MESH                                      */
+/* ========================================================================= */
+.liquid-bg-mesh {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.liquid-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.45;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.liquid-orb-1 {
+  top: -10%;
+  left: -5%;
+  width: 550px;
+  height: 550px;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.45) 0%, rgba(37, 99, 235, 0) 70%);
+  animation: liquidFloat1 16s ease-in-out infinite alternate;
+}
+
+.liquid-orb-2 {
+  top: 15%;
+  right: -10%;
+  width: 580px;
+  height: 580px;
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.4) 0%, rgba(139, 92, 246, 0) 70%);
+  animation: liquidFloat2 18s ease-in-out infinite alternate;
+}
+
+.liquid-orb-3 {
+  top: 65%;
+  left: 25%;
+  width: 520px;
+  height: 520px;
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.35) 0%, rgba(14, 165, 233, 0) 70%);
+  animation: liquidFloat3 20s ease-in-out infinite alternate;
+}
+
+@keyframes liquidFloat1 {
+  0% { transform: translate(0, 0) scale(1) rotate(0deg); }
+  50% { transform: translate(70px, 50px) scale(1.12) rotate(90deg); }
+  100% { transform: translate(-30px, 80px) scale(0.95) rotate(180deg); }
+}
+
+@keyframes liquidFloat2 {
+  0% { transform: translate(0, 0) scale(1) rotate(0deg); }
+  50% { transform: translate(-80px, 40px) scale(1.1) rotate(-90deg); }
+  100% { transform: translate(30px, -60px) scale(0.92) rotate(-180deg); }
+}
+
+@keyframes liquidFloat3 {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(50px, -40px) scale(1.15); }
+  100% { transform: translate(-40px, 30px) scale(0.92); }
+}
+
+/* Light Liquid Glass Navbar */
 .athen-navbar {
   position: sticky;
   top: 0;
-  background: rgba(255, 255, 255, 0.92);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid #e2e8f0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.76) 0%, rgba(255, 255, 255, 0.55) 100%);
+  backdrop-filter: blur(24px) saturate(190%);
+  -webkit-backdrop-filter: blur(24px) saturate(190%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 
+    0 4px 30px rgba(0, 0, 0, 0.03),
+    inset 0 -1px 0 rgba(226, 232, 240, 0.5),
+    inset 0 1px 1px rgba(255, 255, 255, 0.8);
   z-index: 100;
   padding: 0.85rem 2rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .athen-logo {
@@ -935,13 +1016,15 @@ a:hover {
     display: none;
   }
 }
-/* Modal Overlay for 1-Tab SPA Flow */
+/* ========================================================================= */
+/* LIQUID GLASS MODAL OVERLAY & CARDS (APPLE / VISIONOS STYLE)               */
+/* ========================================================================= */
 .spa-modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(15, 23, 42, 0.65);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  background: radial-gradient(circle at center, rgba(15, 23, 42, 0.45) 0%, rgba(15, 23, 42, 0.72) 100%);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
   z-index: 999;
   display: flex;
   align-items: center;
@@ -949,7 +1032,9 @@ a:hover {
   padding: 1rem;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.25s ease;
+  transition: 
+    opacity 0.38s cubic-bezier(0.22, 1, 0.36, 1),
+    backdrop-filter 0.38s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .spa-modal-overlay.active {
@@ -959,50 +1044,66 @@ a:hover {
 
 .spa-modal-card {
   width: 100%;
-  max-width: 440px;
-  background: #ffffff;
-  border-radius: 20px;
+  max-width: 460px;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.92) 0%, rgba(255, 255, 255, 0.78) 55%, rgba(243, 248, 255, 0.88) 100%);
+  backdrop-filter: blur(36px) saturate(220%);
+  -webkit-backdrop-filter: blur(36px) saturate(220%);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  border-radius: 24px;
   padding: 2.25rem;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-  transform: translateY(20px) scale(0.95);
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 
+    0 35px 80px -15px rgba(15, 23, 42, 0.25),
+    0 15px 35px -8px rgba(37, 99, 235, 0.12),
+    inset 0 1.5px 2px rgba(255, 255, 255, 1),
+    inset 0 -1.5px 2px rgba(0, 0, 0, 0.03);
+  transform: translateY(26px) scale(0.94);
+  filter: blur(8px);
+  opacity: 0;
+  transition: 
+    transform 0.42s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.38s cubic-bezier(0.22, 1, 0.36, 1);
   position: relative;
   color: #0f172a;
 }
 
 .spa-modal-overlay.active .spa-modal-card {
   transform: translateY(0) scale(1);
+  filter: blur(0px);
+  opacity: 1;
 }
 
 .spa-modal-close {
   position: absolute;
   top: 1.25rem;
   right: 1.25rem;
-  background: #f1f5f9;
-  border: none;
-  width: 32px;
-  height: 32px;
+  background: rgba(241, 245, 249, 0.8);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  width: 34px;
+  height: 34px;
   border-radius: 50%;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1rem;
+  font-size: 1.15rem;
   color: #64748b;
-  transition: all 0.2s;
+  transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .spa-modal-close:hover {
-  background: #e2e8f0;
+  background: rgba(226, 232, 240, 0.95);
   color: #0f172a;
+  transform: scale(1.08) rotate(90deg);
 }
 
 .spa-view {
-  transition: opacity 0.3s ease;
+  transition: opacity 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 /* ========================================================================= */
-/* ATHENIFY NAVBAR DROPDOWN MENUS (INTERACTIVE POPUPS)                       */
+/* LIQUID GLASS NAVBAR DROPDOWNS (SILKY SMOOTH SPRING TRANSITIONS)           */
 /* ========================================================================= */
 .athen-dropdown-wrapper {
   position: relative;
@@ -1010,10 +1111,10 @@ a:hover {
 }
 
 .athen-nav-btn {
-  background: none;
-  border: none;
+  background: transparent;
+  border: 1px solid transparent;
   cursor: pointer;
-  padding: 0.45rem 0.65rem;
+  padding: 0.5rem 0.8rem;
   font-family: inherit;
   display: flex;
   align-items: center;
@@ -1021,8 +1122,9 @@ a:hover {
   color: #334155;
   font-size: 0.9rem;
   font-weight: 600;
-  transition: all 0.2s ease;
-  border-radius: 8px;
+  transition: all 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+  border-radius: 9999px;
+  position: relative;
 }
 
 .athen-nav-btn:hover,
@@ -1030,12 +1132,15 @@ a:hover {
 .athen-dropdown-wrapper.active .athen-nav-btn {
   color: #2563eb;
   background: rgba(37, 99, 235, 0.08);
+  border-color: rgba(37, 99, 235, 0.15);
+  backdrop-filter: blur(10px);
+  transform: translateY(-1px);
 }
 
 .athen-caret {
   display: inline-block;
   font-size: 0.75rem;
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), color 0.25s;
   color: #64748b;
 }
 
@@ -1045,32 +1150,44 @@ a:hover {
   color: #2563eb;
 }
 
+/* Liquid Glass Dropdown Menu Card */
 .athen-dropdown-menu {
   position: absolute;
-  top: calc(100% + 8px);
+  top: calc(100% + 10px);
   left: 50%;
-  transform: translateX(-50%) translateY(8px);
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
-  border-radius: 18px;
-  box-shadow: 0 20px 45px -12px rgba(15, 23, 42, 0.18), 0 0 0 1px rgba(0, 0, 0, 0.04);
+  transform: translateX(-50%) translateY(14px) scale(0.95);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.86) 0%, rgba(255, 255, 255, 0.68) 55%, rgba(240, 246, 255, 0.82) 100%);
+  backdrop-filter: blur(32px) saturate(210%);
+  -webkit-backdrop-filter: blur(32px) saturate(210%);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  border-radius: 22px;
+  box-shadow: 
+    0 30px 70px -15px rgba(15, 23, 42, 0.16),
+    0 12px 30px -8px rgba(37, 99, 235, 0.08),
+    inset 0 1.5px 2px 0 rgba(255, 255, 255, 1),
+    inset 0 -1.5px 2px 0 rgba(0, 0, 0, 0.02);
   padding: 1.25rem;
   opacity: 0;
+  filter: blur(6px);
   visibility: hidden;
   pointer-events: none;
-  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: 
+    opacity 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.36s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 0.36s allow-discrete;
   z-index: 250;
   text-align: left;
 }
 
-/* Hover bridge: allows cursor to transition smoothly between button and menu */
+/* Liquid Hover Bridge (prevents mouse jitter) */
 .athen-dropdown-menu::before {
   content: "";
   position: absolute;
-  top: -14px;
+  top: -16px;
   left: 0;
   right: 0;
-  height: 16px;
+  height: 20px;
   display: block;
 }
 
@@ -1079,7 +1196,8 @@ a:hover {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
-  transform: translateX(-50%) translateY(0);
+  transform: translateX(-50%) translateY(0) scale(1);
+  filter: blur(0px);
 }
 
 /* Specific Dropdown widths */
@@ -1099,14 +1217,14 @@ a:hover {
   width: 400px;
 }
 
-/* Responsive adjustment for left align when menu is near edges */
+/* Align first child cleanly if near viewport left */
 .athen-dropdown-wrapper:first-child .athen-dropdown-menu {
   left: 0;
-  transform: translateX(0) translateY(8px);
+  transform: translateX(0) translateY(14px) scale(0.95);
 }
 .athen-dropdown-wrapper:first-child:hover .athen-dropdown-menu,
 .athen-dropdown-wrapper:first-child.active .athen-dropdown-menu {
-  transform: translateX(0) translateY(0);
+  transform: translateX(0) translateY(0) scale(1);
 }
 
 .athen-dropdown-grid-2 {
@@ -1121,35 +1239,65 @@ a:hover {
   gap: 0.4rem;
 }
 
+/* Liquid Glass Item with Specular Gel Hover */
 .athen-dropdown-item {
   display: flex;
   align-items: flex-start;
-  gap: 0.75rem;
-  padding: 0.75rem 0.85rem;
-  border-radius: 12px;
+  gap: 0.85rem;
+  padding: 0.8rem 0.95rem;
+  border-radius: 14px;
   text-decoration: none;
   color: inherit;
-  transition: all 0.15s ease;
   cursor: pointer;
   border: 1px solid transparent;
-  background: #ffffff;
+  background: transparent;
+  transition: all 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.athen-dropdown-item::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(239, 246, 255, 0.75) 0%, rgba(245, 243, 255, 0.6) 100%);
+  opacity: 0;
+  transition: opacity 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+  z-index: 0;
 }
 
 .athen-dropdown-item:hover {
-  background: #f8fafc;
-  border-color: #e2e8f0;
-  transform: translateY(-1px);
+  border-color: rgba(191, 219, 254, 0.75);
+  transform: translateX(4px) translateY(-1px);
+  box-shadow: 0 8px 20px -6px rgba(37, 99, 235, 0.12), inset 0 1px 1px rgba(255, 255, 255, 0.9);
+}
+
+.athen-dropdown-item:hover::before {
+  opacity: 1;
+}
+
+.athen-dropdown-item > * {
+  position: relative;
+  z-index: 1;
 }
 
 .athen-dd-icon {
-  width: 38px;
-  height: 38px;
-  border-radius: 10px;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.25rem;
+  font-size: 1.3rem;
   flex-shrink: 0;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04), inset 0 1px 1px rgba(255, 255, 255, 0.9);
+  transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.athen-dropdown-item:hover .athen-dd-icon {
+  transform: scale(1.1) rotate(4deg);
 }
 
 .athen-dd-content {
@@ -1188,13 +1336,13 @@ a:hover {
 .athen-dd-desc {
   font-size: 0.75rem;
   color: #64748b;
-  line-height: 1.4;
+  line-height: 1.45;
 }
 
 .athen-dropdown-footer {
   margin-top: 0.85rem;
   padding-top: 0.85rem;
-  border-top: 1px solid #f1f5f9;
+  border-top: 1px solid rgba(226, 232, 240, 0.7);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -1212,10 +1360,61 @@ a:hover {
   cursor: pointer;
   padding: 0;
   font-size: 0.775rem;
+  transition: color 0.2s;
 }
 
 .athen-dropdown-footer a:hover,
 .athen-dropdown-footer button:hover {
   text-decoration: underline;
+  color: #1d4ed8;
 }
+
+/* ========================================================================= */
+/* LIQUID GLASS ENHANCEMENTS FOR HERO & WORKSPACE CARDS                      */
+/* ========================================================================= */
+.athen-feature-item {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 14px;
+  padding: 0.85rem 1rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03), inset 0 1px 1px rgba(255, 255, 255, 0.8);
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.athen-feature-item:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(191, 219, 254, 0.8);
+  box-shadow: 0 12px 25px -8px rgba(37, 99, 235, 0.12), inset 0 1px 1px rgba(255, 255, 255, 1);
+}
+
+.athen-mockup-laptop {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 25px 60px -15px rgba(15, 23, 42, 0.15), inset 0 1px 2px rgba(255, 255, 255, 1);
+  transition: all 0.38s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.athen-mockup-laptop:hover {
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 35px 75px -18px rgba(37, 99, 235, 0.22), inset 0 1px 2px rgba(255, 255, 255, 1);
+}
+
+.athen-btn-dark, .athen-big-cta {
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1) !important;
+}
+
+.athen-btn-dark:hover, .athen-big-cta:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 12px 25px -6px rgba(37, 99, 235, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.3);
+}
+
+.athen-btn-dark:active, .athen-big-cta:active {
+  transform: translateY(0) scale(0.98);
+}
+
 
